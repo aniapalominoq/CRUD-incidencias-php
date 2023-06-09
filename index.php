@@ -28,7 +28,7 @@
             <button class="login__button">Iniciar Sesion</button>
         </form>
         <div class="login-footer">
-            <a class="login-footer__a" href="#">
+            <a class="login-footer__a" href="./recuperaContrasena.php">
             <i class="fa-solid fa-lock"></i>
             <span class="login-footer__span" >Olvido su contraseña ?</span>
            </a>

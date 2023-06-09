@@ -32,7 +32,7 @@
             <button class="resgistro__button">Registrarse</button>
         </form>
         <div class="resgistro-footer">
-            <a class="resgistro-footer__a" href="#">
+            <a class="resgistro-footer__a" href="./recuperaContrasena.php">
             <i class="fa-solid fa-lock"></i>
             <span class="resgistro-footer__span" >Olvido su contraseña ?</span>
            </a>
