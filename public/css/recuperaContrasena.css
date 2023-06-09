@@ -1,0 +1,126 @@
+@import "./reset.css";
+@import "./confingBasic.css";
+
+.body{
+
+width: 100vw;
+height: 100vh;
+display:flex;
+ flex-direction:column;
+ align-items: center;
+ justify-content: center;
+}
+.recuperacontrasena__section{
+ box-shadow: 0.4rem 0.9rem 2rem #17181d63;
+     padding: 1rem;
+     border-radius: 0.625rem; ;
+ display:flex;
+ flex-direction:column;
+ align-items: center;
+ justify-items: center;
+}
+.recuperacontrasena__img{
+width:21,875rem ;
+  height:5.75rem;
+
+
+}
+.recuperacontrasena__h1{
+    font-size: 0.85rem;
+    color:var(--cyan-100);
+    font-weight: 400;
+      margin-bottom: 2rem;
+}
+.recuperacontrasena__form{
+display:flex;
+flex-direction:column;
+align-items: center;  
+gap:1rem
+}
+.recuperacontrasena__div{
+    display:flex;
+    flex-direction:column;
+    gap:0.5rem
+}
+.recuperacontrasena__label{
+    color:var(--black-100);
+    font-weight: 500;
+    font-size: 0.85rem;
+    
+}
+.recuperacontrasena__input{
+    border:1px solid var(--grey-50);
+    width:18.625rem;
+    height:3rem;
+    padding: 0 1rem 0 1rem;
+    border-radius: 0.625rem;
+}
+::placeholder{
+    color:var(--grey-100);
+    font-size: 0.85rem;
+}
+.recuperacontrasena__input:focus{
+border:2px solid var(--cyan-100); 
+  color: var(--black-100);
+
+}
+
+.recuperacontrasena__button{
+background-color: var(--blue-300);
+font-size: 0.85rem;
+width:18.625rem ;
+height:3.5rem;
+border: none;
+ box-shadow: 0.4rem 0.9rem 2rem #17181d63;
+border-radius: 0.625rem;
+color:var(--white);
+ transition: transform 0.3s ease;
+}
+.recuperacontrasena__button:hover{
+     box-shadow: none;
+      background-color: var(--blue-200);
+
+}
+.recuperacontrasena__button:active {
+  transform: translateY(4px); 
+}
+.recuperacontrasena-footer{
+    margin-top:2rem;
+     display:flex; 
+     justify-content: space-around;
+        gap:2rem;
+}
+
+
+.recuperacontrasena-footer__a{
+    text-decoration: none; 
+   display:flex;
+   gap:0.2rem;
+   color:var(--grey-100);
+
+}
+
+.recuperacontrasena-footer__a:hover{
+    color:var(--black-100);
+    font-weight: 500;
+}
+.recuperacontrasena-footer__span{
+    font-size: 0.85rem;
+}
+
+/* media queries */
+@media screen and (max-width: 767px) {
+
+}
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  *{
+font-size: 18px;
+}
+
+}
+@media screen and (min-width: 992px) {
+ 
+ .recuperacontrasena__section{
+    padding: 3rem;
+ }
+}

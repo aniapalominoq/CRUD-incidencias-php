@@ -24,7 +24,7 @@
         <div class="recuperacontrasena-footer">
             <a class="recuperacontrasena-footer__a" href="./registro.php">
             <i class="fa-solid fa-lock"></i>
-            <span class="recuperacontrasena-footer__span" >Resgistro</span>
+            <span class="recuperacontrasena-footer__span" >Registrarse</span>
            </a>
            <a class="recuperacontrasena-footer__a"  href="./index.php" >
            <i class="fa-solid fa-square-check"></i>
