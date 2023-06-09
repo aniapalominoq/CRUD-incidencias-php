@@ -2,8 +2,8 @@
     class Conexion {
         public $servidor = 'localhost';
         public $usuario = 'root';
-        public $password = 'autodidacta';
-        public $database = 'loginpoo2023';
+        public $password = ;
+        public $database = 'centro-control';
         public $port = 3306;
 
         public function conectar() {
