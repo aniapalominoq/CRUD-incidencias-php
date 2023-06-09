@@ -1,20 +1,5 @@
 @import "./reset.css";
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
-:root {
-    
-  --blue-300: #154390;
-  --blue-200: #3566b9;
-  --blue-500: #081837;
-  --cyan-100: #5ABDD5;
-  --grey-50:#E5E5E5;
-    --grey-100:#989595;
-  --black-100:#333333;
-  --white:#ffffff;
-}
-*{
-font-family: 'Open Sans', sans-serif;
-font-size: 16px;
-}
+@import "./confingBasic.css";
 
 .body{
 
@@ -150,7 +135,7 @@ font-size: 18px;
 @media screen and (min-width: 992px) {
     .body{
  flex-direction: row;
- gap:2rem
+ gap:3rem
     }
  .img-body__section{
     display:auto;
