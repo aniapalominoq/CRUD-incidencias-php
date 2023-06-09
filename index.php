@@ -11,7 +11,7 @@
   <body class="body">
 
    <section class="img-body__section">
-    <img src="./public/img/antonio.jpg" alt="personaje antonio de la atu">
+    <img src="./public/img/antonio.png" alt="personaje antonio de la atu">
    </section>
     <section class="login__section">
         <img src="./public/img/logo.jpg" alt="logo de la ATU" class="login__img">
@@ -32,9 +32,9 @@
             <i class="fa-solid fa-lock"></i>
             <span class="login-footer__span" >Olvido su contraseña ?</span>
            </a>
-           <a class="login-footer__a" href="#">
+           <a class="login-footer__a"  href="./registro.php">
            <i class="fa-solid fa-square-check"></i>
-            <span  href="#" class="login-footer__span">Registrarse</span>
+            <span  class="login-footer__span">Registrarse</span>
               </a>
         </div>
     </section>

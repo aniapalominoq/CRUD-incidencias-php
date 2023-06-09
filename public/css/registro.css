@@ -1,27 +1,147 @@
-body {
-    background: #007bff;
-    background: linear-gradient(to right, #0062E6, #33AEFF);
-  }
+@import "./reset.css";
+@import "./confingBasic.css";
+
+.body{
+
+width: 100vw;
+height: 100vh;
+display:flex;
+ flex-direction:column;
+ align-items: center;
+ justify-content: center;
+}
+.resgistro__section{
+ box-shadow: 0.4rem 0.9rem 2rem #17181d63;
+     padding: 1rem;
+     border-radius: 0.625rem; ;
+ display:flex;
+ flex-direction:column;
+ align-items: center;
+ justify-items: center;
+}
+.resgistro__img{
+width:21,875rem ;
+  height:5.75rem;
+
+
+}
+.resgistro__h1{
+    font-size: 0.85rem;
+    color:var(--cyan-100);
+    font-weight: 400;
+      margin-bottom: 2rem;
+}
+.resgistro__form{
+display:flex;
+flex-direction:column;
+align-items: center;  
+gap:1rem
+}
+.resgistro__div{
+    display:flex;
+    flex-direction:column;
+    gap:0.5rem
+}
+.resgistro__label{
+    color:var(--black-100);
+    font-weight: 500;
+    font-size: 0.85rem;
+    
+}
+.resgistro__input{
+    border:1px solid var(--grey-50);
+    width:18.625rem;
+    height:3rem;
+    padding: 0 1rem 0 1rem;
+    border-radius: 0.625rem;
+}
+::placeholder{
+    color:var(--grey-100);
+    font-size: 0.85rem;
+}
+.resgistro__input:focus{
+border:2px solid var(--cyan-100); 
+  color: var(--black-100);
+
+}
+
+.resgistro__button{
+background-color: var(--blue-300);
+font-size: 0.85rem;
+width:18.625rem ;
+height:3.5rem;
+border: none;
+ box-shadow: 0.4rem 0.9rem 2rem #17181d63;
+border-radius: 0.625rem;
+color:var(--white);
+ transition: transform 0.3s ease;
+}
+.resgistro__button:hover{
+     box-shadow: none;
+      background-color: var(--blue-200);
+
+}
+.resgistro__button:active {
+  transform: translateY(4px); 
+}
+.resgistro-footer{
+    margin-top:2rem;
+     display:flex; 
+     justify-content: space-around;
+        gap:2rem;
+}
+
+
+.resgistro-footer__a{
+    text-decoration: none; 
+   display:flex;
+   gap:0.2rem;
+   color:var(--grey-100);
+
+}
+
+.resgistro-footer__a:hover{
+    color:var(--black-100);
+    font-weight: 500;
+}
+.resgistro-footer__span{
+    font-size: 0.85rem;
+}
+/* media queries nueva sintaxis */
+
+@media (width >= 768px ){
+}
+
+@media (768px <= width <= 991px) {
   
-  .card-img-left {
-    width: 45%;
-    /* Link to your background image using in the property below! */
-    background: scroll center url('https://source.unsplash.com/WEQbe2jBg40/414x512');
-    background-size: cover;
-  }
+}
+@media (992px <= width ) {
   
-  .btn-login {
-    font-size: 0.9rem;
-    letter-spacing: 0.05rem;
-    padding: 0.75rem 1rem;
-  }
-  
-  .btn-google {
-    color: white !important;
-    background-color: #ea4335;
-  }
-  
-  .btn-facebook {
-    color: white !important;
-    background-color: #3b5998;
-  }
+}
+/* media queries */
+@media screen and (max-width: 767px) {
+ .img-body__section{
+    display:none;
+ }
+}
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  *{
+font-size: 18px;
+}
+ .img-body__section{
+    display:none;
+ }
+}
+@media screen and (min-width: 992px) {
+    .body{
+ flex-direction: row;
+ gap:3rem
+    }
+ .img-body__section{
+    display:auto;
+    
+ }
+ .resgistro__section{
+    padding: 3rem;
+ }
+}
