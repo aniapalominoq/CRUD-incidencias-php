@@ -9,43 +9,35 @@
     <title>inicio</title>
   </head>
   <body class="body">
-    <section class="inicio__menu-collapsed">
+    <section  id="sidemenu" class="inicio">
         <!-- HEADER -->
-        <section class="inicio__header">
-            <h1 class="inicio__header-title">
-                <span class="inicio__header-span"></span>
-            </h1>
-            <div class="inicio__header-btn">
-                <div class="inicio__header-btn-hamburger"></div>
-                <div class="inicio__header-btn-hamburger"></div>
-                <div class="inicio__header-btn-hamburger"></div>
-            </div>
-        </section>
+        <button id="header" class="inicio__button">
+           <i class="fa-solid fa-bars"></i>
+        </button>
         <!-- PROFILE -->
-        <section class="inicio__profile" id="profile">
-            <div class="inicio__profile-photo" id="photo">
-                <img src="./public/img/Hakon-Wium.jpg" alt="foto del usuario">
+        <section id="profile" class="inicio__profile" >
+            <div id="photo" class="inicio__profile-photo">
+                <img class="inicio__profile-img" src="./public/img/frida.jpg" alt="foto del usuario">
             </div>
-            <div  class="inicio__profile-name" id="name">
-                <span class="inicio__profile-span">melania palomino</span>
+            <div  id="name"  class="inicio__profile-name">
+                <span class="">melania palomino</span>
             </div>
         </section>
 
         <!-- ITEM -->
-        <section class="inicio__items"id="menu-items">
+        <section id="menu-items" class="inicio__items">
+            <div id="item" class="inicio__item">
+                <a href="" class="inicio__item-a" >
+                    <div class="inicio__item-icon">
+                        <i class="fa-solid fa-square-plus"></i>
+                    </div> 
+                    <div class="inicio__item-title">
+                        <span>INCIDENCIAS</span>
+                    </div>
+                </a>
+            </div>
+            <div class="inicio__item-separator"></div>
           
-                <a href="" class="inicio__item" >
-                    <i class="fa-solid fa-square-plus"></i>
-                    <div class="title">INCIDENCIAS</div>
-                </a>
-                  <a href="" class="inicio__item">
-                  <i class="fa-solid fa-table"></i>
-                    <div class="title">LISTA INCIDENCIAS</div>
-                </a>
-                 <a href="" class="inicio__item">
-                    <i class="fa-solid fa-file-arrow-down"></i>
-                    <div class="title">DESCARGA</div>
-                </a>
           
         </section>
         <section class="inicio__main-container">
