@@ -11,23 +11,25 @@
   <body class="body">
     <section  id="sidemenu" class="inicio">
         <!-- HEADER -->
-        <button id="header" class="inicio__button">
-           <i class="fa-solid fa-bars"></i>
-        </button>
+        <div id="" class="inicio__btn">
+          <i class="fa-solid btn fa-chevron-down"></i>
+        </div>
         <!-- PROFILE -->
         <section id="profile" class="inicio__profile" >
             <div id="photo" class="inicio__profile-photo">
-                <img class="inicio__profile-img" src="./public/img/frida.jpg" alt="foto del usuario">
+                <img class="inicio__profile-img" src="./public/img/frida.jpg" alt="avatar">
             </div>
-            <div  id="name"  class="inicio__profile-name">
-                <span class="">melania palomino</span>
+            <div  id="name"  class="inicio__profile-info">
+                <span class="inicio__profile-name">melania palomino</span>
+                 <span class="inicio__profile-role ">administrador</span>
+                 <span class="inicio__profile-date">31/05/2023 04:33:35 p.m.</span>
             </div>
         </section>
 
         <!-- ITEM -->
         <section id="menu-items" class="inicio__items">
             <div id="item" class="inicio__item">
-                <a href="" class="inicio__item-a" >
+                <a href="#" class="inicio__item-a" >
                     <div class="inicio__item-icon">
                         <i class="fa-solid fa-square-plus"></i>
                     </div> 
@@ -36,15 +38,46 @@
                     </div>
                 </a>
             </div>
-            <div class="inicio__item-separator"></div>
-          
-          
-        </section>
-        <section class="inicio__main-container">
-            bienvenidos
-        </section>
+             <div id="item" class="inicio__item">
+                <a href="#" class="inicio__item-a" >
+                    <div class="inicio__item-icon">
+                     <i class="fa-solid fa-table"></i>
+                    </div> 
+                    <div class="inicio__item-title">
+                        <span>INCIDENCIAS</span>
+                    </div>
+                </a>
+            </div>
+              <div id="item" class="inicio__item">
+                <a href="#" class="inicio__item-a" >
+                    <div class="inicio__item-icon">
+                 <i class="fa-solid fa-download"></i>
+                    </div> 
+                    <div class="inicio__item-title">
+                        <span>INCIDENCIAS</span>
+                    </div>
+                </a>
+                
+            </div>
+            
+         
+        
+         <div id="item" class="inicio__item footer">
+                <a href="#" class="inicio__item-a" >
+                    <div class="inicio__item-icon">
+                 <i class="fa-solid fa-right-from-bracket"></i>
+                    </div> 
+                    <div class="inicio__item-title">
+                        <span>INCIDENCIAS</span>
+                    </div>
+                </a>
+                
+            </div>
+            </section>
+    </section>
 
-
+    <section class="inicio__main-container">
+    bienvenidos
     </section>
 
   </body>

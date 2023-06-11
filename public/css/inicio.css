@@ -1,107 +1,173 @@
 @import "./reset.css";
 @import "./confingBasic.css";
+
 .body{
-    width: 100vw;
+width: 100vw;
 height: 100vh;
 display:flex;
- flex-direction:column;
- align-items: center;
- justify-content: center;
+}
 
-    
-}
-.body-expanded{
-    margin-left:18.75rem;
-}
 .inicio{
     background-color: var(--blue-300);
-    position:fixed;
     color:white ;
     height: 100%;
-    left: 0;
-    top:0;
-}
-/* estilos header */
-.inicio__header{
-    border-bottom:solid 1px var(--blue-500)
-}
-
-
-.inicio__button{
-    background-color: transparent;
-    border:none;
-     color:#fff;
-     width: 3.125rem;
-     padding:10px 0;
-}
-.inicio__button:hover{
-     cursor: pointer;
-     color:#fff;
-    background-color:var(--blue-500);
-}
-
-/* profile */
-
-
-.inicio__profile{
-border-bottom: 1px solid var(--blue-500);
-padding: 10px 0;
-text-align: center;  
-}
-.inicio__profile-photo{
-    width:60px ;
-  height: 60px;
-  border-radius: 50%;
-  clip-path: circle(50% at 50% 50%);
-  margin:3%;
-}
-.inicio__profile-img{
-    max-width:100% ;
-    height: auto;
-}
-.inicio__profile-photo,.inicio__profile-name{
-    font-size: 24px;
-    padding: 10px 0;
-    overflow: hidden;
-}
-
-/* item */
-
-.inicio__items{
-    overflow: hidden;
-}
-
-.inicio__item{
-    width: 300px;
-}
-.fa-solid,.inicio__item-title{
-font-size: 14px;
-vertical-align: middle;
-overflow: hidden;
-display:inline-block;
-}
-.inicio__item-a{
-    color:#fff;
-    text-decoration: none;
-    display:block;
-}
-.inicio__item-a:hover{
-    background-color: var(--blue-500);
-}
-.inicio__item-icon{
-    box-sizing: border-box;
-    padding: 10px;
+    display:flex;
+    flex-direction:column;
+    align-items: center;
     width: 50px;
 }
-.fa-solid{
+
+.inicio__btn{
+width: 100%; 
+height: 50px;
+border-bottom: 1px solid var(--blue-500);
+display:flex;
+justify-content: center;
+ align-items: center;
+
+}
+.fa-solid,.btn{
+   font-size:1.2rem;
+ 
+}
+.btn{
+     transform: rotate(270deg);
+}
+.inicio__btn:hover{
+    background-color: var(--cyan-100);
+    }
+.inicio__profile {
+border-bottom: 1px solid var(--blue-500);
+display:flex;
+flex-direction:column;
+justify-content: center;
+ align-items: center;
+ width: 100%;
+ height: 50px;
+
+  
+}
+.inicio__profile-photo{
 width: 100%;
+display:flex;
+flex-direction:column;
+justify-content: center;
+ align-items: center;
+ cursor: pointer;
+}
+.inicio__profile-img{
+   border-radius: 50%;
+    height: 40px;
+    object-fit: cover;
+    object-position: center;
+    width: 40px;
+}
+.inicio__profile-info{
+    display:none;
+}
+.inicio__items{
+width: 100%;
+display:flex;
+flex-direction:column;
+justify-content: center;
+ align-items: center;
+}
+.inicio__item{
+display:flex;
+ width: 100%;
+ justify-content: center;
+align-items: center;
+ 
+
+}
+
+.inicio__item-a{
+    width: 100%;
+    text-decoration: none;
+    color: white;
+    height: 50px;
+    display:flex;
+flex-direction:column;
+justify-content: center;
+ align-items: center;
+
+}
+.inicio__item-a:hover{
+    background-color: var(--cyan-100);
+}
+.inicio__item-icon{
+
+
+}
+
+.inicio__item-title{
+    display: none;
+}
+.footer{
+margin-top: 60vh;
+}
+
+/* media queries */
+@media screen and (max-width: 767px) {
+
+}
+@media screen and (min-width: 768px) 
+{}
+
+@media screen and (min-width: 992px) {
+.inicio{
+    width: 300px;
+}
+
+.inicio__btn{
+flex-direction: row;
+justify-content: flex-end;
+padding :0 10px 0 0;
+}
+
+.btn{
+     transform: rotate(90deg);
+}
+
+.inicio__profile {
+height: auto;
+padding:10px 0 10px 0;
+}
+.inicio__profile-img{
+    height: 64px;
+    width: 64px;
+}
+.inicio__profile-info{
+display:auto;
+display:flex;
+flex-direction:column;
+justify-content: center;
+ align-items: center;
+}
+
+.inicio__profile-name{
+    text-transform: capitalize;
+    font-weight: 500;
+    font-size: 1rem;
+}
+.inicio__profile-role{
+ font-size:.75rem;
+ color:var(--grey-100)
+}
+
+.inicio__profile-date{
+ font-size:.75rem;
+ color:var(--grey-100)
+}
+.inicio__item-a{
+flex-direction:row;
+
 }
 .inicio__item-title{
-    padding: 10px 0;
+    display:auto;
+    
 }
-.inicio__item-separator{
-height: 1px;
-border-bottom: 1px solid var(--blue-500);
-margin:15px 0;
+
+
 }
 
