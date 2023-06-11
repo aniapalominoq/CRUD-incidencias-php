@@ -22,12 +22,20 @@
                 <input type="text" class="resgistro__input" name="name" placeholder="Nombre usuario">
             </div>
             <div class="resgistro__div">
+                <label for="rol" class="resgistro__label"> Seleccione su Rol</label>
+                <select name="" id="rol"  class="resgistro__select">
+                    <option class="resgistro__select-option" value="controlador">Controlador</option>
+                    <option class="resgistro__select-option" value="supervisor">Supervisor</option>
+                </select>
+            </div>
+             <div class="resgistro__div">
                 <label for="password1" class="resgistro__label">Contraseña</label>
                 <input type="password" class="resgistro__input" name="password1" placeholder="***********">
             </div>
              <div class="resgistro__div">
                 <label for="password2" class="resgistro__label">Confirmar contraseña</label>
                 <input type="password" class="resgistro__input" name="password2" placeholder="***********">
+                
             </div>
             <button class="resgistro__button">Registrarse</button>
         </form>
