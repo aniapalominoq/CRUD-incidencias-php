@@ -64,6 +64,24 @@ border:2px solid var(--cyan-100);
   color: var(--black-100);
 
 }
+.resgistro__select{
+       border:1px solid var(--grey-50);
+    width:18.625rem;
+    height:3rem;
+    padding: 0 1rem 0 1rem;
+    border-radius: 0.625rem;
+    background-color: white;
+    color: var(--black-100);
+
+}
+.resgistro__select-option{
+
+border:1px solid var(--grey-50);
+
+}
+.resgistro__select-option:hover{
+    background-color:var(--grey-50) ;
+}
 
 .resgistro__button{
 background-color: var(--blue-300);
