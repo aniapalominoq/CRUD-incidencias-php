@@ -11,26 +11,21 @@
             return $query->execute();
         }
 
-        public function logear($name, $password1) {
+        public function logear($name, $password) {
             $conexion = parent::conectar();
             $passwordExistente = "";
-            $sql = "SELECT * FROM t_usuarios 
-                    WHERE usuario = '$name$name'";
+            $sql = "SELECT * FROM usuarios 
+                    WHERE nombre = '$name'";
             $respuesta = mysqli_query($conexion, $sql);
-
-            if (mysqli_num_rows($respuesta) > 0) {
-                $passwordExistente = mysqli_fetch_array($respuesta);
-                $passwordExistente = $passwordExistente['password'];
-                
-                if (password_verify($password1, $passwordExistente)) {
-                    $_SESSION['usuario'] = $name;
+                $passwordExistente = mysqli_fetch_array($respuesta)['contrasena'];
+                if (password_verify( $password, $passwordExistente)) {
+                    $_SESSION['nombre'] = $name;
                     return true;
-                } else {
+                }else
+                {
                     return false;
                 }
-            } else {
-                return false;
-            }
+           
         }   
     }
 

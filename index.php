@@ -16,7 +16,7 @@
     <section class="login__section">
         <img src="./public/img/logo.jpg" alt="logo de la ATU" class="login__img">
         <h1 class="login__h1"> GESTION DE INCIDENCIAS</h1>
-        <form action="" class="login__form">
+        <form action="./servidor/login/logear.php" method="post" class="login__form">
             <div class="login__div">
                 <label for="name" class="login__label">Nombre usuario</label>
                 <input type="text" class="login__input" name="name" placeholder="Nombre usuario">

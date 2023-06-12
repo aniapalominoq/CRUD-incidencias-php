@@ -1,11 +1,9 @@
 <?php session_start();
     include "../../clases/Auth.php";
-    $usuario = $_POST['usuario'];
+    $name = $_POST['name'];
     $password = $_POST['password'];
-
     $Auth = new Auth();
-
-    if ($Auth->logear($usuario, $password)) {
+    if ($Auth->logear($name, $password)) {
         header("location:../../inicio.php");
     } else {
         echo "No se pudo logear";
