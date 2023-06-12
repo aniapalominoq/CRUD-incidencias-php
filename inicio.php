@@ -1,4 +1,8 @@
-
+<?php session_start();
+if(!isset($_SESSION['nombre'])){
+    header("location:index.php");
+}
+ ?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -21,7 +25,7 @@
                 <img class="inicio__profile-img" src="./public/img/frida.jpg" alt="avatar">
             </div>
             <div  id="name"  class="inicio__profile-info">
-                <span class="inicio__profile-name">melania palomino</span>
+                <span class="inicio__profile-name"><?php echo $_SESSION['nombre'] ?></span>
                  <span class="inicio__profile-role ">administrador</span>
                  <span class="inicio__profile-date">31/05/2023 04:33:35 p.m.</span>
             </div>
@@ -64,12 +68,12 @@
          
         
          <div id="item" class="inicio__item footer">
-                <a href="#" class="inicio__item-a" >
+                <a href="./servidor/login/logout.php" class="inicio__item-a" >
                     <div class="inicio__item-icon">
                  <i class="fa-solid fa-right-from-bracket"></i>
                     </div> 
                     <div class="inicio__item-title">
-                        <span>INCIDENCIAS</span>
+                        <span>Salir</span>
                     </div>
                 </a>
                 
