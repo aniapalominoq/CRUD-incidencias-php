@@ -2,7 +2,7 @@
     class Conexion {
         public $servidor = 'localhost';
         public $usuario = 'root';
-        public $password = ;
+        public $password ='';
         public $database = 'centro-control';
         public $port = 3306;
 
