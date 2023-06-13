@@ -2,10 +2,11 @@
 if(!isset($_SESSION['nombre'])){
     header("location:index.php");
 }
-$seccionActual = "incidencias"; // Sección predeterminada al cargar la página
+$seccionActual = "registro-incidencias"; 
 if (isset($_GET['seccion'])) {
     $seccionActual = $_GET['seccion'];
 }
+
  ?>
 <!doctype html>
 <html lang="en">
@@ -21,7 +22,7 @@ if (isset($_GET['seccion'])) {
    <nav class="inicio__navegation">
     <ul class="inicio__navegation-ul">
         <li class="inicio__navegation-li-user">
-            <a href="./servidor/" class="inicio__navegation-a">
+            <a href="#" class="inicio__navegation-a">
                 <span class="inicio__navegation-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" class="ionicon inicio__navegation-svg" viewBox="0 0 512 512"><path d="M344 144c-3.92 52.87-44 96-88 96s-84.15-43.12-88-96c-4-55 35-96 88-96s92 42 88 96z" fill="#fff" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><path d="M256 304c-87 0-175.3 48-191.64 138.6C62.39 453.52 68.57 464 80 464h352c11.44 0 17.62-10.48 15.65-21.4C431.3 352 343 304 256 304z" fill="#fff" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/></svg>
                 </span>
@@ -29,7 +30,7 @@ if (isset($_GET['seccion'])) {
             </a>
         </li>
         <li class="inicio__navegation-li">
-            <a href="inicio.php?seccion=incidencias" class="inicio__navegation-a">
+            <a href="inicio.php?seccion=registro-incidencias" class="inicio__navegation-a">
                 <span class=" inicio__navegation-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" class="ionicon inicio__navegation-svg" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M256 112v288M400 256H112"/></svg>
                 </span>
@@ -63,11 +64,10 @@ if (isset($_GET['seccion'])) {
     </ul>
     <div class="inicio__navegation-toggle"></div>
    </nav>
-
+<!--  la secion que cambiara de acuerdo con las opciones elegidas -->
     <main class="inicio__main">
-
     <!-- Contenido de la sección actual -->
-    <?php include($seccionActual . ".php"); ?>
+    <?php include("./modulos/".$seccionActual.".php"); ?>
 
     <!-- Agrega tus scripts JavaScript aquí -->
     <h1>My Dashboard</h1>

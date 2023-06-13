@@ -1,9 +1,4 @@
-<?php
-$seccionActual = "incidencias"; // Sección predeterminada al cargar la página
-if (isset($_GET['seccion'])){
-$seccionActual = $_GET['seccion'];
-}
-?>
+
 <section class="addIncidents__container">
     <header>Registrar Nueva incidencia</header>
     <section class="addIncidents__form-outer">
