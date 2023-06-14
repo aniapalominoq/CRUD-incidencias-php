@@ -1,5 +1,6 @@
 @import "./reset.css";
 @import "./confingBasic.css";
+@import "./resgistro-incidencias.css";
 
 .inicio__body{
     min-height:100vh;
@@ -169,7 +170,7 @@
     white-space:nowrap;
 }  
 
-.inicio__main{
+/* .inicio__main{
 
   flex: 1;
   padding: 2rem;
@@ -182,7 +183,7 @@
 padding-left: 250;
 
 }
-
+ */
 .inicio__main-copyright {
   margin-top: auto;
   font-size: 0.9rem;

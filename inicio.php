@@ -65,8 +65,7 @@ if (isset($_GET['seccion'])) {
     </nav>
 <!--  la secion que cambiara de acuerdo con las opciones elegidas -->
     <main class="inicio__main">
-        <h1>Registro de nueva incidencia</h1>
-
+       
         <?php include("./modulos/".$seccionActual.".php"); ?>
     
         <p class="inicio__main-copyright">
