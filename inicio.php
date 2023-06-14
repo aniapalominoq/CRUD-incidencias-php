@@ -14,12 +14,11 @@ if (isset($_GET['seccion'])) {
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="public/css/inicio.css">
-    <script src="https://kit.fontawesome.com/83cb85df21.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./public/css/inicio.css">
     <title>inicio</title>
   </head>
   <body class="inicio__body">
-   <nav class="inicio__navegation">
+    <nav class="inicio__navegation">
     <ul class="inicio__navegation-ul">
         <li class="inicio__navegation-li-user">
             <a href="#" class="inicio__navegation-a">
@@ -63,34 +62,25 @@ if (isset($_GET['seccion'])) {
         
     </ul>
     <div class="inicio__navegation-toggle"></div>
-   </nav>
+    </nav>
 <!--  la secion que cambiara de acuerdo con las opciones elegidas -->
     <main class="inicio__main">
-    <!-- Contenido de la sección actual -->
-    <?php include("./modulos/".$seccionActual.".php"); ?>
+        <h1>Registro de nueva incidencia</h1>
 
-    <!-- Agrega tus scripts JavaScript aquí -->
-    <h1>My Dashboard</h1>
-    <p class="text">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur animi voluptatibus cum maxime distinctio
-      iste quod deleniti eius, autem voluptates cumque suscipit iure quasi eligendi ullam. Sapiente eligendi porro
-      reprehenderit corrupti error facilis quo, fugiat fugit? Maiores aliquam ad, molestiae iste nihil, commodi
-      doloremque tempore excepturi aut id ducimus unde?
-    </p>
-    <p class="inicio__main-copyright">
-      &copy; 2023 - <span>Melania Palomino</span> All Rights Reserved.
-    </p>
-  </main>
-   <script>
- let navigation=document.querySelector('.inicio__navegation');
- let toggles=document.querySelector('.inicio__navegation-toggle');
- toggles.onclick=function(){
-    navigation.classList.toggle('active');
- }
+        <?php include("./modulos/".$seccionActual.".php"); ?>
+    
+        <p class="inicio__main-copyright">
+            &copy; 2023 - <span>Melania Palomino</span> All Rights Reserved.
+        </p>
+    </main>
+    <script>
+    let navigation=document.querySelector('.inicio__navegation');
+    let toggles=document.querySelector('.inicio__navegation-toggle');
+    toggles.onclick=function(){
+        navigation.classList.toggle('active');
+    }
 
    </script>
-<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
   </body>
 </html>
