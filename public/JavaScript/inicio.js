@@ -27,32 +27,65 @@ nextBtn1.addEventListener("click", function () {
   
     slidePage.style.marginLeft = "-25%";
     bullet[current - 1].classList.add('spot-light');
+      progressText[current - 1].classList.add('spot-light');
     progressCheck[current - 1].classList.add('spot-light');
-    current=current + 1;
+    current+= 1;
 
 })
 
 nextBtn2.addEventListener("click", function () {
        
     slidePage.style.marginLeft = "-50%";
+    bullet[current - 1].classList.add('spot-light');
+     progressText[current - 1].classList.add('spot-light');
+    progressCheck[current - 1].classList.add('spot-light');
+    current+= 1;
 })
 
 nextBtn3.addEventListener("click", function () {
       
     slidePage.style.marginLeft = "-75%";
+    bullet[current - 1].classList.add('spot-light');
+     progressText[current - 1].classList.add('spot-light');
+    progressCheck[current - 1].classList.add('spot-light');
+    current+= 1;
 })
 /* ------------------------------------------- */
 prevBtn2.addEventListener("click", function () {
       
     slidePage.style.marginLeft = "0%";
+      bullet[current - 2].classList.remove('spot-light');
+     progressText[current - 2].classList.remove('spot-light');
+    progressCheck[current - 2].classList.remove('spot-light');
+    current -= 1;
 })
 
 prevBtn3.addEventListener("click", function () {
     
     slidePage.style.marginLeft = "-25%";
+       bullet[current - 2].classList.remove('spot-light');
+     progressText[current - 2].classList.remove('spot-light');
+    progressCheck[current - 2].classList.remove('spot-light');
+    current -= 1;
+    
 })
 prevBtn4.addEventListener("click", function () {
     slidePage.style.marginLeft = "-50%";
+       bullet[current - 2].classList.remove('spot-light');
+     progressText[current - 2].classList.remove('spot-light');
+    progressCheck[current - 2].classList.remove('spot-light');
+    current -= 1;
+})
+submitBtn.addEventListener("click", function () {
+        bullet[current - 1].classList.add('spot-light');
+     progressText[current - 1].classList.add('spot-light');
+    progressCheck[current - 1].classList.add('spot-light');
+    current += 1;
+    setTimeout(function () {
+        alert("you're successfully signed up")
+        location.reload()
+    },800)
+    
 })
 
 

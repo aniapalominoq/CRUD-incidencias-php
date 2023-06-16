@@ -8,36 +8,32 @@
             <div class="addIncidents__progress-bullet">
                 <span class="addIncidents__progress-number">1</span>
             </div>
-            <div class="addIncidents__progress-check">
-                <svg xmlns="http://www.w3.org/2000/svg" class="ionicon addIncidents__progress-svg" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M416 128L192 384l-96-96"/></svg>
-            </div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="ionicon addIncidents__progress-check" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width=60px d="M416 128L192 384l-96-96"/></svg>
         </div>
         <div class="addIncidents__progress-step">
             <p class="addIncidents__progress-title">Paso</p>
             <div class="addIncidents__progress-bullet">
                 <span class="addIncidents__progress-number">2</span>
             </div>
-            <div class="addIncidents__progress-check">
-                <svg xmlns="http://www.w3.org/2000/svg" class="ionicon addIncidents__progress-svg" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M416 128L192 384l-96-96"/></svg>
-            </div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="ionicon addIncidents__progress-check" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width=60px d="M416 128L192 384l-96-96"/></svg>
+            
         </div>
         <div class="addIncidents__progress-step">
             <p class="addIncidents__progress-title">Paso</p>
             <div class="addIncidents__progress-bullet">
                 <span class="addIncidents__progress-number">3</span>
             </div>
-            <div class="addIncidents__progress-check">
-                <svg xmlns="http://www.w3.org/2000/svg" class="ionicon addIncidents__progress-svg" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M416 128L192 384l-96-96"/></svg>
-            </div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="ionicon addIncidents__progress-check" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width=60px d="M416 128L192 384l-96-96"/></svg>
+            
         </div>
         <div class="addIncidents__progress-step">
             <p class="addIncidents__progress-title">Paso</p>
             <div class="addIncidents__progress-bullet">
                 <span class="addIncidents__progress-number">4</span>
             </div>
-            <div class="addIncidents__progress-check">
-                <svg xmlns="http://www.w3.org/2000/svg" class="ionicon addIncidents__progress-svg" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M416 128L192 384l-96-96"/></svg>
-            </div>
+            
+                <svg xmlns="http://www.w3.org/2000/svg" class="ionicon addIncidents__progress-check" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width=60px d="M416 128L192 384l-96-96"/></svg>
+            
         </div>
         
     </section>
@@ -192,7 +188,7 @@
                 </div>
                 <div class="addIncidents__form-field btns">
                     <div class="addIncidents__form-btn prev-3 prev">Atras</div>
-                    <button  type="submit" class="addIncidents__form-btn submit">Guardar</button>
+                    <div class="addIncidents__form-btn submit">Guardar</div>
                 </div>
             </div>
         </form>

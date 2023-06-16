@@ -160,6 +160,7 @@ background:var(--blue-300);
     margin:0 20px;
 }
 .addIncidents__progress-step{
+    position: relative;
     text-align: center;
     width: 100%;
 }
@@ -168,6 +169,10 @@ background:var(--blue-300);
     font-weight: 500;
     color:#000;
     margin-bottom: 8px;
+    transform: 0.2s;
+}
+.addIncidents__progress-title.spot-light{
+ color:var(--cyan-100);
 }
 .addIncidents__progress-bullet{
     position: relative;
@@ -200,7 +205,7 @@ height: 3px;
 width: 100px;
 background: #262626;
 }
-.addIncidents__progress-bullet::after{
+.addIncidents__progress-bullet.spot-light:after{
     background:var(--cyan-100);
     transform: scaleX(0);
     transform-origin: left;
@@ -224,34 +229,57 @@ background: #262626;
     display:none
 }
 
-/* tamaño de svg */
-.addIncidents__progress-svg{
-    width:25px;
-    height:25px;
-}
-/* fin */
 .addIncidents__progress-check{
 position: absolute;
-left: 50%;
-top:70%;
-font-size: 15px;
+left: 51.5%;
+top:76%;
 transform: translate(-50%,-50%);
-display:none;
+ display:none; 
+width:20px ;
+
 }
+
 .addIncidents__progress-check.spot-light{
-    display:block;
-    color:white;
-}
-.addIncidents__progress-svg.spot-light{
      display:block;
-    
      color:white;
 }
 /* media queries */
 @media screen and (max-width: 767px) {
+    .addIncidents__container{
+           padding:20px ;
+    }
+
 .addIncidents__container-header{
-    font-size:26px;
+    font-size:1.125rem;
+    margin: 0 0 20px 0;
 }
+.addIncidents__progress-title{
+    font-size:0.85rem;
+}
+.addIncidents__form-title{
+font-size:1rem;
+font-weight: 600;
+}
+.addIncidents__form-field{
+
+    margin: 30px 0;
+  
+}
+.addIncidents__form-label{
+    top:-20px;
+    font-size:0.85rem;
+}
+
+
+
+
+
+
+
+
+
+
+
 }
 @media screen and (min-width: 768px) and (max-width: 991px) {
    
