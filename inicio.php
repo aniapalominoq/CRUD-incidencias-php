@@ -64,22 +64,10 @@ if (isset($_GET['seccion'])) {
     <div class="inicio__navegation-toggle"></div>
     </nav>
 <!--  la secion que cambiara de acuerdo con las opciones elegidas -->
-    <main class="inicio__main">
-       
         <?php include("./modulos/".$seccionActual.".php"); ?>
     
-        <p class="inicio__main-copyright">
-            &copy; 2023 - <span>Melania Palomino</span> All Rights Reserved.
-        </p>
-    </main>
-    <script>
-    let navigation=document.querySelector('.inicio__navegation');
-    let toggles=document.querySelector('.inicio__navegation-toggle');
-    toggles.onclick=function(){
-        navigation.classList.toggle('active');
-    }
+        <script src="./public/JavaScript/inicio.js" module></script>
 
-   </script>
 
   </body>
 </html>

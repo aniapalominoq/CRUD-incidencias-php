@@ -53,7 +53,7 @@ gap:1rem
     width:18.625rem;
     height:3rem;
     padding: 0 1rem 0 1rem;
-    border-radius: 0.625rem;
+    border-radius: 0.3125rem;
 }
 ::placeholder{
     color:var(--grey-100);
@@ -66,19 +66,21 @@ border:2px solid var(--cyan-100);
 }
 
 .recuperacontrasena__button{
-background-color: var(--blue-300);
+background-color: var(--cyan-100);
 font-size: 0.85rem;
 width:18.625rem ;
 height:3.5rem;
 border: none;
  box-shadow: 0.4rem 0.9rem 2rem #17181d63;
-border-radius: 0.625rem;
+border-radius: 0.3125rem;
+text-transform: uppercase;
 color:var(--white);
  transition: transform 0.3s ease;
+ 
 }
 .recuperacontrasena__button:hover{
      box-shadow: none;
-      background-color: var(--blue-200);
+    background-color: var(--blue-300);
 
 }
 .recuperacontrasena__button:active {
