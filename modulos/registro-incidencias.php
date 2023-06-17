@@ -100,13 +100,18 @@
                             <option class="addIncidents__form-select-option"  value="value 2">Peru Masivo</option>
                         </select>
                     </div>
-                    <div class="addIncidents__form-subgroup">
-                        <div class="addIncidents__form-field">
+                     <div class="addIncidents__form-field">
                             <label for="tipo-servicio" class="addIncidents__form-label">Tipo de servicio</label>
                             <select name="tipo-servicio" id="tipo-servicio" class="addIncidents__form-select">
                                 <option class="addIncidents__form-select-option"  value="troncal">TRO</option>
                                 <option class="addIncidents__form-select-option"  value="alimentador">ALI</option>
                             </select>
+                        </div>
+                </div>  
+                <div class="addIncidents__form-group">
+                        <div class="addIncidents__form-field">
+                            <label for="numero-servicio" class="addIncidents__form-label">Número servicio</label>
+                            <input  id="numero-servicio" name="numero-servicio" type="number" class="addIncidents__form-input" placeholder="Número Servicio">
                         </div>
                         <div class="addIncidents__form-field">
                             <label for="ruta" class="addIncidents__form-label">Ruta</label>
@@ -115,21 +120,14 @@
                                 <option class="addIncidents__form-select-option"  value="TRO-ExtraSXN">TRO-ExtraSXN</option>
                             </select>
                         </div>
+                        <div class="addIncidents__form-field">
+                            <label for="direccion-viaje" class="addIncidents__form-label">Dirreccion de Viaje</label>
+                            <select name="direccion-viaje" id="direccion-viaje" class="addIncidents__form-select">
+                                <option class="addIncidents__form-select-option"  value="ESTE-OESTE">ESTE-OESTE</option>
+                                <option class="addIncidents__form-select-option"  value="NORTE-SUR">NORTE-SUR</option>
+                            </select>
                     </div>
                 </div>    
-                <div class="addIncidents__form-group">
-                    <div class="addIncidents__form-field">
-                        <label for="numero-servicio" class="addIncidents__form-label">Número servicio</label>
-                        <input  id="numero-servicio" name="numero-servicio" type="number" class="addIncidents__form-input">
-                    </div>
-                    <div class="addIncidents__form-field">
-                        <label for="direccion-viaje" class="addIncidents__form-label">Dirreccion de Viaje</label>
-                        <select name="direccion-viaje" id="direccion-viaje" class="addIncidents__form-select">
-                            <option class="addIncidents__form-select-option"  value="ESTE-OESTE">ESTE-OESTE</option>
-                            <option class="addIncidents__form-select-option"  value="NORTE-SUR">NORTE-SUR</option>
-                        </select>
-                    </div>
-                </div> 
                 <div class="addIncidents__form-group">   
                     <div class="addIncidents__form-field">
                         <label for="" class="addIncidents__form-label">VID</label>
@@ -152,7 +150,7 @@
                         </div>
                         <div class="addIncidents__form-field">
                             <label for="cod-cacc" class="addIncidents__form-label"> Codigo CACC</label>
-                            <input  name="cod-cacc" id="cod-cacc"type="text" class="addIncidents__form-input">
+                            <input  name="cod-cacc" id="cod-cacc"type="text" class="addIncidents__form-input" placeholder=" 460544323">
                         </div>
                     </div>
                     <div class="addIncidents__form-field">

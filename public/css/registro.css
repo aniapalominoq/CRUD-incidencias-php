@@ -19,11 +19,10 @@ border-radius: 0.625rem; ;
  align-items: center;
  justify-items: center;
 }
+
 .resgistro__img{
 width:21,875rem ;
   height:5.75rem;
-
-
 }
 .resgistro__h1{
     font-size: 0.85rem;

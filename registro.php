@@ -16,7 +16,7 @@
    </section>
     <section class="resgistro__section">
         <img src="./public/img/logo.jpg" alt="logo de la ATU" class="resgistro__img">
-        <h1 class="resgistro__h1"> GESTION DE INCIDENCIAS</h1>
+        <h1 class="resgistro__h1">REGISTRO</h1>
         <form action="./servidor/registro/registrar.php" method="POST"class="resgistro__form">
             <div class="resgistro__div">
                 <label for="name" class="resgistro__label">Nombre usuario</label>
