@@ -67,17 +67,31 @@
             <div class="addIncidents__form-page ">
                 <h2 class="addIncidents__form-title">Caracteristica y Descripcion del hecho</h2>
                 <div class="addIncidents__form-field">
-                    <label for="tipo" class="addIncidents__form-label">Tipo</label>
-                    <select name="tipo" id="tipo" class="addIncidents__form-select">
+                    <label for="categoria" class="addIncidents__form-label">Categoria</label>
+                    <select name="categoria" id="categoria" class="addIncidents__form-select">
+                        <option  class="addIncidents__form-select-option" value="value 1">value 1</option>
+                        <option class="addIncidents__form-select-option"  value="value 2">value 2</option>
+                    </select>
+                </div>
+                <div class="addIncidents__form-field">
+                    <label for="subcategoria" class="addIncidents__form-label">Subcategoria</label>
+                    <select name="subcategoria" id="subcategoria" class="addIncidents__form-select">
                         <option value="value 1">value 1</option>
                         <option value="value 2">value 2</option>
                     </select>
                 </div>
                 <div class="addIncidents__form-field">
-                    <label for="categoria" class="addIncidents__form-label">Categoria</label>
-                    <select name="categoria" id="categoria" class="addIncidents__form-select">
-                        <option  class="addIncidents__form-select-option" value="value 1">value 1</option>
-                        <option class="addIncidents__form-select-option"  value="value 2">value 2</option>
+                    <label for="causa" class="addIncidents__form-label">Causa</label>
+                    <select name="causa" id="causa" class="addIncidents__form-select">
+                        <option value="value 1">value 1</option>
+                        <option value="value 2">value 2</option>
+                    </select>
+                </div>
+                 <div class="addIncidents__form-field">
+                    <label for="consecuencia" class="addIncidents__form-label">Consecuencia</label>
+                    <select name="consecuencia" id="consecuencia" class="addIncidents__form-select">
+                        <option value="value 1">value 1</option>
+                        <option value="value 2">value 2</option>
                     </select>
                 </div>
                 <div class="addIncidents__form-field">
