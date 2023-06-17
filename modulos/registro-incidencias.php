@@ -45,11 +45,11 @@
                 <h2 class="addIncidents__form-title">Datos de la Incidencia</h2>
                 <div class="addIncidents__form-field">
                     <label for="date" class="addIncidents__form-label">Fecha</label>
-                    <input name="date" type="date" class="addIncidents__form-input">
+                    <input name="date" type="date" class="addIncidents__form-input" >
                 </div>
                 <div class="addIncidents__form-field">
                     <label for="time-on" class="addIncidents__form-label">Hora Inicio</label>
-                    <input  name="time-on" type="time" class="addIncidents__form-input">
+                    <input  name="time-on" type="time" class="addIncidents__form-input" >
                 </div>
                 <div class="addIncidents__form-field">
                     <label for="time-off" class="addIncidents__form-label">Hora Fin</label>
@@ -57,7 +57,7 @@
                 </div>
                 <div class="addIncidents__form-field">
                     <label for="place-incidence" class="addIncidents__form-label">Lugar del incidente</label>
-                    <input  name="place-incidence" type="text" class="addIncidents__form-input">
+                    <input  name="place-incidence" type="text" class="addIncidents__form-input" placeholder="lugar del incidente">
                 </div>
                 <div class="addIncidents__form-field nextBtn">
                     <div class="addIncidents__form-btn">Siguiente</div>
@@ -89,14 +89,14 @@
                 </div>
                  <div class="addIncidents__form-field">
                     <label for="consecuencia" class="addIncidents__form-label">Consecuencia</label>
-                    <select name="consecuencia" id="consecuencia" class="addIncidents__form-select">
+                    <select name="consecuencia" id="consecuencia" class="addIncidents__form-select" >
                         <option value="value 1">value 1</option>
                         <option value="value 2">value 2</option>
                     </select>
                 </div>
                 <div class="addIncidents__form-field">
                     <label for="descripcion" class="addIncidents__form-label">Breve descripcion</label>
-                    <textarea name="descripcion" class="addIncidents__form-textarea" rows="10" cols="50"></textarea>
+                    <textarea name="descripcion" class="addIncidents__form-textarea" rows="10" cols="50" placeholder="DESCRIPCION"></textarea>
                 </div>
                 <div class="addIncidents__form-field btns">
                     <div class="addIncidents__form-btn prev-1 prev">Atras</div>
@@ -114,13 +114,13 @@
                             <option class="addIncidents__form-select-option"  value="value 2">Peru Masivo</option>
                         </select>
                     </div>
-                     <div class="addIncidents__form-field">
+                    <div class="addIncidents__form-field">
                             <label for="tipo-servicio" class="addIncidents__form-label">Tipo de servicio</label>
                             <select name="tipo-servicio" id="tipo-servicio" class="addIncidents__form-select">
                                 <option class="addIncidents__form-select-option"  value="troncal">TRO</option>
                                 <option class="addIncidents__form-select-option"  value="alimentador">ALI</option>
                             </select>
-                        </div>
+                    </div>
                 </div>  
                 <div class="addIncidents__form-group">
                         <div class="addIncidents__form-field">
@@ -140,32 +140,30 @@
                                 <option class="addIncidents__form-select-option"  value="ESTE-OESTE">ESTE-OESTE</option>
                                 <option class="addIncidents__form-select-option"  value="NORTE-SUR">NORTE-SUR</option>
                             </select>
-                    </div>
+                        </div>
                 </div>    
                 <div class="addIncidents__form-group">   
                     <div class="addIncidents__form-field">
-                        <label for="" class="addIncidents__form-label">VID</label>
-                        <input  name="" id=""type="text" class="addIncidents__form-input">
+                        <label for="vid" class="addIncidents__form-label">VID</label>
+                        <input  name="vid" id="vid"type="text" placeholder="cod. vid" class="addIncidents__form-input">
                     </div>
                     <div class="addIncidents__form-field">
                         <label for="id-bus" class="addIncidents__form-label">Id bus</label>
-                        <input  name="id-bus" id="id-bus"type="text" class="addIncidents__form-input">
+                        <input  name="id-bus" id="id-bus"type="text" class="addIncidents__form-input"  placeholder="id bus" >
                     </div>
                     <div class="addIncidents__form-field">
                         <label for="placa" class="addIncidents__form-label">Número placa</label>
-                        <input  name="placa" id="placa"type="text" class="addIncidents__form-input">
+                        <input  name="placa" id="placa"type="text" class="addIncidents__form-input" placeholder="placa de bus">
                     </div>
                 </div>
                 <div class="addIncidents__form-group"> 
-                    <div class="addIncidents__form-subgroup">
-                        <div class="addIncidents__form-field">
-                            <label for="dni" class="addIncidents__form-label">DNI</label>
-                            <input  name="dni" id="dni"type="text" class="addIncidents__form-input">
-                        </div>
-                        <div class="addIncidents__form-field">
-                            <label for="cod-cacc" class="addIncidents__form-label"> Codigo CACC</label>
-                            <input  name="cod-cacc" id="cod-cacc"type="text" class="addIncidents__form-input" placeholder=" 460544323">
-                        </div>
+                    <div class="addIncidents__form-field">
+                        <label for="dni" class="addIncidents__form-label">DNI</label>
+                        <input  name="dni" id="dni"type="text" placeholder="número de dni" class="addIncidents__form-input">
+                    </div>
+                    <div class="addIncidents__form-field">
+                        <label for="cod-cacc" class="addIncidents__form-label"> Codigo CACC</label>
+                        <input  name="cod-cacc" id="cod-cacc"type="text" class="addIncidents__form-input" placeholder=" cod. cacc">
                     </div>
                     <div class="addIncidents__form-field">
                         <label for="conductor" class="addIncidents__form-label">Conductor</label>
@@ -192,11 +190,11 @@
                 </div>
                 <div class="addIncidents__form-field">
                     <label for="kilometraje" class="addIncidents__form-label">Kilometraje</label>
-                    <input  name="kilometraje" id="kilometraje" type="text" class="addIncidents__form-input">
+                    <input  name="kilometraje" id="kilometraje" type="number" class="addIncidents__form-input" placeholder=" km">
                 </div>
                 <div class="addIncidents__form-field">
                     <label for="numero-carreras" class="addIncidents__form-label"> Número de Carreras</label>
-                    <input name="numero-carreras" id="numero-carreras" type="text" class="addIncidents__form-input">
+                    <input name="numero-carreras" id="numero-carreras" type="number" class="addIncidents__form-input" placeholder="Número de Carreras">
                 </div>
                 <div class="addIncidents__form-field btns">
                     <div class="addIncidents__form-btn prev-3 prev">Atras</div>
