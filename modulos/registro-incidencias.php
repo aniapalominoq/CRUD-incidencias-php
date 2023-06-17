@@ -42,7 +42,7 @@
         <form action="#" method="post" class="addIncidents__form">
             <!-- page one -->
             <div class="addIncidents__form-page slidepage">
-                <div class="addIncidents__form-title">Datos de la Incidencia</div>
+                <h2 class="addIncidents__form-title">Datos de la Incidencia</h2>
                 <div class="addIncidents__form-field">
                     <label for="date" class="addIncidents__form-label">Fecha</label>
                     <input name="date" type="date" class="addIncidents__form-input">
@@ -65,7 +65,7 @@
             </div>
             <!-- page two -->
             <div class="addIncidents__form-page ">
-                <div class="addIncidents__form-title">Caracteristica y Descripcion del hecho</div>
+                <h2 class="addIncidents__form-title">Caracteristica y Descripcion del hecho</h2>
                 <div class="addIncidents__form-field">
                     <label for="tipo" class="addIncidents__form-label">Tipo</label>
                     <select name="tipo" id="tipo" class="addIncidents__form-select">
@@ -91,28 +91,28 @@
             </div>
             <!-- page 3 -->
             <div class="addIncidents__form-page ">
-                <div class="addIncidents__form-title">Descripcion de consorcio y servicio</div>
+                <h2 class="addIncidents__form-title">Descripcion de consorcio y servicio</h2>
                 <div class="addIncidents__form-group">
                     <div class="addIncidents__form-field">
                         <label for="nombre-consorcio" class="addIncidents__form-label">Nombre consorcio</label>
                         <select name="nombre-consorcio" id="nombre-consorcio" class="addIncidents__form-select">
-                            <option class="addIncidents__form-select-option"  value="value 1">value 1</option>
-                            <option class="addIncidents__form-select-option"  value="value 2">value 2</option>
+                            <option class="addIncidents__form-select-option"  value="value 1">Lima vias</option>
+                            <option class="addIncidents__form-select-option"  value="value 2">Peru Masivo</option>
                         </select>
                     </div>
                     <div class="addIncidents__form-subgroup">
                         <div class="addIncidents__form-field">
                             <label for="tipo-servicio" class="addIncidents__form-label">Tipo de servicio</label>
                             <select name="tipo-servicio" id="tipo-servicio" class="addIncidents__form-select">
-                                <option class="addIncidents__form-select-option"  value="value 1">value 1</option>
-                                <option class="addIncidents__form-select-option"  value="value 2">value 2</option>
+                                <option class="addIncidents__form-select-option"  value="troncal">TRO</option>
+                                <option class="addIncidents__form-select-option"  value="alimentador">ALI</option>
                             </select>
                         </div>
                         <div class="addIncidents__form-field">
                             <label for="ruta" class="addIncidents__form-label">Ruta</label>
                             <select name="ruta" id="ruta" class="addIncidents__form-select">
-                                <option class="addIncidents__form-select-option"  value="value 1">value 1</option>
-                                <option class="addIncidents__form-select-option"  value="value 2">value 2</option>
+                                <option class="addIncidents__form-select-option"  value="TRO-ExtraX2">TRO-ExtraX2</option>
+                                <option class="addIncidents__form-select-option"  value="TRO-ExtraSXN">TRO-ExtraSXN</option>
                             </select>
                         </div>
                     </div>
@@ -125,8 +125,8 @@
                     <div class="addIncidents__form-field">
                         <label for="direccion-viaje" class="addIncidents__form-label">Dirreccion de Viaje</label>
                         <select name="direccion-viaje" id="direccion-viaje" class="addIncidents__form-select">
-                            <option class="addIncidents__form-select-option"  value="value 1">value 1</option>
-                            <option class="addIncidents__form-select-option"  value="value 2">value 2</option>
+                            <option class="addIncidents__form-select-option"  value="ESTE-OESTE">ESTE-OESTE</option>
+                            <option class="addIncidents__form-select-option"  value="NORTE-SUR">NORTE-SUR</option>
                         </select>
                     </div>
                 </div> 
@@ -158,8 +158,8 @@
                     <div class="addIncidents__form-field">
                         <label for="conductor" class="addIncidents__form-label">Conductor</label>
                         <select name="conductor" id="conductor" class="addIncidents__form-select">
-                            <option class="addIncidents__form-select-option"  value="value 1">value 1</option>
-                            <option class="addIncidents__form-select-option"  value="value 2">value 2</option>
+                            <option class="addIncidents__form-select-option"  value="value 1">PEREZ LOPEZ ALVARO</option>
+                            <option class="addIncidents__form-select-option"  value="value 2">LOPEZ BUSTAMANTE JORGE ENRIQUE</option>
                         </select>
                     </div>
                 </div>
@@ -170,7 +170,7 @@
             </div>
             <!-- page 4 -->
             <div class="addIncidents__form-page ">
-                <div class="addIncidents__form-title">page 4:</div>
+                <h2 class="addIncidents__form-title">Kilometraje</h2>
                 <div class="addIncidents__form-field">
                     <label for="tipo-kilometraje" class="addIncidents__form-label">Tipo de Kilometraje</label>
                     <select name="tipo-kilometraje" id="tipo-kilometraje" class="addIncidents__form-select">
