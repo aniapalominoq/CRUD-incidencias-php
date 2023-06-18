@@ -73,7 +73,78 @@ public function selectSubCategorias($id_categoria) {
             }
             return  $causa .= '</select>';
         }
+
+        public function selectConsecuencia($id_causa) {
+            $conexion = Conexion::conectar();
+            $sql = "SELECT * FROM consecuencia WHERE causa=$id_causa";
+            $respuesta = mysqli_query($conexion, $sql);
+            $consecuencia = '<label for="consecuencia" class="addIncidents__form-label"> Seleccione Consecuencia</label><select name="consecuencia" id="consecuencia" class="addIncidents__form-select" required>';
+            while ($mostrar = mysqli_fetch_array($respuesta)) {
+                 $consecuencia .= '<option 
+                            value='.$mostrar['id_consecuencia'].'>'. 
+                                $mostrar['consecuencia'] .
+                            '</option>'; 
+            }
+            return  $consecuencia.= '</select>';
+        }
+
+          public function selectConsorcio() {
+            $conexion = Conexion::conectar();
+            $sql = "SELECT * FROM consorcio ";
+            $respuesta = mysqli_query($conexion, $sql);
+            $consorcio = '<label for="nombre-consorcio" class="addIncidents__form-label">Nombre consorcio</label><select  name="nombre-consorcio" id="nombre-consorcio"  class="addIncidents__form-select" required>';
+            while ($mostrar = mysqli_fetch_array($respuesta)) {
+                 $consorcio  .= '<option 
+                            value='.$mostrar['idconsorcio'].'>'. 
+                                $mostrar['nombre_consorcio'] .
+                            '</option>'; 
+            }
+            return $consorcio .= '</select>';
+        }
     
+            public function selectRuta($id_consorcio) {
+            $conexion = Conexion::conectar();
+            $sql = "SELECT * FROM ruta WHERE id_consorcio=$id_consorcio";
+            $respuesta = mysqli_query($conexion, $sql);
+            $ruta = '<label for="ruta" class="addIncidents__form-label">Ruta</label><select name="ruta" id="ruta"   class="addIncidents__form-select" required>';
+            while ($mostrar = mysqli_fetch_array($respuesta)) {
+                  $ruta  .= '<option 
+                            value='.$mostrar['id_ruta'].'>'. 
+                                $mostrar['abreviatura'] .
+                            '</option>'; 
+            }
+            return  $ruta .= '</select>';
+        }
+
+
+                  public function selectSentido() {
+            $conexion = Conexion::conectar();
+            $sql = "SELECT * FROM sentido";
+            $respuesta = mysqli_query($conexion, $sql);
+            $sentido = '<label for="direccion-viaje" class="addIncidents__form-label">Sentido del viaje</label><select name="direccion-viaje" id="direccion-viaje"  class="addIncidents__form-select" required>';
+            while ($mostrar = mysqli_fetch_array($respuesta)) {
+                  $sentido   .= '<option 
+                            value='.$mostrar['idsentido'].'>'. 
+                                $mostrar['sentido'] .
+                            '</option>'; 
+            }
+            return  $sentido  .= '</select>';
+        }
+    
+    
+    public function selectTipoKilometraje() {
+            $conexion = Conexion::conectar();
+            $sql = "SELECT * FROM tipo_kilometraje";
+            $respuesta = mysqli_query($conexion, $sql);
+            $tipoKilometraje = '<label for="tipo-kilometraje" class="addIncidents__form-label">Tipo de Kilometraje</label><select name="tipo-kilometraje" id="tipo-kilometraje"   class="addIncidents__form-select" required>';
+            while ($mostrar = mysqli_fetch_array($respuesta)) {
+                  $tipoKilometraje   .= '<option 
+                            value='.$mostrar['idtipo_kilometraje'].'>'. 
+                                $mostrar['tipo_kilometraje'] .
+                            '</option>'; 
+            }
+            return  $tipoKilometraje  .= '</select>';
+        }
     
     
     
