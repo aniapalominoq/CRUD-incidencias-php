@@ -25,7 +25,7 @@
         "carreras" => $_POST['']
     );
 
-    echo  $Incidencias->agregarIncidencias($data);
+   /*  echo  $Incidencias->agregarIncidencias($data); */
 
 
 ?>

@@ -59,6 +59,43 @@ public function selectSubCategorias($id_categoria) {
             }
             return $subCategorias .= '</select>';
         }
+    
+        public function selectCausa($id_subcategoria) {
+            $conexion = Conexion::conectar();
+            $sql = "SELECT * FROM causa WHERE sub_categoria=$id_subcategoria";
+            $respuesta = mysqli_query($conexion, $sql);
+            $causa = '<label for="causa" class="addIncidents__form-label"> seleccione causa</label><select name="causa" id="causa" class="addIncidents__form-select" required>';
+            while ($mostrar = mysqli_fetch_array($respuesta)) {
+                 $causa .= '<option 
+                            value='.$mostrar['idcausa'].'>'. 
+                                $mostrar['causa'] .
+                            '</option>'; 
+            }
+            return  $causa .= '</select>';
+        }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     }
 
 ?>

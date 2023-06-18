@@ -4,6 +4,7 @@ include "clases/Incidencias.php";
 $obj=new Incidencias();
 $categoria=$obj->selectCategorias();
 $subcategoria=$obj->selectSubcategorias(1);
+$causa=$obj->selectCausa(1)
 ?>
 
 <main class="addIncidents__main">
@@ -81,10 +82,7 @@ $subcategoria=$obj->selectSubcategorias(1);
                     <?php  echo $subcategoria; ?>
                 </div>
                 <div class="addIncidents__form-field">
-                    <label for="causa" class="addIncidents__form-label">Causa</label>
-                    <select name="causa" id="causa" class="addIncidents__form-select">
-                        <option value="id_causa">value 1</option>
-                    </select>
+                    <?php  echo $causa; ?>
                 </div>
                  <div class="addIncidents__form-field">
                     <label for="consecuencia" class="addIncidents__form-label">Consecuencia</label>
