@@ -1,3 +1,11 @@
+
+ <?php  
+include "clases/Incidencias.php";
+$obj=new Incidencias();
+$categoria=$obj->selectCategorias();
+$subcategoria=$obj->selectSubcategorias(1);
+?>
+
 <main class="addIncidents__main">
 <section class="addIncidents__container">
     <header   class="addIncidents__container-header">Registrar Nueva incidencia</header>
@@ -39,7 +47,7 @@
     </section>
     <!-- FORMULARIO -->
     <section class="addIncidents__form-outer">
-        <form action="#" method="post" class="addIncidents__form">
+        <form action="" method="post" class="addIncidents__form">
             <!-- page one -->
             <div class="addIncidents__form-page slidepage">
                 <h2 class="addIncidents__form-title">Datos de la Incidencia</h2>
@@ -67,31 +75,21 @@
             <div class="addIncidents__form-page ">
                 <h2 class="addIncidents__form-title">Caracteristica y Descripcion del hecho</h2>
                 <div class="addIncidents__form-field">
-                    <label for="categoria" class="addIncidents__form-label">Categoria</label>
-                    <select name="categoria" id="categoria" class="addIncidents__form-select">
-                        <option  class="addIncidents__form-select-option" value="value 1">value 1</option>
-                        <option class="addIncidents__form-select-option"  value="value 2">value 2</option>
-                    </select>
+                    <?php  echo $categoria; ?>
                 </div>
                 <div class="addIncidents__form-field">
-                    <label for="subcategoria" class="addIncidents__form-label">Subcategoria</label>
-                    <select name="subcategoria" id="subcategoria" class="addIncidents__form-select">
-                        <option value="value 1">value 1</option>
-                        <option value="value 2">value 2</option>
-                    </select>
+                    <?php  echo $subcategoria; ?>
                 </div>
                 <div class="addIncidents__form-field">
                     <label for="causa" class="addIncidents__form-label">Causa</label>
                     <select name="causa" id="causa" class="addIncidents__form-select">
-                        <option value="value 1">value 1</option>
-                        <option value="value 2">value 2</option>
+                        <option value="id_causa">value 1</option>
                     </select>
                 </div>
                  <div class="addIncidents__form-field">
                     <label for="consecuencia" class="addIncidents__form-label">Consecuencia</label>
                     <select name="consecuencia" id="consecuencia" class="addIncidents__form-select" >
-                        <option value="value 1">value 1</option>
-                        <option value="value 2">value 2</option>
+                        <option value="id_consecuencia">value 1</option>
                     </select>
                 </div>
                 <div class="addIncidents__form-field">
@@ -110,15 +108,14 @@
                     <div class="addIncidents__form-field">
                         <label for="nombre-consorcio" class="addIncidents__form-label">Nombre consorcio</label>
                         <select name="nombre-consorcio" id="nombre-consorcio" class="addIncidents__form-select">
-                            <option class="addIncidents__form-select-option"  value="value 1">Lima vias</option>
-                            <option class="addIncidents__form-select-option"  value="value 2">Peru Masivo</option>
+                            <option class="addIncidents__form-select-option"  value="id_consorcio">Lima vias</option>
                         </select>
                     </div>
                     <div class="addIncidents__form-field">
                             <label for="tipo-servicio" class="addIncidents__form-label">Tipo de servicio</label>
                             <select name="tipo-servicio" id="tipo-servicio" class="addIncidents__form-select">
-                                <option class="addIncidents__form-select-option"  value="troncal">TRO</option>
-                                <option class="addIncidents__form-select-option"  value="alimentador">ALI</option>
+                                <option class="addIncidents__form-select-option"  value="TRO">TRO</option>
+                                 <option class="addIncidents__form-select-option"  value="ALI">ALI</option>
                             </select>
                     </div>
                 </div>  
@@ -211,4 +208,3 @@
         </div> -->
     </main>
    
-    

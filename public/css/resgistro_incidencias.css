@@ -78,7 +78,7 @@
 }
 .addIncidents__form-group{
 display:flex;
-background-color: #e26060;
+
 width: 100%;
 }
 
@@ -167,6 +167,7 @@ transition:  0.3s ease;
 cursor: pointer;
 width: 100%;
 padding-top: 1rem;
+margin-top: 1.5rem;
 }
 .addIncidents__form-btn:hover{
  background:var(--blue-300); 
