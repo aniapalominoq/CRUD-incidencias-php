@@ -89,3 +89,15 @@ submitBtn.addEventListener("click", function () {
 })
 
 
+const example = document.getElementById("example")
+example.addEventListener("click", mostrarAlerta)
+
+// your_script.js
+function mostrarAlerta() {
+  Swal.fire({
+    title: '¡Hola!',
+    text: 'Esta es una alerta de ejemplo.',
+    icon: 'success',
+    confirmButtonText: 'Aceptar'
+  });
+}
