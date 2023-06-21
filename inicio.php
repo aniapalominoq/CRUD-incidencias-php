@@ -64,8 +64,7 @@ if (isset($_GET['seccion'])) {
     </ul>
     <div class="inicio__navegation-toggle"></div>
     </nav>
-    <section>  <button id="example">Mostrar Alerta</button>
-  
+    <section>  <button id="example">Mostrar Alerta</button>se agrego la libreria sweetalert2
   </section>
 <!--  la secion que cambiara de acuerdo con las opciones elegidas -->
         <?php include("./modulos/".$seccionActual.".php"); ?>

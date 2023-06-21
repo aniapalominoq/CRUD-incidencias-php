@@ -1,17 +1,4 @@
 
- <?php  
-include "clases/Incidencias.php";
-$obj=new Incidencias();
-$categoria=$obj->selectCategorias();
-$subcategoria=$obj->selectSubcategorias(1);
-$causa=$obj->selectCausa(1);
-$consecuencia=$obj->selectConsecuencia(5);
-$consorcio=$obj->selectConsorcio();
-$ruta=$obj->selectRuta(3);
-$sentido=$obj->selectSentido();
-$tipoKilometraje=$obj->selectTipoKilometraje();
-?>
-
 <main class="addIncidents__main">
 <section class="addIncidents__container">
     <header   class="addIncidents__container-header">Registrar Nueva incidencia</header>
@@ -81,20 +68,32 @@ $tipoKilometraje=$obj->selectTipoKilometraje();
             <div class="addIncidents__form-page ">
                 <h2 class="addIncidents__form-title">Caracteristica y Descripcion del hecho</h2>
                 <div class="addIncidents__form-field">
-                    <?php  echo $categoria; ?>
+                    <label for="categoria" class="addIncidents__form-label">Categoria:</label>
+                    <select id="categoria" name="categoria" class="addIncidents__form-select" required >
+                        <option value="">Seleccione una categoría</option>
+                    </select>
                 </div>
                 <div class="addIncidents__form-field">
-                    <?php  echo $subcategoria; ?>
+                    <label for="subcategoria" class="addIncidents__form-label">subcategoria :</label>
+                    <select id="subcategoria" name="subcategoria" class="addIncidents__form-select" required >
+                        <option value="">Seleccione una subcategoria</option>
+                    </select>
                 </div>
                 <div class="addIncidents__form-field">
-                    <?php  echo $causa; ?>
+                      <label for="causa" class="addIncidents__form-label">Causa:</label>
+                    <select id="causa" name="causa" class="addIncidents__form-select" required >
+                        <option value="">Seleccione una causa</option>
+                    </select>
                 </div>
                  <div class="addIncidents__form-field">
-                   <?php  echo $consecuencia; ?>
+                    <label for="consecuencia" class="addIncidents__form-label">Consecuencia:</label>
+                    <select id="consecuencia" name="consecuencia" class="addIncidents__form-select" required >
+                        <option value="">Seleccione una consecuencia</option>
+                    </select>
                 </div>
                 <div class="addIncidents__form-field">
                     <label for="descripcion" class="addIncidents__form-label">Breve descripcion</label>
-                    <textarea name="descripcion" class="addIncidents__form-textarea" rows="10" cols="50" placeholder="DESCRIPCION"></textarea>
+                    <textarea name="descripcion" class="addIncidents__form-textarea" rows="10" cols="50" placeholder="descripcion"></textarea>
                 </div>
                 <div class="addIncidents__form-field btns">
                     <div class="addIncidents__form-btn prev-1 prev">Atras</div>
@@ -106,13 +105,16 @@ $tipoKilometraje=$obj->selectTipoKilometraje();
                 <h2 class="addIncidents__form-title">Descripcion de consorcio y servicio</h2>
                 <div class="addIncidents__form-group">
                     <div class="addIncidents__form-field">
-                        <?php echo $consorcio;?>
-                    </div>
+                        <label for="consorcio" class="addIncidents__form-label">Consorcio:</label>
+                        <select id="consorcio" name="consorcio" class="addIncidents__form-select" required >
+                            <option value="">Seleccione un consorcio</option>
+                        </select>
+                        </div>
                     <div class="addIncidents__form-field">
                             <label for="tipo-servicio" class="addIncidents__form-label">Tipo de servicio</label>
                             <select name="tipo-servicio" id="tipo-servicio" class="addIncidents__form-select">
                                 <option class="addIncidents__form-select-option"  value="TRO">TRO</option>
-                                 <option class="addIncidents__form-select-option"  value="ALI">ALI</option>
+                                <option class="addIncidents__form-select-option"  value="ALI">ALI</option>
                             </select>
                     </div>
                 </div>  
@@ -122,10 +124,16 @@ $tipoKilometraje=$obj->selectTipoKilometraje();
                             <input  id="numero-servicio" name="numero-servicio" type="number" class="addIncidents__form-input" placeholder="Número Servicio">
                         </div>
                         <div class="addIncidents__form-field">
-                            <?php echo $ruta;?>
+                            <label for="ruta" class="addIncidents__form-label">Ruta:</label>
+                            <select id="ruta" name="ruta" class="addIncidents__form-select" required >
+                                <option value="">Seleccione una ruta</option>
+                            </select>
                         </div>
                         <div class="addIncidents__form-field">
-                         <?php echo $sentido;?>
+                            <label for="sentido" class="addIncidents__form-label">Sentido:</label>
+                            <select id="sentido" name="sentido" class="addIncidents__form-select" required >
+                                <option value="">Seleccione una sentido</option>
+                            </select>
                         </div>
                 </div>    
                 <div class="addIncidents__form-group">   
@@ -168,7 +176,10 @@ $tipoKilometraje=$obj->selectTipoKilometraje();
             <div class="addIncidents__form-page ">
                 <h2 class="addIncidents__form-title">Kilometraje</h2>
                 <div class="addIncidents__form-field">
-                    <?php echo $tipoKilometraje;?>
+                    <label for="tipokilometraje" class="addIncidents__form-label">Tipo Kilometraje:</label>
+                    <select id="tipokilometraje" name="tipokilometraje" class="addIncidents__form-select" required >
+                        <option value="">Seleccione kilometraje</option>
+                    </select>
                 </div>
                 <div class="addIncidents__form-field">
                     <label for="kilometraje" class="addIncidents__form-label">Kilometraje</label>
