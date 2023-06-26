@@ -1,6 +1,6 @@
 @import "./reset.css";
 @import "./confingBasic.css";
-@import "./resgistro-incidencias.css";
+@import "./resgistro_incidencias.css";
 
 .inicio__body{
     min-height:100vh;

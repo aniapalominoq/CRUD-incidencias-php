@@ -2,19 +2,20 @@
 if(!isset($_SESSION['nombre'])){
     header("location:index.php");
 }
-$seccionActual = "registro-incidencias"; 
+$seccionActual = "registro_incidencias"; 
 if (isset($_GET['seccion'])) {
     $seccionActual = $_GET['seccion'];
 }
 
  ?>
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="./public/css/inicio.css">
+    <link rel="stylesheet" href="public/css/inicio.css">
+      <link rel="stylesheet" href="public/css/sweetalert2.min.css">
     <title>inicio</title>
   </head>
   <body class="inicio__body">
@@ -29,7 +30,7 @@ if (isset($_GET['seccion'])) {
             </a>
         </li>
         <li class="inicio__navegation-li">
-            <a href="inicio.php?seccion=registro-incidencias" class="inicio__navegation-a">
+            <a href="inicio.php?seccion=registro_incidencias" class="inicio__navegation-a">
                 <span class=" inicio__navegation-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" class="ionicon inicio__navegation-svg" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M256 112v288M400 256H112"/></svg>
                 </span>
@@ -63,11 +64,13 @@ if (isset($_GET['seccion'])) {
     </ul>
     <div class="inicio__navegation-toggle"></div>
     </nav>
+    <section>  <button id="example">Mostrar Alerta</button>se agrego la libreria sweetalert2
+  </section>
 <!--  la secion que cambiara de acuerdo con las opciones elegidas -->
         <?php include("./modulos/".$seccionActual.".php"); ?>
     
-        <script src="./public/JavaScript/inicio.js" module></script>
-
-
+<!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
+ <script src="public/JavaScript/inicio.js" type="module"></script>
+ <script src="public/JavaScript/sweetalert2.all.min.js"></script>
   </body>
 </html>
