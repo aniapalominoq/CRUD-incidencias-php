@@ -32,9 +32,7 @@
             <div class="addIncidents__progress-bullet">
                 <span class="addIncidents__progress-number">4</span>
             </div>
-            
                 <svg xmlns="http://www.w3.org/2000/svg" class="ionicon addIncidents__progress-check" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width=60px d="M416 128L192 384l-96-96"/></svg>
-            
         </div>
         
     </section>
@@ -80,7 +78,7 @@
                     </select>
                 </div>
                 <div class="addIncidents__form-field">
-                      <label for="causa" class="addIncidents__form-label">Causa:</label>
+                    <label for="causa" class="addIncidents__form-label">Causa:</label>
                     <select id="causa" name="causa" class="addIncidents__form-select" required >
                         <option value="">Seleccione una causa</option>
                     </select>
@@ -109,20 +107,17 @@
                         <select id="consorcio" name="consorcio" class="addIncidents__form-select" required >
                             <option value="">Seleccione un consorcio</option>
                         </select>
-                        </div>
+                    </div> 
                     <div class="addIncidents__form-field">
                             <label for="tipo-servicio" class="addIncidents__form-label">Tipo de servicio</label>
-                            <select name="tipo-servicio" id="tipo-servicio" class="addIncidents__form-select">
-                                <option class="addIncidents__form-select-option"  value="TRO">TRO</option>
-                                <option class="addIncidents__form-select-option"  value="ALI">ALI</option>
+                            <select name="tipo_servicio" id="tipo_servicio" class="addIncidents__form-select">
+                                <option class="addIncidents__form-select-option"  value="">Seleccione tipo serv.</option>
+                                <option class="addIncidents__form-select-option"  value="1">TRO</option>
+                                <option class="addIncidents__form-select-option"  value="2">ALI</option>
                             </select>
                     </div>
                 </div>  
                 <div class="addIncidents__form-group">
-                        <div class="addIncidents__form-field">
-                            <label for="numero-servicio" class="addIncidents__form-label">Número servicio</label>
-                            <input  id="numero-servicio" name="numero-servicio" type="number" class="addIncidents__form-input" placeholder="Número Servicio">
-                        </div>
                         <div class="addIncidents__form-field">
                             <label for="ruta" class="addIncidents__form-label">Ruta:</label>
                             <select id="ruta" name="ruta" class="addIncidents__form-select" required >
@@ -135,19 +130,26 @@
                                 <option value="">Seleccione una sentido</option>
                             </select>
                         </div>
+                        <div class="addIncidents__form-field">
+                            <label for="numero-servicio" class="addIncidents__form-label">Número servicio</label>
+                            <input  id="numero-servicio" name="numero-servicio" type="number" class="addIncidents__form-input" placeholder="Número Servicio">
+                        </div>
                 </div>    
                 <div class="addIncidents__form-group">   
                     <div class="addIncidents__form-field">
                         <label for="vid" class="addIncidents__form-label">VID</label>
-                        <input  name="vid" id="vid"type="text" placeholder="cod. vid" class="addIncidents__form-input">
+                        <input  list="opcionesVid"  name="vid" id="vid" type="text" placeholder="cod. vid" class="addIncidents__form-input">
+                        <datalist id="opcionesVid" class="addIncidents__form-input-datalist">
+                            <option value="">
+                        </datalist>
                     </div>
                     <div class="addIncidents__form-field">
-                        <label for="id-bus" class="addIncidents__form-label">Id bus</label>
-                        <input  name="id-bus" id="id-bus"type="text" class="addIncidents__form-input"  placeholder="id bus" >
+                        <label for="id_bus" class="addIncidents__form-label">Id bus</label>
+                        <input  name="id_bus" id="id_bus"type="text" class="addIncidents__form-input"  placeholder="id bus" disabled >
                     </div>
                     <div class="addIncidents__form-field">
                         <label for="placa" class="addIncidents__form-label">Número placa</label>
-                        <input  name="placa" id="placa"type="text" class="addIncidents__form-input" placeholder="placa de bus">
+                        <input  name="placa" id="placa" type="text" class="addIncidents__form-input" placeholder="placa de bus" disabled>
                     </div>
                 </div>
                 <div class="addIncidents__form-group"> 
@@ -157,14 +159,11 @@
                     </div>
                     <div class="addIncidents__form-field">
                         <label for="cod-cacc" class="addIncidents__form-label"> Codigo CACC</label>
-                        <input  name="cod-cacc" id="cod-cacc"type="text" class="addIncidents__form-input" placeholder=" cod. cacc">
+                        <input  name="cod-cacc" id="cod-cacc"type="text" class="addIncidents__form-input" placeholder=" cod. cacc"  disabled>
                     </div>
                     <div class="addIncidents__form-field">
                         <label for="conductor" class="addIncidents__form-label">Conductor</label>
-                        <select name="conductor" id="conductor" class="addIncidents__form-select">
-                            <option class="addIncidents__form-select-option"  value="value 1">PEREZ LOPEZ ALVARO</option>
-                            <option class="addIncidents__form-select-option"  value="value 2">LOPEZ BUSTAMANTE JORGE ENRIQUE</option>
-                        </select>
+                         <input  name="conductor" id="conductor" type="text" class="addIncidents__form-input" placeholder="nombre del conductor"  disabled>
                     </div>
                 </div>
                 <div class="addIncidents__form-field btns">

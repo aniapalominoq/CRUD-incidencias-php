@@ -87,18 +87,24 @@ class Incidencias extends Conexion{
             $consorcio [] = $mostrar;}
             return json_encode($consorcio );
         }
-        public function selectRuta($id_consorcio) {
+        public function selectRuta($id_consorcio, $tipo_servicio) {
             $conexion = Conexion::conectar();
-            $id_consorcio = mysqli_real_escape_string($conexion, $id_consorcio);
-            $sql = "SELECT * FROM ruta WHERE id_consorcio=$id_consorcio";
-            $respuesta = mysqli_query($conexion, $sql);
+
+            $sql = "SELECT * FROM ruta WHERE id_consorcio = ? AND id_tipo = ?";
+            $stmt = mysqli_prepare($conexion, $sql);
+
+            // Enlazar los valores de forma segura a los marcadores de posición
+            mysqli_stmt_bind_param($stmt, "ii", $id_consorcio, $tipo_servicio);
+            mysqli_stmt_execute($stmt);
+            $respuesta = mysqli_stmt_get_result($stmt);
+
             $ruta = array();
-            while ($mostrar = mysqli_fetch_array($respuesta)) {
+            while ($mostrar = mysqli_fetch_assoc($respuesta)) {
                 $ruta[] = $mostrar;
             }
+
             return json_encode($ruta);
         }
-        
         public function selectSentido() {
             $conexion = Conexion::conectar();
             $sql = "SELECT * FROM sentido";
@@ -118,6 +124,48 @@ class Incidencias extends Conexion{
                 $kilometraje[] = $mostrar;
             }
             return json_encode($kilometraje);
+        }
+
+        public function selectVid($id_consorcio, $tipo_servicio) {
+        $conexion = Conexion::conectar();
+
+        // Escapar los valores de id_consorcio y tipo_servicio para prevenir la inyección de SQL
+        $id_consorcio = mysqli_real_escape_string($conexion, $id_consorcio);
+        $tipo_servicio = mysqli_real_escape_string($conexion, $tipo_servicio);
+
+        // Utilizar consultas preparadas para mayor seguridad y claridad del código
+        $sql = "SELECT vid FROM bus WHERE id_consorcio = ? AND id_tipo = ?";
+        $stmt = mysqli_prepare($conexion, $sql);
+
+        // Utilizar el modificador adecuado según el tipo de dato real de los parámetros
+        mysqli_stmt_bind_param($stmt, "ii", $id_consorcio, $tipo_servicio);
+        mysqli_stmt_execute($stmt);
+        $respuesta = mysqli_stmt_get_result($stmt);
+
+        $numVid = array();
+        while ($mostrar = mysqli_fetch_assoc($respuesta)) {
+            $numVid[] = $mostrar['vid'];
+        }
+
+        return json_encode($numVid);
+    }
+
+        public function loadBusPlaca($numero_vid){
+            $conexion = Conexion::conectar();
+            $numero_vid= mysqli_real_escape_string($conexion,$numero_vid);
+            $sql = "SELECT * FROM bus WHERE vid = ?";
+            $stmt = mysqli_prepare($conexion, $sql);
+            mysqli_stmt_bind_param($stmt, "s", $numero_vid);
+            mysqli_stmt_execute($stmt);
+            $respuesta = mysqli_stmt_get_result($stmt);
+
+            $busPlaca = array();
+            while ($mostrar = mysqli_fetch_assoc($respuesta)) {
+                $busPlaca[] = $mostrar;
+            }
+
+            return json_encode($busPlaca);
+
         }
     
 

@@ -2,9 +2,10 @@
 include("../../clases/Incidencias.php");
 $incidencias = new Incidencias();
 
-if (isset($_GET['consorcio_id'])) {
+if (isset($_GET['consorcio_id']) and $_GET['id_tipo']) {
   $consorcioId= $_GET['consorcio_id'];
-  echo $incidencias->selectRuta($consorcioId);
+  $tipoId=$_GET['id_tipo'];
+  echo $incidencias->selectRuta($consorcioId,$tipoId);
 }
 
 ?>

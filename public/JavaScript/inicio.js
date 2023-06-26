@@ -102,11 +102,16 @@ const consorcioSelect = document.getElementById('consorcio');
 const rutaSelect = document.getElementById('ruta');
 const sentidoSelect = document.getElementById('sentido');
 const tipokilometrajeSelect = document.getElementById('tipokilometraje');
+const tipoServicioSelect = document.getElementById('tipo_servicio');
+const opcionesVidSelect = document.getElementById('opcionesVid');
+const inputVid=document.getElementById('vid'); 
+const inputBus= document.getElementById('id_bus');
+const inputPlaca = document.getElementById('placa');
 
 // Cargar categorías
 async function cargarCategorias() {
     try {
-         console.log("soy la funcion cargarcategoria")
+         //console.log("soy la funcion cargarcategoria")
         //solicitud AJAX al servidor
         const response = await fetch('../../servidor/incidencia/cargar_categoria.php');
          // Esperar la respuesta y convertimos a formato JSON
@@ -197,9 +202,10 @@ async function cargarConsorcio() {
     }
 
 }
- async function cargarRuta($consorcioId){
+
+ async function cargarRuta(consorcioId,tipoId){
     try {
-        const response = await fetch(`../../servidor/incidencia/cargar_ruta.php?consorcio_id=${$consorcioId}`);
+        const response = await fetch(`../../servidor/incidencia/cargar_ruta.php?consorcio_id=${consorcioId}&id_tipo=${tipoId}`);
         const data = await response.json();
         rutaSelect.innerHTML = '<option value="">Seleccione una ruta</>';
         data.forEach(ruta => {
@@ -229,7 +235,7 @@ async function cargarSentido() {
     }
     }
 async function cargarTipoKilometraje() {
-    try { console.log(' soy cargarTipoKilometraje')
+    try {
         const response = await fetch(`../../servidor/incidencia/cargar_tipo_kilometraje.php`);
         const data = await response.json();
         tipokilometrajeSelect.innerHTML = '<option value="">Seleccione tipo kilometraje</option>';
@@ -243,13 +249,91 @@ async function cargarTipoKilometraje() {
         console.error('error al cargar tipo kiometraje',error)
     }
 }
+async function cargarNumVid(consorcioId,tipoId) {
+    try {
+        const response = await fetch(`../../servidor/incidencia/cargar_vid.php?consorcio_id=${consorcioId}&id_tipo=${tipoId}`);
+       
+        const data = await response.json();
+        opcionesVidSelect.innerHTML = ''
+        console.log('datos del VID',data)
+        data.forEach(numeroVid => {
+        const option = document.createElement('option');
+            option.value = numeroVid;
+        opcionesVidSelect.appendChild(option);
+    })
+    } catch (error) {
+        console.error('error al cargar cargar numero vid',error)
+    }
+}
+
+async function cargarBusPlaca(numeroVid) {
+    try {
+        const response = await fetch(`../../servidor/incidencia/cargar_bus_placa.php?numero_vid=${numeroVid}`);
+        const data = await response.json();
+        inputBus.value ='';
+        inputPlaca.value = ''
+        inputBus.value =data[0].id_bus;
+        inputPlaca.value = data[0].placa;
+        
+      
+    } catch (error) {
+        console.error('error al cargar idbus y placa',error)
+    }
+    
+}
+/* ----------------------------------------EVENT LISTENER-------------------------------------------------------- */
+// Event listener para cargar idbus y placa al  llenar el campo VID
+inputVid.addEventListener('input', () => {
+    const valueVid = inputVid.value;
+    if (valueVid ) {
+        cargarBusPlaca(valueVid);
+    }
+
+})
+// Event listener para cargar VID segun el consorcio y tipo de servicio
+consorcioSelect.addEventListener('change', () => {
+     const consorcioId = consorcioSelect.value;
+    const tipoId = tipoServicioSelect.value;
+    opcionesVidSelect.innerHTML = '';
+    inputVid.value=''
+    inputBus.value ='';
+    inputPlaca.value = '';
+       if (consorcioId) {
+        cargarNumVid(consorcioId,tipoId)
+    }
+  });
+
+tipoServicioSelect.addEventListener('change', () => {
+    const consorcioId = consorcioSelect.value;
+    const tipoId = tipoServicioSelect.value;
+    opcionesVidSelect.innerHTML = ''
+     inputVid.value=''
+     inputBus.value ='';
+    inputPlaca.value = '';
+    if (tipoId) {
+        cargarNumVid(consorcioId,tipoId)
+    }
+
+})
+
 
 // Event listener para cargar ruta cuando selecione un consorcio:
+tipoServicioSelect.addEventListener('change', () => {
+    const consorcioId = consorcioSelect.value;
+    const tipoId = tipoServicioSelect.value;
+    console.log('soy tipo de servicio..',consorcioId,tipoId);
+    rutaSelect.innerHTML = '<li id="lista_vid" class="addIncidents__form-input-li"></li>';
+    if (tipoId) {
+        cargarRuta(consorcioId ,tipoId);
+    }
+
+})
 consorcioSelect.addEventListener('change', () => {
     const consorcioId = consorcioSelect.value;
+    const tipoId = tipoServicioSelect.value;
     rutaSelect.innerHTML = '<option value="">Seleccione una ruta</option>';
     if (consorcioId) {
-        cargarRuta(consorcioId);
+        cargarRuta(consorcioId ,tipoId);
     }
 
 })
@@ -297,8 +381,7 @@ categoriaSelect.addEventListener('change', () => {
 document.addEventListener('DOMContentLoaded', cargarCategorias);
 document.addEventListener('DOMContentLoaded', cargarConsorcio);
 document.addEventListener('DOMContentLoaded', cargarSentido);
- document.addEventListener('DOMContentLoaded',cargarTipoKilometraje);
-
+document.addEventListener('DOMContentLoaded', cargarTipoKilometraje);
 /* -------------------------fin--------------------- */
 
 
