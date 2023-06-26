@@ -155,11 +155,14 @@
                 <div class="addIncidents__form-group"> 
                     <div class="addIncidents__form-field">
                         <label for="dni" class="addIncidents__form-label">DNI</label>
-                        <input  name="dni" id="dni"type="text" placeholder="número de dni" class="addIncidents__form-input">
+                        <input list='opcionesDni' name="dni" id="dni"type="text" placeholder="número de dni" class="addIncidents__form-input">
+                         <datalist id="opcionesDni" class="addIncidents__form-input-datalist">
+                            <option value="">
+                        </datalist>
                     </div>
                     <div class="addIncidents__form-field">
-                        <label for="cod-cacc" class="addIncidents__form-label"> Codigo CACC</label>
-                        <input  name="cod-cacc" id="cod-cacc"type="text" class="addIncidents__form-input" placeholder=" cod. cacc"  disabled>
+                        <label for="cod_cacc" class="addIncidents__form-label"> Codigo CACC</label>
+                        <input  name="cod_cacc" id="cod_cacc"type="text" class="addIncidents__form-input" placeholder=" cod. cacc"  disabled>
                     </div>
                     <div class="addIncidents__form-field">
                         <label for="conductor" class="addIncidents__form-label">Conductor</label>

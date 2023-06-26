@@ -107,6 +107,10 @@ const opcionesVidSelect = document.getElementById('opcionesVid');
 const inputVid=document.getElementById('vid'); 
 const inputBus= document.getElementById('id_bus');
 const inputPlaca = document.getElementById('placa');
+const opcionesDniSelect = document.getElementById('opcionesDni');
+const inputDni=document.getElementById('dni'); 
+const inputCacc= document.getElementById('cod_cacc');
+const inputConductor = document.getElementById('conductor');
 
 // Cargar categorías
 async function cargarCategorias() {
@@ -255,7 +259,7 @@ async function cargarNumVid(consorcioId,tipoId) {
        
         const data = await response.json();
         opcionesVidSelect.innerHTML = ''
-        console.log('datos del VID',data)
+       // console.log('datos del VID',data)
         data.forEach(numeroVid => {
         const option = document.createElement('option');
             option.value = numeroVid;
@@ -281,7 +285,72 @@ async function cargarBusPlaca(numeroVid) {
     }
     
 }
-/* ----------------------------------------EVENT LISTENER-------------------------------------------------------- */
+async function cargarNumDni(consorcioId,tipoId) {
+   try {
+        const response = await fetch(`../../servidor/incidencia/cargar_dni.php?consorcio_id=${consorcioId}&id_tipo=${tipoId}`);
+       
+        const data = await response.json();
+        opcionesDniSelect.innerHTML = ''
+        console.log('datos del dni',data)
+        data.forEach(numeroVid => {
+        const option = document.createElement('option');
+            option.value = numeroVid;
+        opcionesDniSelect.appendChild(option);
+    })
+    } catch (error) {
+        console.error('error al cargar cargar numero dni',error)
+    }
+
+}
+async function cargarCaccConductor(numeroDni) {
+        try {
+        const response = await fetch(`../../servidor/incidencia/cargar_cacc_conductor.php?numero_dni=${numeroDni}`);
+            const data = await response.json();
+            console.log('dni-----', data)
+            inputCacc.value = '';
+        inputConductor.value ='';
+        inputCacc.value =data[0].cacc;
+        inputConductor.value = data[0].nombre;
+    } catch (error) {
+        console.error('error al cargar cacc y conductor',error)
+    }
+    
+}
+/* ---------------EVENT LISTENER-------------------------------------- */
+// Event listener para cargar cacc y nombre del conductor al  llenar el campo dni
+inputDni.addEventListener('input', () => {
+    const valueDni = inputDni.value;
+    if (valueDni) {
+        cargarCaccConductor(valueDni);
+    }
+
+})
+// Event listener para cargar dni cuando selecione un consorcio y un tipo de servicio:
+consorcioSelect.addEventListener('change', () => {
+     const consorcioId = consorcioSelect.value;
+    const tipoId = tipoServicioSelect.value;
+    opcionesDniSelect.innerHTML = '';
+    inputDni.value=''
+    inputCacc.value ='';
+    inputConductor.value = '';
+       if (consorcioId) {
+        cargarNumDni(consorcioId,tipoId)
+    }
+  });
+
+tipoServicioSelect.addEventListener('change', () => {
+    const consorcioId = consorcioSelect.value;
+    const tipoId = tipoServicioSelect.value;
+    opcionesDniSelect.innerHTML = '';
+    inputDni.value=''
+    inputCacc.value ='';
+    inputConductor.value = '';
+    if (tipoId) {
+        cargarNumDni(consorcioId,tipoId)
+    }
+
+})
+
 // Event listener para cargar idbus y placa al  llenar el campo VID
 inputVid.addEventListener('input', () => {
     const valueVid = inputVid.value;
@@ -316,12 +385,11 @@ tipoServicioSelect.addEventListener('change', () => {
 
 })
 
-
 // Event listener para cargar ruta cuando selecione un consorcio:
 tipoServicioSelect.addEventListener('change', () => {
     const consorcioId = consorcioSelect.value;
     const tipoId = tipoServicioSelect.value;
-    console.log('soy tipo de servicio..',consorcioId,tipoId);
+   // console.log('soy tipo de servicio..',consorcioId,tipoId);
     rutaSelect.innerHTML = '<li id="lista_vid" class="addIncidents__form-input-li"></li>';
     if (tipoId) {
         cargarRuta(consorcioId ,tipoId);

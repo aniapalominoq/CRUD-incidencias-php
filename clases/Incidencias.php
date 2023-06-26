@@ -127,30 +127,30 @@ class Incidencias extends Conexion{
         }
 
         public function selectVid($id_consorcio, $tipo_servicio) {
-        $conexion = Conexion::conectar();
+            $conexion = Conexion::conectar();
 
-        // Escapar los valores de id_consorcio y tipo_servicio para prevenir la inyección de SQL
-        $id_consorcio = mysqli_real_escape_string($conexion, $id_consorcio);
-        $tipo_servicio = mysqli_real_escape_string($conexion, $tipo_servicio);
+            // Escapar los valores de id_consorcio y tipo_servicio para prevenir la inyección de SQL
+            $id_consorcio = mysqli_real_escape_string($conexion, $id_consorcio);
+            $tipo_servicio = mysqli_real_escape_string($conexion, $tipo_servicio);
 
-        // Utilizar consultas preparadas para mayor seguridad y claridad del código
-        $sql = "SELECT vid FROM bus WHERE id_consorcio = ? AND id_tipo = ?";
-        $stmt = mysqli_prepare($conexion, $sql);
+            // Utilizar consultas preparadas para mayor seguridad y claridad del código
+            $sql = "SELECT vid FROM bus WHERE id_consorcio = ? AND id_tipo = ?";
+            $stmt = mysqli_prepare($conexion, $sql);
 
-        // Utilizar el modificador adecuado según el tipo de dato real de los parámetros
-        mysqli_stmt_bind_param($stmt, "ii", $id_consorcio, $tipo_servicio);
-        mysqli_stmt_execute($stmt);
-        $respuesta = mysqli_stmt_get_result($stmt);
+            // Utilizar el modificador adecuado según el tipo de dato real de los parámetros
+            mysqli_stmt_bind_param($stmt, "ii", $id_consorcio, $tipo_servicio);
+            mysqli_stmt_execute($stmt);
+            $respuesta = mysqli_stmt_get_result($stmt);
 
-        $numVid = array();
-        while ($mostrar = mysqli_fetch_assoc($respuesta)) {
-            $numVid[] = $mostrar['vid'];
+            $numVid = array();
+            while ($mostrar = mysqli_fetch_assoc($respuesta)) {
+                $numVid[] = $mostrar['vid'];
         }
 
         return json_encode($numVid);
     }
 
-        public function loadBusPlaca($numero_vid){
+    public function loadBusPlaca($numero_vid){
             $conexion = Conexion::conectar();
             $numero_vid= mysqli_real_escape_string($conexion,$numero_vid);
             $sql = "SELECT * FROM bus WHERE vid = ?";
@@ -166,9 +166,50 @@ class Incidencias extends Conexion{
 
             return json_encode($busPlaca);
 
-        }
+    }
     
+    public function selectDni($id_consorcio, $tipo_servicio) {
+            $conexion = Conexion::conectar();
 
+            // Escapar los valores de id_consorcio y tipo_servicio para prevenir la inyección de SQL
+            $id_consorcio = mysqli_real_escape_string($conexion, $id_consorcio);
+            $tipo_servicio = mysqli_real_escape_string($conexion, $tipo_servicio);
+
+            // Utilizar consultas preparadas para mayor seguridad y claridad del código
+            $sql = "SELECT dni FROM conductor WHERE consorcio = ? AND tipo = ?";
+            $stmt = mysqli_prepare($conexion, $sql);
+
+            // Utilizar el modificador adecuado según el tipo de dato real de los parámetros
+            mysqli_stmt_bind_param($stmt, "ii", $id_consorcio, $tipo_servicio);
+            mysqli_stmt_execute($stmt);
+            $respuesta = mysqli_stmt_get_result($stmt);
+
+            $numDni = array();
+            while ($mostrar = mysqli_fetch_assoc($respuesta)) {
+                $numDni[] = $mostrar['dni'];
+        }
+
+        return json_encode($numDni);
+    }
+    
+    public function loadCaccConductor($numero_dni){
+            $conexion = Conexion::conectar();
+            $numero_dni= mysqli_real_escape_string($conexion,$numero_dni);
+            $sql = "SELECT * FROM conductor WHERE dni =?";
+            $stmt = mysqli_prepare($conexion, $sql);
+            mysqli_stmt_bind_param($stmt, "s", $numero_dni);
+            mysqli_stmt_execute($stmt);
+            $respuesta = mysqli_stmt_get_result($stmt);
+
+            $caccConductor= array();
+            while ($mostrar = mysqli_fetch_assoc($respuesta)) {
+                $caccConductor[] = $mostrar;
+            }
+
+            return json_encode($caccConductor);
+
+    }
+    
     }
 
 ?>
