@@ -84,10 +84,10 @@ submitBtn.addEventListener("click", function () {
      progressText[current - 1].classList.add('spot-light');
     progressCheck[current - 1].classList.add('spot-light');
     current += 1;
-    setTimeout(function () {
-        alert("you're successfully signed up")
-        location.reload()
-    },800)
+ setTimeout(function () {
+        guardarDatosFormulario()
+       location.reload()
+    },800) 
     
 })
 /* ---------------------FIN --------------------------- */
@@ -150,8 +150,7 @@ async function cargarSubCategorias(categoriaId) {
     } catch (error) {
         console.error('Error al cargar las subcategorías:', error);
     }
-}
-    
+}    
 // Cargar causas
 async function cargarCausas(subcategoriaId) {
     try {
@@ -170,7 +169,6 @@ async function cargarCausas(subcategoriaId) {
         console.error('Error al cargar las causas:',error);
     }
 }
-
 // Cargar consecuencias
 async function cargarConsecuencias(causaId) {
     try {
@@ -189,7 +187,6 @@ async function cargarConsecuencias(causaId) {
         console.error(error);
     }
 }
-
 async function cargarConsorcio() {
     try {
         const response = await fetch(`../../servidor/incidencia/cargar_consorcio.php`);
@@ -206,8 +203,7 @@ async function cargarConsorcio() {
     }
 
 }
-
- async function cargarRuta(consorcioId,tipoId){
+async function cargarRuta(consorcioId,tipoId){
     try {
         const response = await fetch(`../../servidor/incidencia/cargar_ruta.php?consorcio_id=${consorcioId}&id_tipo=${tipoId}`);
         const data = await response.json();
@@ -269,7 +265,6 @@ async function cargarNumVid(consorcioId,tipoId) {
         console.error('error al cargar cargar numero vid',error)
     }
 }
-
 async function cargarBusPlaca(numeroVid) {
     try {
         const response = await fetch(`../../servidor/incidencia/cargar_bus_placa.php?numero_vid=${numeroVid}`);
@@ -291,7 +286,7 @@ async function cargarNumDni(consorcioId,tipoId) {
        
         const data = await response.json();
         opcionesDniSelect.innerHTML = ''
-        console.log('datos del dni',data)
+        //console.log('datos del dni',data)
         data.forEach(numeroVid => {
         const option = document.createElement('option');
             option.value = numeroVid;
@@ -306,7 +301,7 @@ async function cargarCaccConductor(numeroDni) {
         try {
         const response = await fetch(`../../servidor/incidencia/cargar_cacc_conductor.php?numero_dni=${numeroDni}`);
             const data = await response.json();
-            console.log('dni-----', data)
+           // console.log('dni-----', data)
             inputCacc.value = '';
         inputConductor.value ='';
         inputCacc.value =data[0].cacc;
@@ -323,7 +318,6 @@ inputDni.addEventListener('input', () => {
     if (valueDni) {
         cargarCaccConductor(valueDni);
     }
-
 })
 // Event listener para cargar dni cuando selecione un consorcio y un tipo de servicio:
 consorcioSelect.addEventListener('change', () => {
@@ -451,6 +445,105 @@ document.addEventListener('DOMContentLoaded', cargarConsorcio);
 document.addEventListener('DOMContentLoaded', cargarSentido);
 document.addEventListener('DOMContentLoaded', cargarTipoKilometraje);
 /* -------------------------fin--------------------- */
+
+/*  capturar los valores del formulario */
+
+
+
+
+ async  function guardarDatosFormulario () { 
+  
+/*     //obtenemos los valores de los campos del formulario
+    const valueDate = document.getElementById('date').value
+    const valueTimeOn=document.getElementById('time_on').value
+    const valueTimeOff = document.getElementById('time_off').value
+    const valuePlaceIncident = document.getElementById('place_incidence').value
+    const valueCategoria=document.getElementById('categoria').value
+    const valueSubcategoria = document.getElementById('subcategoria').value
+    const valueCausa = document.getElementById('causa').value
+    const valueConsecuencia = document.getElementById('consecuencia').value
+    const valueDescripcion = document.getElementById('descripcion').value
+    const valueConsorcio = document.getElementById('consorcio').value
+    const valueTipoServicio = document.getElementById('tipo_servicio').value
+    const valueRuta = document.getElementById('ruta').value
+    const valueSentido = document.getElementById('sentido').value
+    const valueNumeroServicio= document.getElementById('numero_servicio').value
+    const valueIdBus = document.getElementById('id_bus').value
+    const valueDni = document.getElementById('dni').value
+    const valueTipoKilometraje = document.getElementById('tipokilometraje').value
+    const valueKilometraje = document.getElementById('kilometraje').value
+    const valueNumeroCarreras = document.getElementById('numero_carreras').value
+    const formData = {
+        fecha: valueDate,
+        hora_inicio:valueTimeOn,
+        hora_fin:valueTimeOff,
+        lugar:valuePlaceIncident,
+        categoria:valueCategoria,
+        subcategoria:valueSubcategoria,
+        causa:valueCausa,
+        consecuencia:valueConsecuencia,
+        descripción:valueDescripcion,
+        consorcio:valueConsorcio,
+        tipo_servicio:valueTipoServicio,
+        ruta:valueRuta,
+        servicio:valueNumeroServicio,
+        sentido:valueSentido,
+        bus:valueIdBus,
+        conductor:valueDni,
+        tipo_kilometraje:valueTipoKilometraje ,
+        kilometraje:valueKilometraje,
+        carreras:valueNumeroCarreras,
+    };
+    try {
+        const response = await fetch('../../servidor/incidencia/agregar.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        });
+
+        const result = await response.text();
+        console.log(result)
+    } catch (error) {
+        console.error('al guardar datos Error:', error);
+     } */
+       const formData = new FormData();
+  formData.append('date', document.getElementById('date').value);
+  formData.append('time_on', document.getElementById('time_on').value);
+  formData.append('time_off', document.getElementById('time_off').value);
+  formData.append('place_incidence', document.getElementById('place_incidence').value);
+  formData.append('categoria', document.getElementById('categoria').value);
+  formData.append('subcategoria', document.getElementById('subcategoria').value);
+  formData.append('causa', document.getElementById('causa').value);
+  formData.append('consecuencia', document.getElementById('consecuencia').value);
+  formData.append('descripcion', document.getElementById('descripcion').value);
+  formData.append('consorcio', document.getElementById('consorcio').value);
+  formData.append('tipo_servicio', document.getElementById('tipo_servicio').value);
+  formData.append('ruta', document.getElementById('ruta').value);
+  formData.append('numero_servicio', document.getElementById('numero_servicio').value);
+  formData.append('sentido', document.getElementById('sentido').value);
+  formData.append('vid', document.getElementById('vid').value);
+  formData.append('dni', document.getElementById('dni').value);
+  formData.append('tipo_kilometraje', document.getElementById('tipokilometraje').value);
+  formData.append('kilometraje', document.getElementById('kilometraje').value);
+  formData.append('carreras', document.getElementById('numero_carreras').value);
+
+  try {
+    const response = await fetch('../../servidor/incidencia/agregar.php', {
+      method: 'POST',
+      body: formData,
+    });
+
+    const result = await response.text();
+    console.log(result);
+  } catch (error) {
+    console.error('Error al guardar datos:', error);
+  }
+
+
+}
+
 
 
 const example = document.getElementById("example")

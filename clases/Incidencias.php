@@ -1,35 +1,15 @@
 <?php
 include "Conexion.php";
 class Incidencias extends Conexion{
-    /* public function agregarIncidencias($data) {
-            $conexion = Conexion::conectar();
-            $sql = "INSERT INTO incidencia (idincidencia, 
-                                            fecha, 
-                                            hora_inicio,hora_fin,lugar,categoria,subcategoria,causa,consecuencia, descripción,consorcio,tipo_servicio,ruta,servicio,sentido,bus,conductor,tipo_kilometraje,kilometraje,carreras,auditorias) 
-                            VALUES (?, ?, ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-            $query = $conexion->prepare($sql);
-            $query->bind_param('iss', $data['idincidencia'], 
-                                    $data['fecha'], 
-                                    $data['hora_inicio'],
-                                    $data['hora_fin'],
-                                    $data['lugar'],
-                                    $data['categoria'],
-                                    $data['subcategoria'],
-                                    $data['causa'],
-                                    $data['consecuencia'],
-                                    $data['descripción'],
-                                    $data['consorcio'],
-                                    $data['tipo_servicio'],
-                                    $data['ruta'],
-                                    $data['servicio'],
-                                    $data['sentido'],
-                                    $data['bus'],
-                                    $$data['tipo_kilometraje'],
-                                    $data['kilometraje'],
-                                    $data['carreras'],
-                                    $data['auditorias'])
-            return $query->execute();
-        } */
+    public function agregarIncidencias($data) {
+        $conexion = Conexion::conectar();
+        $sql = "INSERT INTO incidencia (fecha, hora_inicio, hora_fin, lugar, categoria, subcategoria, causa, consecuencia, descripcion, consorcio, tipo_servicio, ruta, servicio, sentido, bus, conductor, tipo_kilometraje, kilometraje, carreras/* , auditoria */) 
+                VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?/* , ? */)";
+        $query = $conexion->prepare($sql);
+        $query->bind_param('ssssiiiisiiiiiisiii', $data['fecha'], $data['hora_inicio'], $data['hora_fin'], $data['lugar'], $data['categoria'], $data['subcategoria'], $data['causa'], $data['consecuencia'], $data['descripcion'], $data['consorcio'], $data['tipo_servicio'], $data['ruta'], $data['servicio'], $data['sentido'], $data['bus'], $data['conductor'], $data['tipo_kilometraje'], $data['kilometraje'], $data['carreras']/* , $data['auditoria'] */);
+        return $query->execute();
+    }
+
         public function selectCategorias() {
         $conexion = Conexion::conectar();
         $sql = "SELECT * FROM categoria";
@@ -145,71 +125,71 @@ class Incidencias extends Conexion{
             $numVid = array();
             while ($mostrar = mysqli_fetch_assoc($respuesta)) {
                 $numVid[] = $mostrar['vid'];
-        }
-
-        return json_encode($numVid);
-    }
-
-    public function loadBusPlaca($numero_vid){
-            $conexion = Conexion::conectar();
-            $numero_vid= mysqli_real_escape_string($conexion,$numero_vid);
-            $sql = "SELECT * FROM bus WHERE vid = ?";
-            $stmt = mysqli_prepare($conexion, $sql);
-            mysqli_stmt_bind_param($stmt, "s", $numero_vid);
-            mysqli_stmt_execute($stmt);
-            $respuesta = mysqli_stmt_get_result($stmt);
-
-            $busPlaca = array();
-            while ($mostrar = mysqli_fetch_assoc($respuesta)) {
-                $busPlaca[] = $mostrar;
             }
 
-            return json_encode($busPlaca);
-
-    }
-    
-    public function selectDni($id_consorcio, $tipo_servicio) {
-            $conexion = Conexion::conectar();
-
-            // Escapar los valores de id_consorcio y tipo_servicio para prevenir la inyección de SQL
-            $id_consorcio = mysqli_real_escape_string($conexion, $id_consorcio);
-            $tipo_servicio = mysqli_real_escape_string($conexion, $tipo_servicio);
-
-            // Utilizar consultas preparadas para mayor seguridad y claridad del código
-            $sql = "SELECT dni FROM conductor WHERE consorcio = ? AND tipo = ?";
-            $stmt = mysqli_prepare($conexion, $sql);
-
-            // Utilizar el modificador adecuado según el tipo de dato real de los parámetros
-            mysqli_stmt_bind_param($stmt, "ii", $id_consorcio, $tipo_servicio);
-            mysqli_stmt_execute($stmt);
-            $respuesta = mysqli_stmt_get_result($stmt);
-
-            $numDni = array();
-            while ($mostrar = mysqli_fetch_assoc($respuesta)) {
-                $numDni[] = $mostrar['dni'];
+            return json_encode($numVid);
         }
 
-        return json_encode($numDni);
-    }
-    
-    public function loadCaccConductor($numero_dni){
-            $conexion = Conexion::conectar();
-            $numero_dni= mysqli_real_escape_string($conexion,$numero_dni);
-            $sql = "SELECT * FROM conductor WHERE dni =?";
-            $stmt = mysqli_prepare($conexion, $sql);
-            mysqli_stmt_bind_param($stmt, "s", $numero_dni);
-            mysqli_stmt_execute($stmt);
-            $respuesta = mysqli_stmt_get_result($stmt);
+        public function loadBusPlaca($numero_vid){
+                $conexion = Conexion::conectar();
+                $numero_vid= mysqli_real_escape_string($conexion,$numero_vid);
+                $sql = "SELECT * FROM bus WHERE vid = ?";
+                $stmt = mysqli_prepare($conexion, $sql);
+                mysqli_stmt_bind_param($stmt, "s", $numero_vid);
+                mysqli_stmt_execute($stmt);
+                $respuesta = mysqli_stmt_get_result($stmt);
 
-            $caccConductor= array();
-            while ($mostrar = mysqli_fetch_assoc($respuesta)) {
-                $caccConductor[] = $mostrar;
+                $busPlaca = array();
+                while ($mostrar = mysqli_fetch_assoc($respuesta)) {
+                    $busPlaca[] = $mostrar;
+                }
+
+                return json_encode($busPlaca);
+
+        }
+        
+        public function selectDni($id_consorcio, $tipo_servicio) {
+                $conexion = Conexion::conectar();
+
+                // Escapar los valores de id_consorcio y tipo_servicio para prevenir la inyección de SQL
+                $id_consorcio = mysqli_real_escape_string($conexion, $id_consorcio);
+                $tipo_servicio = mysqli_real_escape_string($conexion, $tipo_servicio);
+
+                // Utilizar consultas preparadas para mayor seguridad y claridad del código
+                $sql = "SELECT dni FROM conductor WHERE consorcio = ? AND tipo = ?";
+                $stmt = mysqli_prepare($conexion, $sql);
+
+                // Utilizar el modificador adecuado según el tipo de dato real de los parámetros
+                mysqli_stmt_bind_param($stmt, "ii", $id_consorcio, $tipo_servicio);
+                mysqli_stmt_execute($stmt);
+                $respuesta = mysqli_stmt_get_result($stmt);
+
+                $numDni = array();
+                while ($mostrar = mysqli_fetch_assoc($respuesta)) {
+                    $numDni[] = $mostrar['dni'];
             }
 
-            return json_encode($caccConductor);
+            return json_encode($numDni);
+        }
+        
+        public function loadCaccConductor($numero_dni){
+                $conexion = Conexion::conectar();
+                $numero_dni= mysqli_real_escape_string($conexion,$numero_dni);
+                $sql = "SELECT * FROM conductor WHERE dni =?";
+                $stmt = mysqli_prepare($conexion, $sql);
+                mysqli_stmt_bind_param($stmt, "s", $numero_dni);
+                mysqli_stmt_execute($stmt);
+                $respuesta = mysqli_stmt_get_result($stmt);
 
-    }
-    
+                $caccConductor= array();
+                while ($mostrar = mysqli_fetch_assoc($respuesta)) {
+                    $caccConductor[] = $mostrar;
+                }
+
+                return json_encode($caccConductor);
+
+        }
+        
     }
 
 ?>

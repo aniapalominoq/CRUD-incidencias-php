@@ -8,7 +8,7 @@ if (isset($_GET['seccion'])) {
 }
 
  ?>
-<!doctype html>
+<! DOCTYPE html>
 <html lang="es">
   <head>
     <!-- Required meta tags -->
