@@ -84,10 +84,70 @@ submitBtn.addEventListener("click", function () {
      progressText[current - 1].classList.add('spot-light');
     progressCheck[current - 1].classList.add('spot-light');
     current += 1;
-    setTimeout(function () {
-        alert("you're successfully signed up")
-        location.reload()
-    },800)
+ setTimeout(function () {
+        guardarDatosFormulario()
+       location.reload()
+ }, 800) 
+    Swal.fire({
+	// title:
+	// text:
+	// html:
+	// icon:
+	// confirmButtonText:
+	// footer:
+	// width:
+	// padding:
+	// background:
+	// grow:
+	// backdrop:
+	// timer:
+	// timerProgressBar:
+	// toast:
+	// position:
+	// allowOutsideClick:
+	// allowEscapeKey:
+	// allowEnterKey:
+	// stopKeydownPropagation:
+
+	// input:
+	// inputPlaceholder:
+	// inputValue:
+	// inputOptions:
+	
+	//  customClass:
+	// 	container:
+	// 	popup:
+	// 	header:
+	// 	title:
+	// 	closeButton:
+	// 	icon:
+	// 	image:
+	// 	content:
+	// 	input:
+	// 	actions:
+	// 	confirmButton:
+	// 	cancelButton:
+	// 	footer:	
+
+	// showConfirmButton:
+	// confirmButtonColor:
+	// confirmButtonAriaLabel:
+
+	// showCancelButton:
+	// cancelButtonText:
+	// cancelButtonColor:
+	// cancelButtonAriaLabel:
+	
+	// buttonsStyling:
+	// showCloseButton:
+	// closeButtonAriaLabel:
+
+
+	// imageUrl:
+	// imageWidth:
+	// imageHeight:
+	// imageAlt:
+});
     
 })
 /* ---------------------FIN --------------------------- */
@@ -150,8 +210,7 @@ async function cargarSubCategorias(categoriaId) {
     } catch (error) {
         console.error('Error al cargar las subcategorías:', error);
     }
-}
-    
+}    
 // Cargar causas
 async function cargarCausas(subcategoriaId) {
     try {
@@ -170,7 +229,6 @@ async function cargarCausas(subcategoriaId) {
         console.error('Error al cargar las causas:',error);
     }
 }
-
 // Cargar consecuencias
 async function cargarConsecuencias(causaId) {
     try {
@@ -189,7 +247,6 @@ async function cargarConsecuencias(causaId) {
         console.error(error);
     }
 }
-
 async function cargarConsorcio() {
     try {
         const response = await fetch(`../../servidor/incidencia/cargar_consorcio.php`);
@@ -206,8 +263,7 @@ async function cargarConsorcio() {
     }
 
 }
-
- async function cargarRuta(consorcioId,tipoId){
+async function cargarRuta(consorcioId,tipoId){
     try {
         const response = await fetch(`../../servidor/incidencia/cargar_ruta.php?consorcio_id=${consorcioId}&id_tipo=${tipoId}`);
         const data = await response.json();
@@ -269,7 +325,6 @@ async function cargarNumVid(consorcioId,tipoId) {
         console.error('error al cargar cargar numero vid',error)
     }
 }
-
 async function cargarBusPlaca(numeroVid) {
     try {
         const response = await fetch(`../../servidor/incidencia/cargar_bus_placa.php?numero_vid=${numeroVid}`);
@@ -291,7 +346,7 @@ async function cargarNumDni(consorcioId,tipoId) {
        
         const data = await response.json();
         opcionesDniSelect.innerHTML = ''
-        console.log('datos del dni',data)
+        //console.log('datos del dni',data)
         data.forEach(numeroVid => {
         const option = document.createElement('option');
             option.value = numeroVid;
@@ -306,7 +361,7 @@ async function cargarCaccConductor(numeroDni) {
         try {
         const response = await fetch(`../../servidor/incidencia/cargar_cacc_conductor.php?numero_dni=${numeroDni}`);
             const data = await response.json();
-            console.log('dni-----', data)
+           // console.log('dni-----', data)
             inputCacc.value = '';
         inputConductor.value ='';
         inputCacc.value =data[0].cacc;
@@ -323,7 +378,6 @@ inputDni.addEventListener('input', () => {
     if (valueDni) {
         cargarCaccConductor(valueDni);
     }
-
 })
 // Event listener para cargar dni cuando selecione un consorcio y un tipo de servicio:
 consorcioSelect.addEventListener('change', () => {
@@ -451,6 +505,43 @@ document.addEventListener('DOMContentLoaded', cargarConsorcio);
 document.addEventListener('DOMContentLoaded', cargarSentido);
 document.addEventListener('DOMContentLoaded', cargarTipoKilometraje);
 /* -------------------------fin--------------------- */
+
+/*  capturar los valores del formulario */
+
+ async  function guardarDatosFormulario () { 
+    const formData = new FormData();
+    formData.append('date', document.getElementById('date').value);
+    formData.append('time_on', document.getElementById('time_on').value);
+    formData.append('time_off', document.getElementById('time_off').value);
+    formData.append('place_incidence', document.getElementById('place_incidence').value);
+    formData.append('categoria', document.getElementById('categoria').value);
+    formData.append('subcategoria', document.getElementById('subcategoria').value);
+    formData.append('causa', document.getElementById('causa').value);
+    formData.append('consecuencia', document.getElementById('consecuencia').value);
+    formData.append('descripcion', document.getElementById('descripcion').value);
+    formData.append('consorcio', document.getElementById('consorcio').value);
+    formData.append('tipo_servicio', document.getElementById('tipo_servicio').value);
+    formData.append('ruta', document.getElementById('ruta').value);
+    formData.append('numero_servicio', document.getElementById('numero_servicio').value);
+    formData.append('sentido', document.getElementById('sentido').value);
+    formData.append('vid', document.getElementById('vid').value);
+    formData.append('dni', document.getElementById('dni').value);
+    formData.append('tipo_kilometraje', document.getElementById('tipokilometraje').value);
+    formData.append('kilometraje', document.getElementById('kilometraje').value);
+    formData.append('carreras', document.getElementById('numero_carreras').value);
+
+    try {
+        const response = await fetch('../../servidor/incidencia/agregar.php', {
+        method: 'POST',
+        body: formData,
+        });
+    } catch (error) {
+        console.error('Error al guardar:', error);
+    }
+
+
+}
+
 
 
 const example = document.getElementById("example")
