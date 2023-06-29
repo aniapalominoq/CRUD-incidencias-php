@@ -87,7 +87,67 @@ submitBtn.addEventListener("click", function () {
  setTimeout(function () {
         guardarDatosFormulario()
        location.reload()
-    },800) 
+ }, 800) 
+    Swal.fire({
+	// title:
+	// text:
+	// html:
+	// icon:
+	// confirmButtonText:
+	// footer:
+	// width:
+	// padding:
+	// background:
+	// grow:
+	// backdrop:
+	// timer:
+	// timerProgressBar:
+	// toast:
+	// position:
+	// allowOutsideClick:
+	// allowEscapeKey:
+	// allowEnterKey:
+	// stopKeydownPropagation:
+
+	// input:
+	// inputPlaceholder:
+	// inputValue:
+	// inputOptions:
+	
+	//  customClass:
+	// 	container:
+	// 	popup:
+	// 	header:
+	// 	title:
+	// 	closeButton:
+	// 	icon:
+	// 	image:
+	// 	content:
+	// 	input:
+	// 	actions:
+	// 	confirmButton:
+	// 	cancelButton:
+	// 	footer:	
+
+	// showConfirmButton:
+	// confirmButtonColor:
+	// confirmButtonAriaLabel:
+
+	// showCancelButton:
+	// cancelButtonText:
+	// cancelButtonColor:
+	// cancelButtonAriaLabel:
+	
+	// buttonsStyling:
+	// showCloseButton:
+	// closeButtonAriaLabel:
+
+
+	// imageUrl:
+	// imageWidth:
+	// imageHeight:
+	// imageAlt:
+});
     
 })
 /* ---------------------FIN --------------------------- */
@@ -448,98 +508,36 @@ document.addEventListener('DOMContentLoaded', cargarTipoKilometraje);
 
 /*  capturar los valores del formulario */
 
-
-
-
  async  function guardarDatosFormulario () { 
-  
-/*     //obtenemos los valores de los campos del formulario
-    const valueDate = document.getElementById('date').value
-    const valueTimeOn=document.getElementById('time_on').value
-    const valueTimeOff = document.getElementById('time_off').value
-    const valuePlaceIncident = document.getElementById('place_incidence').value
-    const valueCategoria=document.getElementById('categoria').value
-    const valueSubcategoria = document.getElementById('subcategoria').value
-    const valueCausa = document.getElementById('causa').value
-    const valueConsecuencia = document.getElementById('consecuencia').value
-    const valueDescripcion = document.getElementById('descripcion').value
-    const valueConsorcio = document.getElementById('consorcio').value
-    const valueTipoServicio = document.getElementById('tipo_servicio').value
-    const valueRuta = document.getElementById('ruta').value
-    const valueSentido = document.getElementById('sentido').value
-    const valueNumeroServicio= document.getElementById('numero_servicio').value
-    const valueIdBus = document.getElementById('id_bus').value
-    const valueDni = document.getElementById('dni').value
-    const valueTipoKilometraje = document.getElementById('tipokilometraje').value
-    const valueKilometraje = document.getElementById('kilometraje').value
-    const valueNumeroCarreras = document.getElementById('numero_carreras').value
-    const formData = {
-        fecha: valueDate,
-        hora_inicio:valueTimeOn,
-        hora_fin:valueTimeOff,
-        lugar:valuePlaceIncident,
-        categoria:valueCategoria,
-        subcategoria:valueSubcategoria,
-        causa:valueCausa,
-        consecuencia:valueConsecuencia,
-        descripción:valueDescripcion,
-        consorcio:valueConsorcio,
-        tipo_servicio:valueTipoServicio,
-        ruta:valueRuta,
-        servicio:valueNumeroServicio,
-        sentido:valueSentido,
-        bus:valueIdBus,
-        conductor:valueDni,
-        tipo_kilometraje:valueTipoKilometraje ,
-        kilometraje:valueKilometraje,
-        carreras:valueNumeroCarreras,
-    };
+    const formData = new FormData();
+    formData.append('date', document.getElementById('date').value);
+    formData.append('time_on', document.getElementById('time_on').value);
+    formData.append('time_off', document.getElementById('time_off').value);
+    formData.append('place_incidence', document.getElementById('place_incidence').value);
+    formData.append('categoria', document.getElementById('categoria').value);
+    formData.append('subcategoria', document.getElementById('subcategoria').value);
+    formData.append('causa', document.getElementById('causa').value);
+    formData.append('consecuencia', document.getElementById('consecuencia').value);
+    formData.append('descripcion', document.getElementById('descripcion').value);
+    formData.append('consorcio', document.getElementById('consorcio').value);
+    formData.append('tipo_servicio', document.getElementById('tipo_servicio').value);
+    formData.append('ruta', document.getElementById('ruta').value);
+    formData.append('numero_servicio', document.getElementById('numero_servicio').value);
+    formData.append('sentido', document.getElementById('sentido').value);
+    formData.append('vid', document.getElementById('vid').value);
+    formData.append('dni', document.getElementById('dni').value);
+    formData.append('tipo_kilometraje', document.getElementById('tipokilometraje').value);
+    formData.append('kilometraje', document.getElementById('kilometraje').value);
+    formData.append('carreras', document.getElementById('numero_carreras').value);
+
     try {
         const response = await fetch('../../servidor/incidencia/agregar.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(formData)
+        method: 'POST',
+        body: formData,
         });
-
-        const result = await response.text();
-        console.log(result)
     } catch (error) {
-        console.error('al guardar datos Error:', error);
-     } */
-       const formData = new FormData();
-  formData.append('date', document.getElementById('date').value);
-  formData.append('time_on', document.getElementById('time_on').value);
-  formData.append('time_off', document.getElementById('time_off').value);
-  formData.append('place_incidence', document.getElementById('place_incidence').value);
-  formData.append('categoria', document.getElementById('categoria').value);
-  formData.append('subcategoria', document.getElementById('subcategoria').value);
-  formData.append('causa', document.getElementById('causa').value);
-  formData.append('consecuencia', document.getElementById('consecuencia').value);
-  formData.append('descripcion', document.getElementById('descripcion').value);
-  formData.append('consorcio', document.getElementById('consorcio').value);
-  formData.append('tipo_servicio', document.getElementById('tipo_servicio').value);
-  formData.append('ruta', document.getElementById('ruta').value);
-  formData.append('numero_servicio', document.getElementById('numero_servicio').value);
-  formData.append('sentido', document.getElementById('sentido').value);
-  formData.append('vid', document.getElementById('vid').value);
-  formData.append('dni', document.getElementById('dni').value);
-  formData.append('tipo_kilometraje', document.getElementById('tipokilometraje').value);
-  formData.append('kilometraje', document.getElementById('kilometraje').value);
-  formData.append('carreras', document.getElementById('numero_carreras').value);
-
-  try {
-    const response = await fetch('../../servidor/incidencia/agregar.php', {
-      method: 'POST',
-      body: formData,
-    });
-
-    const result = await response.text();
-    console.log(result);
-  } catch (error) {
-    console.error('Error al guardar datos:', error);
-  }
+        console.error('Error al guardar:', error);
+    }
 
 
 }
