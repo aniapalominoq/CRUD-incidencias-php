@@ -2,10 +2,10 @@
 if(!isset($_SESSION['nombre'])){
     header("location:index.php");
 }
-$seccionActual = "registro_incidencias"; 
+ $seccionActual = "registro_incidencias"; 
 if (isset($_GET['seccion'])) {
     $seccionActual = $_GET['seccion'];
-}
+} 
 
  ?>
 <! DOCTYPE html>
@@ -15,7 +15,9 @@ if (isset($_GET['seccion'])) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="public/css/inicio.css">
-      <link rel="stylesheet" href="public/css/sweetalert2.min.css">
+    <link rel="stylesheet" href="public/css/sweetalert2.min.css">
+<!--     <link rel="stylesheet" href="public/css/mermaid.css"> -->
+    <link href="https://cdn.jsdelivr.net/npm/gridjs/dist/theme/mermaid.min.css" rel="stylesheet" />
     <title>inicio</title>
   </head>
   <body class="inicio__body">
@@ -30,14 +32,14 @@ if (isset($_GET['seccion'])) {
             </a>
         </li>
         <li class="inicio__navegation-li">
-            <a href="inicio.php?seccion=registro_incidencias" class="inicio__navegation-a">
+            <a href="inicio.php?seccion=registro_incidencias" id="incidencia"  class="inicio__navegation-a">
                 <span class=" inicio__navegation-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" class="ionicon inicio__navegation-svg" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M256 112v288M400 256H112"/></svg>
                 </span>
                 <span class=" inicio__navegation-title">Incidencias</span>
             </a></li>
         <li class="inicio__navegation-li">
-            <a href="#" class="inicio__navegation-a">
+            <a id="listar"  class="inicio__navegation-a">
                 <span class=" inicio__navegation-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" class="ionicon inicio__navegation-svg" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M160 144h288M160 256h288M160 368h288"/><circle cx="80" cy="144" r="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><circle cx="80" cy="256" r="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><circle cx="80" cy="368" r="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/></svg>
                 </span>
@@ -45,32 +47,34 @@ if (isset($_GET['seccion'])) {
             </a>
         </li>
         <li class="inicio__navegation-li">
-            <a href="#" class="inicio__navegation-a">
-                <span class=" inicio__navegation-icon"">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="ionicon inicio__navegation-svg" viewBox="0 0 512 512"><path d="M336 176h40a40 40 0 0140 40v208a40 40 0 01-40 40H136a40 40 0 01-40-40V216a40 40 0 0140-40h40" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M176 272l80 80 80-80M256 48v288"/></svg>
-                </span>
-                <span class=" inicio__navegation-title">Descargar</span>
+            <a id="descargar"  class="inicio__navegation-a">
+                <span class="inicio__navegation-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="ionicon inicio__navegation-svg" viewBox="0 0 512 512"><path d="M336 176h40a40 40 0 0140 40v208a40 40 0 01-40 40H136a40 40 0 01-40-40V216a40 40 0 0140-40h40" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M176 272l80 80 80-80M256 48v288"/>
+                    </svg>
+               </span>
+               <span class=" inicio__navegation-title">Descargar</span>
             </a>
         </li>
         <li class="inicio__navegation-li">
             <a href="./servidor/login/logout.php" class="inicio__navegation-a">
-                <span class=" inicio__navegation-icon"">
+                <span class=" inicio__navegation-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" class="ionicon inicio__navegation-svg" viewBox="0 0 512 512"><path d="M304 336v40a40 40 0 01-40 40H104a40 40 0 01-40-40V136a40 40 0 0140-40h152c22.09 0 48 17.91 48 40v40M368 336l80-80-80-80M176 256h256" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/></svg>
                 </span>
-                <span class=" inicio__navegation-title"">Salir</span>
+                <span class="inicio__navegation-title">Salir</span>
             </a>
         </li>
         
     </ul>
     <div class="inicio__navegation-toggle"></div>
     </nav>
-    <section>  <button id="example">Mostrar Alerta</button>se agrego la libreria sweetalert2
-  </section>
-<!--  la secion que cambiara de acuerdo con las opciones elegidas -->
-        <?php include("./modulos/".$seccionActual.".php"); ?>
-    
-<!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
- <script src="public/JavaScript/inicio.js" type="module"></script>
- <script src="public/JavaScript/sweetalert2.all.min.js"></script>
+    <section id="contenido-dinamico" class="addIncidents__main"> 
+
+         <?php include("./modulos/".$seccionActual.".php"); ?>
+    </section>
+<script src="public/JavaScript/inicio.js" type="module"></script>
+<script src="public/JavaScript/sweetalert2.all.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gridjs/dist/gridjs.umd.js"></script>
+<!--    <script src="public/JavaScript/gridjs.js"></script> -->
+
   </body>
 </html>

@@ -1,6 +1,14 @@
 <?php
 include "Conexion.php";
 class Incidencias extends Conexion{
+    public function mostrarIncidencias() {
+        $conexion = Conexion::conectar();
+        $sql = "SELECT*FROM incidencia";
+        $respuesta = mysqli_query($conexion, $sql);
+        $resultado = mysqli_fetch_all($respuesta, MYSQLI_ASSOC);
+        return json_encode($resultado);
+    }
+
     public function agregarIncidencias($data) {
         $conexion = Conexion::conectar();
         $sql = "INSERT INTO incidencia (fecha, hora_inicio, hora_fin, lugar, categoria, subcategoria, causa, consecuencia, descripcion, consorcio, tipo_servicio, ruta, servicio, sentido, bus, conductor, tipo_kilometraje, kilometraje, carreras/* , auditoria */) 
@@ -9,6 +17,8 @@ class Incidencias extends Conexion{
         $query->bind_param('ssssiiiisiiiiiisiii', $data['fecha'], $data['hora_inicio'], $data['hora_fin'], $data['lugar'], $data['categoria'], $data['subcategoria'], $data['causa'], $data['consecuencia'], $data['descripcion'], $data['consorcio'], $data['tipo_servicio'], $data['ruta'], $data['servicio'], $data['sentido'], $data['bus'], $data['conductor'], $data['tipo_kilometraje'], $data['kilometraje'], $data['carreras']/* , $data['auditoria'] */);
         return $query->execute();
     }
+
+
 
         public function selectCategorias() {
         $conexion = Conexion::conectar();

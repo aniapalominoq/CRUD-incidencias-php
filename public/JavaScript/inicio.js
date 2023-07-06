@@ -1,6 +1,6 @@
   /*  para el menu boton de hamburguesa */
-let navigation = document.querySelector('.inicio__navegation');
-    let toggles=document.querySelector('.inicio__navegation-toggle');
+const navigation = document.querySelector('.inicio__navegation');
+const toggles=document.querySelector('.inicio__navegation-toggle');
     toggles.onclick=function(){
         navigation.classList.toggle('active');
 }
@@ -27,7 +27,6 @@ let max = 4;
 let current=1
 
 nextBtn1.addEventListener("click", function () {
-  
     slidePage.style.marginLeft = "-25%";
     bullet[current - 1].classList.add('spot-light');
       progressText[current - 1].classList.add('spot-light');
@@ -150,6 +149,8 @@ submitBtn.addEventListener("click", function () {
 });
     
 })
+
+
 /* ---------------------FIN --------------------------- */
 /* para los select anidados del fomulario */
 
@@ -542,10 +543,159 @@ document.addEventListener('DOMContentLoaded', cargarTipoKilometraje);
 
 }
 
+/* ----------------- para renderizar las secciones --------------------------------*/
+const contenidoDinamico = document.getElementById('contenido-dinamico');
+// Función para cambiar la vista actual utilizando async/await y PHP
+async function changeView(view) {
+  try {
+    // Realizar una petición utilizando fetch y esperar la respuesta
+    const response = await fetch(view);
+    // Verificar si la respuesta es exitosa
+    if (!response.ok) {
+      throw new Error('Error al cargar la vista');
+    }
+    // Obtener el contenido de la respuesta como texto
+    const texto = await response.text();
+    // Actualizar el contenido de la sección 'contenido-dinamico'
+    // Envolver la actualización del contenido en una Promesa
+       await new Promise(resolve => {
+      contenidoDinamico.innerHTML = texto;
+      resolve();
+    });
+ 
+    // Llamar a la función para renderizar la tabla Grid.js después de cargar el contenido
+    renderizarTablaGrid();
+  } catch (error) {
+    console.error('Error al cargar la vista:', error);
+  }
+}
 
 
-const example = document.getElementById("example")
-example.addEventListener("click", mostrarAlerta)
+// Función para renderizar la tabla Grid.js en el elemento 'wrapper'
+async function renderizarTablaGrid() {
+  const wrapper = document.getElementById('wrapper');
+  console.log('soy melania',wrapper);
+  if (wrapper) {
+    // Vaciar el contenido existente del contenedor
+    wrapper.innerHTML = '';
+    try {
+      // Realizar la solicitud fetch al archivo PHP
+      const response = await fetch('../../servidor/incidencia/mostrar.php');
+      if (!response.ok) {
+        throw new Error('Error al obtener los datos de incidencias');
+      }
+
+      // Obtener los datos de incidencias
+      const datosIncidencias = await response.json();
+
+      // Procesar los datos y generar la tabla Grid.js
+      const grid = new gridjs.Grid({
+        columns: [
+          {name:"N°",width:"20px"},
+          {name:"Tipo servicio",width:"100px"},
+          {name: "Ruta",width:"auto"},
+          {name:"Servicio",width:"auto"},
+          {name: "Bus",width:"80px"},
+          {name:"Consorcio",width:"auto"},
+          {name:"Acciones",
+           width:"auto",
+/*            formatter: (cell, row) => {
+                  return gridjs.h('button',{ className: 'py-2 mb-4 px-4 border rounded-md text-white bg-blue-600',onClick: () => alert(`Editing "${row.cells[0].data}" "${row.cells[1].data}"`)},
+                    'Edit');
+                } */
+          }
+        ],
+        sort: true,
+        data: datosIncidencias.map((incidencia,index) => [
+          index+1,
+          incidencia.tipo_servicio,
+          incidencia.ruta,
+          incidencia.servicio,
+          incidencia.bus,
+          incidencia.consorcio,
+         /*`<button data-id="${incidencia.idincidencia}" class="btn-editar" style={background:red}>Editar</button>
+           <button data-id="${incidencia.idincidencia}" class="btn-eliminar">Eliminar</button>`*/
+        ]),
+        style: {
+          table: { width: '100%' },
+          th: { backgroundColor: "#5ABDD5", color: "#fff" },
+        },
+      }).render(document.getElementById("wrapper"));
+
+      // Agregar eventos a los botones
+      document.getElementById("wrapper").querySelectorAll(".btn-editar").forEach(btn => {
+        btn.addEventListener("click", function(event) {
+          const id = event.target.dataset.id;
+          // Lógica para editar el elemento con el ID proporcionado
+        });
+      });
+      document.getElementById("wrapper").querySelectorAll(".btn-eliminar").forEach(btn => {
+        btn.addEventListener("click", function(event) {
+          const id = event.target.dataset.id;
+          // Lógica para eliminar el elemento con el ID proporcionado
+        });
+      });
+    } catch (error) {
+      // Manejar errores en la solicitud fetch
+      console.error(error);
+    }
+  }
+}
+    
+document.getElementById('listar').addEventListener('click', function() {
+    
+  changeView('./modulos/listado_incidencias.php');
+});
+
+document.getElementById('descargar').addEventListener('click', function() {
+  changeView('./modulos/descargar_incidencias.php');
+});
+    
+  /*const wrapper = document.getElementById("wrapper");
+  if (wrapper) {
+    // Vaciar el contenido existente del contenedor
+    wrapper.innerHTML = '';
+    new gridjs.Grid({
+      search: true,
+      pagination: {
+        limit: 3,
+        enabled: true,
+        summary: false,
+      },
+      sort: true,
+     columns: ['Tipo de Servicio', 'Ruta', 'Servicio', 'Bus', 'Consorcio', 'Acciones'],
+            data: [
+    ["John", "john@example.com", "(353) 01 222 3333"],
+    ["Mark", "mark@gmail.com", "(01) 22 888 4444"],
+    ["Eoin", "eoin@gmail.com", "0097 22 654 00033"],
+    ["Sarah", "sarahcdd@gmail.com", "+322 876 1233"],
+    ["Afshin", "afshin@mail.com", "(353) 22 87 8356"]
+  ],
+      style: {
+        table: { width: '100%' },
+        th: { backgroundColor: "#5ABDD5", color: "#fff" },
+      },
+    }).render(wrapper);*/
+  
+
+
+
+
+// Asociar eventos de clic a los elementos del menú
+/*document.getElementById('incidencia').addEventListener('click', function() {
+  changeView('./modulos/registro_incidencias.php');
+});*/
+
+
+
+
+
+
+
+
+
+
+
 // your_script.js
 function mostrarAlerta() {
   Swal.fire({

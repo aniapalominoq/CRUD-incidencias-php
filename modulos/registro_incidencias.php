@@ -1,5 +1,4 @@
 
-<main class="addIncidents__main">
 <section class="addIncidents__container">
     <header   class="addIncidents__container-header">Registrar Nueva incidencia</header>
     <!-- barra de progreso del formulario -->
@@ -199,10 +198,5 @@
         </form>
     </section>
 </section>
-    
-    
-       <!--  <div class=".addIncidents__main-copyright">
-            &copy; 2023 - <span>Melania Palomino</span> All Rights Reserved.
-        </div> -->
-    </main>
+
    
