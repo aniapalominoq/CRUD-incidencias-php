@@ -591,13 +591,13 @@ async function renderizarTablaGrid() {
       // Procesar los datos y generar la tabla Grid.js
       const grid = new gridjs.Grid({
         columns: [
-          {name:"Id",width:"20px"},
-          {name:"Tipo servicio",width:"100px"},
-          {name: "Ruta",width:"auto"},
-          {name:"Servicio",width:"auto"},
-          {name: "Bus",width:"80px"},
-          {name:"Consorcio",width:"auto"},
-          {name:"Acciones",
+          {name:"ID",width:"30px"},
+          {name:"TIPO SERV.",width:"130px"},
+          {name: "RUTA",width:"auto"},
+          {name:"NUM. SERV.",width:"auto"},
+          {name: "BUS",width:"80px"},
+          {name:"CONSORCIO",width:"auto"},
+          {name:"ACCIONES",
            width:"auto",
       formatter: (cell, row) => {
         const id = row.cells[0].data;
@@ -644,14 +644,55 @@ document.getElementById("wrapper").addEventListener("click", function(event) {
   }
 });
 
-function editarElemento(id) {
+        function editarElemento(id) {
+    
+
   // Lógica para editar el elemento con el ID proporcionado
-  console.log("Editar elemento con ID:", id);
+    console.log("Editar elemento con ID:", id);
+    
 }
 
-function eliminarElemento(id) {
+async function eliminarElemento(id_incidencia) {
+   try {
+        const result = await Swal.fire({
+            title: '¿Estás seguro?',
+            text: 'Esta acción eliminará la incidencia',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Eliminar',
+            cancelButtonText: 'Cancelar',
+            reverseButtons: true
+        });
+
+        if (result.isConfirmed) {
+            const response = await fetch('/servidor/incidencia/eliminar.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: 'id_incidencia=' + encodeURIComponent(id_incidencia)
+            });
+
+            const responseText = await response.text();
+            //console.log(responseText); // Aquí puedes hacer lo que necesites con el resultado
+
+            Swal.fire({
+                title: 'Incidencia eliminada',
+                text: 'La incidencia ha sido eliminada exitosamente',
+                icon: 'success'
+            });
+       }
+        changeView('./modulos/listado_incidencias.php');
+    } catch (error) {
+       // console.error('Error:', error);
+        Swal.fire({
+            title: 'Error',
+            text: 'Se produjo un error al eliminar la incidencia',
+            icon: 'error'
+        });
+    }
   // Lógica para eliminar el elemento con el ID proporcionado
-  console.log("Eliminar elemento con ID:", id);
+  //console.log("Eliminar elemento con ID:", id);
 }
     } catch (error) {
       // Manejar errores en la solicitud fetch
