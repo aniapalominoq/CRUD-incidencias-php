@@ -591,7 +591,7 @@ async function renderizarTablaGrid() {
       // Procesar los datos y generar la tabla Grid.js
       const grid = new gridjs.Grid({
         columns: [
-          {name:"N°",width:"20px"},
+          {name:"Id",width:"20px"},
           {name:"Tipo servicio",width:"100px"},
           {name: "Ruta",width:"auto"},
           {name:"Servicio",width:"auto"},
@@ -599,42 +599,60 @@ async function renderizarTablaGrid() {
           {name:"Consorcio",width:"auto"},
           {name:"Acciones",
            width:"auto",
-/*            formatter: (cell, row) => {
-                  return gridjs.h('button',{ className: 'py-2 mb-4 px-4 border rounded-md text-white bg-blue-600',onClick: () => alert(`Editing "${row.cells[0].data}" "${row.cells[1].data}"`)},
-                    'Edit');
-                } */
+      formatter: (cell, row) => {
+        const id = row.cells[0].data;
+        return gridjs.html(`
+          <button data-id="${id}" class="btn-editar" >Editar</button>
+          <button data-id="${id}" class="btn-eliminar">Eliminar</button>
+        `);
+              }
           }
         ],
         sort: true,
-        data: datosIncidencias.map((incidencia,index) => [
-          index+1,
-          incidencia.tipo_servicio,
-          incidencia.ruta,
-          incidencia.servicio,
-          incidencia.bus,
-          incidencia.consorcio,
-         /*`<button data-id="${incidencia.idincidencia}" class="btn-editar" style={background:red}>Editar</button>
-           <button data-id="${incidencia.idincidencia}" class="btn-eliminar">Eliminar</button>`*/
-        ]),
+  data: datosIncidencias.map((elem) => {
+    const id = elem.idincidencia;
+    return [
+      id,
+    elem.tipo,
+    elem.abreviatura,
+    elem.servicio,
+    elem.bus,
+    elem.nombre_consorcio,
+      id // Agregamos el ID al final de la fila
+    ];
+  }),
         style: {
           table: { width: '100%' },
           th: { backgroundColor: "#5ABDD5", color: "#fff" },
         },
       }).render(document.getElementById("wrapper"));
 
-      // Agregar eventos a los botones
-      document.getElementById("wrapper").querySelectorAll(".btn-editar").forEach(btn => {
-        btn.addEventListener("click", function(event) {
-          const id = event.target.dataset.id;
-          // Lógica para editar el elemento con el ID proporcionado
-        });
-      });
-      document.getElementById("wrapper").querySelectorAll(".btn-eliminar").forEach(btn => {
-        btn.addEventListener("click", function(event) {
-          const id = event.target.dataset.id;
-          // Lógica para eliminar el elemento con el ID proporcionado
-        });
-      });
+// Agregar evento al contenedor principal de la tabla
+document.getElementById("wrapper").addEventListener("click", function(event) {
+  const target = event.target;
+
+  // Verificar si el evento ocurrió en un botón de editar
+  if (target.classList.contains("btn-editar")) {
+    const id = target.dataset.id;
+    editarElemento(id);
+  }
+
+  // Verificar si el evento ocurrió en un botón de eliminar
+  if (target.classList.contains("btn-eliminar")) {
+    const id = target.dataset.id;
+    eliminarElemento(id);
+  }
+});
+
+function editarElemento(id) {
+  // Lógica para editar el elemento con el ID proporcionado
+  console.log("Editar elemento con ID:", id);
+}
+
+function eliminarElemento(id) {
+  // Lógica para eliminar el elemento con el ID proporcionado
+  console.log("Eliminar elemento con ID:", id);
+}
     } catch (error) {
       // Manejar errores en la solicitud fetch
       console.error(error);
@@ -650,50 +668,6 @@ document.getElementById('listar').addEventListener('click', function() {
 document.getElementById('descargar').addEventListener('click', function() {
   changeView('./modulos/descargar_incidencias.php');
 });
-    
-  /*const wrapper = document.getElementById("wrapper");
-  if (wrapper) {
-    // Vaciar el contenido existente del contenedor
-    wrapper.innerHTML = '';
-    new gridjs.Grid({
-      search: true,
-      pagination: {
-        limit: 3,
-        enabled: true,
-        summary: false,
-      },
-      sort: true,
-     columns: ['Tipo de Servicio', 'Ruta', 'Servicio', 'Bus', 'Consorcio', 'Acciones'],
-            data: [
-    ["John", "john@example.com", "(353) 01 222 3333"],
-    ["Mark", "mark@gmail.com", "(01) 22 888 4444"],
-    ["Eoin", "eoin@gmail.com", "0097 22 654 00033"],
-    ["Sarah", "sarahcdd@gmail.com", "+322 876 1233"],
-    ["Afshin", "afshin@mail.com", "(353) 22 87 8356"]
-  ],
-      style: {
-        table: { width: '100%' },
-        th: { backgroundColor: "#5ABDD5", color: "#fff" },
-      },
-    }).render(wrapper);*/
-  
-
-
-
-
-// Asociar eventos de clic a los elementos del menú
-/*document.getElementById('incidencia').addEventListener('click', function() {
-  changeView('./modulos/registro_incidencias.php');
-});*/
-
-
-
-
-
-
-
-
-
 
 
 // your_script.js

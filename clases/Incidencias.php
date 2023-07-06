@@ -3,7 +3,7 @@ include "Conexion.php";
 class Incidencias extends Conexion{
     public function mostrarIncidencias() {
         $conexion = Conexion::conectar();
-        $sql = "SELECT*FROM incidencia";
+        $sql = "SELECT incidencia.idincidencia, tipo.tipo, ruta.abreviatura,incidencia.servicio,incidencia.bus, consorcio.nombre_consorcio FROM incidencia INNER JOIN tipo ON incidencia.tipo_servicio = tipo.id_tipo INNER JOIN ruta ON incidencia.ruta = ruta.id_ruta INNER JOIN consorcio ON incidencia.consorcio = consorcio.idconsorcio";
         $respuesta = mysqli_query($conexion, $sql);
         $resultado = mysqli_fetch_all($respuesta, MYSQLI_ASSOC);
         return json_encode($resultado);
