@@ -1,0 +1,67 @@
+
+.listContainer{
+    border:1px solid var(--cyan-100);
+    width: 95%;
+    height: 90%;
+    border-radius: 5px;
+    padding: 30px;
+    overflow: auto; /* Habilita la barra de desplazamiento cuando la tabla desborde el contenedor */
+}
+
+/* .listContainer__tabla{
+    //Estilos personalizados 
+
+}
+
+.listContainer__tabla th {
+     //Estilos para las celdas de encabezado 
+    background-color:var(--cyan-100);
+    font-weight:100;
+    color:'#fff';
+}
+
+.listContainer__tabla td {
+  // Estilos para las celdas de datos 
+  padding:2px;
+} */
+.listContainer__tabla-svg{
+     width: 25px;
+    height: 25px;
+
+}
+.listContainer__btns{
+    display:flex;
+    gap:2px;
+    justify-content: center;
+    align-items: center;
+}
+
+.listContainer__btn-editar ,.listContainer__btn-eliminar ,.listContainer__btn-ver{
+    height:30px;
+    width: 50px;
+    border: none;
+    border-radius:0.2rem;
+    color:var(--white);
+    transition:0.3s ease;
+    cursor: pointer;
+    padding: 1px;
+}
+
+.listContainer__btn-editar{
+  background-color:var(--yellow-100);
+}
+.listContainer__btn-ver{
+background-color:var(--green-100);
+}
+.listContainer__btn-eliminar{
+background-color:var(--red-100);
+}
+.listContainer__btn-editar:hover{
+ background:var(--blue-300); 
+}
+.listContainer__btn-ver:hover{
+ background:var(--blue-300); 
+}
+.listContainer__btn-eliminar:hover{
+ background:var(--blue-300); 
+}

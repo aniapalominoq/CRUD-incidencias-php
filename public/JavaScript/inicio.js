@@ -332,7 +332,7 @@ async function cargarBusPlaca(numeroVid) {
         const data = await response.json();
         inputBus.value ='';
         inputPlaca.value = ''
-        inputBus.value =data[0].id_bus;
+        inputBus.value =data[0].num_externo;
         inputPlaca.value = data[0].placa;
         
       
@@ -574,7 +574,7 @@ async function changeView(view) {
 // Función para renderizar la tabla Grid.js en el elemento 'wrapper'
 async function renderizarTablaGrid() {
   const wrapper = document.getElementById('wrapper');
-  console.log('soy melania',wrapper);
+  //console.log('soy melania',wrapper);
   if (wrapper) {
     // Vaciar el contenido existente del contenedor
     wrapper.innerHTML = '';
@@ -591,60 +591,207 @@ async function renderizarTablaGrid() {
       // Procesar los datos y generar la tabla Grid.js
       const grid = new gridjs.Grid({
         columns: [
-          {name:"ID",width:"30px"},
-          {name:"TIPO SERV.",width:"130px"},
-          {name: "RUTA",width:"auto"},
-          {name:"NUM. SERV.",width:"auto"},
-          {name: "BUS",width:"80px"},
-          {name:"CONSORCIO",width:"auto"},
-          {name:"ACCIONES",
-           width:"auto",
-      formatter: (cell, row) => {
-        const id = row.cells[0].data;
-        return gridjs.html(`
-          <button data-id="${id}" class="btn-editar" >Editar</button>
-          <button data-id="${id}" class="btn-eliminar">Eliminar</button>
-        `);
-              }
-          }
+            {name:"ID",width:"auto"},
+            {name:"FECHA",width:"auto"},
+            {name:"CONSORCIO",width:"auto"},
+            {name:"TIPO SERV.",width:"auto"},
+            {name:"RUTA", width: "auto" },
+            {name:"CATEGORIA", width: "auto" },
+            {name:"SUB CATEG.", width: "auto" },
+            {name:"NUMERO SERV.", width: "auto" },
+            {name:"VID", width: "auto" },
+            {name:"TIPO KM", width: "auto" },
+            {name:"KILOMETRAJE",width:"auto"},
+            {name:"ACCIONES",
+                width:"auto",
+                formatter: (cell, row) => {
+                const id = row.cells[0].data;
+                    return gridjs.html(`
+                    <div class="listContainer__btns">
+                    <button  data-id="${id}" class="listContainer__btn-ver" >
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ionicon listContainer__tabla-svg" viewBox="0 0 512 512"><path d="M255.66 112c-77.94 0-157.89 45.11-220.83 135.33a16 16 0 00-.27 17.77C82.92 340.8 161.8 400 255.66 400c92.84 0 173.34-59.38 221.79-135.25a16.14 16.14 0 000-17.47C428.89 172.28 347.8 112 255.66 112z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><circle cx="256" cy="256" r="80" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/></svg>
+                    </button>    
+                    <button data-id="${id}" class="listContainer__btn-editar" >
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ionicon listContainer__tabla-svg" viewBox="0 0 512 512"><path d="M384 224v184a40 40 0 01-40 40H104a40 40 0 01-40-40V168a40 40 0 0140-40h167.48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><path d="M459.94 53.25a16.06 16.06 0 00-23.22-.56L424.35 65a8 8 0 000 11.31l11.34 11.32a8 8 0 0011.34 0l12.06-12c6.1-6.09 6.67-16.01.85-22.38zM399.34 90L218.82 270.2a9 9 0 00-2.31 3.93L208.16 299a3.91 3.91 0 004.86 4.86l24.85-8.35a9 9 0 003.93-2.31L422 112.66a9 9 0 000-12.66l-9.95-10a9 9 0 00-12.71 0z" fill="#fff" /></svg>
+                    </button>
+                    <button data-id="${id}" class="listContainer__btn-eliminar">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ionicon listContainer__tabla-svg" viewBox="0 0 512 512"><path d="M112 112l20 320c.95 18.49 14.4 32 32 32h184c17.67 0 30.87-13.51 32-32l20-320" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" d="M80 112h352"/><path d="M192 112V72h0a23.93 23.93 0 0124-24h80a23.93 23.93 0 0124 24h0v40M256 176v224M184 176l8 224M328 176l-8 224" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/></svg>
+                    </button>
+                    </div>
+                    `);
+                }
+            }
         ],
         sort: true,
   data: datosIncidencias.map((elem) => {
     const id = elem.idincidencia;
     return [
       id,
-    elem.tipo,
+    elem.fecha,
+    elem.abreviatura_consorcio,
+    elem.abreviatura_tipo,
     elem.abreviatura,
+    elem.categoria,
+    elem.sub_categoria,
     elem.servicio,
     elem.bus,
-    elem.nombre_consorcio,
+    elem.tipo_kilometraje,
+    elem.kilometraje,
       id // Agregamos el ID al final de la fila
-    ];
+      ];
+    
   }),
-        style: {
-          table: { width: '100%' },
-          th: { backgroundColor: "#5ABDD5", color: "#fff" },
-        },
-      }).render(document.getElementById("wrapper"));
+   search: {
+    enabled: true,
+    placeholder: 'Buscar...',
+    onInput: (value) => {
+      // Lógica personalizada al escribir en el campo de búsqueda
+      console.log('Valor de búsqueda:', value);
+    },
+    onReset: () => {
+      // Lógica personalizada al restablecer la búsqueda
+      console.log('Búsqueda restablecida');
+    }
+  },
+    pagination: {
+        limit: 10,
+        summary: false
+    },
+    className: {
+        table: 'listContainer__tabla'
+          },
+     style: {
+    table: {
+     
+    },
+    th: {
+      backgroundColor:'#5ABDD5',
+        fontWeight: '100',
+      color:'#FFFF'
+    },
+         td: {
+    textAlign: 'center', // Alinea el contenido en el centro horizontalmente
+    verticalAlign: 'middle' ,// Alinea el contenido en el centro verticalmente
+    padding: '3.5px',
+    fontSize: '16px',
+    //fontWeight: '100', // Establece el tamaño de fuente deseado para la columna 'Name'
+    }
+  }
+    }).render(document.getElementById("wrapper"));
 
 // Agregar evento al contenedor principal de la tabla
 document.getElementById("wrapper").addEventListener("click", function(event) {
   const target = event.target;
 
   // Verificar si el evento ocurrió en un botón de editar
-  if (target.classList.contains("btn-editar")) {
+  if (target.classList.contains("listContainer__btn-editar")) {
     const id = target.dataset.id;
     editarElemento(id);
   }
 
   // Verificar si el evento ocurrió en un botón de eliminar
-  if (target.classList.contains("btn-eliminar")) {
+  if (target.classList.contains("listContainer__btn-eliminar")) {
     const id = target.dataset.id;
     eliminarElemento(id);
-  }
+    }
+    
+  // Verificar si el evento ocurrió en un botón de ver
+  if (target.classList.contains("listContainer__btn-ver")) {
+    const id = target.dataset.id;
+    verElemento(id);
+    }
+    
 });
+        /* funcion para ver eldetalle de cada fila */
+        function verElemento(id_incidencia) {
+             // Lógica para ver el elemento con el ID proporcionado
+    console.log("ver elemento con ID:", id_incidencia);
+         }
 
-        function editarElemento(id) {
+/* funcion  para editar la tabla */
+       async function editarElemento(id_incidencia) {
+        try {
+        // Realizar la solicitud para obtener los datos de la incidencia a editar
+        const response = await fetch('/servidor/incidencia/editar.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: 'id_incidencia=' + encodeURIComponent(id_incidencia)
+        });
+
+        const incidencia = await response.json();
+
+        // Mostrar el formulario de edición utilizando SweetAlert2
+        const { value: formValues } = await Swal.fire({
+            title: 'Editar incidencia',
+            html: `<div class="addIncidents__form-field">
+                        <label for="tipo-servicio" class="addIncidents__form-label">Tipo de servicio</label>
+                        <select name="tipo_servicio" id="tipo_servicio" class="addIncidents__form-select" required>
+                            <option class="addIncidents__form-select-option" value="">Seleccione tipo serv.</option>
+                            <option class="addIncidents__form-select-option" value="1">TRONCAL</option>
+                            <option class="addIncidents__form-select-option" value="2">ALIMENTADOR</option>
+                        </select>
+                    </div>
+                    <div class="addIncidents__form-field">
+                        <label for="ruta" class="addIncidents__form-label">Ruta:</label>
+                        <select id="ruta" name="ruta" class="addIncidents__form-select" required>
+                            <option value="">Seleccione una ruta</option>
+                        </select>
+                    </div>
+                    <div class="addIncidents__form-field">
+                        <label for="numero_servicio" class="addIncidents__form-label">Número servicio</label>
+                        <input id="numero_servicio" name="numero_servicio" type="number" class="addIncidents__form-input" placeholder="Número Servicio" required>
+                    </div>
+                    <div class="addIncidents__form-field">
+                        <label for="id_bus" class="addIncidents__form-label">Id bus</label>
+                        <input name="id_bus" id="id_bus" type="text" class="addIncidents__form-input" placeholder="id bus">
+                    </div>
+                    <div class="addIncidents__form-field">
+                        <label for="consorcio" class="addIncidents__form-label">Consorcio:</label>
+                        <select id="consorcio" name="consorcio" class="addIncidents__form-select" required>
+                            <option value="">Seleccione un consorcio</option>
+                        </select>
+                    </div>`,
+            focusConfirm: false,
+            preConfirm: () => {
+                return [
+                    document.getElementById('swal-input1').value,
+                    document.getElementById('swal-input2').value
+                ];
+            }
+        });
+
+        // Validar y enviar los datos actualizados al servidor
+        if (formValues) {
+            const titulo = formValues[0];
+            const descripcion = formValues[1];
+
+            // Realizar la solicitud para actualizar la incidencia
+            const actualizarResponse = await fetch('actualizar_incidencia.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: 'id_incidencia=' + encodeURIComponent(id_incidencia) +
+                      '&titulo=' + encodeURIComponent(titulo) +
+                      '&descripcion=' + encodeURIComponent(descripcion)
+            });
+
+            const actualizarResponseText = await actualizarResponse.text();
+            console.log(actualizarResponseText); // Aquí puedes hacer lo que necesites con el resultado
+
+            // Volver a renderizar la tabla actualizada
+            changeView('./modulos/listado_incidencias.php');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        Swal.fire({
+            title: 'Error',
+            text: 'Se produjo un error al editar la incidencia',
+            icon: 'error'
+        });
+    }
     
 
   // Lógica para editar el elemento con el ID proporcionado
@@ -701,9 +848,8 @@ async function eliminarElemento(id_incidencia) {
   }
 }
     
-document.getElementById('listar').addEventListener('click', function() {
-    
-  changeView('./modulos/listado_incidencias.php');
+document.getElementById('listar').addEventListener('click', function () {
+    changeView('./modulos/listado_incidencias.php');
 });
 
 document.getElementById('descargar').addEventListener('click', function() {

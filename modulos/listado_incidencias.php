@@ -1,4 +1,3 @@
-<div id="wrapper">
-<div id="botones-container"></div>
+<section id="wrapper" class="listContainer">
 
-</div>
+</section>
