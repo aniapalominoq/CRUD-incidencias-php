@@ -1,24 +1,30 @@
 @import "./reset.css";
 @import "./confingBasic.css";
 @import "./resgistro_incidencias.css";
+@import "./listado_incidencias.css";
 
 .inicio__body{
-    min-height:100vh;
-   display: flex;
-   flex-direction: column;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    
-
-    padding-left: 100px;
- /*    overflow-x: hidden; */
- 
+    padding-left: 90px;
+    /*    overflow-x: hidden; */
 }
 
+.addIncidents__main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
 .inicio__navegation{
 
     position: fixed;
-    inset: 20px;
+    inset: 10px;
     background:var(--blue-300);
     width: 80px;
    /*  border-left: 10px solid var(--blue-300) ; */
