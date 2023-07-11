@@ -79,76 +79,25 @@ prevBtn4.addEventListener("click", function () {
     current -= 1;
 })
 submitBtn.addEventListener("click", function () {
-        bullet[current - 1].classList.add('spot-light');
-     progressText[current - 1].classList.add('spot-light');
-    progressCheck[current - 1].classList.add('spot-light');
-    current += 1;
- setTimeout(function () {
-        guardarDatosFormulario()
-       location.reload()
- }, 800) 
+  bullet[current - 1].classList.add('spot-light');
+  progressText[current - 1].classList.add('spot-light');
+  progressCheck[current - 1].classList.add('spot-light');
+  current += 1;
+
+  setTimeout(function () {
+    guardarDatosFormulario();
     Swal.fire({
-	// title:
-	// text:
-	// html:
-	// icon:
-	// confirmButtonText:
-	// footer:
-	// width:
-	// padding:
-	// background:
-	// grow:
-	// backdrop:
-	// timer:
-	// timerProgressBar:
-	// toast:
-	// position:
-	// allowOutsideClick:
-	// allowEscapeKey:
-	// allowEnterKey:
-	// stopKeydownPropagation:
-
-	// input:
-	// inputPlaceholder:
-	// inputValue:
-	// inputOptions:
-	
-	//  customClass:
-	// 	container:
-	// 	popup:
-	// 	header:
-	// 	title:
-	// 	closeButton:
-	// 	icon:
-	// 	image:
-	// 	content:
-	// 	input:
-	// 	actions:
-	// 	confirmButton:
-	// 	cancelButton:
-	// 	footer:	
-
-	// showConfirmButton:
-	// confirmButtonColor:
-	// confirmButtonAriaLabel:
-
-	// showCancelButton:
-	// cancelButtonText:
-	// cancelButtonColor:
-	// cancelButtonAriaLabel:
-	
-	// buttonsStyling:
-	// showCloseButton:
-	// closeButtonAriaLabel:
-
-
-	// imageUrl:
-	// imageWidth:
-	// imageHeight:
-	// imageAlt:
+      icon: 'success',
+      title: 'Datos guardados',
+      text: 'Los datos se han guardado correctamente.',
+      confirmButtonText: 'Aceptar',
+    }).then(function () {
+        location.reload();
+      // Aquí puedes agregar cualquier otra acción que desees realizar después de guardar los datos
+      // Por ejemplo, redireccionar a otra página o realizar alguna otra tarea.
+    });
+  },2000);
 });
-    
-})
 
 
 /* ---------------------FIN --------------------------- */
@@ -184,7 +133,7 @@ async function cargarCategorias() {
          // Limpiar el select
          //categoriaSelect.innerHTML = '';
          // Iterar sobre los datos y crear las opciones
-        categoriaSelect.innerHTML = '<option id="" value="">Seleccione una categoría</option>';
+        categoriaSelect.innerHTML = '<option id="" value="" class="addIncidents__form-option">Seleccione una categoría</option>';
         
         data.forEach(categoria => {
             const option = document.createElement('option');
@@ -201,7 +150,7 @@ async function cargarSubCategorias(categoriaId) {
     try {
           const response = await fetch(`../../servidor/incidencia/cargar_subcategoria.php?categoria_id=${categoriaId}`);
         const data = await response.json();
-        subcategoriaSelect.innerHTML = '<option value="">Seleccione una subcategoría</option>';
+        subcategoriaSelect.innerHTML = '<option value="" class="addIncidents__form-option">Seleccione una subcategoría</option>';
         data.forEach(subcategoria => {
             const option = document.createElement('option');
             option.value = subcategoria.id_subcategoria;
@@ -218,7 +167,7 @@ async function cargarCausas(subcategoriaId) {
         const response = await fetch(`../../servidor/incidencia/cargar_causa.php?subcategoria_id=${subcategoriaId}`);
         const data = await response.json();
         
-        causaSelect.innerHTML = '<option value="">Seleccione una causa</option>';
+        causaSelect.innerHTML = '<option value="" class="addIncidents__form-option">Seleccione una causa</option>';
         
         data.forEach(causa => {
             const option = document.createElement('option');
@@ -236,7 +185,7 @@ async function cargarConsecuencias(causaId) {
         const response = await fetch(`../../servidor/incidencia/cargar_consecuencia.php?causa_id=${causaId}`);
         const data = await response.json();
         
-        consecuenciaSelect.innerHTML = '<option value="">Seleccione una consecuencia</option>';
+        consecuenciaSelect.innerHTML = '<option value="" class="addIncidents__form-option">Seleccione una consecuencia</option>';
         
         data.forEach(consecuencia => {
             const option = document.createElement('option');
@@ -252,7 +201,7 @@ async function cargarConsorcio() {
     try {
         const response = await fetch(`../../servidor/incidencia/cargar_consorcio.php`);
         const data = await response.json();
-        consorcioSelect.innerHTML = '<option value="">Seleccione una consorcio</option>';
+        consorcioSelect.innerHTML = '<option value="" class="addIncidents__form-option">Seleccione una consorcio</option>';
         data.forEach(consorcio => {
             const option = document.createElement('option');
             option.value = consorcio.idconsorcio;
@@ -268,7 +217,7 @@ async function cargarRuta(consorcioId,tipoId){
     try {
         const response = await fetch(`../../servidor/incidencia/cargar_ruta.php?consorcio_id=${consorcioId}&id_tipo=${tipoId}`);
         const data = await response.json();
-        rutaSelect.innerHTML = '<option value="">Seleccione una ruta</>';
+        rutaSelect.innerHTML = '<option value="" class="addIncidents__form-option">Seleccione una ruta</>';
         data.forEach(ruta => {
         const option = document.createElement('option');
         option.value = ruta.id_ruta;
@@ -284,7 +233,7 @@ async function cargarSentido() {
     try {
          const response = await fetch(`../../servidor/incidencia/cargar_sentido.php`)
         const data = await response.json();
-        sentidoSelect.innerHTML = '<option value="">Seleccione un sentido</option>';
+        sentidoSelect.innerHTML = '<option value="" class="addIncidents__form-option">Seleccione un sentido</option>';
         data.forEach(sentido => {
         const option = document.createElement('option');
         option.value = sentido.idsentido;
@@ -299,7 +248,7 @@ async function cargarTipoKilometraje() {
     try {
         const response = await fetch(`../../servidor/incidencia/cargar_tipo_kilometraje.php`);
         const data = await response.json();
-        tipokilometrajeSelect.innerHTML = '<option value="">Seleccione tipo kilometraje</option>';
+        tipokilometrajeSelect.innerHTML = '<option value="" class="addIncidents__form-option">Seleccione tipo kilometraje</option>';
         data.forEach(tipokilometraje => {
             const option = document.createElement('option');
             option.value = tipokilometraje.idtipo_kilometraje;
@@ -454,7 +403,7 @@ tipoServicioSelect.addEventListener('change', () => {
 consorcioSelect.addEventListener('change', () => {
     const consorcioId = consorcioSelect.value;
     const tipoId = tipoServicioSelect.value;
-    rutaSelect.innerHTML = '<option value="">Seleccione una ruta</option>';
+    rutaSelect.innerHTML = '<option value="" class="addIncidents__form-option">Seleccione una ruta</option>';
     if (consorcioId) {
         cargarRuta(consorcioId ,tipoId);
     }
@@ -466,7 +415,7 @@ causaSelect.addEventListener('change', () => {
     const causaId = causaSelect.value;
     //console.log(' id de la causa',causaId);
     // Limpiar select de consecuencias
-    consecuenciaSelect.innerHTML = '<option value="">Seleccione una consecuencia</option>';
+    consecuenciaSelect.innerHTML = '<option value="" class="addIncidents__form-option">Seleccione una consecuencia</option>';
     
     if (causaId) {
         cargarConsecuencias(causaId);
@@ -478,8 +427,8 @@ subcategoriaSelect.addEventListener('change', () => {
     const subcategoriaId = subcategoriaSelect.value;
    // console.log( 'subcategoria',subcategoriaId)
     // Limpiar select de causas y consecuencias
-    causaSelect.innerHTML = '<option value="">Seleccione una causa</option>';
-    consecuenciaSelect.innerHTML = '<option value="">Seleccione una consecuencia</option>';
+    causaSelect.innerHTML = '<option value="" class="addIncidents__form-option">Seleccione una causa</option>';
+    consecuenciaSelect.innerHTML = '<option value="" class="addIncidents__form-option">Seleccione una consecuencia</option>';
     
     if (subcategoriaId) {
         cargarCausas(subcategoriaId);
@@ -492,9 +441,9 @@ categoriaSelect.addEventListener('change', () => {
     /* console.log(categoriaSelect)
     console.log( 'soy id seleccionado de categoria',categoriaId) */
     // Limpiar select de subcategorías y causas
-    subcategoriaSelect.innerHTML = '<option value="">Seleccione una subcategoría</option>';
-    causaSelect.innerHTML = '<option value="">Seleccione una causa</option>';
-    consecuenciaSelect.innerHTML = '<option value="">Seleccione una consecuencia</option>';
+    subcategoriaSelect.innerHTML = '<option value="" class="addIncidents__form-option">Seleccione una subcategoría</option>';
+    causaSelect.innerHTML = '<option value="" class="addIncidents__form-option">Seleccione una causa</option>';
+    consecuenciaSelect.innerHTML = '<option value="" class="addIncidents__form-option">Seleccione una consecuencia</option>';
     
     if (categoriaId) {
         cargarSubCategorias(categoriaId);
@@ -725,7 +674,65 @@ document.getElementById("wrapper").addEventListener("click", function(event) {
         // Mostrar el formulario de edición utilizando SweetAlert2
         const { value: formValues } = await Swal.fire({
             title: 'Editar incidencia',
-            html: `<div class="addIncidents__form-field">
+            html: ` <div class="addIncidents__form-group">
+                <div class="addIncidents__form-field">
+                    <label for="date" class="addIncidents__form-label">Fecha</label>
+                    <input id="date" name="date" type="date" class="addIncidents__form-input" required>
+                </div>
+                <div class="addIncidents__form-field">
+                    <label for="time_on" class="addIncidents__form-label">Hora Inicio</label>
+                    <input id="time_on" name="time_on" type="time" class="addIncidents__form-input" required>
+                </div>
+                <div class="addIncidents__form-field">
+                    <label for="time_off" class="addIncidents__form-label">Hora Fin</label>
+                    <input id="time_off" name="time_off" type="time" class="addIncidents__form-input" required>
+                </div>
+                </div>
+                <div class="addIncidents__form-field">
+                    <label for="place_incidence" class="addIncidents__form-label">Lugar del incidente</label>
+                    <input id="place_incidence" name="place_incidence" type="text" class="addIncidents__form-input" placeholder="lugar del incidente" required>
+                </div>
+            <!-- page two -->
+             <div class="addIncidents__form-group">
+                <div class="addIncidents__form-field">
+                    <label for="categoria" class="addIncidents__form-label">Categoria:</label>
+                    <select id="categoria" name="categoria" class="addIncidents__form-select" required>
+                        <option value="">Seleccione una categoría</option>
+                    </select>
+                </div>
+                <div class="addIncidents__form-field">
+                    <label for="subcategoria" class="addIncidents__form-label">subcategoria :</label>
+                    <select id="subcategoria" name="subcategoria" class="addIncidents__form-select" required>
+                        <option value="">Seleccione una subcategoria</option>
+                    </select>
+                </div>
+                </div>
+                 <div class="addIncidents__form-group">
+                <div class="addIncidents__form-field">
+                    <label for="causa" class="addIncidents__form-label">Causa:</label>
+                    <select id="causa" name="causa" class="addIncidents__form-select" required>
+                        <option value="">Seleccione una causa</option>
+                    </select>
+                </div>
+                <div class="addIncidents__form-field">
+                    <label for="consecuencia" class="addIncidents__form-label">Consecuencia:</label>
+                    <select id="consecuencia" name="consecuencia" class="addIncidents__form-select" required>
+                        <option value="">Seleccione una consecuencia</option>
+                    </select>
+                </div>
+                </div>
+                <div class="addIncidents__form-field">
+                    <label for="descripcion" class="addIncidents__form-label">Breve descripcion</label>
+                    <textarea id="descripcion" name="descripcion" class="addIncidents__form-textarea" rows="10" cols="50" placeholder="descripcion"></textarea>
+                </div>
+                <div class="addIncidents__form-group">
+                    <div class="addIncidents__form-field">
+                        <label for="consorcio" class="addIncidents__form-label">Consorcio:</label>
+                        <select id="consorcio" name="consorcio" class="addIncidents__form-select" required>
+                            <option value="">Seleccione un consorcio</option>
+                        </select>
+                    </div>
+                    <div class="addIncidents__form-field">
                         <label for="tipo-servicio" class="addIncidents__form-label">Tipo de servicio</label>
                         <select name="tipo_servicio" id="tipo_servicio" class="addIncidents__form-select" required>
                             <option class="addIncidents__form-select-option" value="">Seleccione tipo serv.</option>
@@ -733,6 +740,8 @@ document.getElementById("wrapper").addEventListener("click", function(event) {
                             <option class="addIncidents__form-select-option" value="2">ALIMENTADOR</option>
                         </select>
                     </div>
+                </div>
+                <div class="addIncidents__form-group">
                     <div class="addIncidents__form-field">
                         <label for="ruta" class="addIncidents__form-label">Ruta:</label>
                         <select id="ruta" name="ruta" class="addIncidents__form-select" required>
@@ -740,19 +749,65 @@ document.getElementById("wrapper").addEventListener("click", function(event) {
                         </select>
                     </div>
                     <div class="addIncidents__form-field">
+                        <label for="sentido" class="addIncidents__form-label">Sentido:</label>
+                        <select id="sentido" name="sentido" class="addIncidents__form-select" required>
+                            <option value="">Seleccione una sentido</option>
+                        </select>
+                    </div>
+                    <div class="addIncidents__form-field">
                         <label for="numero_servicio" class="addIncidents__form-label">Número servicio</label>
                         <input id="numero_servicio" name="numero_servicio" type="number" class="addIncidents__form-input" placeholder="Número Servicio" required>
                     </div>
+                </div>
+                <div class="addIncidents__form-group">
                     <div class="addIncidents__form-field">
-                        <label for="id_bus" class="addIncidents__form-label">Id bus</label>
-                        <input name="id_bus" id="id_bus" type="text" class="addIncidents__form-input" placeholder="id bus">
+                        <label for="vid" class="addIncidents__form-label">VID</label>
+                        <input list="opcionesVid" name="vid" id="vid" type="text" placeholder="cod. vid" class="addIncidents__form-input" required>
+                        <datalist id="opcionesVid" class="addIncidents__form-input-datalist">
+                            <option value="">
+                        </datalist>
                     </div>
                     <div class="addIncidents__form-field">
-                        <label for="consorcio" class="addIncidents__form-label">Consorcio:</label>
-                        <select id="consorcio" name="consorcio" class="addIncidents__form-select" required>
-                            <option value="">Seleccione un consorcio</option>
-                        </select>
-                    </div>`,
+                        <label for="id_bus" class="addIncidents__form-label">Id bus</label>
+                        <input name="id_bus" id="id_bus" type="text" class="addIncidents__form-input" placeholder="id bus" disabled>
+                    </div>
+                    <div class="addIncidents__form-field">
+                        <label for="placa" class="addIncidents__form-label">Número placa</label>
+                        <input name="placa" id="placa" type="text" class="addIncidents__form-input" placeholder="placa de bus" disabled>
+                    </div>
+                </div>
+                <div class="addIncidents__form-group">
+                    <div class="addIncidents__form-field">
+                        <label for="dni" class="addIncidents__form-label">DNI</label>
+                        <input list='opcionesDni' name="dni" id="dni" type="text" placeholder="número de dni" class="addIncidents__form-input" required>
+                        <datalist id="opcionesDni" class="addIncidents__form-input-datalist">
+                            <option value="">
+                        </datalist>
+                    </div>
+                    <div class="addIncidents__form-field">
+                        <label for="cod_cacc" class="addIncidents__form-label"> Codigo CACC</label>
+                        <input name="cod_cacc" id="cod_cacc" type="text" class="addIncidents__form-input" placeholder=" cod. cacc" disabled>
+                    </div>
+                    <div class="addIncidents__form-field">
+                        <label for="conductor" class="addIncidents__form-label">Conductor</label>
+                        <input name="conductor" id="conductor" type="text" class="addIncidents__form-input" placeholder="nombre del conductor" disabled>
+                    </div>
+            </div>
+              <div class="addIncidents__form-group">
+                <div class="addIncidents__form-field">
+                    <label for="tipokilometraje" class="addIncidents__form-label">Tipo Kilometraje:</label>
+                    <select id="tipokilometraje" name="tipokilometraje" class="addIncidents__form-select" required>
+                        <option value="">Seleccione kilometraje</option>
+                    </select>
+                </div>
+                <div class="addIncidents__form-field">
+                    <label for="kilometraje" class="addIncidents__form-label">Kilometraje</label>
+                    <input name="kilometraje" id="kilometraje" type="number" class="addIncidents__form-input" placeholder="km" required>
+                </div>
+                <div class="addIncidents__form-field">
+                    <label for="numero_carreras" class="addIncidents__form-label"> Número Carreras</label>
+                    <input name="numero_carreras" id="numero_carreras" type="number" class="addIncidents__form-input" placeholder="Número de Carreras">
+                </div></div>`,
             focusConfirm: false,
             preConfirm: () => {
                 return [

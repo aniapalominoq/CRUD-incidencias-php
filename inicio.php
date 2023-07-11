@@ -90,7 +90,7 @@ if (isset($_GET['seccion'])) {
         <script src="public/JavaScript/inicio.js" type="module"></script>
         <script src="public/JavaScript/sweetalert2.all.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/gridjs/dist/gridjs.umd.js"></script>
-        <!--    <script src="public/JavaScript/gridjs.js"></script> -->
+        <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
 
     </body>
 

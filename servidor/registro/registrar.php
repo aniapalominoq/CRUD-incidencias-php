@@ -13,6 +13,3 @@ if($Auth->registrar($name,$rol,$password1)){
 }else{
     echo"No se pudo registrar";
 }
-
-
-?>
