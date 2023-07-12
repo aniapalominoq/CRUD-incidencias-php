@@ -457,12 +457,18 @@ top:75%;
 
 }
 @media screen and (min-width: 992px) {
+    .addIncidents__container{
+    padding:25px ;
+    }
     .addIncidents__form-label{
     font-size: 1rem;
     text-align: left;
     margin-bottom: 0.8rem;
     margin-left: 0;
 
+}
+.addIncidents__form-outer{
+    overflow-y: auto; 
 }
     .addIncidents__progress-bullet::before,.addIncidents__progress-bullet::after{
 
@@ -476,6 +482,13 @@ left: 50.5%;
 top:74.5%;
 
 
-}  
+} 
+.addIncidents__form-btn{
+padding-top:0.8em;
+margin-top: 0;
+}
+.submit{
+padding-bottom: 0.8em;
+} 
 
 }

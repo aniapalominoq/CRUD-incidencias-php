@@ -5,7 +5,8 @@
     height: 90%;
     border-radius: 5px;
     padding: 30px;
-    overflow: auto; /* Habilita la barra de desplazamiento cuando la tabla desborde el contenedor */
+    overflow: auto;
+     /* Habilita la barra de desplazamiento cuando la tabla desborde el contenedor */
 }
 
 /* .listContainer__tabla{
@@ -65,3 +66,21 @@ background-color:var(--red-100);
 .listContainer__btn-eliminar:hover{
  background:var(--blue-300); 
 }
+
+
+.listContainer__detalle{
+}
+.listContainer__detalle-table{
+       width: 100%;
+      border-collapse: collapse;
+}
+    .listContainer__detalle-th, .listContainer__detalle-td {
+      padding: 3px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+     font-size:14px
+    }
+
+    .listContainer__detalle-th{
+      background-color: #f2f2f2;
+    }

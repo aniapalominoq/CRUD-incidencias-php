@@ -540,7 +540,7 @@ async function renderizarTablaGrid() {
       // Procesar los datos y generar la tabla Grid.js
       const grid = new gridjs.Grid({
         columns: [
-            {name:"ID",width:"auto"},
+            {name:"ID", hidden: true},
             {name:"FECHA",width:"auto"},
             {name:"CONSORCIO",width:"auto"},
             {name:"TIPO SERV.",width:"auto"},
@@ -572,10 +572,12 @@ async function renderizarTablaGrid() {
             }
         ],
         sort: true,
+    fixedHeader: true,
+  height: '400px',
   data: datosIncidencias.map((elem) => {
     const id = elem.idincidencia;
     return [
-      id,
+    id,
     elem.fecha,
     elem.abreviatura_consorcio,
     elem.abreviatura_tipo,
@@ -590,6 +592,7 @@ async function renderizarTablaGrid() {
       ];
     
   }),
+          
    search: {
     enabled: true,
     placeholder: 'Buscar...',
@@ -606,12 +609,9 @@ async function renderizarTablaGrid() {
         limit: 10,
         summary: false
     },
-    className: {
-        table: 'listContainer__tabla'
-          },
      style: {
     table: {
-     
+             fontSize: '12px',
     },
     th: {
       backgroundColor:'#5ABDD5',
@@ -622,11 +622,12 @@ async function renderizarTablaGrid() {
     textAlign: 'center', // Alinea el contenido en el centro horizontalmente
     verticalAlign: 'middle' ,// Alinea el contenido en el centro verticalmente
     padding: '3.5px',
-    fontSize: '16px',
+    fontSize: '12px',
     //fontWeight: '100', // Establece el tamaño de fuente deseado para la columna 'Name'
     }
   }
     }).render(document.getElementById("wrapper"));
+
 
 // Agregar evento al contenedor principal de la tabla
 document.getElementById("wrapper").addEventListener("click", function(event) {
@@ -647,16 +648,149 @@ document.getElementById("wrapper").addEventListener("click", function(event) {
   // Verificar si el evento ocurrió en un botón de ver
   if (target.classList.contains("listContainer__btn-ver")) {
     const id = target.dataset.id;
-    verElemento(id);
+    visualizarIncidencia(id);
     }
     
 });
-        /* funcion para ver eldetalle de cada fila */
-        function verElemento(id_incidencia) {
-             // Lógica para ver el elemento con el ID proporcionado
-    console.log("ver elemento con ID:", id_incidencia);
-         }
+    /* ------------------------------------------------------------------------- */
+    /* funcion para ver eldetalle de cada fila */
+  async function visualizarIncidencia(id) {
+  try {
+    // Realizar la solicitud fetch al archivo PHP para obtener los detalles de la incidencia
+    const response = await fetch('../../servidor/incidencia/detalle.php', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/x-www-form-urlencoded'
+  },
+  body: `id_incidencia=${id}` // Asegúrate de que el nombre del parámetro coincida con el esperado en el archivo PHP
+});
+    if (!response.ok) {
+      throw new Error('Error al obtener los detalles de la incidencia');
+    }
 
+    // Obtener los detalles de la incidencia
+    const detallesIncidencia = await response.json();
+    console.log( 'respuesta de los detalles',detallesIncidencia);
+    // Mostrar los detalles de la incidencia en SweetAlert2S
+    Swal.fire({
+      title: 'Detalles de la incidencia',
+      html: `<div class="listContainer__detalle">
+ <table class="listContainer__detalle-table">
+    <tr>
+      <th class="listContainer__detalle-th">ID</th>
+      <td class="listContainer__detalle-td">${detallesIncidencia.idincidencia}</td>
+    </tr>
+    <tr>
+      <th class="listContainer__detalle-th">FECHA</th>
+      <td class="listContainer__detalle-td"> ${detallesIncidencia.fecha}</td>
+    </tr>
+    <tr>
+      <th class="listContainer__detalle-th">HORA INICIO</th>
+      <td class="listContainer__detalle-td">${detallesIncidencia.hora_inicio}</td>
+    </tr>
+    <tr>
+      <th class="listContainer__detalle-th">HORA FIN</th>
+      <td class="listContainer__detalle-td"> ${detallesIncidencia.hora_fin}</td>
+    </tr>
+    <tr>
+      <th class="listContainer__detalle-th">LUGAR</th>
+      <td class="listContainer__detalle-td"> ${detallesIncidencia.lugar}</td>
+    </tr>
+    <tr>
+      <th class="listContainer__detalle-th">TIPO DE SERVICIO</th>
+      <td class="listContainer__detalle-td">${detallesIncidencia.tipo}</td>
+    </tr>
+    <tr>
+      <th class="listContainer__detalle-th">RUTA</th>
+      <td class="listContainer__detalle-td">${detallesIncidencia.ruta}</td>
+    </tr>
+    <tr>
+      <th class="listContainer__detalle-th">CONSORCIO</th>
+      <td class="listContainer__detalle-td">${detallesIncidencia.nombre_consorcio}</td>
+    </tr>
+    <tr>
+      <th class="listContainer__detalle-th">SENTIDO</th>
+      <td class="listContainer__detalle-td">${detallesIncidencia.sentido}</td>
+    </tr>
+    <tr>
+      <th class="listContainer__detalle-th">CATEGORÍA</th>
+      <td class="listContainer__detalle-td">${detallesIncidencia.categoria}</td>
+    </tr>
+    <tr>
+      <th class="listContainer__detalle-th">SUB CATEGORÍA</th>
+      <td class="listContainer__detalle-td"> ${detallesIncidencia.sub_categoria}</td>
+    </tr>
+    <tr>
+      <th class="listContainer__detalle-th">CAUSA</th>
+      <td class="listContainer__detalle-td"> ${detallesIncidencia.causa}</td>
+    </tr>
+    <tr>
+      <th class="listContainer__detalle-th">CONSECUENCIA</th>
+      <td class="listContainer__detalle-td">${detallesIncidencia.consecuencia}</td>
+    </tr>
+    <tr>
+      <th class="listContainer__detalle-th">DESCRIPCIÓN</th>
+      <td class="listContainer__detalle-td"> ${detallesIncidencia.descripcion}</td>
+    </tr>
+    <tr>
+      <th class="listContainer__detalle-th">NÚMERO DE SERVICIO</th>
+      <td class="listContainer__detalle-td">${detallesIncidencia.servicio}</td>
+    </tr>
+    <tr>
+      <th class="listContainer__detalle-th">BUS</th>
+      <td class="listContainer__detalle-td"> ${detallesIncidencia.bus}</td>
+    </tr>
+    <tr>
+      <th class="listContainer__detalle-th">VID</th>
+      <td class="listContainer__detalle-td">${detallesIncidencia.vid}</td>
+    </tr>
+    <tr>
+      <th class="listContainer__detalle-th">DIMENSIÓN BUS</th>
+      <td class="listContainer__detalle-td"> ${detallesIncidencia.tamaño}</td>
+    </tr>
+    <tr>
+      <th class="listContainer__detalle-th">PLACA BUS</th>
+      <td class="listContainer__detalle-td"> ${detallesIncidencia.placa}</td>
+    </tr>
+    <tr>
+      <th class="listContainer__detalle-th">DNI</th>
+      <td class="listContainer__detalle-td">${detallesIncidencia.dni}</td>
+    </tr>
+    <tr>
+      <th class="listContainer__detalle-th">NOMBRE COMPLETO</th>
+      <td class="listContainer__detalle-td">${detallesIncidencia.nombre}</td>
+    </tr>
+    <tr>
+      <th class="listContainer__detalle-th">CÓDIGO CACC</th>
+      <td class="listContainer__detalle-td">${detallesIncidencia.cacc}</td>
+    </tr>
+    <tr>
+      <th class="listContainer__detalle-th">TIPO DE KILOMETRAJE ADICIONAL</th>
+      <td class="listContainer__detalle-td">${detallesIncidencia.kilometraje}</td>
+    </tr>
+    <tr>
+      <th class="listContainer__detalle-th">NÚMERO DE CARRERAS</th>
+      <td class="listContainer__detalle-td">${detallesIncidencia.carreras}</td>
+    </tr>
+  </table>
+
+             </div>
+             `,
+      icon: 'info',
+      confirmButtonText: 'OK'
+    });
+    console.log("visualizar elemento con ID:", id);
+  } catch (error) {
+      console.error(error);
+       Swal.fire({
+      title: 'Error',
+      text: 'Ha ocurrido un error al obtener los detalles de la incidencia',
+      icon: 'error',
+      confirmButtonText: 'OK'
+    });
+  }
+}
+/* -------------------------------------------------------------------------- */
 /* funcion  para editar la tabla */
        async function editarElemento(id_incidencia) {
         try {
