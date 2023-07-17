@@ -1,36 +1,42 @@
 <section class="downloadContainer">
     <header class="addIncidents__container-header">Descarga registro de incidencias</header>
-    <form action="#">
+    <form action="/servidor/incidencia/descargar.php" method="post">
         <div class="addIncidents__form-group">
             <div class="addIncidents__form-field">
                 <label for="filterDate1" class="addIncidents__form-label">desde</label>
-                <input name="filterDate1" id="filterDate1" type="date" class="addIncidents__form-input">
+                <input name="filterDate1" id="filterDate1" type="date" class="addIncidents__form-input" required>
             </div>
             <div class="addIncidents__form-field">
                 <label for="filterDate2" class="addIncidents__form-label">hasta</label>
-                <input name="filterDate2" id="filterDate2" type="date" class="addIncidents__form-input">
+                <input name="filterDate2" id="filterDate2" type="date" class="addIncidents__form-input" required>
             </div>
         </div>
         <div class="addIncidents__form-field">
-            <label for="consorcio" class="addIncidents__form-label">Consorcio:</label>
-            <select id="consorcio" name="consorcio" class="addIncidents__form-select">
-                <option value="">Seleccione un consorcio</option>
+            <label for="filterConsorcio" class="addIncidents__form-label">Consorcio:</label>
+            <select id="filterConsorcio" name="filterConsorcio" class="addIncidents__form-select">
+                <option class="addIncidents__form-select-option" value="">Seleccione consorcio</option>
+                <option class="addIncidents__form-select-option" value="1">LIMA VIAS EXPRES</option>
+                <option value="2">LIMA BUS INTERNACIONAL</option>
+                <option class="addIncidents__form-select-option" value="3">TRANVIAL SAC</option>
+                <option class="addIncidents__form-select-option" value="4">PERU MASIVO</option>
             </select>
         </div>
         <div class="addIncidents__form-field">
-            <label for="tipo-servicio" class="addIncidents__form-label">Tipo de servicio</label>
-            <select name="tipo_servicio" id="tipo_servicio" class="addIncidents__form-select">
+            <label for="filteTipo-servicio" class="addIncidents__form-label">Tipo de servicio</label>
+            <select name="filteTipo-servicio" id="filteTipo-servicio" class="addIncidents__form-select">
                 <option class="addIncidents__form-select-option" value="">Seleccione tipo serv.</option>
                 <option class="addIncidents__form-select-option" value="1">TRONCAL</option>
                 <option class="addIncidents__form-select-option" value="2">ALIMENTADOR</option>
             </select>
         </div>
         <div class="addIncidents__form-field">
-            <label for="conductor" class="addIncidents__form-label">Conductor</label>
-            <input name="conductor" id="conductor" type="text" class="addIncidents__form-input" placeholder="nombre del conductor">
+            <label for="filterConductor" class="addIncidents__form-label">Conductor</label>
+            <input name="filterConductor" id="filterConductor" type="text" class="addIncidents__form-input" placeholder="nombre del conductor">
         </div>
-        <input class="addIncidents__form-btn submit" type="submit" value="Descargar">
+        <button type="submit" class="addIncidents__form-btn">Descargar en Excel</button>
+
+
     </form>
-    <div id="downloadContainer-tabla"></div>
+
 
 </section>

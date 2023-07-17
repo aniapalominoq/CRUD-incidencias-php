@@ -9,22 +9,6 @@
      /* Habilita la barra de desplazamiento cuando la tabla desborde el contenedor */
 }
 
-/* .listContainer__tabla{
-    //Estilos personalizados 
-
-}
-
-.listContainer__tabla th {
-     //Estilos para las celdas de encabezado 
-    background-color:var(--cyan-100);
-    font-weight:100;
-    color:'#fff';
-}
-
-.listContainer__tabla td {
-  // Estilos para las celdas de datos 
-  padding:2px;
-} */
 .listContainer__tabla-svg{
      width: 25px;
     height: 25px;
@@ -66,7 +50,7 @@ background-color:var(--red-100);
 .listContainer__btn-eliminar:hover{
  background:var(--blue-300); 
 }
-
+/* tabla para mostrar detalle */
 
 .listContainer__detalle{
 }
@@ -84,3 +68,59 @@ background-color:var(--red-100);
     .listContainer__detalle-th{
       background-color: #f2f2f2;
     }
+/*  formulario para editar  */
+.listContainer__form-edit{
+    border:1px solid green;
+}
+.listContainer__form-group{
+display:flex;
+width: 90%;
+gap:0.8em;
+}
+.listContainer__form-field{
+display:flex;
+flex-direction:column;
+flex: 1;
+  min-width: 0; /* Evita que el contenido exceda el ancho del contenedor */
+  padding: 10px;
+}
+.listContainer__form-label{
+   color:var(--black-100);
+    font-weight: 500;
+    font-size: 0.85rem;
+    text-align: left;
+    margin-left: 1rem;
+    
+}
+.listContainer__form-input{
+    border:1px solid var(--grey-50);
+    height:2.8125rem;
+    padding: 0 1rem 0 1rem;
+    border-radius: 0.3125rem;
+    text-transform: uppercase;
+}
+::placeholder{
+    color:var(--grey-100);
+    font-size: 0.85rem;
+}
+.listContainer__form-select{
+    border:1px solid var(--grey-50);
+   /*  width:18.625rem; */
+    height:2.8125rem;
+    padding: 0 1rem 0 1rem;
+    border-radius: 0.3125rem;
+    background-color: white;
+    color: var(--black-100);
+    text-transform: uppercase;
+}
+.listContainer__form-textarea{
+height: 3.25rem;
+resize: none; 
+border:1px solid var(--grey-50);
+padding: 1rem;
+border-radius:0.3125rem;
+}
+.listContainer__form-select-option{
+border:1px solid var(--grey-50);
+}
+

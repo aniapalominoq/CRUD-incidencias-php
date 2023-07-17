@@ -71,17 +71,19 @@
             <!-- page two -->
             <div class="addIncidents__form-page ">
                 <h2 class="addIncidents__form-title">Caracteristica y Descripcion del hecho</h2>
-                <div class="addIncidents__form-field">
-                    <label for="categoria" class="addIncidents__form-label">Categoria:</label>
-                    <select id="categoria" name="categoria" class="addIncidents__form-select" required>
-                        <option value="" class="addIncidents__form-option">Seleccione una categoría</option>
-                    </select>
-                </div>
-                <div class="addIncidents__form-field">
-                    <label for="subcategoria" class="addIncidents__form-label">subcategoria :</label>
-                    <select id="subcategoria" name="subcategoria" class="addIncidents__form-select" required>
-                        <option value="" class="addIncidents__form-option">Seleccione una subcategoria</option>
-                    </select>
+                <div class="addIncidents__form-group">
+                    <div class="addIncidents__form-field">
+                        <label for="categoria" class="addIncidents__form-label">Categoria:</label>
+                        <select id="categoria" name="categoria" class="addIncidents__form-select" required>
+                            <option value="" class="addIncidents__form-option">Seleccione una categoría</option>
+                        </select>
+                    </div>
+                    <div class="addIncidents__form-field">
+                        <label for="subcategoria" class="addIncidents__form-label">subcategoria :</label>
+                        <select id="subcategoria" name="subcategoria" class="addIncidents__form-select" required>
+                            <option value="" class="addIncidents__form-option">Seleccione una subcategoria</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="addIncidents__form-field">
                     <label for="causa" class="addIncidents__form-label">Causa:</label>
@@ -131,14 +133,16 @@
                         </select>
                     </div>
                     <div class="addIncidents__form-field">
+                        <label for="numero_servicio" class="addIncidents__form-label">Número servicio</label>
+                        <input id="numero_servicio" name="numero_servicio" type="number" class="addIncidents__form-input" placeholder="Número Servicio" required>
+                    </div>
+                </div>
+                <div class="addIncidents__form-group">
+                    <div class="addIncidents__form-field">
                         <label for="sentido" class="addIncidents__form-label">Sentido:</label>
                         <select id="sentido" name="sentido" class="addIncidents__form-select" required>
                             <option value="" class="addIncidents__form-option">Seleccione una sentido</option>
                         </select>
-                    </div>
-                    <div class="addIncidents__form-field">
-                        <label for="numero_servicio" class="addIncidents__form-label">Número servicio</label>
-                        <input id="numero_servicio" name="numero_servicio" type="number" class="addIncidents__form-input" placeholder="Número Servicio" required>
                     </div>
                 </div>
                 <div class="addIncidents__form-group">

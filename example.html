@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/public/css/listado_incidencias.css">
+</head>
+<body>
+     <div class="listContainer__form-group">
+                <div class="listContainer__form-field">
+                    <label for="date" class="listContainer__form-label">Fecha</label>
+                    <input id="date" name="date" type="date" class="listContainer__form-input" required>
+                </div>
+                <div class="listContainer__form-field">
+                    <label for="time_on" class="listContainer__form-label">Hora Inicio</label>
+                    <input id="time_on" name="time_on" type="time" class="listContainer__form-input" required>
+                </div>
+                <div class="listContainer__form-field">
+                    <label for="time_off" class="listContainer__form-label">Hora Fin</label>
+                    <input id="time_off" name="time_off" type="time" class="listContainer__form-input" required>
+                </div>
+    </div>
+    <div class="listContainer__form-group">
+                <div class="listContainer__form-field">
+                    <label for="place_incidence" class="listContainer__form-label">Lugar del incidente</label>
+                    <input id="place_incidence" name="place_incidence" type="text" class="listContainer__form-input" placeholder="lugar del incidente" required>
+                </div>
+    </div>
+            <!-- page two -->
+             <div class="listContainer__form-group">
+                <div class="listContainer__form-field">
+                    <label for="categoria" class="listContainer__form-label">Categoria:</label>
+                    <select id="categoria" name="categoria" class="listContainer__form-select" required>
+                        <option value="">Seleccione una categoría</option>
+                    </select>
+                </div>
+                <div class="listContainer__form-field">
+                    <label for="subcategoria" class="listContainer__form-label">subcategoria :</label>
+                    <select id="subcategoria" name="subcategoria" class="listContainer__form-select" required>
+                        <option value="">Seleccione una subcategoria</option>
+                    </select>
+                </div>
+                </div>
+                 <div class="listContainer__form-group">
+                <div class="listContainer__form-field">
+                    <label for="causa" class="listContainer__form-label">Causa:</label>
+                    <select id="causa" name="causa" class="listContainer__form-select" required>
+                        <option value="">Seleccione una causa</option>
+                    </select>
+                </div>
+                <div class="listContainer__form-field">
+                    <label for="consecuencia" class="listContainer__form-label">Consecuencia:</label>
+                    <select id="consecuencia" name="consecuencia" class="listContainer__form-select" required>
+                        <option value="">Seleccione una consecuencia</option>
+                    </select>
+                </div>
+                </div>
+                <div class="listContainer__form-group">
+                <div class="listContainer__form-field">
+                    <label for="descripcion" class="listContainer__form-label">Breve descripcion</label>
+                    <textarea id="descripcion" name="descripcion" class="listContainer__form-textarea" rows="10" cols="50" placeholder="descripcion"></textarea>
+                </div>
+                </div>
+                <div class="listContainer__form-group">
+                    <div class="listContainer__form-field">
+                        <label for="consorcio" class="listContainer__form-label">Consorcio:</label>
+                        <select id="consorcio" name="consorcio" class="listContainer__form-select" required>
+                            <option value="">Seleccione un consorcio</option>
+                        </select>
+                    </div>
+                    <div class="listContainer__form-field">
+                        <label for="tipo-servicio" class="listContainer__form-label">Tipo de servicio</label>
+                        <select name="tipo_servicio" id="tipo_servicio" class="listContainer__form-select" required>
+                            <option class="listContainer__form-select-option" value="">Seleccione tipo serv.</option>
+                            <option class="listContainer__form-select-option" value="1">TRONCAL</option>
+                            <option class="listContainer__form-select-option" value="2">ALIMENTADOR</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="listContainer__form-group">
+                    <div class="listContainer__form-field">
+                        <label for="ruta" class="listContainer__form-label">Ruta:</label>
+                        <select id="ruta" name="ruta" class="listContainer__form-select" required>
+                            <option value="">Seleccione una ruta</option>
+                        </select>
+                    </div>
+                    <div class="listContainer__form-field">
+                        <label for="sentido" class="listContainer__form-label">Sentido:</label>
+                        <select id="sentido" name="sentido" class="listContainer__form-select" required>
+                            <option value="">Seleccione una sentido</option>
+                        </select>
+                    </div>
+                    <div class="listContainer__form-field">
+                        <label for="numero_servicio" class="listContainer__form-label">Número servicio</label>
+                        <input id="numero_servicio" name="numero_servicio" type="number" class="listContainer__form-input" placeholder="Número Servicio" required>
+                    </div>
+                </div>
+                <div class="listContainer__form-group">
+                    <div class="listContainer__form-field">
+                        <label for="vid" class="listContainer__form-label">VID</label>
+                        <input list="opcionesVid" name="vid" id="vid" type="text" placeholder="cod. vid" class="listContainer__form-input" required>
+                        <datalist id="opcionesVid" class="listContainer__form-input-datalist">
+                            <option value="">
+                        </datalist>
+                    </div>
+                    <div class="listContainer__form-field">
+                        <label for="id_bus" class="listContainer__form-label">Id bus</label>
+                        <input name="id_bus" id="id_bus" type="text" class="listContainer__form-input" placeholder="id bus" disabled>
+                    </div>
+                    <div class="listContainer__form-field">
+                        <label for="placa" class="listContainer__form-label">Número placa</label>
+                        <input name="placa" id="placa" type="text" class="listContainer__form-input" placeholder="placa de bus" disabled>
+                    </div>
+                </div>
+                <div class="listContainer__form-group">
+                    <div class="listContainer__form-field">
+                        <label for="dni" class="listContainer__form-label">DNI</label>
+                        <input list='opcionesDni' name="dni" id="dni" type="text" placeholder="número de dni" class="listContainer__form-input" required>
+                        <datalist id="opcionesDni" class="listContainer__form-input-datalist">
+                            <option value="">
+                        </datalist>
+                    </div>
+                    <div class="listContainer__form-field">
+                        <label for="cod_cacc" class="listContainer__form-label"> Codigo CACC</label>
+                        <input name="cod_cacc" id="cod_cacc" type="text" class="listContainer__form-input" placeholder=" cod. cacc" disabled>
+                    </div>
+                    <div class="listContainer__form-field">
+                        <label for="conductor" class="listContainer__form-label">Conductor</label>
+                        <input name="conductor" id="conductor" type="text" class="listContainer__form-input" placeholder="nombre del conductor" disabled>
+                    </div>
+            </div>
+              <div class="listContainer__form-group">
+                <div class="listContainer__form-field">
+                    <label for="tipokilometraje" class="listContainer__form-label">Tipo Kilometraje:</label>
+                    <select id="tipokilometraje" name="tipokilometraje" class="listContainer__form-select" required>
+                        <option value="">Seleccione kilometraje</option>
+                    </select>
+                </div>
+                <div class="listContainer__form-field">
+                    <label for="kilometraje" class="listContainer__form-label">Kilometraje</label>
+                    <input name="kilometraje" id="kilometraje" type="number" class="listContainer__form-input" placeholder="km" required>
+                </div>
+                <div class="listContainer__form-field">
+                    <label for="numero_carreras" class="listContainer__form-label"> Número Carreras</label>
+                    <input name="numero_carreras" id="numero_carreras" type="number" class="listContainer__form-input" placeholder="Número de Carreras">
+                </div></div>
+    
+</body>
+</html>

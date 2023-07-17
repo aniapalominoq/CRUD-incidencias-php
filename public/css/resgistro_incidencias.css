@@ -57,9 +57,6 @@ width: 100%;
 gap:0.5em;
 }
 
-.addIncidents__form-group>*{
-    width: 33.333%;
-}
 .addIncidents__form-subgroup{
 display:flex;
 }
@@ -78,6 +75,8 @@ font-weight: 500;
 .addIncidents__form-field{
     display:flex;
     flex-direction:column;
+    flex: 1;
+  min-width: 0;
    /*  gap:0.5rem; */
 
 }

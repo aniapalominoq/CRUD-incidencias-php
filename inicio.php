@@ -16,7 +16,10 @@ if (isset($_GET['seccion'])) {
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="public/css/inicio.css">
-        <link rel="stylesheet" href="public/css/sweetalert2.min.css">
+        <!--   <link rel="stylesheet" href="public/css/sweetalert2.min.css"> -->
+        <link href="
+https://cdn.jsdelivr.net/npm/sweetalert2@11.7.16/dist/sweetalert2.min.css
+" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/gridjs/dist/theme/mermaid.min.css" rel="stylesheet" />
         <title>inicio</title>
     </head>
@@ -87,8 +90,14 @@ if (isset($_GET['seccion'])) {
 
             <?php include("./modulos/" . $seccionActual . ".php"); ?>
         </section>
-        <script src="public/JavaScript/inicio.js" type="module"></script>
-        <script src="public/JavaScript/sweetalert2.all.min.js"></script>
+
+
+        <script src="public/JavaScript/inicio.js"></script>
+        <script src="
+https://cdn.jsdelivr.net/npm/sweetalert2@11.7.16/dist/sweetalert2.all.min.js
+"></script>
+        <!--  <script src="public/JavaScript/sweetalert2.all.min.js"></script> -->
+        <script lang="javascript" src="https://cdn.sheetjs.com/xlsx-0.20.0/package/dist/xlsx.full.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/gridjs/dist/gridjs.umd.js"></script>
         <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
 
