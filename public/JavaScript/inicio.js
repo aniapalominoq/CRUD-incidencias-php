@@ -1,4 +1,8 @@
-  /*  para el menu boton de hamburguesa */
+// Escucha el evento click del botón de descarga
+
+
+
+/*  para el menu boton de hamburguesa */
 const navigation = document.querySelector('.inicio__navegation');
 const toggles=document.querySelector('.inicio__navegation-toggle');
     toggles.onclick=function(){
@@ -92,7 +96,7 @@ setTimeout(function () {
 
 /* ---------------------FIN --------------------------- */
 /* para los select anidados del fomulario */
-
+const contenidoDinamico = document.getElementById('contenido-dinamico');
 // Obtenemos las  referencias a los select
 const categoriaSelect = document.getElementById('categoria');
 const subcategoriaSelect = document.getElementById('subcategoria');
@@ -387,8 +391,8 @@ async function guardarDatosFormulario() {
         });
         }
 }
-    /* ----------------- para renderizar las secciones --------------------------------*/
-const contenidoDinamico = document.getElementById('contenido-dinamico');
+    /* ----------------- para renderizar las secciones del navegador lateral --------------------------------*/
+
     // Función para cambiar la vista actual utilizando async/await y PHP
 async function changeView(view) {
     try {
@@ -413,35 +417,34 @@ async function changeView(view) {
         console.error('Error al cargar la vista:', error);
     }
 }
-/* ---------------------------- vista listar----------------------------------------------- */
+/* ---------------- vista-->listar- tabla----------------------------------------------- */
     document.getElementById('listar').addEventListener('click', function () {
     changeView('./modulos/listado_incidencias.php');
 });
-
-            /* funcion para cargar los select del formulario de edicion */
+/* funcion generica para cargar los select del formulario de edicion */
     async function cargarSelect(url, selectId, selectedValue) {
-    const select = document.getElementById(selectId);
-    const response = await fetch(url);
-    const data = await response.json();
+            const select = document.getElementById(selectId);
+            const response = await fetch(url);
+            const data = await response.json();
 
-    // Generar las opciones HTML
-        const optionsHTML = data.map((item) => {
-            // Ajusta aquí las propiedades según la estructura real de los datos
-            console.log('cagar datos en editar', data, item)
-        const value = item[0];
-            const label = item[1];
-            console.log('valor para el option',value,label)
-        return `<option value="${value}">${label}</option>`;
-    });
+            // Generar las opciones HTML
+                const optionsHTML = data.map((item) => {
+                    // Ajusta aquí las propiedades según la estructura real de los datos
+                    console.log('cagar datos en editar', data, item)
+                const value = item[0];
+                    const label = item[1];
+                    console.log('valor para el option',value,label)
+                return `<option value="${value}">${label}</option>`;
+            });
 
-    // Asignar las opciones al elemento select
-        select.innerHTML = optionsHTML;
-        console.log('guarda los option',select)
+            // Asignar las opciones al elemento select
+                select.innerHTML = optionsHTML;
+                console.log('guarda los option',select)
 
-    // Establecer el valor seleccionado
-    select.value = selectedValue;
+            // Establecer el valor seleccionado
+            select.value = selectedValue;
     }
-    // Función para renderizar la tabla Grid.js en el elemento 'wrapper'
+// Función para renderizar la tabla Grid.js en el elemento 'wrapper'
     async function renderizarTablaGrid() {
                     const wrapper = document.getElementById('wrapper');
                     //console.log('soy melania',wrapper);
@@ -534,21 +537,13 @@ async function changeView(view) {
                                             }
                                     }
                             }).render(document.getElementById("wrapper"));
-                            /* descargar */
-                                    document.getElementById('downloadBtn').addEventListener('click', () => {
-                                    const gridData = grid.data().map(row => row.cells.map(cell => cell.data));
-                                    const worksheet = XLSX.utils.aoa_to_sheet(gridData);
-                                    const workbook = XLSX.utils.book_new();
-                                    XLSX.utils.book_append_sheet(workbook, worksheet, 'Datos');
-                                    XLSX.writeFile(workbook, 'datos.xlsx');
-                                    });
-                            /* --------------------------- */
                         } catch (error) {
                         // Manejar errores en la solicitud fetch
                         console.error(error);
                         }
             }  
         // Agregar evento al contenedor principal de la tabla
+        if( document.getElementById("wrapper")!=null){
                     document.getElementById("wrapper").addEventListener("click", function(event) {
                             const target = event.target;
 
@@ -570,14 +565,11 @@ async function changeView(view) {
                                 visualizarIncidencia(id);
                                 }
                                 
-                    });
+                    });}
 
 }
-                    
-
-
-
-    /* funcion para ver eldetalle de cada fila */
+/* funciones  para los 3 botones en la tabla(ver,editar y eliminar)                  
+    /* funcion ver */
     async function visualizarIncidencia(id) {
                     try {
                                 // Realizar la solicitud fetch al archivo PHP para obtener los detalles de la incidencia
@@ -715,75 +707,7 @@ async function changeView(view) {
                                 });
                             }
                     }
-    /* async function actualizarIncidencia(id_incidencia, formValues) {
-                            const [fecha, hora_inicio, hora_fin,lugar,categoria,subcategoria,causa,consecuencia,descripcion,consorcio,tipo_servicio,ruta,servicio,sentido,bus,conductor,tipo_kilometraje,kilometraje,carreras] = formValues;
-
-                            const actualizarResponse = await fetch('actualizar_incidencia.php', {
-                                method: 'POST',
-                                headers: {
-                                    'Content-Type': 'application/x-www-form-urlencoded'
-                                },
-                                body:'id_incidencia=' + encodeURIComponent(id_incidencia) +
-                                            '&fecha=' + encodeURIComponent(fecha) +
-                                            '&hora_inicio=' + encodeURIComponent(hora_inicio) +
-                                            '&hora_fin=' + encodeURIComponent(hora_fin) +
-                                            '&lugar=' + encodeURIComponent(lugar)+
-                                            '&categoria=' + encodeURIComponent(categoria) +
-                                            '&subcategoria=' + encodeURIComponent(subcategoria) +
-                                            '&causa=' + encodeURIComponent(causa) +
-                                            '&consecuencia=' + encodeURIComponent(consecuencia)+
-                                            '&descripcion=' + encodeURIComponent(descripcion) +
-                                            '&consorcio=' + encodeURIComponent(consorcio) +
-                                            '&tipo_servicio=' + encodeURIComponent(tipo_servicio) +
-                                            '&ruta=' + encodeURIComponent(ruta)+
-                                            '&servicio=' + encodeURIComponent(servicio)+
-                                            '&sentido=' + encodeURIComponent(sentido) +
-                                            '&bus=' + encodeURIComponent(bus) +
-                                            '&conductor=' + encodeURIComponent(conductor)+
-                                            '&tipo_kilometraje=' + encodeURIComponent(tipo_kilometraje) +
-                                            '&kilometraje=' + encodeURIComponent(kilometraje) +
-                                            '&carreras=' + encodeURIComponent(carreras)
-                                    
-                            });
-
-                            return actualizarResponse.text();
-                    } */
-    async function actualizarIncidencia(id_incidencia, formValues) {
-        const [fecha, hora_inicio, hora_fin, lugar, categoria, subcategoria, causa, consecuencia, descripcion, consorcio, tipo_servicio, ruta, servicio, sentido, bus, conductor, tipo_kilometraje, kilometraje, carreras/* otros campos */] = formValues;
-
-        const params = new URLSearchParams();
-        params.append('id_incidencia', id_incidencia);
-        params.append('fecha', fecha);
-        params.append('hora_inicio', hora_inicio);
-        params.append('hora_fin', hora_fin);
-        params.append('lugar', lugar);
-        params.append('categoria', categoria);
-        params.append('subcategoria', subcategoria);
-        params.append('causa', causa);
-        params.append('consecuencia', consecuencia);
-        params.append('descripcion', descripcion);
-        params.append('consorcio', consorcio);
-        params.append('tipo_servicio', tipo_servicio);
-        params.append('ruta', ruta);
-        params.append('servicio', servicio);
-        params.append('sentido', sentido);
-        params.append('bus', bus);
-        params.append('conductor', conductor);
-        params.append('tipo_kilometraje', tipo_kilometraje);
-        params.append('kilometraje', kilometraje);
-        params.append('carreras', carreras);
-
-        const actualizarResponse = await fetch('actualizar_incidencia.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            body: params.toString()
-        });
-
-        return actualizarResponse.text();
-    }
-
+    /* funcion eliminar */
     async function eliminarElemento(id_incidencia) {
                         try {
                                 const result = await Swal.fire({
@@ -826,22 +750,59 @@ async function changeView(view) {
                         // Lógica para eliminar el elemento con el ID proporcionado
                         //console.log("Eliminar elemento con ID:", id);
     }
+    /* funcion editar */
     async function obtenerIncidenciaParaEditar(id_incidencia) {
-    try {
-        const response = await fetch('/servidor/incidencia/editar.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: 'id_incidencia=' + encodeURIComponent(id_incidencia)
-        });
+            try {
+                const response = await fetch('/servidor/incidencia/editar.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: 'id_incidencia=' + encodeURIComponent(id_incidencia)
+                });
 
-        const incidencia = await response.json();
-        return incidencia[0];
-    } catch (error) {
-        console.error('Error:', error);
-        throw new Error('No se pudo obtener la incidencia para editar');
+                const incidencia = await response.json();
+                return incidencia[0];
+            } catch (error) {
+                console.error('Error:', error);
+                throw new Error('No se pudo obtener la incidencia para editar');
+            }
     }
+
+    async function actualizarIncidencia(id_incidencia, formValues) {
+            const [fecha, hora_inicio, hora_fin, lugar, categoria, subcategoria, causa, consecuencia, descripcion, consorcio, tipo_servicio, ruta, servicio, sentido, bus, conductor, tipo_kilometraje, kilometraje, carreras/* otros campos */] = formValues;
+
+            const params = new URLSearchParams();
+            params.append('id_incidencia', id_incidencia);
+            params.append('fecha', fecha);
+            params.append('hora_inicio', hora_inicio);
+            params.append('hora_fin', hora_fin);
+            params.append('lugar', lugar);
+            params.append('categoria', categoria);
+            params.append('subcategoria', subcategoria);
+            params.append('causa', causa);
+            params.append('consecuencia', consecuencia);
+            params.append('descripcion', descripcion);
+            params.append('consorcio', consorcio);
+            params.append('tipo_servicio', tipo_servicio);
+            params.append('ruta', ruta);
+            params.append('servicio', servicio);
+            params.append('sentido', sentido);
+            params.append('bus', bus);
+            params.append('conductor', conductor);
+            params.append('tipo_kilometraje', tipo_kilometraje);
+            params.append('kilometraje', kilometraje);
+            params.append('carreras', carreras);
+
+            const actualizarResponse = await fetch('actualizar_incidencia.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: params.toString()
+            });
+
+            return actualizarResponse.text();
     }
 
     async function editarElemento(id_incidencia) {
@@ -874,12 +835,13 @@ async function changeView(view) {
                                             icon: 'error'
                                         });
         }     
-        const incidencia2 = await obtenerIncidenciaParaEditar(id_incidencia);
+ const incidencia2 = await obtenerIncidenciaParaEditar(id_incidencia);
     // Llamar a la función mostrarFormularioEdicion después de que el DOM esté cargado
     document.addEventListener('DOMContentLoaded', async () => {
     await mostrarFormularioEdicion(incidencia2);
     });
-    }   
+    }  
+
     async function mostrarFormularioEdicion(incidencia) {
 
             const { value: formValues } = await Swal.fire({
@@ -1077,7 +1039,70 @@ async function changeView(view) {
 /* ----------------------- vista descargar-------------------- */
 document.getElementById('descargar').addEventListener('click', function() {
   changeView('./modulos/descargar_incidencias.php');
+
 });
+
+// Agregar el evento de envío del formulario al contenedor del contenido dinámico
+contenidoDinamico.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    if (e.target.id === 'downloadForm') {
+        
+                const fechaInicio = document.getElementById('filterDate1').value;
+        const fechaFin = document.getElementById('filterDate2').value;
+
+        if (fechaInicio === '' || fechaFin === ''||(fechaInicio === '' && fechaFin === '')) {
+            Swal.fire({
+                title: 'Error',
+                text: 'Por favor, complete las fechas de inicio y fin.',
+                icon: 'error',
+            });
+            return;
+        }
+const formDataDownload = new FormData(e.target);
+        try {
+            const response = await fetch('/servidor/incidencia/descargar.php', {
+                method: 'POST',
+                body: formDataDownload,
+            });
+
+            if (response.ok) {
+                // Descargar el archivo Excel directamente
+                const blob = await response.blob();
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = 'Consulta_incidencias.xls';
+                link.click();
+                URL.revokeObjectURL(url);
+
+                Swal.fire('Descarga exitosa', 'El archivo ha sido descargado exitosamente.', 'success');
+            } else {
+                // Obtener la respuesta JSON
+                const data = await response.json();
+
+                if (data.error) {
+                    Swal.fire('Error', data.error, 'error');
+                } else {
+                    Swal.fire('Error', 'Ocurrió un error en la descarga de datos', 'error');
+                }
+            }
+        } catch (error) {
+            Swal.fire('Error', 'Ocurrió un error en la descarga de datos', 'error');
+        }
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
 
 
 

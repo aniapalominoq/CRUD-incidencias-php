@@ -1,14 +1,14 @@
 <section class="downloadContainer">
     <header class="addIncidents__container-header">Descarga registro de incidencias</header>
-    <form action="/servidor/incidencia/descargar.php" method="post">
+    <form id="downloadForm" method="post">
         <div class="addIncidents__form-group">
             <div class="addIncidents__form-field">
                 <label for="filterDate1" class="addIncidents__form-label">desde</label>
-                <input name="filterDate1" id="filterDate1" type="date" class="addIncidents__form-input" required>
+                <input name="filterDate1" id="filterDate1" type="date" class="addIncidents__form-input" >
             </div>
             <div class="addIncidents__form-field">
                 <label for="filterDate2" class="addIncidents__form-label">hasta</label>
-                <input name="filterDate2" id="filterDate2" type="date" class="addIncidents__form-input" required>
+                <input name="filterDate2" id="filterDate2" type="date" class="addIncidents__form-input" >
             </div>
         </div>
         <div class="addIncidents__form-field">
@@ -22,8 +22,8 @@
             </select>
         </div>
         <div class="addIncidents__form-field">
-            <label for="filteTipo-servicio" class="addIncidents__form-label">Tipo de servicio</label>
-            <select name="filteTipo-servicio" id="filteTipo-servicio" class="addIncidents__form-select">
+            <label for="filterTipo-servicio" class="addIncidents__form-label">Tipo de servicio</label>
+            <select name="filterTipo-servicio" id="filterTipo-servicio" class="addIncidents__form-select">
                 <option class="addIncidents__form-select-option" value="">Seleccione tipo serv.</option>
                 <option class="addIncidents__form-select-option" value="1">TRONCAL</option>
                 <option class="addIncidents__form-select-option" value="2">ALIMENTADOR</option>
@@ -33,7 +33,7 @@
             <label for="filterConductor" class="addIncidents__form-label">Conductor</label>
             <input name="filterConductor" id="filterConductor" type="text" class="addIncidents__form-input" placeholder="nombre del conductor">
         </div>
-        <button type="submit" class="addIncidents__form-btn">Descargar en Excel</button>
+        <button type="submit" id="btnDescargar" class="addIncidents__form-btn">Descargar en Excel</button>
 
 
     </form>
