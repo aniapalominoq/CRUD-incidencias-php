@@ -15,17 +15,17 @@
    </section>
     <section class="login__section">
         <img src="./public/img/logo.jpg" alt="logo de la ATU" class="login__img">
-        <h1 class="login__h1"> GESTION DE INCIDENCIAS</h1>
-        <form action="./servidor/login/logear.php" method="post" class="login__form">
+        <h1 class="login__h1"> Iniciar Sección</h1>
+        <form id="loginForm" method="post" class="login__form">
             <div class="login__div">
-                <label for="name" class="login__label">Nombre usuario</label>
-                <input type="text" class="login__input" name="name" placeholder="Nombre usuario">
+                <label for="nameUser" class="login__label">Nombre usuario :</label>
+                <input type="text" class="login__input" name="nameUser"  id="nameUser" placeholder="Nombre usuario">
             </div>
             <div class="login__div">
-                <label for="password" class="login__label">Contraseña</label>
-                <input type="password" class="login__input" name="password" placeholder="***********">
+                <label for="passwordUser" class="login__label">Contraseña :</label>
+                <input type="password" class="login__input" name="passwordUser" id="passwordUser" placeholder="***********">
             </div>
-            <button class="login__button">Iniciar Sesion</button>
+            <button class="login__button"  type="submit" >Ingresar</button>
         </form>
         <div class="login-footer">
             <a class="login-footer__a" href="./recuperaContrasena.php">
@@ -38,8 +38,8 @@
               </a>
         </div>
     </section>
-  
-  
-    
+          <script src="/public/JavaScript/index.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.16/dist/sweetalert2.all.min.js"></script>
+         <script src="public/JavaScript/sweetalert2.all.min.js"></script>
   </body>
 </html>

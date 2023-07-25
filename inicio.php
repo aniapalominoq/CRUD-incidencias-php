@@ -1,6 +1,6 @@
 <?php session_start();
 if (!isset($_SESSION['nombre'])) {
-    header("location:index.php");
+   // header("location:index.php");
 }
 $seccionActual = "registro_incidencias";
 if (isset($_GET['seccion'])) {
@@ -24,7 +24,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.16/dist/sweetalert2.min.css
         <title>inicio</title>
     </head>
 
-    <body class="inicio__body">
+    <body  id="inicio__body" class="inicio__body">
         <nav class="inicio__navegation">
             <ul class="inicio__navegation-ul">
                 <li class="inicio__navegation-li-user">

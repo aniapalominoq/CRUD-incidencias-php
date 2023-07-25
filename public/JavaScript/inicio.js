@@ -97,6 +97,8 @@ setTimeout(function () {
 /* ---------------------FIN --------------------------- */
 /* para los select anidados del fomulario */
 const contenidoDinamico = document.getElementById('contenido-dinamico');
+const bodyIncio = document.getElementById('inicio__body');
+
 // Obtenemos las  referencias a los select
 const categoriaSelect = document.getElementById('categoria');
 const subcategoriaSelect = document.getElementById('subcategoria');
@@ -117,7 +119,7 @@ const inputCacc= document.getElementById('cod_cacc');
 const inputConductor = document.getElementById('conductor');
 
 
-//fetch
+// funcion generica para cargar los select del formulario fetch
 async function cargarOpciones(selectElement, url, valueKey, textKey, extraCallback) {
     try {
         const response = await fetch(url);
@@ -391,9 +393,8 @@ async function guardarDatosFormulario() {
         });
         }
 }
-    /* ----------------- para renderizar las secciones del navegador lateral --------------------------------*/
-
-    // Función para cambiar la vista actual utilizando async/await y PHP
+/* ---------- para renderizar las secciones del navegador lateral-------------*/
+// Función para cambiar la vista actual utilizando async/await y PHP
 async function changeView(view) {
     try {
         // Realizar una petición utilizando fetch y esperar la respuesta
@@ -417,10 +418,12 @@ async function changeView(view) {
         console.error('Error al cargar la vista:', error);
     }
 }
-/* ---------------- vista-->listar- tabla----------------------------------------------- */
+
+/* ---------------- vista-->listar- tabla-------------------------------- */
     document.getElementById('listar').addEventListener('click', function () {
     changeView('./modulos/listado_incidencias.php');
 });
+
 /* funcion generica para cargar los select del formulario de edicion */
     async function cargarSelect(url, selectId, selectedValue) {
             const select = document.getElementById(selectId);
@@ -693,8 +696,12 @@ async function changeView(view) {
                                         </div>
                                         `,
                                     icon: 'info',
-                                width: '45%',
-                                confirmButtonText: 'OK'
+                                width: '50%',
+                                confirmButtonText: 'Aceptar',
+                                    padding:'1rem',
+                                    buttonsStyling:true,//para modificar estilos de los botones tiene que estar en false
+                                    showCloseButton:true,//para activar el(x) en el alert
+                                    closeButtonAriaLabel:'cerrar'
                                 });
                                 console.log("visualizar elemento con ID:", id);
                             } catch (error) {
@@ -703,7 +710,7 @@ async function changeView(view) {
                                 title: 'Error',
                                 text: 'Ha ocurrido un error al obtener los detalles de la incidencia',
                                 icon: 'error',
-                                confirmButtonText: 'OK'
+                                confirmButtonText: 'Aceptar'
                                 });
                             }
                     }
@@ -751,6 +758,7 @@ async function changeView(view) {
                         //console.log("Eliminar elemento con ID:", id);
     }
     /* funcion editar */
+    //obtenerIncidenciaParaEditar, esta funcion retorna el id de la fila
     async function obtenerIncidenciaParaEditar(id_incidencia) {
             try {
                 const response = await fetch('/servidor/incidencia/editar.php', {
@@ -768,83 +776,18 @@ async function changeView(view) {
                 throw new Error('No se pudo obtener la incidencia para editar');
             }
     }
-
-    async function actualizarIncidencia(id_incidencia, formValues) {
-            const [fecha, hora_inicio, hora_fin, lugar, categoria, subcategoria, causa, consecuencia, descripcion, consorcio, tipo_servicio, ruta, servicio, sentido, bus, conductor, tipo_kilometraje, kilometraje, carreras/* otros campos */] = formValues;
-
-            const params = new URLSearchParams();
-            params.append('id_incidencia', id_incidencia);
-            params.append('fecha', fecha);
-            params.append('hora_inicio', hora_inicio);
-            params.append('hora_fin', hora_fin);
-            params.append('lugar', lugar);
-            params.append('categoria', categoria);
-            params.append('subcategoria', subcategoria);
-            params.append('causa', causa);
-            params.append('consecuencia', consecuencia);
-            params.append('descripcion', descripcion);
-            params.append('consorcio', consorcio);
-            params.append('tipo_servicio', tipo_servicio);
-            params.append('ruta', ruta);
-            params.append('servicio', servicio);
-            params.append('sentido', sentido);
-            params.append('bus', bus);
-            params.append('conductor', conductor);
-            params.append('tipo_kilometraje', tipo_kilometraje);
-            params.append('kilometraje', kilometraje);
-            params.append('carreras', carreras);
-
-            const actualizarResponse = await fetch('actualizar_incidencia.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: params.toString()
+    bodyIncio.addEventListener('click',(e)=>{
+            console.log('click sobre',e.target.id);
+            if (e.target.id === 'listaCategoria') {      
+                // Event listener para cargar subcategorías cuando se selecciona una categoría
+                listaCategoria.addEventListener('change', () => {
+                    listaCategoria.innerHTML= `<option value="1" class="" selected >${'melania'}</option> `;
+                   });
+               }
             });
 
-            return actualizarResponse.text();
-    }
-
-    async function editarElemento(id_incidencia) {
-                                    try {
-                                        const incidencia = await obtenerIncidenciaParaEditar(id_incidencia);
-                                        console.log('datos de la tabla a editar', incidencia);
-                                        // Mostrar el formulario de edición y manejar la actualización
-                                        const formValues = await mostrarFormularioEdicion(incidencia);
-                                        console.log('datos  nuevos del editar: ', formValues);
-                                        // Validar y enviar los datos actualizados al servidor
-                                        if (formValues) {
-                                            const actualizarResponse = await actualizarIncidencia(id_incidencia, formValues);
-                                            console.log(actualizarResponse); // Aquí puedes hacer lo que necesites con el resultado
-
-                                            // Mostrar mensaje de éxito
-                                            Swal.fire({
-                                                title: 'Incidencia actualizada',
-                                                text: 'La incidencia ha sido actualizada exitosamente',
-                                                icon: 'success'
-                                            });
-
-                                            // Volver a renderizar la tabla actualizada
-                                            changeView('./modulos/listado_incidencias.php');
-                                        }
-                                    } catch (error) {
-                                        console.error('Error:', error);
-                                        Swal.fire({
-                                            title: 'Error',
-                                            text: 'Se produjo un error al editar la incidencia',
-                                            icon: 'error'
-                                        });
-        }     
- const incidencia2 = await obtenerIncidenciaParaEditar(id_incidencia);
-    // Llamar a la función mostrarFormularioEdicion después de que el DOM esté cargado
-    document.addEventListener('DOMContentLoaded', async () => {
-    await mostrarFormularioEdicion(incidencia2);
-    });
-    }  
-
     async function mostrarFormularioEdicion(incidencia) {
-
-            const { value: formValues } = await Swal.fire({
+       const { value: formValues } = await Swal.fire({
                 title: 'Editar incidencia',
                 html: `<div class="listContainer__form-edit">
                                                     <div class="listContainer__form-group">
@@ -1017,11 +960,9 @@ async function changeView(view) {
                         document.getElementById('listNumero_carreras').value,
                     ];
                 }
-            });
-            
-                            
+            })       
             // Cargar los datos para los select antes de mostrar el formulario
-    await cargarSelect('/servidor/incidencia/cargar_categoria.php', 'listCategoria', incidencia.categoria);
+    //await cargarSelect('/servidor/incidencia/cargar_categoria.php', 'listCategoria', incidencia.categoria);
     /*   await cargarSelect('/servidor/incidencia/cargar_subcategoria.php', 'listSubCategoria', incidencia.sub_categoria);
     await cargarSelect('/servidor/incidencia/cargar_causa.php', 'listCausa', incidencia.causa);
     await cargarSelect('/servidor/incidencia/cargar_consecuencia.php', 'listConsecuencia', incidencia.consecuencia);
@@ -1034,8 +975,74 @@ async function changeView(view) {
         //... 
         return formValues;
     }                            
+    async function actualizarIncidencia(id_incidencia, formValues) {
+            const [fecha, hora_inicio, hora_fin, lugar, categoria, subcategoria, causa, consecuencia, descripcion, consorcio, tipo_servicio, ruta, servicio, sentido, bus, conductor, tipo_kilometraje, kilometraje, carreras/* otros campos */] = formValues;
+
+            const params = new URLSearchParams();
+            params.append('id_incidencia', id_incidencia);
+            params.append('fecha', fecha);
+            params.append('hora_inicio', hora_inicio);
+            params.append('hora_fin', hora_fin);
+            params.append('lugar', lugar);
+            params.append('categoria', categoria);
+            params.append('subcategoria', subcategoria);
+            params.append('causa', causa);
+            params.append('consecuencia', consecuencia);
+            params.append('descripcion', descripcion);
+            params.append('consorcio', consorcio);
+            params.append('tipo_servicio', tipo_servicio);
+            params.append('ruta', ruta);
+            params.append('servicio', servicio);
+            params.append('sentido', sentido);
+            params.append('bus', bus);
+            params.append('conductor', conductor);
+            params.append('tipo_kilometraje', tipo_kilometraje);
+            params.append('kilometraje', kilometraje);
+            params.append('carreras', carreras);
+
+            const actualizarResponse = await fetch('actualizar_incidencia.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: params.toString()
+            });
+
+            return actualizarResponse.text();
+    }
 
 
+    async function editarElemento(id_incidencia) {
+                try {
+                     const incidencia = await obtenerIncidenciaParaEditar(id_incidencia);
+                    // Mostrar el formulario de edición y manejar la actualización
+                     const formValues = await mostrarFormularioEdicion(incidencia);
+                     console.log('datos  nuevos del editar: ', formValues);
+                     // Validar y enviar los datos actualizados al servidor
+                    if (formValues) {
+                        const actualizarResponse = await actualizarIncidencia(id_incidencia, formValues);
+                             console.log(actualizarResponse); // Aquí puedes hacer lo que necesites con el resultado
+                        // Mostrar mensaje de éxito
+                            Swal.fire({
+                                        title: 'Incidencia actualizada',
+                                        text: 'La incidencia ha sido actualizada exitosamente',
+                                        icon: 'success'
+                                            });
+                                            // Volver a renderizar la tabla actualizada
+                                         changeView('./modulos/listado_incidencias.php');
+                                        }
+                                    } catch (error) {
+                                        console.error('Error:', error);
+                                        Swal.fire({
+                                            title: 'Error',
+                                            text: 'Se produjo un error al editar la incidencia',
+                                            icon: 'error'
+                                        });
+                                    }     
+
+    }  
+
+  
 /* ----------------------- vista descargar-------------------- */
 document.getElementById('descargar').addEventListener('click', function() {
   changeView('./modulos/descargar_incidencias.php');
@@ -1048,7 +1055,7 @@ contenidoDinamico.addEventListener('submit', async (e) => {
 
     if (e.target.id === 'downloadForm') {
         
-                const fechaInicio = document.getElementById('filterDate1').value;
+        const fechaInicio = document.getElementById('filterDate1').value;
         const fechaFin = document.getElementById('filterDate2').value;
 
         if (fechaInicio === '' || fechaFin === ''||(fechaInicio === '' && fechaFin === '')) {
