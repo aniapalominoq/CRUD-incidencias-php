@@ -3,8 +3,9 @@ include "Conexion.php";
 
 class Incidencias extends Conexion
 {
-      // Método para enlazar los parámetros de manera dinámica a la consulta preparada
-    private function refValues($arr) {
+    // Método para enlazar los parámetros de manera dinámica a la consulta preparada
+    private function refValues($arr)
+    {
         $refs = array();
         foreach ($arr as $key => $value) {
             $refs[$key] = &$arr[$key];
@@ -12,7 +13,7 @@ class Incidencias extends Conexion
         return $refs;
     }
     public function downloadIncidencias($fechaInicio, $fechaFin, $consorcio, $tipo_servicio, $conductor)
-     {
+    {
         // Conexión a la base de datos
         $conexion = Conexion::conectar();
 
@@ -108,40 +109,40 @@ class Incidencias extends Conexion
         }
         $stmt->execute();
         //---------------------
-        
-        
+
+
         // Obtener el resultado de la consulta
-       $datosIncidencias = $stmt->get_result();
-    // Verificar si hay datos de incidencias
-    if (!empty($datosIncidencias)) {
+        $datosIncidencias = $stmt->get_result();
+        // Verificar si hay datos de incidencias
+        if (!empty($datosIncidencias)) {
 
-        // Establecer las cabeceras para indicar que se descargará un archivo CSV
-        header('Content-Type: application/csv;charset=utf-8');
-        header('Content-Disposition: attachment; filename="incidencias.csv"');
+            // Establecer las cabeceras para indicar que se descargará un archivo CSV
+            header('Content-Type: application/csv;charset=utf-8');
+            header('Content-Disposition: attachment; filename="incidencias.csv"');
 
-        // Imprimir las cabeceras en una fila separada por tabulaciones
-        echo "FECHA\tHORA INICIO\tHORA FIN\tLUGAR\tTIPO\tRUTA\tNOMBRE CONSORCIO\tSENTIDO\tCATEGORIA\tSUB CATEGORIA\tCAUSA\tCONSECUENCIA\tDESCRIPCION\tSERVICIO\tBUS\tVID\tDIMENSION\tPLACA\tDNI\tNOMBRE\tCACC\tTIPO KM\tNUM KM\tNUM\tCARRERA\n";
+            // Imprimir las cabeceras en una fila separada por tabulaciones
+            echo "FECHA\tHORA INICIO\tHORA FIN\tLUGAR\tTIPO\tRUTA\tNOMBRE CONSORCIO\tSENTIDO\tCATEGORIA\tSUB CATEGORIA\tCAUSA\tCONSECUENCIA\tDESCRIPCION\tSERVICIO\tBUS\tVID\tDIMENSION\tPLACA\tDNI\tNOMBRE\tCACC\tTIPO KM\tNUM KM\tNUM\tCARRERA\n";
 
-        // Crear el contenido del archivo CSV
-        foreach ($datosIncidencias as $incidencia) {
-            echo "{$incidencia['fecha']}\t{$incidencia['hora_inicio']}\t{$incidencia['hora_fin']}\t{$incidencia['lugar']}\t {$incidencia['tipo']}\t{$incidencia['ruta']}\t{$incidencia['nombre_consorcio']}\t{$incidencia['sentido']}\t{$incidencia['categoria']}\t{$incidencia['sub_categoria']}\t{$incidencia['causa']}\t{$incidencia['consecuencia']}\t{$incidencia['descripcion']}\t{$incidencia['servicio']}\t{$incidencia['bus']}\t{$incidencia['vid']}\t{$incidencia['tamaño']}\t{$incidencia['placa']}\t{$incidencia['dni']}\t{$incidencia['nombre']}\t{$incidencia['cacc']}\t{$incidencia['tipo_kilometraje']}\t{$incidencia['kilometraje']}\t{$incidencia['carreras']}\n";
+            // Crear el contenido del archivo CSV
+            foreach ($datosIncidencias as $incidencia) {
+                echo "{$incidencia['fecha']}\t{$incidencia['hora_inicio']}\t{$incidencia['hora_fin']}\t{$incidencia['lugar']}\t {$incidencia['tipo']}\t{$incidencia['ruta']}\t{$incidencia['nombre_consorcio']}\t{$incidencia['sentido']}\t{$incidencia['categoria']}\t{$incidencia['sub_categoria']}\t{$incidencia['causa']}\t{$incidencia['consecuencia']}\t{$incidencia['descripcion']}\t{$incidencia['servicio']}\t{$incidencia['bus']}\t{$incidencia['vid']}\t{$incidencia['tamaño']}\t{$incidencia['placa']}\t{$incidencia['dni']}\t{$incidencia['nombre']}\t{$incidencia['cacc']}\t{$incidencia['tipo_kilometraje']}\t{$incidencia['kilometraje']}\t{$incidencia['carreras']}\n";
+            }
+        } else {
+            // No se encontraron resultados, devolver una respuesta vacía    
+            echo "No se encontraron resultados.";
         }
-    } else {
-        // No se encontraron resultados, devolver una respuesta vacía    
-        echo "No se encontraron resultados.";
-    }
-            // Cerrar la conexión a la base de datos
-            $conexion->close();
+        // Cerrar la conexión a la base de datos
+        $conexion->close();
     }
 
 
 
     public function detalleIncidencias($id_incidencia)
     {
-            $conexion = Conexion::conectar();
-            // Crea una conexión usando el método estático "conectar" de la clase "Conexion"
-            // Consulta SQL para seleccionar los detalles de la incidencia
-            $sql = "SELECT incidencia.idincidencia,
+        $conexion = Conexion::conectar();
+        // Crea una conexión usando el método estático "conectar" de la clase "Conexion"
+        // Consulta SQL para seleccionar los detalles de la incidencia
+        $sql = "SELECT incidencia.idincidencia,
            incidencia.fecha,
            incidencia.hora_inicio,
            incidencia.hora_fin,
@@ -179,19 +180,19 @@ class Incidencias extends Conexion
                 INNER JOIN conductor ON incidencia.conductor = conductor.dni
                 INNER JOIN tipo_kilometraje ON incidencia.tipo_kilometraje = tipo_kilometraje.idtipo_kilometraje
                 WHERE incidencia.idincidencia =?";
-            // La consulta incluye un parámetro de sustitución para el ID de incidencia
+        // La consulta incluye un parámetro de sustitución para el ID de incidencia
 
-            $query = $conexion->prepare($sql);
-            // Prepara la consulta SQL
-            $query->bind_param("i", $id_incidencia);
-            // Vincula el parámetro de sustitución con el valor de $id_incidencia
-            $query->execute();
-            // Ejecuta la consulta SQL
-            $resultado = $query->get_result()->fetch_assoc();
-            // Obtiene el resultado de la consulta como un array asociativo
+        $query = $conexion->prepare($sql);
+        // Prepara la consulta SQL
+        $query->bind_param("i", $id_incidencia);
+        // Vincula el parámetro de sustitución con el valor de $id_incidencia
+        $query->execute();
+        // Ejecuta la consulta SQL
+        $resultado = $query->get_result()->fetch_assoc();
+        // Obtiene el resultado de la consulta como un array asociativo
 
-            // Devuelve los detalles de la incidencia en formato JSON
-            return json_encode($resultado);
+        // Devuelve los detalles de la incidencia en formato JSON
+        return json_encode($resultado);
     }
     public function editarIncidencias($id_incidencia)
     {
@@ -290,6 +291,18 @@ class Incidencias extends Conexion
             return "error"; // Retornar "error" en caso de error
         }
     }
+    public function selectTipoServicio()
+    {
+        $conexion = Conexion::conectar();
+        $sql = "SELECT * FROM tipo ";
+        $respuesta = mysqli_query($conexion, $sql);
+        $tipo_servicio = array();
+        while ($mostrar = mysqli_fetch_array($respuesta)) {
+            $tipo_servicio[] = $mostrar;
+        }
+        return json_encode($tipo_servicio);
+    }
+
     public function selectCategorias()
     {
         $conexion = Conexion::conectar();

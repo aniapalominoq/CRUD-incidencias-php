@@ -1,6 +1,6 @@
 <?php session_start();
 if (!isset($_SESSION['nombre'])) {
-   // header("location:index.php");
+    header("location:index.php");
 }
 $seccionActual = "registro_incidencias";
 if (isset($_GET['seccion'])) {

@@ -1,6 +1,3 @@
-// Escucha el evento click del botón de descarga
-
-
 
 /*  para el menu boton de hamburguesa */
 const navigation = document.querySelector('.inicio__navegation');
@@ -119,7 +116,7 @@ const inputCacc= document.getElementById('cod_cacc');
 const inputConductor = document.getElementById('conductor');
 
 
-// funcion generica para cargar los select del formulario fetch
+// funcion generica para cargar los select del formulario  con fetch
 async function cargarOpciones(selectElement, url, valueKey, textKey, extraCallback) {
     try {
         const response = await fetch(url);
@@ -695,7 +692,6 @@ async function changeView(view) {
 
                                         </div>
                                         `,
-                                    icon: 'info',
                                 width: '50%',
                                 confirmButtonText: 'Aceptar',
                                     padding:'1rem',
@@ -776,15 +772,6 @@ async function changeView(view) {
                 throw new Error('No se pudo obtener la incidencia para editar');
             }
     }
-    bodyIncio.addEventListener('click',(e)=>{
-            console.log('click sobre',e.target.id);
-            if (e.target.id === 'listaCategoria') {      
-                // Event listener para cargar subcategorías cuando se selecciona una categoría
-                listaCategoria.addEventListener('change', () => {
-                    listaCategoria.innerHTML= `<option value="1" class="" selected >${'melania'}</option> `;
-                   });
-               }
-            });
 
     async function mostrarFormularioEdicion(incidencia) {
        const { value: formValues } = await Swal.fire({
@@ -814,7 +801,6 @@ async function changeView(view) {
                                                         <div class="listContainer__form-field">
                                                             <label for="listCategoria" class="listContainer__form-label">Categoria:</label>
                                                             <select id="listCategoria" name="listCategoria" class="listContainer__form-select" required>
-                                                        
                                                             </select>
                                                         </div>
                                                         <div class="listContainer__form-field">
@@ -868,7 +854,7 @@ async function changeView(view) {
                                                         <div class="listContainer__form-field">
                                                             <label for="listSentido" class="listContainer__form-label">Sentido:</label>
                                                             <select id="listSentido" name="listSentido" class="listContainer__form-select" >
-                                                                
+
                                                             </select>
                                                         </div>
                                                         <div class="listContainer__form-field">
@@ -929,9 +915,8 @@ async function changeView(view) {
                                             </div> }
                                             `,
                 focusConfirm: false,
-                width: '45%',
-                preConfirm: () => {
-                                    
+                width: '60%',
+                preConfirm: () => {            
                     // Obtener los valores del formulario
                     return [
                         document.getElementById('listDate').value,
@@ -959,20 +944,25 @@ async function changeView(view) {
                         document.getElementById('listKilometraje').value,
                         document.getElementById('listNumero_carreras').value,
                     ];
-                }
-            })       
-            // Cargar los datos para los select antes de mostrar el formulario
-    //await cargarSelect('/servidor/incidencia/cargar_categoria.php', 'listCategoria', incidencia.categoria);
-    /*   await cargarSelect('/servidor/incidencia/cargar_subcategoria.php', 'listSubCategoria', incidencia.sub_categoria);
-    await cargarSelect('/servidor/incidencia/cargar_causa.php', 'listCausa', incidencia.causa);
-    await cargarSelect('/servidor/incidencia/cargar_consecuencia.php', 'listConsecuencia', incidencia.consecuencia);
-    await cargarSelect('/servidor/incidencia/cargar_consorcio.php', 'listConsorcio', incidencia.consorcio);
-    await cargarSelect('/servidor/incidencia/cargar_tiposervicio.php', 'listTipo-servicio', incidencia.tipo_servicio);
-    await cargarSelect('/servidor/incidencia/cargar_ruta.php', 'listRuta', incidencia.ruta);
-    await cargarSelect('/servidor/incidencia/cargar_sentido.php', 'listSentido', incidencia.sentido);
-    await cargarSelect('/servidor/incidencia/cargar_tipokm.php', 'listTipoKilometraje', incidencia.tipo_kilometraje);
-    */
-        //... 
+                },
+            didOpen: async () => {
+                    // Cuando se abre el formulario, llenar el selector
+                await cargarSelect('/servidor/incidencia/cargar_categoria.php', 'listCategoria', incidencia.categoria);
+                await cargarSelect('/servidor/incidencia/cargar_sentido.php', 'listSentido', incidencia.sentido);
+                await cargarSelect('/servidor/incidencia/cargar_tipo_kilometraje.php', 'listTipoKilometraje', incidencia.tipo_kilometraje);
+                await cargarSelect('/servidor/incidencia/cargar_consorcio.php', 'listConsorcio', incidencia.consorcio);
+                await cargarSelect('/servidor/incidencia/cargar_tipo_servicio.php', 'listTipo-servicio', incidencia.tipo_servicio);
+                
+
+            await cargarSelect('/servidor/incidencia/cargar_subcategoria.php', 'listSubCategoria', incidencia.sub_categoria);
+            await cargarSelect('/servidor/incidencia/cargar_causa.php', 'listCausa', incidencia.causa);
+            await cargarSelect('/servidor/incidencia/cargar_consecuencia.php', 'listConsecuencia', incidencia.consecuencia);
+            await cargarSelect('/servidor/incidencia/cargar_ruta.php', 'listRuta', incidencia.ruta);
+                
+    
+              }
+            });       
+
         return formValues;
     }                            
     async function actualizarIncidencia(id_incidencia, formValues) {

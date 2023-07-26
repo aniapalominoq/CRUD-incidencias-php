@@ -19,7 +19,9 @@
                 if ($respuesta && mysqli_num_rows($respuesta) > 0) {
                     $passwordExistente = mysqli_fetch_array($respuesta)['contrasena'];
                     if (password_verify($password, $passwordExistente)) {
+                        session_start();
                         $_SESSION['nombre'] = $name;
+                        
                         return true;
                     } else {
                         return false;
