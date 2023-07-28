@@ -253,13 +253,11 @@ categoriaSelect.addEventListener('change', () => {
         );
     }
 });
-
 // Event listener para cargar causas cuando se selecciona una subcategoría
 subcategoriaSelect.addEventListener('change', () => {
     const subcategoriaId = subcategoriaSelect.value;
     causaSelect.innerHTML = '<option value="" class="addIncidents__form-option">Seleccione una causa</option>';
     consecuenciaSelect.innerHTML = '<option value="" class="addIncidents__form-option">Seleccione una consecuencia</option>';
-
     if (subcategoriaId) {
         cargarOpciones(
             causaSelect,
@@ -269,12 +267,10 @@ subcategoriaSelect.addEventListener('change', () => {
         );
     }
 });
-
 // Event listener para cargar consecuencias cuando se selecciona una causa
 causaSelect.addEventListener('change', () => {
     const causaId = causaSelect.value;
     consecuenciaSelect.innerHTML = '<option value="" class="addIncidents__form-option">Seleccione una consecuencia</option>';
-
     if (causaId) {
         cargarOpciones(
             consecuenciaSelect,
@@ -430,16 +426,16 @@ async function changeView(view) {
             // Generar las opciones HTML
                 const optionsHTML = data.map((item) => {
                     // Ajusta aquí las propiedades según la estructura real de los datos
-                    console.log('cagar datos en editar', data, item)
+                    //console.log('cagar datos en editar', data, item)
                 const value = item[0];
                     const label = item[1];
-                    console.log('valor para el option',value,label)
+                    //console.log('valor para el option',value,label)
                 return `<option value="${value}">${label}</option>`;
             });
 
             // Asignar las opciones al elemento select
                 select.innerHTML = optionsHTML;
-                console.log('guarda los option',select)
+               // console.log('guarda los option',select)
 
             // Establecer el valor seleccionado
             select.value = selectedValue;
@@ -586,7 +582,7 @@ async function changeView(view) {
 
                                 // Obtener los detalles de la incidencia
                                 const detallesIncidencia = await response.json();
-                                console.log( 'respuesta de los detalles',detallesIncidencia);
+                               // console.log( 'respuesta de los detalles',detallesIncidencia);
                                 // Mostrar los detalles de la incidencia en SweetAlert2S
                                 Swal.fire({
                                 title: 'Detalles de la incidencia',
@@ -688,10 +684,8 @@ async function changeView(view) {
                                 <th class="listContainer__detalle-th">NÚMERO DE CARRERAS</th>
                                 <td class="listContainer__detalle-td">${detallesIncidencia.carreras}</td>
                                 </tr>
-                            </table>
-
-                                        </div>
-                                        `,
+                                </table>
+                            </div>`,
                                 width: '50%',
                                 confirmButtonText: 'Aceptar',
                                     padding:'1rem',
@@ -699,9 +693,9 @@ async function changeView(view) {
                                     showCloseButton:true,//para activar el(x) en el alert
                                     closeButtonAriaLabel:'cerrar'
                                 });
-                                console.log("visualizar elemento con ID:", id);
+                               // console.log("visualizar elemento con ID:", id);
                             } catch (error) {
-                                console.error(error);
+                                //console.error(error);
                                 Swal.fire({
                                 title: 'Error',
                                 text: 'Ha ocurrido un error al obtener los detalles de la incidencia',
@@ -731,10 +725,8 @@ async function changeView(view) {
                                         },
                                         body: 'id_incidencia=' + encodeURIComponent(id_incidencia)
                                     });
-
                                     const responseText = await response.text();
                                     //console.log(responseText); // Aquí puedes hacer lo que necesites con el resultado
-
                                     Swal.fire({
                                         title: 'Incidencia eliminada',
                                         text: 'La incidencia ha sido eliminada exitosamente',
@@ -768,15 +760,15 @@ async function changeView(view) {
                 const incidencia = await response.json();
                 return incidencia[0];
             } catch (error) {
-                console.error('Error:', error);
+               // console.error('Error:', error);
                 throw new Error('No se pudo obtener la incidencia para editar');
             }
     }
 
-    async function mostrarFormularioEdicion(incidencia) {
-       const { value: formValues } = await Swal.fire({
-                title: 'Editar incidencia',
-                html: `<div class="listContainer__form-edit">
+async function mostrarFormularioEdicion(incidencia) {
+    const { value: formValues } = await Swal.fire({
+        title: 'Editar incidencia',
+        html: `<div class="listContainer__form-edit">
                                                     <div class="listContainer__form-group">
                                                         <div class="listContainer__form-field">
                                                             <label for="listDate" class="listContainer__form-label">Fecha</label>
@@ -884,7 +876,7 @@ async function changeView(view) {
                                                             <label for="listDni" class="listContainer__form-label">DNI</label>
                                                             <input list='opcionesDni' name="listDni" id="listDni" type="text" placeholder="número de dni" class="listContainer__form-input" value="${incidencia.conductor}" >
                                                             <datalist id="opcionesDni" class="listContainer__form-input-datalist">
-                                                                <option >
+                                                    
                                                             </datalist>
                                                         </div>
                                                         <div class="listContainer__form-field">
@@ -893,14 +885,14 @@ async function changeView(view) {
                                                         </div>
                                                         <div class="listContainer__form-field">
                                                             <label for="listConductor" class="listContainer__form-label">Conductor</label>
-                                                            <input name="listConductor" id=listConductor" type="text" class="listContainer__form-input" placeholder="nombre del conductor" value="" disabled>
+                                                            <input name="listConductor" id="listConductor" type="text" class="listContainer__form-input" placeholder="nombre del conductor" value="" disabled>
                                                         </div>
                                                     </div>
                                                     <div class="listContainer__form-group">
                                                         <div class="listContainer__form-field">
                                                             <label for="listTipoKilometraje" class="listContainer__form-label">Tipo Kilometraje:</label>
                                                             <select id="listTipoKilometraje" name="listTipoKilometraje" class="listContainer__form-select" required>
-                                                                <option value="" ></option>
+                                                            
                                                             </select>
                                                         </div>
                                                         <div class="listContainer__form-field">
@@ -912,59 +904,182 @@ async function changeView(view) {
                                                             <input name="listNumero_carreras" id="listNumero_carreras" type="number" class="listContainer__form-input"  value="${incidencia.carreras}" placeholder="Número de Carreras">
                                                         </div>
                                                     </div>
-                                            </div> }
+                                            </div>
                                             `,
-                focusConfirm: false,
-                width: '60%',
-                preConfirm: () => {            
-                    // Obtener los valores del formulario
-                    return [
-                        document.getElementById('listDate').value,
-                        document.getElementById('listTime_on').value,
-                        document.getElementById('listTime_off').value,
-                        document.getElementById('listPlace_incidence').value,
-                        document.getElementById('listCategoria').value,
-                        document.getElementById('listSubCategoria').value,
-                        document.getElementById('listCausa').value,
-                        document.getElementById('listConsecuencia').value,
-                        document.getElementById('listDescripcion').value,
-                        document.getElementById('listConsorcio').value,
-                        document.getElementById('listTipo-servicio').value,
-                        document.getElementById('listRuta').value,
-                        document.getElementById('listNumero_servicio').value,
-                        document.getElementById('listSentido').value,
-                        document.getElementById('ListVid').value,
-                        document.getElementById('listId_bus').value,
-                        document.getElementById('listPlaca').value,
-                        document.getElementById('listDni').value,
-                        document.getElementById('listCod_cacc').value,
-                        document.getElementById('listConductor').value,
-                        document.getElementById('listTipoKilometraje').value,
-                        document.getElementById('listKilometraje').value,
-                        document.getElementById('listKilometraje').value,
-                        document.getElementById('listNumero_carreras').value,
-                    ];
-                },
-            didOpen: async () => {
-                    // Cuando se abre el formulario, llenar el selector
-                await cargarSelect('/servidor/incidencia/cargar_categoria.php', 'listCategoria', incidencia.categoria);
-                await cargarSelect('/servidor/incidencia/cargar_sentido.php', 'listSentido', incidencia.sentido);
-                await cargarSelect('/servidor/incidencia/cargar_tipo_kilometraje.php', 'listTipoKilometraje', incidencia.tipo_kilometraje);
-                await cargarSelect('/servidor/incidencia/cargar_consorcio.php', 'listConsorcio', incidencia.consorcio);
-                await cargarSelect('/servidor/incidencia/cargar_tipo_servicio.php', 'listTipo-servicio', incidencia.tipo_servicio);
-                
+        focusConfirm: false,
+        width: '60%',
+        showCloseButton: true,//para activar el(x) en el alert
+        confirmButtonText: 'Guardar',
+        preConfirm: () => {
+            // Obtener los valores del formulario
+            return [
+                document.getElementById('listDate').value,
+                document.getElementById('listTime_on').value,
+                document.getElementById('listTime_off').value,
+                document.getElementById('listPlace_incidence').value,
+                document.getElementById('listCategoria').value,
+                document.getElementById('listSubCategoria').value,
+                document.getElementById('listCausa').value,
+                document.getElementById('listConsecuencia').value,
+                document.getElementById('listDescripcion').value,
+                document.getElementById('listConsorcio').value,
+                document.getElementById('listTipo-servicio').value,
+                document.getElementById('listRuta').value,
+                document.getElementById('listNumero_servicio').value,
+                document.getElementById('listSentido').value,
+                document.getElementById('ListVid').value,
+                document.getElementById('listId_bus').value,
+                document.getElementById('listPlaca').value,
+                document.getElementById('listDni').value,
+                document.getElementById('listCod_cacc').value,
+                document.getElementById('listConductor').value,
+                document.getElementById('listTipoKilometraje').value,
+                document.getElementById('listKilometraje').value,
+                document.getElementById('listKilometraje').value,
+                document.getElementById('listNumero_carreras').value,
+            ];
+        },
+        didOpen: async () => {
+            console.log('data incidencia',incidencia)
+            // Cuando se abre el formulario, llenar el selector
+            await cargarSelect('/servidor/incidencia/cargar_categoria.php', 'listCategoria', incidencia.categoria);
+            await cargarSelect('/servidor/incidencia/cargar_sentido.php', 'listSentido', incidencia.sentido);
+            await cargarSelect('/servidor/incidencia/cargar_tipo_kilometraje.php', 'listTipoKilometraje', incidencia.tipo_kilometraje);
+            await cargarSelect('/servidor/incidencia/cargar_consorcio.php', 'listConsorcio', incidencia.consorcio);
+            await cargarSelect('/servidor/incidencia/cargar_tipo_servicio.php', 'listTipo-servicio', incidencia.tipo_servicio);
+            //elementos del formulario editar
+            const selectEditarCategoria = document.getElementById('listCategoria');
+            const selectEditarSubCategoria= document.getElementById('listSubCategoria');
+            const selectEditarlistCausa = document.getElementById('listCausa');
+            const selectEditarConsecuencia = document.getElementById('listConsecuencia');
+            const inputEditarCacc = document.getElementById('listCod_cacc');
+            const inputEditarConductor = document.getElementById('listConductor');
+            const inputEditarDni = document.getElementById('listDni');
+            const inputEditarIdBus=document.getElementById('listId_bus');
+             const inputEditarPlaca=document.getElementById('listPlaca')
+            //cargar subcategoria
+            const categoriaId = selectEditarCategoria.value;
+            await cargarSelect(
+                `../../servidor/incidencia/cargar_subcategoria.php?categoria_id=${categoriaId}`,
+                'listSubCategoria',
+                incidencia.subcategoria
+            );
+            //cargar causa
+            const subcategoriaId = selectEditarSubCategoria.value;
+            await cargarSelect(
+                `../../servidor/incidencia/cargar_causa.php?subcategoria_id=${subcategoriaId}`,
+                'listCausa',
+                incidencia.causa
+            );
+            //cargar consecuencias 
+            const causaId = selectEditarlistCausa.value;
+            await cargarSelect(
+                `../../servidor/incidencia/cargar_consecuencia.php?causa_id=${causaId}`,
+                'listConsecuencia',
+                incidencia.consecuencia
+            );
+            //cargar nombre y cacc con el dni
+            const dniFila = incidencia.conductor;
+            const responseCaccNombre = await fetch(`../../servidor/incidencia/cargar_cacc_conductor.php?numero_dni=${dniFila}`);
+            const dataCaccNombre = await responseCaccNombre.json();
+            inputEditarCacc.value = dataCaccNombre[0].cacc;
+            inputEditarConductor.value = dataCaccNombre[0].nombre;
+            //cargar idBUS y placa con el vid
+            const vidFila = incidencia.bus;
+            const responseVidPlaca = await fetch(`../../servidor/incidencia/cargar_bus_placa.php?numero_vid=${vidFila}`);
+            const dataVidPlaca = await responseVidPlaca.json();
+            inputEditarIdBus.value = dataVidPlaca[0].num_externo;
+            inputEditarPlaca.value = dataVidPlaca[0].placa;
 
-            await cargarSelect('/servidor/incidencia/cargar_subcategoria.php', 'listSubCategoria', incidencia.sub_categoria);
-            await cargarSelect('/servidor/incidencia/cargar_causa.php', 'listCausa', incidencia.causa);
-            await cargarSelect('/servidor/incidencia/cargar_consecuencia.php', 'listConsecuencia', incidencia.consecuencia);
-            await cargarSelect('/servidor/incidencia/cargar_ruta.php', 'listRuta', incidencia.ruta);
-                
-    
-              }
-            });       
+            //----------------cargar ruta--------------
+            const valorSelecionado = incidencia.ruta;
+            const consorcioId = document.getElementById('listConsorcio').value;
+            const tipoId = document.getElementById('listTipo-servicio').value;
+            const rutaElement = document.getElementById('listRuta');
+            const response = await fetch(`../../servidor/incidencia/cargar_ruta.php?consorcio_id=${consorcioId}&id_tipo=${tipoId}`);
+            const data = await response.json();
+            // Limpiamos las opciones existentes (si las hay)
+            rutaElement.innerHTML = '';
+                data.forEach(ruta => {
+                    const option = document.createElement('option');
+                    option.value = ruta.id_ruta;
+                    option.textContent = ruta.abreviatura;
+                    // Comprobamos si el valor de la opción coincide con el valor seleccionado
+                    if (ruta.id_ruta === valorSelecionado) {
+                        option.selected = true;
+                    }
+                    rutaElement.appendChild(option);
+                });
+            //----------- evnet listerner cargar nombre y cacc con dni- */
+/*             const valueEditarDni = incidencia.dni
+                    const responseDni = await fetch(`../../servidor/incidencia/cargar_cacc_conductor.php?numero_dni=${valueEditarDni}`);
+                    const dataDni = await responseDni.json();
+                    // Limpiamos las opciones existentes (si las hay)
+                   // rutaElement.innerHTML = '';
+                    inputEditarCacc.value = '';
+                    inputEditarConductor.value = '';
+                    inputEditarCacc.value =  dataDni [0].cacc;
+                    inputEditarConductor.value =  dataDni [0].nombre; */
+            //---------* */
+            // Event listener para cargar subcategorías cuando se selecciona una categoría
+            selectEditarCategoria.addEventListener('change', async() => {
+                const categoriaId = selectEditarCategoria.value;
+                selectEditarSubCategoria.innerHTML = '<option value="" class="listIncidents__form-option">Seleccione una subcategoría</option>';
+                selectEditarlistCausa.innerHTML = '<option value="" class="listIncidents__form-option">Seleccione una causa</option>';
+                selectEditarConsecuencia.innerHTML = '<option value="" class="listIncidents__form-option">Seleccione una consecuencia</option>';
 
+                if (categoriaId) {
+                    await cargarSelect(
+                                    `../../servidor/incidencia/cargar_subcategoria.php?categoria_id=${categoriaId}`,
+                                    'listSubCategoria',
+                                    incidencia.subcategoria
+                                );
+                                    }
+            });
+            // Event listener para cargar causas cuando se selecciona una subcategoría
+            selectEditarSubCategoria.addEventListener('change', async() => {
+                const subcategoriaId = selectEditarSubCategoria.value;
+                selectEditarlistCausa.innerHTML = '<option value="" class="listIncidents__form-option">Seleccione una causa</option>';
+                selectEditarConsecuencia.innerHTML = '<option value="" class="listIncidents__form-option">Seleccione una consecuencia</option>';
+                if (subcategoriaId) {
+                        await cargarSelect(
+                            `../../servidor/incidencia/cargar_causa.php?subcategoria_id=${subcategoriaId}`,
+                            'listCausa',
+                            incidencia.causa
+                        );
+                }
+            });
+            // Event listener para cargar consecuencias cuando se selecciona una causa
+            selectEditarlistCausa .addEventListener('change', async() => {
+                const causaId = selectEditarlistCausa.value;
+                selectEditarConsecuencia.innerHTML = '<option value="" class="listIncidents__form-option">Seleccione una consecuencia</option>';
+                if (causaId) {
+                    await cargarSelect(
+                        `../../servidor/incidencia/cargar_consecuencia.php?causa_id=${causaId}`,
+                        'listConsecuencia',
+                        incidencia.consecuencia
+                );
+                }
+            });
+            // Event listener para cargar CACC y nombre del conductor al llenar el campo DNI
+            inputEditarDni.addEventListener('input', async() => {
+                const valueDni = inputEditarDni.value;
+                if (valueDni) {
+                    const response = await fetch(`../../servidor/incidencia/cargar_cacc_conductor.php?numero_dni=${valueDni}`);
+                    const data = await response.json();
+                    // Limpiamos las opciones existentes (si las hay)
+                   // rutaElement.innerHTML = '';
+                    inputEditarCacc.value = '';
+                    inputEditarConductor.value = '';
+                    inputEditarCacc.value = data[0].cacc;
+                    inputEditarConductor.value = data[0].nombre;
+                }
+            });
+            //----------------------------------------
+        }
+    })
         return formValues;
-    }                            
+}
     async function actualizarIncidencia(id_incidencia, formValues) {
             const [fecha, hora_inicio, hora_fin, lugar, categoria, subcategoria, causa, consecuencia, descripcion, consorcio, tipo_servicio, ruta, servicio, sentido, bus, conductor, tipo_kilometraje, kilometraje, carreras/* otros campos */] = formValues;
 
@@ -997,21 +1112,20 @@ async function changeView(view) {
                 },
                 body: params.toString()
             });
-
             return actualizarResponse.text();
     }
 
 
     async function editarElemento(id_incidencia) {
                 try {
-                     const incidencia = await obtenerIncidenciaParaEditar(id_incidencia);
+                    const incidencia = await obtenerIncidenciaParaEditar(id_incidencia);
                     // Mostrar el formulario de edición y manejar la actualización
-                     const formValues = await mostrarFormularioEdicion(incidencia);
-                     console.log('datos  nuevos del editar: ', formValues);
+                    const formValues = await mostrarFormularioEdicion(incidencia);
+                     //console.log('datos  nuevos del editar: ', formValues);
                      // Validar y enviar los datos actualizados al servidor
                     if (formValues) {
                         const actualizarResponse = await actualizarIncidencia(id_incidencia, formValues);
-                             console.log(actualizarResponse); // Aquí puedes hacer lo que necesites con el resultado
+                        //console.log(actualizarResponse); // Aquí puedes hacer lo que necesites con el resultado
                         // Mostrar mensaje de éxito
                             Swal.fire({
                                         title: 'Incidencia actualizada',
@@ -1019,7 +1133,7 @@ async function changeView(view) {
                                         icon: 'success'
                                             });
                                             // Volver a renderizar la tabla actualizada
-                                         changeView('./modulos/listado_incidencias.php');
+                                        changeView('./modulos/listado_incidencias.php');
                                         }
                                     } catch (error) {
                                         console.error('Error:', error);
@@ -1028,11 +1142,8 @@ async function changeView(view) {
                                             text: 'Se produjo un error al editar la incidencia',
                                             icon: 'error'
                                         });
-                                    }     
-
+                                    }
     }  
-
-  
 /* ----------------------- vista descargar-------------------- */
 document.getElementById('descargar').addEventListener('click', function() {
   changeView('./modulos/descargar_incidencias.php');
