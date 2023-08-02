@@ -71,28 +71,30 @@
             <!-- page two -->
             <div class="addIncidents__form-page ">
                 <h2 class="addIncidents__form-title">Caracteristica y Descripcion del hecho</h2>
-                <div class="addIncidents__form-field">
-                    <label for="categoria" class="addIncidents__form-label">Categoria:</label>
-                    <select id="categoria" name="categoria" class="addIncidents__form-select" required>
-                        <option value="">Seleccione una categoría</option>
-                    </select>
-                </div>
-                <div class="addIncidents__form-field">
-                    <label for="subcategoria" class="addIncidents__form-label">subcategoria :</label>
-                    <select id="subcategoria" name="subcategoria" class="addIncidents__form-select" required>
-                        <option value="">Seleccione una subcategoria</option>
-                    </select>
+                <div class="addIncidents__form-group">
+                    <div class="addIncidents__form-field">
+                        <label for="categoria" class="addIncidents__form-label">Categoria:</label>
+                        <select id="categoria" name="categoria" class="addIncidents__form-select" required>
+                            <option value="" class="addIncidents__form-option">Seleccione una categoría</option>
+                        </select>
+                    </div>
+                    <div class="addIncidents__form-field">
+                        <label for="subcategoria" class="addIncidents__form-label">subcategoria :</label>
+                        <select id="subcategoria" name="subcategoria" class="addIncidents__form-select" required>
+                            <option value="" class="addIncidents__form-option">Seleccione una subcategoria</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="addIncidents__form-field">
                     <label for="causa" class="addIncidents__form-label">Causa:</label>
                     <select id="causa" name="causa" class="addIncidents__form-select" required>
-                        <option value="">Seleccione una causa</option>
+                        <option value="" class="addIncidents__form-option">Seleccione una causa</option>
                     </select>
                 </div>
                 <div class="addIncidents__form-field">
                     <label for="consecuencia" class="addIncidents__form-label">Consecuencia:</label>
                     <select id="consecuencia" name="consecuencia" class="addIncidents__form-select" required>
-                        <option value="">Seleccione una consecuencia</option>
+                        <option value="" class="addIncidents__form-option">Seleccione una consecuencia</option>
                     </select>
                 </div>
                 <div class="addIncidents__form-field">
@@ -111,7 +113,7 @@
                     <div class="addIncidents__form-field">
                         <label for="consorcio" class="addIncidents__form-label">Consorcio:</label>
                         <select id="consorcio" name="consorcio" class="addIncidents__form-select" required>
-                            <option value="">Seleccione un consorcio</option>
+                            <option value="" class="addIncidents__form-option">Seleccione un consorcio</option>
                         </select>
                     </div>
                     <div class="addIncidents__form-field">
@@ -127,18 +129,20 @@
                     <div class="addIncidents__form-field">
                         <label for="ruta" class="addIncidents__form-label">Ruta:</label>
                         <select id="ruta" name="ruta" class="addIncidents__form-select" required>
-                            <option value="">Seleccione una ruta</option>
-                        </select>
-                    </div>
-                    <div class="addIncidents__form-field">
-                        <label for="sentido" class="addIncidents__form-label">Sentido:</label>
-                        <select id="sentido" name="sentido" class="addIncidents__form-select" required>
-                            <option value="">Seleccione una sentido</option>
+                            <option value="" class="addIncidents__form-option">Seleccione una ruta</option>
                         </select>
                     </div>
                     <div class="addIncidents__form-field">
                         <label for="numero_servicio" class="addIncidents__form-label">Número servicio</label>
                         <input id="numero_servicio" name="numero_servicio" type="number" class="addIncidents__form-input" placeholder="Número Servicio" required>
+                    </div>
+                </div>
+                <div class="addIncidents__form-group">
+                    <div class="addIncidents__form-field">
+                        <label for="sentido" class="addIncidents__form-label">Sentido:</label>
+                        <select id="sentido" name="sentido" class="addIncidents__form-select" required>
+                            <option value="" class="addIncidents__form-option">Seleccione una sentido</option>
+                        </select>
                     </div>
                 </div>
                 <div class="addIncidents__form-group">
@@ -186,7 +190,7 @@
                 <div class="addIncidents__form-field">
                     <label for="tipokilometraje" class="addIncidents__form-label">Tipo Kilometraje:</label>
                     <select id="tipokilometraje" name="tipokilometraje" class="addIncidents__form-select" required>
-                        <option value="">Seleccione kilometraje</option>
+                        <option value="" class="addIncidents__form-option">Seleccione kilometraje</option>
                     </select>
                 </div>
                 <div class="addIncidents__form-field">

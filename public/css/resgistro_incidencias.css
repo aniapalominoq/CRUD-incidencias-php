@@ -6,7 +6,7 @@
 
 .addIncidents__container{
     border:1px solid var(--cyan-100);
-    width: 95%;
+    width: 70%;
     height: 90%;
     border-radius: 5px;
     background:#fff;
@@ -20,7 +20,7 @@
     
 }
 .addIncidents__container>*{
-    width: 90%;
+    width: 80%;
 }
 /* primer hijo del contenedor */
 
@@ -30,7 +30,7 @@
 }
 
 .addIncidents__form-outer{
-    width:90%;
+    width:80%;
      overflow: hidden; 
 }
 
@@ -43,23 +43,20 @@
     width: 25%;
     transition: margin-left 0.3s ease-in-out; 
     display: flex;
-    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap:0.5em;
 }
 .addIncidents__form-page>*{
-    width: 100%;
+    width: 95%;
 }
 .addIncidents__form-group{
 display:flex;
-
 width: 100%;
+gap:0.5em;
 }
 
-.addIncidents__form-group>*{
-    width: 50%;
-}
 .addIncidents__form-subgroup{
 display:flex;
 }
@@ -78,6 +75,8 @@ font-weight: 500;
 .addIncidents__form-field{
     display:flex;
     flex-direction:column;
+    flex: 1;
+  min-width: 0;
    /*  gap:0.5rem; */
 
 }
@@ -98,6 +97,10 @@ font-weight: 500;
 }
 ::placeholder{
     color:var(--grey-100);
+    font-size: 0.85rem;
+}
+.addIncidents__form-option{
+  color:var(--grey-100);
     font-size: 0.85rem;
 }
 .addIncidents__form-select{
@@ -151,6 +154,7 @@ margin-top: 1.5rem;
 .addIncidents__progress-bar{
     display: flex;
     margin:0 20px;
+    width: 70%;
 }
 .addIncidents__progress-step{
     position: relative;
@@ -237,35 +241,106 @@ width:20px ;
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 /* media queries */
 @media screen and (max-width: 767px) {
-   /*  .addIncidents__container{
-           padding:20px ;
+.addIncidents__container{
+    padding:10px ;
     }
 
 .addIncidents__container-header{
-    font-size:1.125rem;
-    margin: 0 0 20px 0;
+    font-size:1.625rem;
+    margin: 0;
 }
-.addIncidents__progress-title{
-    font-size:0.85rem;
+.addIncidents__container{
+    width: 95%;
+    height: 98%;
+    gap: 0.5rem;
+    
+}
+.addIncidents__container>*{
+    width: 95%;
+}
+
+.addIncidents__progress-bar{
+    margin:0px;
+    width: 60%;
 }
 .addIncidents__form-title{
-font-size:1rem;
-font-weight: 600;
+font-size:1.3rem;
 }
-.addIncidents__form-field{
+.addIncidents__progress-title{
+    font-size: 0.875rem;
+}
 
-    margin: 30px 0;
-  
+.addIncidents__form-outer{
+    overflow-y: auto; 
 }
+
+.addIncidents__form-group{
+gap:0.25em;
+}
+.addIncidents__form-group>*{
+    width: 33.333%;
+}
+.addIncidents__form-subgroup{
+display:flex;
+}
+.addIncidents__form-textarea{
+height: 5.25rem;
+}
+
 .addIncidents__form-label{
-    top:-20px;
-    font-size:0.85rem;
+    font-size: 0.875rem;
+    text-align: left;
+    margin-bottom: 0.3rem;
+    margin-left: 0;
+
+}
+.addIncidents__form-input{
+height: 2rem;
+ font-size: 0.9rem;
+}
+.addIncidents__form-option{
+     font-size: 0.875rem;
+}
+::placeholder{
+       font-size: 0.875rem;
+}
+.addIncidents__form-select{
+   height:2rem;
+   font-size: 0.9rem;
+}
+
+.btns{
+    flex-direction: row;
+    text-align: center;
+    gap:1.5rem;
+
+}
+.addIncidents__form-btn{
+padding-top:0.8em;
+margin-top: 0;
+}
+.submit{
+padding-bottom: 0.8em;
 }
 
 
- */
+
+
+
 
 
 
@@ -276,6 +351,88 @@ font-weight: 600;
 
 }
 @media screen and (min-width: 768px) and (max-width: 991px) {
+.addIncidents__container{
+    padding:20px ;
+    }
+
+.addIncidents__container-header{
+    font-size:2rem;
+    margin-top: 0.5rem;
+}
+.addIncidents__container{
+    width: 90%;
+    height: 90%;
+    gap: 1rem;
+    
+}
+.addIncidents__container>*{
+    width: 95%;
+}
+
+.addIncidents__progress-bar{
+    margin:0px;
+    width: 90%;
+}
+.addIncidents__form-title{
+font-size:1.3rem;
+}
+.addIncidents__progress-title{
+    font-size: 1rem;
+}
+
+.addIncidents__form-outer{
+    overflow-y: auto; 
+}
+
+.addIncidents__form-group{
+gap:0.5rem;
+}
+.addIncidents__form-group>*{
+    width: 33.333%;
+}
+.addIncidents__form-subgroup{
+display:flex;
+}
+.addIncidents__form-textarea{
+height: 6.25rem;
+}
+
+.addIncidents__form-label{
+    font-size: 0.875rem;
+    text-align: left;
+    margin-bottom: 0.5rem;
+    margin-left: 0;
+
+}
+.addIncidents__form-input{
+height: 2rem;
+ font-size: 1rem;
+}
+.addIncidents__form-option{
+     font-size: 0.875rem;
+}
+::placeholder{
+       font-size: 0.875rem;
+}
+.addIncidents__form-select{
+   height:2rem;
+   font-size: 1rem;
+}
+
+.btns{
+    flex-direction: row;
+    text-align: center;
+    gap:1rem;
+
+}
+.addIncidents__form-btn{
+padding-top:0.8em;
+margin-top: 0;
+}
+.submit{
+padding-bottom: 0.8em;
+}
+/* --------------- */
    .addIncidents__progress-bullet::before,.addIncidents__progress-bullet::after{
 
 right: -90px;
@@ -287,12 +444,31 @@ width: 250%;
 left: 51%;
 top:75%;
 
-
 }
+
+
+
+
+
+
+
 
 
 }
 @media screen and (min-width: 992px) {
+    .addIncidents__container{
+    padding:25px ;
+    }
+    .addIncidents__form-label{
+    font-size: 1rem;
+    text-align: left;
+    margin-bottom: 0.8rem;
+    margin-left: 0;
+
+}
+.addIncidents__form-outer{
+    overflow-y: auto; 
+}
     .addIncidents__progress-bullet::before,.addIncidents__progress-bullet::after{
 
 right: -150px;
@@ -305,6 +481,13 @@ left: 50.5%;
 top:74.5%;
 
 
-}  
+} 
+.addIncidents__form-btn{
+padding-top:0.8em;
+margin-top: 0;
+}
+.submit{
+padding-bottom: 0.8em;
+} 
 
 }

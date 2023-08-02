@@ -2,6 +2,7 @@
 @import "./confingBasic.css";
 @import "./resgistro_incidencias.css";
 @import "./listado_incidencias.css";
+@import "./descargar_indicencias.css";
 
 .inicio__body{
     height: 100vh;

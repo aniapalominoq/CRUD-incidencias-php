@@ -1,6 +1,6 @@
 <?php session_start();
-    include "../../clases/Incidencias.php";
-   $Incidencias = new Incidencias();
+include "../../clases/Incidencias.php";
+$Incidencias = new Incidencias();
 $data = array(
     "fecha" => $_POST['date'],
     "hora_inicio" => $_POST['time_on'],
@@ -21,8 +21,7 @@ $data = array(
     "tipo_kilometraje" => $_POST['tipokilometraje'],
     "kilometraje" => $_POST['kilometraje'],
     "carreras" => $_POST['numero_carreras'],
-   /* "auditoria" =>'1'  $_POST['auditoria'] */
+    /* "auditoria" =>'1'  $_POST['auditoria'] */
 );
 
 echo $Incidencias->agregarIncidencias($data);
-?>

@@ -1,0 +1,11 @@
+.downloadContainer{
+ border:1px solid var(--cyan-100);
+    width: 95%;
+    height: 90%;
+    border-radius: 5px;
+    padding: 30px;
+
+}
+.downloadContainer-tabla{
+     overflow: auto; 
+}
