@@ -24,7 +24,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.16/dist/sweetalert2.min.css
         <title>inicio</title>
     </head>
 
-    <body  id="inicio__body" class="inicio__body">
+    <body id="inicio__body" class="inicio__body">
         <nav class="inicio__navegation">
             <ul class="inicio__navegation-ul">
                 <li class="inicio__navegation-li-user">
@@ -72,8 +72,51 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.16/dist/sweetalert2.min.css
                         <span class=" inicio__navegation-title">Descargar</span>
                     </a>
                 </li>
+
+                <hr class="inicio__navegation-hr">
+
                 <li class="inicio__navegation-li">
-                    <a href="./servidor/login/logout.php" class="inicio__navegation-a">
+                    <a id="newDriver" class="inicio__navegation-a">
+                        <span class=" inicio__navegation-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="ionicon inicio__navegation-svg" viewBox="0 0 512 512">
+                                <path d="M376 144c-3.92 52.87-44 96-88 96s-84.15-43.12-88-96c-4-55 35-96 88-96s92 42 88 96z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" />
+                                <path d="M288 304c-87 0-175.3 48-191.64 138.6-2 10.92 4.21 21.4 15.65 21.4H464c11.44 0 17.62-10.48 15.65-21.4C463.3 352 375 304 288 304z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32" />
+                                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M88 176v112M144 232H32" />
+                            </svg>
+                        </span>
+                        <span class="inicio__navegation-title">Añadir Usuario</span>
+                    </a>
+                </li>
+
+                <li class="inicio__navegation-li">
+                    <a id="newDriver" class="inicio__navegation-a">
+                        <span class=" inicio__navegation-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="ionicon inicio__navegation-svg" viewBox="0 0 512 512">
+                                <path d="M326.1 231.9l-47.5 75.5a31 31 0 01-7 7 30.11 30.11 0 01-35-49l75.5-47.5a10.23 10.23 0 0111.7 0 10.06 10.06 0 012.3 14z" fill="#5ABDD5" />
+                                <path d="M256 64C132.3 64 32 164.2 32 287.9a223.18 223.18 0 0056.3 148.5c1.1 1.2 2.1 2.4 3.2 3.5a25.19 25.19 0 0037.1-.1 173.13 173.13 0 01254.8 0 25.19 25.19 0 0037.1.1l3.2-3.5A223.18 223.18 0 00480 287.9C480 164.2 379.7 64 256 64z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" />
+                                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" d="M256 128v32M416 288h-32M128 288H96M165.49 197.49l-22.63-22.63M346.51 197.49l22.63-22.63" />
+                            </svg>
+                        </span>
+                        <span class="inicio__navegation-title">Añadir Conductor</span>
+                    </a>
+                </li>
+                <li class="inicio__navegation-li">
+                    <a id="newBus" class="inicio__navegation-a">
+                        <span class=" inicio__navegation-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="ionicon inicio__navegation-svg" viewBox="0 0 512 512">
+                                <rect x="80" y="112" width="352" height="192" rx="32" ry="32" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" />
+                                <rect x="80" y="304" width="352" height="128" rx="32" ry="32" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" />
+                                <path d="M400 112H112a32.09 32.09 0 01-32-32h0a32.09 32.09 0 0132-32h288a32.09 32.09 0 0132 32h0a32.09 32.09 0 01-32 32zM144 432v22a10 10 0 01-10 10h-28a10 10 0 01-10-10v-22zM416 432v22a10 10 0 01-10 10h-28a10 10 0 01-10-10v-22z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" />
+                                <circle cx="368" cy="368" r="16" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32" />
+                                <circle cx="144" cy="368" r="16" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32" />
+                                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M256 112v192M80 80v288M432 80v288" />
+                            </svg>
+                        </span>
+                        <span class="inicio__navegation-title">Añadir bus</span>
+                    </a>
+                </li>
+                <li class="inicio__navegation-li">
+                    <a id="logout" class="inicio__navegation-a">
                         <span class=" inicio__navegation-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" class="ionicon inicio__navegation-svg" viewBox="0 0 512 512">
                                 <path d="M304 336v40a40 40 0 01-40 40H104a40 40 0 01-40-40V136a40 40 0 0140-40h152c22.09 0 48 17.91 48 40v40M368 336l80-80-80-80M176 256h256" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" />
@@ -93,7 +136,8 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.16/dist/sweetalert2.min.css
 
         <script src="/public/JavaScript/inicio.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.16/dist/sweetalert2.all.min.js"></script>
-         <script src="public/JavaScript/sweetalert2.all.min.js"></script>
+        <script src="public/JavaScript/sweetalert2.all.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/gridjs/dist/gridjs.umd.js"></script>
     </body>
+
     </html>

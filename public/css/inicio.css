@@ -11,7 +11,15 @@
     align-items: center;
     justify-content: center;
     padding-left: 90px;
-    /*    overflow-x: hidden; */
+    /*  overflow-x: hidden; */
+}
+.inicio__navegation-hr{
+    height:2px;
+    width: 100%;
+    padding-right: 20px;
+    color: #fff;
+    margin: 20px 0 20px 0;
+
 }
 
 .addIncidents__main{
@@ -27,7 +35,7 @@
     position: fixed;
     inset: 10px;
     background:var(--blue-300);
-    width: 80px;
+    width: 60px;
    /*  border-left: 10px solid var(--blue-300) ; */
     border-radius:50px;
     overflow: hidden;
@@ -44,7 +52,7 @@
 {
    position: absolute;
     bottom: 15px;
-    right: 15px;
+    right: 5px;
     width: 50px;
     height: 50px;
     background-color: var(--white);
@@ -96,7 +104,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-left:10px;
+    padding-left:0px;
 }
 .inicio__navegation-li ,.inicio__navegation-li-user
 {
@@ -187,7 +195,7 @@
 @media screen and (max-width: 767px) {
 
 .active{
-    width:200px;
+    width:220px;
     border-radius: 15px;
 }
 

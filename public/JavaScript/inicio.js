@@ -5,6 +5,21 @@ const toggles=document.querySelector('.inicio__navegation-toggle');
     toggles.onclick=function(){
         navigation.classList.toggle('active');
 }
+        // Función para verificar y añadir la clase "mobile" cuando el tamaño del dispositivo cambia
+        function updateClass() {
+            const contentDiv = document.querySelector('.inicio__navegation');
+            if (window.innerWidth <= 991) {
+                contentDiv.classList.remove('active');
+            } else {
+                contentDiv.classList.add('active');
+            }
+        }
+
+        // Verificar el tamaño del dispositivo al cargar la página
+        updateClass();
+
+        // Agregar un evento "resize" para verificar el tamaño del dispositivo en tiempo real
+        window.addEventListener('resize', updateClass);
 /* ------------------------FIN ----------------------- */
 /* para la barra de progreso del formulario paso1->paso2->paso3->paso->4 */
 /* leemos los elementos  */
@@ -1200,7 +1215,50 @@ const formDataDownload = new FormData(e.target);
         }
     }
 });
+// logout del sistema
+document.getElementById('logout').addEventListener('click', () => {
+Swal.fire({
+  title: '¿Quiere salir del sistema?',
+  text: "¡No podrá deshacer esta acción!",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Salir',
+  cancelButtonText: 'Cancelar'
+}).then(async (result) => {
+  if (result.isConfirmed) {
+    try {
+      const response = await fetch('/servidor/login/logout.php');
+      const responseData = await response.json(); // Parsear la respuesta como JSON
 
+      if (response.ok) {
+        Swal.fire(
+          '¡Cierre de sesión exitoso!',
+          'Ha salido correctamente del sistema.',
+          'success'
+        ).then(() => {
+          // Realizar la redirección una vez que se muestre el mensaje de éxito
+          window.location.href = '../../index.php';
+        });
+      } else {
+        throw new Error(responseData.message); // Lanzar un error con el mensaje del servidor
+      }
+    } catch (error) {
+      console.error(error);
+      Swal.fire(
+        '¡Error!',
+        'Ocurrió un problema al intentar cerrar sesión.',
+        'error'
+      );
+    }
+  } else {
+    // El usuario ha cancelado la acción
+    Swal.fire('¡Acción cancelada!', 'Permanecerá en el sistema.', 'info');
+  }
+});
+
+ })
 
 
 
