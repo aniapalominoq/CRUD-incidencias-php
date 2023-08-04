@@ -26,13 +26,14 @@ display:flex;
     flex-direction:column;
     align-items: center;
     justify-items: center;
-    border:1px solid #37373716;
+    border:1px solid var(--cyan-100);
 }
 .img-body__section {
     display:flex;
     flex-direction:column;
     align-items: center;
     width: 35vw;
+    opacity: 0.8;
  }
 
 .login__title{
@@ -43,9 +44,9 @@ font-weight:800;
 text-align: left;
 }
 .login__h1{
-    font-size: 0.85rem;
+    font-size: 1rem;
     color:var(--cyan-100);
-    font-weight: 400;
+    font-weight: 700;
       margin-bottom: 2rem;
 }
 .login__form{
@@ -127,6 +128,12 @@ transition:  0.3s ease;
 .login-footer__span{
     font-size: 0.85rem;
 }
+
+ .swal2-confirm {
+        background-color: #19459D ;
+        border: none ; /* Elimina los bordes */
+        box-shadow: none ; /* Elimina la sombra del botón */
+    }
 
 /* media queries nueva sintaxis */
 

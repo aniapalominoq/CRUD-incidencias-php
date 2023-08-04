@@ -1025,17 +1025,7 @@ async function mostrarFormularioEdicion(incidencia) {
                     }
                     rutaElement.appendChild(option);
                 });
-            //----------- evnet listerner cargar nombre y cacc con dni- */
-/*             const valueEditarDni = incidencia.dni
-                    const responseDni = await fetch(`../../servidor/incidencia/cargar_cacc_conductor.php?numero_dni=${valueEditarDni}`);
-                    const dataDni = await responseDni.json();
-                    // Limpiamos las opciones existentes (si las hay)
-                   // rutaElement.innerHTML = '';
-                    inputEditarCacc.value = '';
-                    inputEditarConductor.value = '';
-                    inputEditarCacc.value =  dataDni [0].cacc;
-                    inputEditarConductor.value =  dataDni [0].nombre; */
-            //---------* */
+
             // Event listener para cargar subcategorías cuando se selecciona una categoría
             selectEditarCategoria.addEventListener('change', async() => {
                 const categoriaId = selectEditarCategoria.value;

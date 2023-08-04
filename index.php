@@ -89,10 +89,7 @@
                 <i class="fa-solid fa-lock"></i>
                 <span class="login-footer__span">Olvido su contraseña ?</span>
             </a>
-            <a class="login-footer__a" href="./registro.php">
-                <i class="fa-solid fa-square-check"></i>
-                <span class="login-footer__span">Registrarse</span>
-            </a>
+
         </div>
     </section>
     <script src="/public/JavaScript/index.js"></script>
