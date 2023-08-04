@@ -257,6 +257,7 @@ width:20px ;
 @media screen and (max-width: 767px) {
 .addIncidents__container{
     padding:10px ;
+    text-align: left;
     }
 
 .addIncidents__container-header{
@@ -321,6 +322,10 @@ height: 2rem;
 .addIncidents__form-select{
    height:2rem;
    font-size: 0.9rem;
+}
+.addIncidents__progress-bullet::before, .addIncidents__progress-bullet::after{
+    right: -15px;
+        width: 50%;
 }
 
 .btns{

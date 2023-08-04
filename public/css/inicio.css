@@ -193,10 +193,15 @@
 
 /* media queries */
 @media screen and (max-width: 767px) {
+    .inicio__body {
+    padding-left: 65px;}
 
 .active{
     width:220px;
     border-radius: 15px;
+}
+.inicio__navegation{
+    inset:5px;
 }
 
 

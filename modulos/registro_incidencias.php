@@ -158,7 +158,7 @@
                         <input name="id_bus" id="id_bus" type="text" class="addIncidents__form-input" placeholder="id bus" disabled>
                     </div>
                     <div class="addIncidents__form-field">
-                        <label for="placa" class="addIncidents__form-label">Número placa</label>
+                        <label for="placa" class="addIncidents__form-label"> Placa</label>
                         <input name="placa" id="placa" type="text" class="addIncidents__form-input" placeholder="placa de bus" disabled>
                     </div>
                 </div>
@@ -171,7 +171,7 @@
                         </datalist>
                     </div>
                     <div class="addIncidents__form-field">
-                        <label for="cod_cacc" class="addIncidents__form-label"> Codigo CACC</label>
+                        <label for="cod_cacc" class="addIncidents__form-label"> CACC</label>
                         <input name="cod_cacc" id="cod_cacc" type="text" class="addIncidents__form-input" placeholder=" cod. cacc" disabled>
                     </div>
                     <div class="addIncidents__form-field">
