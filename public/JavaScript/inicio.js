@@ -567,13 +567,13 @@ async function changeView(view) {
                                                 return gridjs.html(`
                                                 <div class="listContainer__btns">
                                                 <button  data-id="${id}" class="listContainer__btn-ver" >
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="ionicon listContainer__tabla-svg" viewBox="0 0 512 512"><path d="M255.66 112c-77.94 0-157.89 45.11-220.83 135.33a16 16 0 00-.27 17.77C82.92 340.8 161.8 400 255.66 400c92.84 0 173.34-59.38 221.79-135.25a16.14 16.14 0 000-17.47C428.89 172.28 347.8 112 255.66 112z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><circle cx="256" cy="256" r="80" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/></svg>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" data-id="${id}" class="ionicon listContainer__tabla-svgVer" viewBox="0 0 512 512"><path d="M255.66 112c-77.94 0-157.89 45.11-220.83 135.33a16 16 0 00-.27 17.77C82.92 340.8 161.8 400 255.66 400c92.84 0 173.34-59.38 221.79-135.25a16.14 16.14 0 000-17.47C428.89 172.28 347.8 112 255.66 112z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><circle cx="256" cy="256" r="80" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/></svg>
                                                 </button>    
                                                 <button data-id="${id}" class="listContainer__btn-editar" >
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="ionicon listContainer__tabla-svg" viewBox="0 0 512 512"><path d="M384 224v184a40 40 0 01-40 40H104a40 40 0 01-40-40V168a40 40 0 0140-40h167.48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><path d="M459.94 53.25a16.06 16.06 0 00-23.22-.56L424.35 65a8 8 0 000 11.31l11.34 11.32a8 8 0 0011.34 0l12.06-12c6.1-6.09 6.67-16.01.85-22.38zM399.34 90L218.82 270.2a9 9 0 00-2.31 3.93L208.16 299a3.91 3.91 0 004.86 4.86l24.85-8.35a9 9 0 003.93-2.31L422 112.66a9 9 0 000-12.66l-9.95-10a9 9 0 00-12.71 0z" fill="#fff" /></svg>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" data-id="${id}" class="ionicon listContainer__tabla-svgEditar" viewBox="0 0 512 512"><path d="M384 224v184a40 40 0 01-40 40H104a40 40 0 01-40-40V168a40 40 0 0140-40h167.48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><path d="M459.94 53.25a16.06 16.06 0 00-23.22-.56L424.35 65a8 8 0 000 11.31l11.34 11.32a8 8 0 0011.34 0l12.06-12c6.1-6.09 6.67-16.01.85-22.38zM399.34 90L218.82 270.2a9 9 0 00-2.31 3.93L208.16 299a3.91 3.91 0 004.86 4.86l24.85-8.35a9 9 0 003.93-2.31L422 112.66a9 9 0 000-12.66l-9.95-10a9 9 0 00-12.71 0z" fill="#fff" /></svg>
                                                 </button>
                                                 <button data-id="${id}" class="listContainer__btn-eliminar">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="ionicon listContainer__tabla-svg" viewBox="0 0 512 512"><path d="M112 112l20 320c.95 18.49 14.4 32 32 32h184c17.67 0 30.87-13.51 32-32l20-320" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" d="M80 112h352"/><path d="M192 112V72h0a23.93 23.93 0 0124-24h80a23.93 23.93 0 0124 24h0v40M256 176v224M184 176l8 224M328 176l-8 224" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/></svg>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" data-id="${id}" class="ionicon listContainer__tabla-svgEliminar" viewBox="0 0 512 512"><path d="M112 112l20 320c.95 18.49 14.4 32 32 32h184c17.67 0 30.87-13.51 32-32l20-320" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" d="M80 112h352"/><path d="M192 112V72h0a23.93 23.93 0 0124-24h80a23.93 23.93 0 0124 24h0v40M256 176v224M184 176l8 224M328 176l-8 224" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/></svg>
                                                 </button>
                                                 </div>
                                                 `);
@@ -637,19 +637,20 @@ async function changeView(view) {
                             const target = event.target;
 
                             // Verificar si el evento ocurrió en un botón de editar
-                            if (target.classList.contains("listContainer__btn-editar")) {
+                            if (target.classList.contains("listContainer__btn-editar")||target.classList.contains("listContainer__tabla-svgEditar") ){
+                                
                                 const id = target.dataset.id;
                                 editarElemento(id);
                             }
 
                             // Verificar si el evento ocurrió en un botón de eliminar
-                            if (target.classList.contains("listContainer__btn-eliminar")) {
+                            if (target.classList.contains("listContainer__btn-eliminar")||target.classList.contains("listContainer__tabla-svgEliminar")) {
                                 const id = target.dataset.id;
                                 eliminarElemento(id);
                                 }
                                 
                             // Verificar si el evento ocurrió en un botón de ver
-                            if (target.classList.contains("listContainer__btn-ver")) {
+                            if (target.classList.contains("listContainer__btn-ver")||target.classList.contains("listContainer__tabla-svgVer")) {
                                 const id = target.dataset.id;
                                 visualizarIncidencia(id);
                                 }

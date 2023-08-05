@@ -7,15 +7,15 @@
      /* Habilita la barra de desplazamiento cuando la tabla desborde el contenedor */
 }
 
-.listContainer__tabla-svg{
-     width: 25px;
-    height: 25px;
+.listContainer__tabla-svgVer,.listContainer__tabla-svgEditar,.listContainer__tabla-svgEliminar{
+     width: 23px;
+    height: 23px;
 
 }
 .listContainer__btns{
     display:flex;
     gap:2px;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
 }
 .listContainer__table-title{
@@ -25,14 +25,14 @@
 }
 
 .listContainer__btn-editar ,.listContainer__btn-eliminar ,.listContainer__btn-ver{
-    height:30px;
-    width: 50px;
+    height:28px;
+    width: 40px;
     border: none;
-    border-radius:0.2rem;
+    border-radius:0.25rem;
     color:var(--white);
     transition:0.3s ease;
     cursor: pointer;
-    padding: 1px;
+    padding: 2px;
 }
 
 .listContainer__btn-editar{
