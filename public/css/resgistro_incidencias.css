@@ -5,33 +5,34 @@
 /* contenerdor de toda la seccion */
 
 .addIncidents__container{
-    border:1px solid var(--cyan-100);
+   
     width: 70%;
-    height: 90%;
-    border-radius: 5px;
+    height: 100%;
+   
     background:#fff;
     text-align: center;
    /*  box-shadow: 0.4rem 0.9rem 2rem #17181d63; */
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 2rem;
+    justify-content: space-evenly;
+
+   
     
 }
-.addIncidents__container>*{
-    width: 80%;
-}
+
 /* primer hijo del contenedor */
 
 .addIncidents__container-header{
-    font-size: 35px;
-    font-weight:600;
+    font-size: 4vh;
+    font-weight:800;
 }
 
 .addIncidents__form-outer{
-    width:80%;
+    border-radius: 5px;
+    width:100%;
      overflow: hidden; 
+         border: 1px solid var(--cyan-100);
 }
 
 .addIncidents__form{
@@ -53,7 +54,7 @@
 }
 .addIncidents__form-group{
 display:flex;
-width: 100%;
+width: 95%;
 gap:0.5em;
 }
 
@@ -69,8 +70,10 @@ border-radius:0.3125rem;
 }
 .addIncidents__form-title{
  text-align: left;
-font-size:25px;
-font-weight: 500; 
+font-size:20px;
+margin: unset;
+    font-weight: 700;
+    padding: 3vh 0 0 0;
 }
 .addIncidents__form-field{
     display:flex;
@@ -162,10 +165,10 @@ margin-top: 1.5rem;
     width: 100%;
 }
 .addIncidents__progress-title{
-    font-size:18px;
-    font-weight: 500;
+    font-size:2vh;
+    font-weight: 600;
     color:#000;
-    margin-bottom: 8px;
+    margin-bottom: 5px;
     transform: 0.2s;
 }
 .addIncidents__progress-title.spot-light{
@@ -215,8 +218,7 @@ background: #262626;
 }
 }
 .addIncidents__progress-number{
-    font-weight: 500;
-    font-size:17px;
+    font-weight: 600;
     line-height: 25px;
     position:absolute;
     left:50%;
@@ -232,7 +234,7 @@ left: 51.5%;
 top:76%;
 transform: translate(-50%,-50%);
  display:none; 
-width:20px ;
+width:1.2rem; ;
 
 }
 .addIncidents__progress-check.spot-light{
@@ -256,9 +258,9 @@ width:20px ;
 /* media queries */
 @media screen and (max-width: 767px) {
 .addIncidents__container{
-    padding:10px ;
     text-align: left;
-    }
+}
+
 
 .addIncidents__container-header{
     font-size:1.625rem;
@@ -275,8 +277,8 @@ width:20px ;
 }
 
 .addIncidents__progress-bar{
-    margin:0px;
-    width: 60%;
+  
+    width: 90%;
 }
 .addIncidents__form-title{
 font-size:1.3rem;
@@ -287,6 +289,7 @@ font-size:1.3rem;
 
 .addIncidents__form-outer{
     overflow-y: auto; 
+    width: 100%;
 }
 
 .addIncidents__form-group{
@@ -324,8 +327,8 @@ height: 2rem;
    font-size: 0.9rem;
 }
 .addIncidents__progress-bullet::before, .addIncidents__progress-bullet::after{
-    right: -15px;
-        width: 50%;
+    right: -40px;
+        width: 145%;
 }
 
 .btns{
@@ -462,12 +465,14 @@ top:75%;
 }
 @media screen and (min-width: 992px) {
     .addIncidents__container{
-    padding:25px ;
+   
     }
     .addIncidents__form-label{
-    font-size: 1rem;
+            color: var(--black-100);
+    font-weight: 500;
+    font-size: 0.85rem;
     text-align: left;
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.5rem;
     margin-left: 0;
 
 }
@@ -482,8 +487,8 @@ width: 450%;
 } 
 .addIncidents__progress-check{
 
-left: 50.5%;
-top:74.5%;
+left: 50%;
+top:80%;
 
 
 } 
