@@ -537,7 +537,7 @@ async function changeView(view) {
                     //console.log('soy melania',wrapper);
                     if (wrapper) {
                         // Vaciar el contenido existente del contenedor
-                        wrapper.innerHTML = '';
+                        wrapper.innerHTML =null;
                         try {
                         // Realizar la solicitud fetch al archivo PHP
                             const response = await fetch('../../servidor/incidencia/mostrar.php');
@@ -555,11 +555,11 @@ async function changeView(view) {
                                         {name:"TIPO SERV.",width:"auto"},
                                         {name:"RUTA", width: "auto" },
                                         {name:"CATEGORIA", width: "auto" },
-                                        {name:"SUB CATEG.", width: "auto" },
-                                        {name:"NUMERO SERV.", width: "auto" },
+                                        {name:"SUBCATEG.", width: "auto" },
+                                        {name:"N°SERV.", width: "auto" },
                                         {name:"VID", width: "auto" },
                                         {name:"TIPO KM", width: "auto" },
-                                        {name:"KILOMETRAJE",width:"auto"},
+                                        {name:"N° KM",width:"auto"},
                                         {name:"ACCIONES",
                                             width:"auto",
                                             formatter: (cell, row) => {
@@ -608,18 +608,19 @@ async function changeView(view) {
                                         },
                             style: {
                                     table: {
-                                            fontSize: '12px',
+                                            fontSize: '10px',
                                             },
-                                        th: {
-                                            backgroundColor:'#5ABDD5',
-                                            fontWeight: '100',
+                                th: {
+                                            fontSize: '12px',
+                                            backgroundColor:'#19459D',
+                                            fontWeight: '300',
                                             color:'#FFFF'
                                             },
                                         td: {
                                                 textAlign: 'center', // Alinea el contenido en el centro horizontalmente
                                                 verticalAlign: 'middle' ,// Alinea el contenido en el centro verticalmente
-                                                padding: '3.5px',
-                                                fontSize: '12px',
+                                                padding: '0px',
+                                                fontSize: '14px',
                                                 //fontWeight: '100', // Establece el tamaño de fuente deseado para la columna 'Name'
                                             }
                                     }
@@ -628,7 +629,8 @@ async function changeView(view) {
                         // Manejar errores en la solicitud fetch
                         console.error(error);
                         }
-            }  
+        }  
+          wrapper.insertAdjacentHTML("beforebegin", `<h1 class="listContainer__table-title">Tabla de Incidencias CGC</h1>`);
         // Agregar evento al contenedor principal de la tabla
         if( document.getElementById("wrapper")!=null){
                     document.getElementById("wrapper").addEventListener("click", function(event) {

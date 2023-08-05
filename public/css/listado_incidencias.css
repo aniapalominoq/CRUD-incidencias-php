@@ -1,10 +1,8 @@
 
 .listContainer{
-    border:1px solid var(--cyan-100);
+   
     width: 95%;
     height: 90%;
-    border-radius: 5px;
-    padding: 30px;
     overflow: auto;
      /* Habilita la barra de desplazamiento cuando la tabla desborde el contenedor */
 }
@@ -19,6 +17,11 @@
     gap:2px;
     justify-content: center;
     align-items: center;
+}
+.listContainer__table-title{
+    margin-bottom:0;
+    font-size: 4vh;
+    font-weight: 700;
 }
 
 .listContainer__btn-editar ,.listContainer__btn-eliminar ,.listContainer__btn-ver{
