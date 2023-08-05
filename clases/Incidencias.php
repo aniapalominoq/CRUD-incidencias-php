@@ -283,12 +283,10 @@ class Incidencias extends Conexion
 
         if ($success) {
             // Redireccionar al usuario después de tener éxito
-            header("Location: /inicio.php");
-            exit();
-            return "success";
+            return true;
             // Retornar "success" en caso de éxito
         } else {
-            return "error"; // Retornar "error" en caso de error
+            return false; // Retornar "error" en caso de error
         }
     }
     public function selectTipoServicio()

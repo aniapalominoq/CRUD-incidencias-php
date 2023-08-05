@@ -49,8 +49,8 @@
             <div class="addIncidents__form-page slidepage">
                 <h2 class="addIncidents__form-title">Datos de la Incidencia</h2>
                 <div class="addIncidents__form-field">
-                    <label for="date" class="addIncidents__form-label">Fecha</label>
-                    <input id="date" name="date" type="date" class="addIncidents__form-input">
+                    <label for="addIncidents__date" class="addIncidents__form-label">Fecha</label>
+                    <input id="addIncidents__date" name="addIncidents__date" type="date" class="addIncidents__form-input">
                 </div>
                 <div class="addIncidents__form-field">
                     <label for="time_on" class="addIncidents__form-label">Hora Inicio</label>
@@ -203,7 +203,7 @@
                 </div>
                 <div class="addIncidents__form-field btns">
                     <div class="addIncidents__form-btn prev-3 prev">Atras</div>
-                    <input class="addIncidents__form-btn submit" type="submit">
+                    <input id="addIncidents__btn" class="addIncidents__form-btn submit" type="submit">
                 </div>
             </div>
         </form>

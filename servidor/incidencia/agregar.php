@@ -2,7 +2,7 @@
 include "../../clases/Incidencias.php";
 $Incidencias = new Incidencias();
 $data = array(
-    "fecha" => $_POST['date'],
+    "fecha" => $_POST['addIncidents__date'],
     "hora_inicio" => $_POST['time_on'],
     "hora_fin" => $_POST['time_off'],
     "lugar" => $_POST['place_incidence'],
@@ -24,4 +24,10 @@ $data = array(
     /* "auditoria" =>'1'  $_POST['auditoria'] */
 );
 
-echo $Incidencias->agregarIncidencias($data);
+$response = $Incidencias->agregarIncidencias($data);
+
+if ($response) {
+    echo json_encode(["status" => "success"]); // Enviar la respuesta "success" como texto plano
+} else {
+    echo json_encode(["status" => "error", "message" => "Hubo un problema al guardar los datos."]); // Enviar la respuesta "error" como texto plano
+}

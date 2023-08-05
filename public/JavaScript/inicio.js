@@ -21,53 +21,145 @@ const toggles=document.querySelector('.inicio__navegation-toggle');
         // Agregar un evento "resize" para verificar el tamaño del dispositivo en tiempo real
         window.addEventListener('resize', updateClass);
 /* ------------------------FIN ----------------------- */
+
 /* para la barra de progreso del formulario paso1->paso2->paso3->paso->4 */
 /* leemos los elementos  */
+const contenidoDinamico = document.getElementById('contenido-dinamico');
 const slidePage = document.querySelector(".slidepage");
 const nextBtn1 = document.querySelector(".nextBtn");
-
 const prevBtn2 = document.querySelector(".prev-1");
 const nextBtn2 = document.querySelector(".next-1");
-
 const prevBtn3 = document.querySelector(".prev-2");
-const nextBtn3= document.querySelector(".next-2");
-
+const nextBtn3 = document.querySelector(".next-2");
 const prevBtn4 = document.querySelector(".prev-3");
-const submitBtn = document.querySelector(".submit");
-
-const progressText = document.querySelectorAll(".addIncidents__progress-title")
-const progressCheck = document.querySelectorAll(".addIncidents__progress-check")
- const bullet = document.querySelectorAll(".addIncidents__progress-bullet")
+const submitBtn = document.getElementById("addIncidents__btn");
+const progressText = document.querySelectorAll(".addIncidents__progress-title");
+const progressCheck = document.querySelectorAll(".addIncidents__progress-check");
+const bullet = document.querySelectorAll(".addIncidents__progress-bullet");
 
 let max = 4;
-let current=1
+let current = 1;
 
-nextBtn1.addEventListener("click", ()=> {
+function validateForm1() {
+  const valorForm1 = document.getElementById('addIncidents__date').value;
+  const valorForm2 = document.getElementById('time_on').value;
+  const valorForm3 = document.getElementById('time_off').value;
+  const valorForm4 = document.getElementById('place_incidence').value;
+
+  if (valorForm1 !== '' && valorForm2 !== '' && valorForm3 !== '' && valorForm4 !== '') {
+    return true;
+  } else {
+    showErrorMessage("Por favor, complete todos los campos requeridos");
+    return false;
+  }
+}
+
+function validateForm2() {
+  const valorForm5 = document.getElementById('categoria').value;
+  const valorForm6 = document.getElementById('subcategoria').value;
+  const valorForm7 = document.getElementById('causa').value;
+  const valorForm8 = document.getElementById('consecuencia').value;
+  const valorForm9 = document.getElementById('descripcion').value;
+
+  if (valorForm5 !== '' && valorForm6 !== '' && valorForm7 !== '' && valorForm8 !== '' && valorForm9 !== '') {
+    return true;
+  } else {
+    showErrorMessage("Por favor, complete todos los campos requeridos");
+    return false;
+  }
+}
+
+function validateForm3() {
+  const valorForm10 = document.getElementById('consorcio').value;
+  const valorForm11 = document.getElementById('tipo_servicio').value;
+  const valorForm12 = document.getElementById('ruta').value;
+  const valorForm13 = document.getElementById('numero_servicio').value;
+  const valorForm14 = document.getElementById('sentido').value;
+  const valorForm15 = document.getElementById('vid').value;
+  const valorForm16 = document.getElementById('dni').value;
+
+  if (valorForm10 !== '' && valorForm11 !== '' && valorForm12 !== '' && valorForm13 !== '' && valorForm14 !== '' && valorForm15 !== '' && valorForm16 !== '') {
+    return true;
+  } else {
+    showErrorMessage("Por favor, complete todos los campos requeridos");
+    return false;
+  }
+}
+
+function validateForm4() {
+  const valorForm17 = document.getElementById('tipokilometraje').value;
+  const valorForm18 = document.getElementById('kilometraje').value;
+  const valorForm19 = document.getElementById('numero_carreras').value;
+
+  if (valorForm17 !== '' && valorForm18 !== '' && valorForm19 !== '') {
+    return true;
+  } else {
+    showErrorMessage("Por favor, complete todos los campos requeridos");
+    return false;
+  }
+}
+
+function showErrorMessage(message) {
+    Swal.fire({
+              icon: 'warning',
+        title: 'Campos requeridos vacíos',
+        text:message, 
+    confirmButtonText: 'Aceptar',
+    toast: true,
+    position: 'top-right',
+    didOpen: () => {
+      const button = Swal.getPopup().querySelector('.swal2-confirm');;
+      button.style.backgroundColor = '#F14668';
+      button.style.border = 'none';
+      button.style.boxShadow = 'none';
+    }
+  });
+}
+
+nextBtn1.addEventListener("click", () => {
+  if (validateForm1()) {
     slidePage.style.marginLeft = "-25%";
     bullet[current - 1].classList.add('spot-light');
-      progressText[current - 1].classList.add('spot-light');
+    progressText[current - 1].classList.add('spot-light');
     progressCheck[current - 1].classList.add('spot-light');
-    current+= 1;
+    current += 1;
+  }
+});
 
-})
-
-nextBtn2.addEventListener("click", () =>{
-       
+nextBtn2.addEventListener("click", () => {
+  if (validateForm2()) {
     slidePage.style.marginLeft = "-50%";
     bullet[current - 1].classList.add('spot-light');
-     progressText[current - 1].classList.add('spot-light');
+    progressText[current - 1].classList.add('spot-light');
     progressCheck[current - 1].classList.add('spot-light');
-    current+= 1;
-})
+    current += 1;
+  }
+});
 
-nextBtn3.addEventListener("click", ()=> {
-      
+nextBtn3.addEventListener("click", () => {
+  if (validateForm3()) {
     slidePage.style.marginLeft = "-75%";
     bullet[current - 1].classList.add('spot-light');
-     progressText[current - 1].classList.add('spot-light');
+    progressText[current - 1].classList.add('spot-light');
     progressCheck[current - 1].classList.add('spot-light');
-    current+= 1;
-})
+    current += 1;
+  }
+});
+
+
+ submitBtn.addEventListener("click", async () => {
+  if (validateForm4()) { // Validar el formulario antes de proceder al siguiente paso
+    bullet[current - 1].classList.add('spot-light');
+    progressText[current - 1].classList.add('spot-light');
+    progressCheck[current - 1].classList.add('spot-light');
+      current += 1;
+    // Guardar los datos del formulario
+      await guardarDatosFormulario();
+     
+  }
+});
+
+
 /* ------------------------------------------- */
 prevBtn2.addEventListener("click",  ()=> {
       
@@ -94,7 +186,7 @@ prevBtn4.addEventListener("click",  () =>{/*  */
     progressCheck[current - 2].classList.remove('spot-light');
     current -= 1;
 })
-submitBtn.addEventListener("click", () => {
+/*  submitBtn.addEventListener("click", () => {
   bullet[current - 1].classList.add('spot-light');
   progressText[current - 1].classList.add('spot-light');
   progressCheck[current - 1].classList.add('spot-light');
@@ -103,12 +195,13 @@ setTimeout(function () {
     guardarDatosFormulario();
   },2000); 
 //guardarDatosFormulario();
-}); 
+ });   */
+
 
 
 /* ---------------------FIN --------------------------- */
 /* para los select anidados del fomulario */
-const contenidoDinamico = document.getElementById('contenido-dinamico');
+
 const bodyIncio = document.getElementById('inicio__body');
 
 // Obtenemos las  referencias a los select
@@ -334,51 +427,39 @@ document.addEventListener('DOMContentLoaded', () => {
 /* -------------------------fin--------------------- */
 
 /*  capturar los valores del formulario */
+// Función para obtener los datos del formulario y guardarlos en un objeto
 
 async function guardarDatosFormulario() {
         const formData = new FormData();
-        const requiredFields = ['date', 'time_on', 'time_off', 'place_incidence', 'categoria', 'subcategoria', 'causa', 'consecuencia', 'descripcion', 'consorcio', 'tipo_servicio', 'ruta', 'numero_servicio', 'sentido', 'vid', 'dni', 'tipo_kilometraje', 'kilometraje', 'carreras'];
-        // Verificar que todos los campos requeridos estén completos.
-        let camposVacios = false;
-        for (const field of requiredFields) {
-            const valorCampo = document.getElementById(field).value;
-        if (!valorCampo) {
-        camposVacios = true;
-        break;
-            }
-
-            }
-        //console.log('este es mi',arrayValuesForm)
-        if (camposVacios) {
-        // Mostrar un mensaje de error si alguno de los campos requeridos está vacío.
-        Swal.fire({
-        icon: 'warning',
-        title: 'Campos requeridos vacíos',
-        text: 'Por favor, complete todos los campos requeridos.',
-        });
-        return;
-        }
-
+        const requiredFields = ['addIncidents__date', 'time_on', 'time_off', 'place_incidence', 'categoria', 'subcategoria', 'causa', 'consecuencia', 'descripcion', 'consorcio', 'tipo_servicio', 'ruta', 'numero_servicio', 'sentido', 'vid', 'dni', 'tipokilometraje', 'kilometraje', 'numero_carreras'];
+  
         // Agregar los datos del formulario al objeto formData.
         for (const field of requiredFields) {
-        const valorCampo = document.getElementById(field).value;
+            const valorCampo = document.getElementById(field).value;
+            console.log(valorCampo);
         formData.append(field, valorCampo);
         }
-        console.log('datos envio al bd',formData);
-        // Intentar enviar los datos al servidor.
+        //  enviar los datos al servidor.
         try {
         const response = await fetch('../../servidor/incidencia/agregar.php', {
         method: 'POST',
         body: formData,
         });
-            const responseData = await response.text(); // Obtener la respuesta del servidor como texto
-        alert(responseData);
-            if (responseData === 'success') {
+            const responseData = await response.json(); // Obtener la respuesta del servidor como texto
+            if (responseData.status === 'success') {
                 // Mostrar un mensaje de éxito si los datos se guardaron correctamente
                 Swal.fire({
                     icon: 'success',
                     title: '¡Guardado exitoso!',
                     text: 'Los datos se han guardado correctamente.',
+                    confirmButtonText: 'Aceptar',
+                    didOpen: () => {
+                    // Personalizar el botón Aceptar con el color y sin bordes
+                    const button = Swal.getPopup().querySelector('.swal2-confirm');
+                    button.style.backgroundColor = '#48C78E';
+                    button.style.border = 'none';
+                    button.style.boxShadow = 'none';
+                }
                 }).then(() => {
                         // Redireccionar a inicio.php después de cerrar el mensaje de éxito
                         window.location.href = '/inicio.php';
@@ -388,12 +469,19 @@ async function guardarDatosFormulario() {
                 Swal.fire({
                     icon: 'error',
                     title: 'Error al guardar',
-                    text: 'Hubo un problema al guardar los datos.',
+                    text: responseData.message,
+                    confirmButtonText: 'Aceptar',
+                    didOpen: () => {
+                    // Personalizar el botón Aceptar con el color y sin bordes
+                    const button = Swal.getPopup().querySelector('.swal2-confirm');
+                    button.style.backgroundColor = '#F14668';
+                    button.style.border = 'none';
+                    button.style.boxShadow = 'none';
+                }
                 });
             }
         } catch (error) {
         // Mostrar un mensaje de error si hubo un error al enviar los datos al servidor.
-        console.error('Error al guardar:', error);
         Swal.fire({
         icon: 'error',
         title: 'Error al guardar',
