@@ -186,18 +186,6 @@ prevBtn4.addEventListener("click",  () =>{/*  */
     progressCheck[current - 2].classList.remove('spot-light');
     current -= 1;
 })
-/*  submitBtn.addEventListener("click", () => {
-  bullet[current - 1].classList.add('spot-light');
-  progressText[current - 1].classList.add('spot-light');
-  progressCheck[current - 1].classList.add('spot-light');
-  current += 1;
-setTimeout(function () {
-    guardarDatosFormulario();
-  },2000); 
-//guardarDatosFormulario();
- });   */
-
-
 
 /* ---------------------FIN --------------------------- */
 /* para los select anidados del fomulario */
@@ -1337,13 +1325,6 @@ Swal.fire({
 });
 
  })
-
-
-
-
-
-
-
 
 
 
