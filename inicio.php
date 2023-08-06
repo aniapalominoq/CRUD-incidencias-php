@@ -76,7 +76,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.16/dist/sweetalert2.min.css
                 <hr class="inicio__navegation-hr">
 
                 <li class="inicio__navegation-li">
-                    <a id="newDriver" class="inicio__navegation-a">
+                    <a id="newUser" class="inicio__navegation-a">
                         <span class=" inicio__navegation-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" class="ionicon inicio__navegation-svg" viewBox="0 0 512 512">
                                 <path d="M376 144c-3.92 52.87-44 96-88 96s-84.15-43.12-88-96c-4-55 35-96 88-96s92 42 88 96z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" />

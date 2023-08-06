@@ -401,7 +401,6 @@ causaSelect.addEventListener('change', () => {
         );
     }
 });
-
 // Event listener para cargar bus y placa al llenar el campo VID
 inputVid.addEventListener('input', () => {
     const valueVid = inputVid.value;
@@ -409,7 +408,6 @@ inputVid.addEventListener('input', () => {
         cargarBusPlaca(valueVid);
     }
 });
-
 async function cargarBusPlaca(numeroVid) {
     try {
         const response = await fetch(`../../servidor/incidencia/cargar_bus_placa.php?numero_vid=${numeroVid}`);
@@ -422,7 +420,6 @@ async function cargarBusPlaca(numeroVid) {
         console.error('Error al cargar idbus y placa', error);
     }
 }
-
 document.addEventListener('DOMContentLoaded', () => {
     cargarOpciones(categoriaSelect, '../../servidor/incidencia/cargar_categoria.php', 'id_categoria', 'categoria');
     cargarOpciones(consorcioSelect, '../../servidor/incidencia/cargar_consorcio.php', 'idconsorcio', 'nombre_consorcio');
@@ -434,14 +431,9 @@ document.addEventListener('DOMContentLoaded', () => {
         'tipo_kilometraje'
     );
 });
-
-
-
 /* -------------------------fin--------------------- */
-
 /*  capturar los valores del formulario */
 // Función para obtener los datos del formulario y guardarlos en un objeto
-
 async function guardarDatosFormulario() {
         const formData = new FormData();
         const requiredFields = ['addIncidents__date', 'time_on', 'time_off', 'place_incidence', 'categoria', 'subcategoria', 'causa', 'consecuencia', 'descripcion', 'consorcio', 'tipo_servicio', 'ruta', 'numero_servicio', 'sentido', 'vid', 'dni', 'tipokilometraje', 'kilometraje', 'numero_carreras'];
@@ -527,12 +519,10 @@ async function changeView(view) {
         console.error('Error al cargar la vista:', error);
     }
 }
-
 /* ---------------- vista-->listar- tabla-------------------------------- */
-    document.getElementById('listar').addEventListener('click', function () {
+document.getElementById('listar').addEventListener('click', function () {
     changeView('./modulos/listado_incidencias.php');
 });
-
 /* funcion generica para cargar los select del formulario de edicion */
     async function cargarSelect(url, selectId, selectedValue) {
             const select = document.getElementById(selectId);
@@ -686,7 +676,7 @@ async function changeView(view) {
 }
 /* funciones  para los 3 botones en la tabla(ver,editar y eliminar)                  
     /* funcion ver */
-    async function visualizarIncidencia(id) {
+async function visualizarIncidencia(id) {
                     try {
                                 // Realizar la solicitud fetch al archivo PHP para obtener los detalles de la incidencia
                                 const response = await fetch('../../servidor/incidencia/detalle.php', {
@@ -825,7 +815,7 @@ async function changeView(view) {
                             }
                     }
     /* funcion eliminar */
-    async function eliminarElemento(id_incidencia) {
+async function eliminarElemento(id_incidencia) {
                         try {
                                 const result = await Swal.fire({
                                     title: '¿Estás seguro?',
@@ -878,7 +868,7 @@ async function changeView(view) {
     }
     /* funcion editar */
     //obtenerIncidenciaParaEditar, esta funcion retorna el id de la fila
-    async function obtenerIncidenciaParaEditar(id_incidencia) {
+async function obtenerIncidenciaParaEditar(id_incidencia) {
             try {
                 const response = await fetch('/servidor/incidencia/editar.php', {
                 method: 'POST',
@@ -895,7 +885,6 @@ async function changeView(view) {
                 throw new Error('No se pudo obtener la incidencia para editar');
             }
     }
-
 async function mostrarFormularioEdicion(incidencia) {
     const { value: formValues } = await Swal.fire({
         title: 'Editar incidencia',
@@ -1201,7 +1190,7 @@ async function mostrarFormularioEdicion(incidencia) {
     })
         return formValues;
 }
-    async function actualizarIncidencia(id_incidencia, formValues) {
+async function actualizarIncidencia(id_incidencia, formValues) {
             const [fecha, hora_inicio, hora_fin, lugar, categoria, subcategoria, causa, consecuencia, descripcion, consorcio, tipo_servicio, ruta, servicio, sentido, bus, conductor, tipo_kilometraje, kilometraje, carreras/* otros campos */] = formValues;
 
             const params = new URLSearchParams();
@@ -1235,9 +1224,7 @@ async function mostrarFormularioEdicion(incidencia) {
             });
             return actualizarResponse.text();
     }
-
-
-    async function editarElemento(id_incidencia) {
+async function editarElemento(id_incidencia) {
                 try {
                     const incidencia = await obtenerIncidenciaParaEditar(id_incidencia);
                     // Mostrar el formulario de edición y manejar la actualización
@@ -1266,11 +1253,9 @@ async function mostrarFormularioEdicion(incidencia) {
                                     }
     }  
 /* ----------------------- vista descargar-------------------- */
-document.getElementById('descargar').addEventListener('click', function() {
+document.getElementById('descargar').addEventListener('click', ()=>{
   changeView('./modulos/descargar_incidencias.php');
-
 });
-
 // Agregar el evento de envío del formulario al contenedor del contenido dinámico
 contenidoDinamico.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -1360,9 +1345,7 @@ const formDataDownload = new FormData(e.target);
         }
     }
 });
-
-
-
+/* ----------------------- vista logout-------------------- */
 // logout del sistema
 document.getElementById('logout').addEventListener('click', async () => {
   const result = await Swal.fire({
@@ -1416,10 +1399,18 @@ document.getElementById('logout').addEventListener('click', async () => {
     Swal.fire('¡Acción cancelada!', 'Permanecerá en el sistema.', 'info');
   } */
 });
-
-
-
-
+/* ----------------------- vista registro user-------------------- */
+document.getElementById('newUser').addEventListener("click", () => {
+    changeView('./modulos/registro_usuario.php');
+})
+/* ----------------------- vista registro conductor--------------- */
+document.getElementById('newDriver').addEventListener("click", () => {
+    changeView('./modulos/registro_conductor.php');
+})
+/* ----------------------- vista registro bus--------------------- */
+document.getElementById('newBus').addEventListener("click", () => {
+    changeView('./modulos/registro_bus.php');
+})
 
 
 

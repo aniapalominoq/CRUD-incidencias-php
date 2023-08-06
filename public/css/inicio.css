@@ -3,6 +3,9 @@
 @import "./resgistro_incidencias.css";
 @import "./listado_incidencias.css";
 @import "./descargar_indicencias.css";
+@import "./registro_conductor.css";
+@import "./registro_usuario.css";
+@import "./resgistro_bus.css";
 
 .inicio__body{
     height: 100vh;
