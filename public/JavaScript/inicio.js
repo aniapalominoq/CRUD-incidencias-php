@@ -22,6 +22,31 @@ const toggles=document.querySelector('.inicio__navegation-toggle');
         window.addEventListener('resize', updateClass);
 /* ------------------------FIN ----------------------- */
 
+/* agregamos estilos a li:active para que cuando el usuario este mantega el color de fondo */
+// Función para resaltar el enlace activo
+function highlightActiveLink() {
+  const navLinks = document.querySelectorAll('.inicio__navegation-li a');
+
+  // Recorrer todos los enlaces y aplicar la clase activa al enlace correspondiente
+  navLinks.forEach(link => {
+    link.addEventListener('click', function (event) {
+      event.preventDefault(); // Evitar el comportamiento predeterminado del enlace
+
+      // Eliminar la clase activa de todos los enlaces
+      navLinks.forEach(link => link.parentElement.classList.remove('inicio__navegation-li-active'));
+
+      // Agregar la clase activa solo al enlace que se hizo clic
+      this.parentElement.classList.add('inicio__navegation-li-active');
+    });
+  });
+}
+
+// Ejecutar la función al cargar la página
+highlightActiveLink();
+
+/* fin------------------- */
+
+
 /* para la barra de progreso del formulario paso1->paso2->paso3->paso->4 */
 /* leemos los elementos  */
 const contenidoDinamico = document.getElementById('contenido-dinamico');

@@ -27,7 +27,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.16/dist/sweetalert2.min.css
     <body id="inicio__body" class="inicio__body">
         <nav class="inicio__navegation">
             <ul class="inicio__navegation-ul">
-                <li class="inicio__navegation-li-user">
+                <li class="inicio__navegation-li-user ">
                     <a href="#" class="inicio__navegation-a">
                         <span class="inicio__navegation-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" class="ionicon inicio__navegation-svg" viewBox="0 0 512 512">
@@ -38,7 +38,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.16/dist/sweetalert2.min.css
                         <span class="inicio__navegation-title"><?php echo $_SESSION['nombre'] ?></span>
                     </a>
                 </li>
-                <li class="inicio__navegation-li">
+                <li class="inicio__navegation-li inicio__navegation-li-active">
                     <a href="inicio.php?seccion=registro_incidencias" id="incidencia" class="inicio__navegation-a">
                         <span class=" inicio__navegation-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" class="ionicon inicio__navegation-svg" viewBox="0 0 512 512">
