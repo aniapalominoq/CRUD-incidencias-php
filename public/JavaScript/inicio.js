@@ -1263,6 +1263,8 @@ contenidoDinamico.addEventListener('submit', async (e) => {
             );
             return;
         }
+
+
 const formDataDownload = new FormData(e.target);
         try {
             const response = await fetch('/servidor/incidencia/descargar.php', {
@@ -1321,50 +1323,62 @@ const formDataDownload = new FormData(e.target);
         }
     }
 });
+
+
+
 // logout del sistema
-document.getElementById('logout').addEventListener('click', () => {
-Swal.fire({
-  title: '¿Quiere salir del sistema?',
-  text: "¡No podrá deshacer esta acción!",
-  icon: 'warning',
-  showCancelButton: true,
-  confirmButtonColor: '#3085d6',
-  cancelButtonColor: '#d33',
-  confirmButtonText: 'Salir',
-  cancelButtonText: 'Cancelar'
-}).then(async (result) => {
+document.getElementById('logout').addEventListener('click', async () => {
+  const result = await Swal.fire({
+    title: '¿Quiere salir del sistema?',
+    text: '¡No podrá deshacer esta acción!',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#19459D',
+    cancelButtonColor: '#F14668',
+    confirmButtonText: '  Salir  ',
+    cancelButtonText: 'Cancelar'
+  });
+
   if (result.isConfirmed) {
     try {
       const response = await fetch('/servidor/login/logout.php');
-      const responseData = await response.json(); // Parsear la respuesta como JSON
-
       if (response.ok) {
-        Swal.fire(
-          '¡Cierre de sesión exitoso!',
-          'Ha salido correctamente del sistema.',
-          'success'
-        ).then(() => {
-          // Realizar la redirección una vez que se muestre el mensaje de éxito
+        const responseData = await response.json();
+        Swal.fire({
+          icon: 'success',
+          title: '¡Cierre de sesión exitoso!',
+          text: 'Ha salido correctamente del sistema.',
+          toast: true,
+          position: 'top-right',
+          showConfirmButton: false,
+          timer: 2000, // Tiempo de duración del Toast
+          timerProgressBar: true, // Barra de progreso del Toast
+        }).then(() => {
+          // Realizar la redirección una vez que se muestre el Toast de éxito
           window.location.href = '../../index.php';
         });
       } else {
-        throw new Error(responseData.message); // Lanzar un error con el mensaje del servidor
+        throw new Error('Error al cerrar sesión'); // Lanzar un error genérico
       }
     } catch (error) {
       console.error(error);
-      Swal.fire(
-        '¡Error!',
-        'Ocurrió un problema al intentar cerrar sesión.',
-        'error'
-      );
+      Swal.fire({
+          icon: 'error',
+        toast: true,
+        position: 'top-right',
+        title: '¡Error!',
+          text: 'Ocurrió un problema al intentar cerrar sesión.',
+         showConfirmButton: false,
+          timer: 2000, // Tiempo de duración del Toast
+          timerProgressBar: true, // Barra de progreso del Toast
+      });
     }
-  } else {
+  }
+ /*  else {
     // El usuario ha cancelado la acción
     Swal.fire('¡Acción cancelada!', 'Permanecerá en el sistema.', 'info');
-  }
+  } */
 });
-
- })
 
 
 
