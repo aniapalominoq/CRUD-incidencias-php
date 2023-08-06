@@ -137,11 +137,16 @@ transition:  0.3s ease;
 cursor: pointer;
 width: 100%;
 padding-top: 1rem;
-margin-top: 1.5rem;
+margin-top: 1rem;
+ transition: transform 0.2s;
 }
-.addIncidents__form-btn:hover{
- background:var(--blue-300); 
-}
+.addIncidents__form-btn:hover {
+    background-color: var(--blue-300);
+  }  
+   .addIncidents__form-btn:active {
+    transform: scale(0.95);
+  }
+
 
 .addIncidents__progress-bar{
     display: flex;
