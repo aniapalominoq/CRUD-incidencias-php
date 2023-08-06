@@ -630,9 +630,10 @@ async function changeView(view) {
                         console.error(error);
                         }
         }  
-          wrapper.insertAdjacentHTML("beforebegin", `<h1 class="listContainer__table-title">Tabla de Incidencias CGC</h1>`);
+          
         // Agregar evento al contenedor principal de la tabla
-        if( document.getElementById("wrapper")!=null){
+        if (document.getElementById("wrapper") != null) {
+                    wrapper.insertAdjacentHTML("beforebegin", `<h1 class="listContainer__table-title">Tabla de Incidencias CGC</h1>`);
                     document.getElementById("wrapper").addEventListener("click", function(event) {
                             const target = event.target;
 
@@ -808,7 +809,9 @@ async function changeView(view) {
                                     showCancelButton: true,
                                     confirmButtonText: 'Eliminar',
                                     cancelButtonText: 'Cancelar',
-                                    reverseButtons: true
+                                    confirmButtonColor: '#19459D',
+                                    cancelButtonColor: '#F14668',
+
                                 });
 
                                 if (result.isConfirmed) {
@@ -824,16 +827,25 @@ async function changeView(view) {
                                     Swal.fire({
                                         title: 'Incidencia eliminada',
                                         text: 'La incidencia ha sido eliminada exitosamente',
-                                        icon: 'success'
+                                        icon: 'success',
+                                        toast: true,
+                                        position: 'top-right',
+                                        showConfirmButton: false,
+                                        timer: 2000, // Tiempo de duración del Toast
+                                        timerProgressBar: true, 
+                                    }).then(() => {
+                                        changeView('./modulos/listado_incidencias.php');
                                     });
                             }
-                                changeView('./modulos/listado_incidencias.php');
                             } catch (error) {
                             // console.error('Error:', error);
                                 Swal.fire({
-                                    title: 'Error',
+                                    title: '¡Error!',
                                     text: 'Se produjo un error al eliminar la incidencia',
-                                    icon: 'error'
+                                    icon: 'error',
+                                    showConfirmButton: false,
+                                    timer: 2000, // Tiempo de duración del Toast
+                                    timerProgressBar: true, // Barra de progreso del Toast
                                 });
                             }
                         // Lógica para eliminar el elemento con el ID proporcionado
