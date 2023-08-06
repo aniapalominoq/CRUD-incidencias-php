@@ -35,8 +35,7 @@
     position: fixed;
     inset: 10px;
     background:var(--blue-300);
-    width: 80px;
-   /*  border-left: 10px solid var(--blue-300) ; */
+    width: 80px; 
     border-radius:50px;
     overflow: hidden;
     box-shadow: 15px 15px 25px rgba(0,0,0,0.05);

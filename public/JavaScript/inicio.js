@@ -1245,10 +1245,22 @@ contenidoDinamico.addEventListener('submit', async (e) => {
 
         if (fechaInicio === '' || fechaFin === ''||(fechaInicio === '' && fechaFin === '')) {
             Swal.fire({
-                title: 'Error',
-                text: 'Por favor, complete las fechas de inicio y fin.',
                 icon: 'error',
-            });
+                title: 'Error',
+                toast: true,
+                position: 'top-right',
+                text: 'Por favor, complete las fechas de inicio y fin.',
+                confirmButtonText: 'Aceptar',// Establecer el texto del botón
+                didOpen: () => {
+                    // Personalizar el botón Aceptar con el color y sin bordes
+                    const button = Swal.getPopup().querySelector('.swal2-confirm');
+                    button.style.backgroundColor = '#F14668';
+                    button.style.border = 'none';
+                    button.style.boxShadow = 'none';
+                    }
+                   }
+            
+            );
             return;
         }
 const formDataDownload = new FormData(e.target);
@@ -1268,13 +1280,38 @@ const formDataDownload = new FormData(e.target);
                 link.click();
                 URL.revokeObjectURL(url);
 
-                Swal.fire('Descarga exitosa', 'El archivo ha sido descargado exitosamente.', 'success');
+                Swal.fire({
+                icon: 'success',
+                title: 'Descarga exitosa',
+                text: 'El archivo ha sido descargado exitosamente.',
+                confirmButtonText: 'Aceptar',// Establecer el texto del botón
+                didOpen: () => {
+                    // Personalizar el botón Aceptar con el color y sin bordes
+                    const button = Swal.getPopup().querySelector('.swal2-confirm');
+                    button.style.backgroundColor = '#48C78E';
+                    button.style.border = 'none';
+                    button.style.boxShadow = 'none';
+                    }
+                   });
             } else {
                 // Obtener la respuesta JSON
                 const data = await response.json();
 
                 if (data.error) {
-                    Swal.fire('Error', data.error, 'error');
+                    Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: data.error,
+                confirmButtonText: 'Aceptar',// Establecer el texto del botón
+                didOpen: () => {
+
+                    // Personalizar el botón Aceptar con el color y sin bordes
+                    const button = Swal.getPopup().querySelector('.swal2-confirm');
+                    button.style.backgroundColor = '#F14668';
+                    button.style.border = 'none';
+                    button.style.boxShadow = 'none';
+                }
+            });
                 } else {
                     Swal.fire('Error', 'Ocurrió un error en la descarga de datos', 'error');
                 }

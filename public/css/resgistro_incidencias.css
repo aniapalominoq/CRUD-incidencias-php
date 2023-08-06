@@ -5,20 +5,14 @@
 /* contenerdor de toda la seccion */
 
 .addIncidents__container{
-   
     width: 70%;
     height: 100%;
-   
     background:#fff;
     text-align: center;
-   /*  box-shadow: 0.4rem 0.9rem 2rem #17181d63; */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-
-   
-    
 }
 
 /* primer hijo del contenedor */
@@ -32,7 +26,7 @@
     border-radius: 5px;
     width:100%;
      overflow: hidden; 
-         border: 1px solid var(--cyan-100);
+    border: 1px solid var(--cyan-100);
 }
 
 .addIncidents__form{
@@ -69,9 +63,9 @@ padding: 1rem;
 border-radius:0.3125rem;
 }
 .addIncidents__form-title{
- text-align: left;
-font-size:20px;
-margin: unset;
+    text-align: left;
+    font-size:20px;
+    margin: unset;
     font-weight: 700;
     padding: 3vh 0 0 0;
 }
@@ -79,9 +73,7 @@ margin: unset;
     display:flex;
     flex-direction:column;
     flex: 1;
-  min-width: 0;
-   /*  gap:0.5rem; */
-
+    min-width: 0;
 }
 .addIncidents__form-label{
     color:var(--black-100);
@@ -128,14 +120,11 @@ border:1px solid var(--grey-50);
     flex-direction: row;
     text-align: center;
     gap:1rem;
-
 }
 .addIncidents__form-btn{
 background-color:var(--cyan-100);
-/* width:18.625rem ; */
 height:3.2rem;
 border: none;
-/*  box-shadow: 0.4rem 0.9rem 2rem #17181d63; */
 border-radius:0.3125rem;
 color:var(--white);
 font-size:1.125rem;

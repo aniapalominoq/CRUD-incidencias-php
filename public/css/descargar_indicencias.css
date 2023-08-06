@@ -1,11 +1,106 @@
 .downloadContainer{
- border:1px solid var(--cyan-100);
-    width: 95%;
-    height: 90%;
-    border-radius: 5px;
-    padding: 30px;
+    width: 70%;
+    height: 100%;
+    background:#fff;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.download__container-header{
+    font-size: 4vh;
+    font-weight:700;
+}
+.download__form{
+    margin-top: 1rem;
+    width:100%;
+    padding: 40px;
+    border: 1px solid var(--cyan-100);
+    display: flex;
+    flex-direction: column;
+    border-radius:5px;
+    gap:1rem;
+}
+.download__form-group{
+    display:flex;
+    width: 100%;
+    gap:0.5em;
+}
+.download__form-field{
+    display:flex;
+    flex-direction:column;
+    flex: 1;
+    min-width: 0;
+}
+.download__form-label{
+    color:var(--black-100);
+    font-weight: 500;
+    font-size: 0.85rem;
+    text-align: left;
+    margin-left: 1rem;
+}
+.download__form-input{
+    border:1px solid var(--grey-50);
+    height:2.8125rem;
+    padding: 0 1rem 0 1rem;
+    border-radius: 0.3125rem;
+    text-transform: uppercase;
+}
+.download__form-select{
+    border:1px solid var(--grey-50);
+    height:2.8125rem;
+    padding: 0 1rem 0 1rem;
+    border-radius: 0.3125rem;
+    background-color: white;
+    color: var(--black-100);
+    text-transform: uppercase;
+}
+.download__form-select-option{
+border:1px solid var(--grey-50);
+ 
+}
+.download__form-select-option:focus{
+    background-color: var(--cyan-100); 
+}
+.download__form-btn{
+    margin-top: 1rem;
+    background-color:var(--cyan-100);
+height:3.2rem;
+border: none;
+border-radius:0.3125rem;
+color:var(--white);
+font-size:1.125rem;
+font-weight: 500;
+letter-spacing: 1px;
+text-align: center;
+text-transform: uppercase;
+cursor: pointer;
+width: 100%;
+ transition: transform 0.2s;
+}
+.download__form-btn:hover {
+    background-color: var(--blue-300);
+  }  
+   .download__form-btn:active {
+    transform: scale(0.95);
+     /* Puedes ajustar el valor para cambiar el efecto */
+  }
+
+@media screen and (max-width: 767px){
+.download__form-labe {
+    font-size: 0.875rem;
+    text-align: left;
+    margin-bottom: 0.3rem;
+    margin-left: 0;
+}
+}
+@media screen and (min-width: 992px) {
+.download__form-label{
+        font-size: 0.875rem;
+    text-align: left;
+    margin-bottom: 0.5rem;
+    margin-left: 0;
 
 }
-.downloadContainer-tabla{
-     overflow: auto; 
 }

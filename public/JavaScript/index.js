@@ -44,9 +44,9 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
                 icon: 'error',
                 title: 'Error',
                 text: data.message,
-                confirmButtonText: 'Aceptar', // Establecer el texto del botón
                 toast: true,
                 position: 'top-right',
+                confirmButtonText: 'Aceptar',// Establecer el texto del botón
                 didOpen: () => {
 
                     // Personalizar el botón Aceptar con el color y sin bordes
