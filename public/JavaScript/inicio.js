@@ -1412,5 +1412,5 @@ document.getElementById('newBus').addEventListener("click", () => {
     changeView('./modulos/registro_bus.php');
 })
 
-
+/* ----------------------- vista registro USER-------------------- */
 

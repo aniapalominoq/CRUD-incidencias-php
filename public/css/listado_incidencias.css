@@ -1,6 +1,5 @@
 
 .listContainer{
-   
     width: 95%;
     height: 90%;
     overflow: auto;
@@ -8,7 +7,7 @@
 }
 
 .listContainer__tabla-svgVer,.listContainer__tabla-svgEditar,.listContainer__tabla-svgEliminar{
-     width: 23px;
+    width: 23px;
     height: 23px;
 
 }
@@ -22,6 +21,7 @@
     margin-bottom:0;
     font-size: 4vh;
     font-weight: 700;
+    color:var(--black-100);
 }
 
 .listContainer__btn-editar ,.listContainer__btn-eliminar ,.listContainer__btn-ver{

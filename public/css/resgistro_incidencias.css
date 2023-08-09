@@ -20,6 +20,7 @@
 .addIncidents__container-header{
     font-size: 4vh;
     font-weight:700;
+    color:var(--black-100);
 }
 
 .addIncidents__form-outer{

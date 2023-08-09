@@ -1,34 +1,22 @@
 @import "./reset.css";
 @import "./confingBasic.css";
 
-.body{
-
-width: 100vw;
-height: 100vh;
-display:flex;
- flex-direction:column;
- align-items: center;
- justify-content: center;
-}
 .resgistro__section{
- box-shadow: 0.4rem 0.9rem 2rem #17181d63;
 padding: 1rem;
 border-radius: 0.625rem; ;
- display:flex;
- flex-direction:column;
- align-items: center;
- justify-items: center;
+display:flex;
+flex-direction:column;
+align-items: center;
+justify-items: center;
+border: 1px solid red;
+width: 70%;
+height: 100%;
 }
 
-.resgistro__img{
-width:21,875rem ;
-  height:5.75rem;
-}
 .resgistro__h1{
-    font-size: 0.85rem;
-    color:var(--cyan-100);
-    font-weight: 400;
-      margin-bottom: 2rem;
+    font-size: 4vh;
+    font-weight:700;
+     color:var(--black-100);
 }
 .resgistro__form{
 display:flex;
@@ -84,25 +72,25 @@ border:1px solid var(--grey-50);
 
 .resgistro__button{
 background-color:var(--cyan-100);
-width:18.625rem ;
-height:3.5rem;
+height:3.2rem;
 border: none;
- box-shadow: 0.4rem 0.9rem 2rem #17181d63;
 border-radius:0.3125rem;
 color:var(--white);
 font-size:1.125rem;
 font-weight: 500;
 letter-spacing: 1px;
+text-align: center;
 text-transform: uppercase;
-transition:  0.3s ease;
+cursor: pointer;
+width: 100%;
+margin-top: 1rem;
+ transition: transform 0.2s;
 }
 .resgistro__button:hover{
-    box-shadow: none;
-    background-color: var(--blue-300);
-
+background-color: var(--blue-300);
 }
 .resgistro__button:active {
-  transform: translateY(4px); 
+    transform: scale(0.95);
 }
 .resgistro-footer{
     margin-top:2rem;
@@ -110,8 +98,6 @@ transition:  0.3s ease;
      justify-content: space-around;
         gap:2rem;
 }
-
-
 .resgistro-footer__a{
     text-decoration: none; 
    display:flex;
@@ -119,13 +105,38 @@ transition:  0.3s ease;
    color:var(--grey-100);
 
 }
-
 .resgistro-footer__a:hover{
     color:var(--black-100);
     font-weight: 500;
 }
 .resgistro-footer__span{
     font-size: 0.85rem;
+}
+
+.resgistro__table{
+    border-collapse: collapse;
+    width: 100%;
+
+}
+
+.resgistro__th, .resgistro__td {
+  padding: 8px;
+  text-align: center;
+}
+.resgistro__table, .resgistro__th, .resgistro__td {
+  border: 1px solid var(--grey-50);
+}
+.resgistro__tr{
+ background-color: var(--blue-300);
+ color:white;
+     font-weight: 300;
+    text-transform: uppercase;
+}
+.resgistro__th{
+
+}
+.resgistro__td{
+
 }
 /* media queries nueva sintaxis */
 
