@@ -1406,17 +1406,50 @@ document.getElementById('newUser').addEventListener("click", () => {
 //funcion para enviarregistro deusuario
 contenidoDinamico.addEventListener("submit", async (e) => {
     e.preventDefault();
-     const nameUser = document.getElementById('nameUser').value;
-    const rolUser = document.getElementById('rolUser').value;
-    const passwordUser=document.getElementById('passwordUser').value;
+    if (e.target.id === "addBusForm") {
+        Swal.fire({
+            icon: 'error',
+            title: 'Opción Deshabilitada',
+            toast: true,
+            position: 'top-right',
+            text: 'Esta opción no está disponible.',
+            confirmButtonText: 'Aceptar',// Establecer el texto del botón
+            didOpen: () => {
+                // Personalizar el botón Aceptar con el color y sin bordes
+                const button = Swal.getPopup().querySelector('.swal2-confirm');
+                button.style.backgroundColor = '#F14668';
+                button.style.border = 'none';
+                button.style.boxShadow = 'none';
+            }
+        }
+            
+        );
+        return;
+    }
+});
+/* ----------------------- vista registro conductor--------------- */
+document.getElementById('newDriver').addEventListener("click", () => {
+    changeView('./modulos/registro_conductor.php');
+})
+/* ----------------------- vista registro bus--------------------- */
+document.getElementById('newBus').addEventListener("click", () => {
+    changeView('./modulos/registro_bus.php');
+})
+contenidoDinamico.addEventListener('submit', async (e) => {
+    e.preventDefault();
 
-        if (nameUser === '' || rolUser === ''||passwordUser===''||(nameUser === '' && rolUser === ''&&passwordUser==='')||(nameUser === '' && rolUser === '')||(rolUser === ''&&passwordUser==='')||(nameUser === '' && passwordUser==='')) {
+    if (e.target.id === 'downloadForm') {
+        
+        const fechaInicio = document.getElementById('filterDate1').value;
+        const fechaFin = document.getElementById('filterDate2').value;
+
+        if (fechaInicio === '' || fechaFin === ''||(fechaInicio === '' && fechaFin === '')) {
             Swal.fire({
                 icon: 'error',
                 title: 'Error',
                 toast: true,
                 position: 'top-right',
-                text: 'Por favor, complete los campos vacios',
+                text: 'Por favor, complete las fechas de inicio y fin.',
                 confirmButtonText: 'Aceptar',// Establecer el texto del botón
                 didOpen: () => {
                     // Personalizar el botón Aceptar con el color y sin bordes
@@ -1429,71 +1462,67 @@ contenidoDinamico.addEventListener("submit", async (e) => {
             
             );
             return;
-    }
-    
+        }
 
-        const formDataUser = new FormData(e.target);
-      console.log(formDataUser)
 
+const formDataDownload = new FormData(e.target);
         try {
-            const response = await fetch("/servidor/registro/registrar.php", {
-                method: "POST",
-                body: formDataUser,
+            const response = await fetch('/servidor/incidencia/descargar.php', {
+                method: 'POST',
+                body: formDataDownload,
             });
 
-            if (!response.ok) {
-                throw new Error("Error al enviar la solicitud");
-            }
+            if (response.ok) {
+                // Descargar el archivo Excel directamente
+                const blob = await response.blob();
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = 'Consulta_incidencias.xls';
+                link.click();
+                URL.revokeObjectURL(url);
 
-            const dataUser = await response.json();
-
-            if (dataUser.status === "success") {
                 Swal.fire({
-                    icon: 'success',
-                    title: '¡Registro exitoso!',
-                    toast: true,
-                    position: 'top-right',
-                    showConfirmButton: false,
-                    timer: 2000,
-                    timerProgressBar: true,
-                })/* .then(() => {
-                    window.location.replace("/index.php"); // Redireccionar a la página de inicio del usuario
-                }) */;
+                icon: 'success',
+                title: 'Descarga exitosa',
+                text: 'El archivo ha sido descargado exitosamente.',
+                confirmButtonText: 'Aceptar',// Establecer el texto del botón
+                didOpen: () => {
+                    // Personalizar el botón Aceptar con el color y sin bordes
+                    const button = Swal.getPopup().querySelector('.swal2-confirm');
+                    button.style.backgroundColor = '#48C78E';
+                    button.style.border = 'none';
+                    button.style.boxShadow = 'none';
+                    }
+                   });
             } else {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: dataUser.message,
-                    toast: true,
-                    position: 'top-right',
-                    showConfirmButton: false,
-                    timer: 2000,
-                    timerProgressBar: true,
+                // Obtener la respuesta JSON
+                const data = await response.json();
 
-                });
-            }
-        } catch (error) {
-            Swal.fire({
+                if (data.error) {
+                    Swal.fire({
                 icon: 'error',
                 title: 'Error',
-                text: 'Ha ocurrido un error inesperado',
-                toast: true,
-                position: 'top-right',
-                timer: 2000,
-                timerProgressBar: true,
+                text: data.error,
+                confirmButtonText: 'Aceptar',// Establecer el texto del botón
+                didOpen: () => {
 
+                    // Personalizar el botón Aceptar con el color y sin bordes
+                    const button = Swal.getPopup().querySelector('.swal2-confirm');
+                    button.style.backgroundColor = '#F14668';
+                    button.style.border = 'none';
+                    button.style.boxShadow = 'none';
+                }
             });
+                } else {
+                    Swal.fire('Error', 'Ocurrió un error en la descarga de datos', 'error');
+                }
+            }
+        } catch (error) {
+            Swal.fire('Error', 'Ocurrió un error en la descarga de datos', 'error');
         }
-    
+    }
 });
-/* ----------------------- vista registro conductor--------------- */
-document.getElementById('newDriver').addEventListener("click", () => {
-    changeView('./modulos/registro_conductor.php');
-})
-/* ----------------------- vista registro bus--------------------- */
-document.getElementById('newBus').addEventListener("click", () => {
-    changeView('./modulos/registro_bus.php');
-})
 
 /* ----------------------- vista registro Incidencias------------------- */
 document.getElementById('incidencia').addEventListener("click", () => {
