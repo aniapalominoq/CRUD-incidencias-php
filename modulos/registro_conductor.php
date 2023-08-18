@@ -1,6 +1,6 @@
 <section class="addDriver__section">
     <h1 class="addDriver__h1"> Registro de Nuevos Conductores</h1>
-    <form id="addDriverForm" class="addDriver_form">
+    <form id="addDriverForm" class="addDriver__form">
         <div class="addDriver__form-group">
             <div class="addDriver__form-field">
                 <label for="" class="addDriver__form-label">Consorcio</label>

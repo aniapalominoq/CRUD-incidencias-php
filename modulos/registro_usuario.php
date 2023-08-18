@@ -1,20 +1,20 @@
 <section class="resgistro__section">
     <h1 class="resgistro__h1">Registro de Usuario</h1>
     <form id="resgistroUser" method="POST" class="resgistro__form">
-        <div class="resgistro__div">
+        <div class="resgistro__form-field">
             <label for="nameUser" class="resgistro__label">Nombre usuario</label>
             <input id="nameUser" type="text" class="resgistro__input" name="nameUser" placeholder="Nombre usuario">
         </div>
-        <div class="resgistro__div">
-            <label for="rolUser" class="resgistro__label"> Seleccione su Rol</label>
+        <div class="resgistro__form-field">
+            <label for=" rolUser" class="resgistro__label"> Seleccione su Rol</label>
             <select name="rolUser" id="rolUser" class="resgistro__select">
                 <option class="resgistro__select-option" value="">selecione una opción</option>
                 <option class="resgistro__select-option" value="controlador">Controlador</option>
                 <option class="resgistro__select-option" value="supervisor">Supervisor</option>
             </select>
         </div>
-        <div class="resgistro__div">
-            <label for="passwordUser" class="resgistro__label">Contraseña</label>
+        <div class="resgistro__form-field">
+            <label for=" passwordUser" class="resgistro__label">Contraseña</label>
             <input id="passwordUser" type="password" class="resgistro__input" name="passwordUser" placeholder="***********">
         </div>
         <button type="submit" class="resgistro__button">Registrarse</button>

@@ -14,7 +14,6 @@
      color:var(--black-100);
 }
 .download__form{
-    margin-top: 1rem;
     width:100%;
     padding: 40px;
     border: 1px solid var(--cyan-100);
@@ -39,6 +38,7 @@
     font-weight: 500;
     font-size: 0.85rem;
     text-align: left;
+    margin-bottom: 0.3rem;
     margin-left: 1rem;
 }
 .download__form-input{
@@ -89,7 +89,7 @@ margin-top: 1rem;
   }
 
 @media screen and (max-width: 767px){
-.download__form-labe {
+.download__form-label {
     font-size: 0.875rem;
     text-align: left;
     margin-bottom: 0.3rem;
@@ -97,8 +97,10 @@ margin-top: 1rem;
 }
 .downloadContainer {
     width: 95%;
-}
+
+height: 0;}
 .download__form {
+    margin-top: 1rem;
     padding: 10px;
 }
 

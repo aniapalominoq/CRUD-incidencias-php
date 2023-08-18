@@ -1,6 +1,6 @@
 <section class="addBus__section">
     <h1 class="addBus__h1"> Registro de Nuevo Bus</h1>
-    <form id="addBusForm" class="addBus_form">
+    <form id="addBusForm" class="addBus__form">
         <div class="addBus__form-group">
             <div class="addBus__form-field">
                 <label for="" class="addBus__form-label">Consorcio</label>
@@ -64,8 +64,8 @@
                 <input id="" name="" type="date" class="addBus__form-input" placeholder="Revisión técnica">
             </div>
             <div class="addBus__form-field">
-                <label for="" class="addBus__form-label">Código Externo</label>
-                <input id="" name="" type="text" class="addBus__form-input" placeholder="Código">
+                <label for="" class="addBus__form-label">Certificado de autorización </label>
+                <input id="" name="" type="text" class="addBus__form-input" placeholder="CAB">
             </div>
         </div>
         <button type="submit" class="addBus__button">Guardar</button>
