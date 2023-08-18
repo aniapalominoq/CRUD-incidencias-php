@@ -68,7 +68,7 @@
                 <input id="" name="" type="text" class="addBus__form-input" placeholder="Código">
             </div>
         </div>
-        <button type="submit" class="addBus__button">Agregar Bus</button>
+        <button type="submit" class="addBus__button">Guardar</button>
 
     </form>
 
