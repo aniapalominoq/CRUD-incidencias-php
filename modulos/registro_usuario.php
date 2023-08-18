@@ -1,24 +1,25 @@
 <section class="resgistro__section">
     <h1 class="resgistro__h1">Registro de Usuario</h1>
-    <form action="./servidor/registro/registrar.php" method="POST" class="resgistro__form">
+    <form id="resgistroUser" method="POST" class="resgistro__form">
         <div class="resgistro__div">
-            <label for="name" class="resgistro__label">Nombre usuario</label>
-            <input type="text" class="resgistro__input" name="name" placeholder="Nombre usuario" required>
+            <label for="nameUser" class="resgistro__label">Nombre usuario</label>
+            <input id="nameUser" type="text" class="resgistro__input" name="nameUser" placeholder="Nombre usuario">
         </div>
         <div class="resgistro__div">
-            <label for="rol" class="resgistro__label"> Seleccione su Rol</label>
-            <select name="rol" id="rol" class="resgistro__select" required>
+            <label for="rolUser" class="resgistro__label"> Seleccione su Rol</label>
+            <select name="rolUser" id="rolUser" class="resgistro__select">
+                <option class="resgistro__select-option" value="">selecione una opción</option>
                 <option class="resgistro__select-option" value="controlador">Controlador</option>
                 <option class="resgistro__select-option" value="supervisor">Supervisor</option>
             </select>
         </div>
         <div class="resgistro__div">
-            <label for="password1" class="resgistro__label">Contraseña</label>
-            <input type="password" class="resgistro__input" name="password1" placeholder="***********" required>
+            <label for="passwordUser" class="resgistro__label">Contraseña</label>
+            <input id="passwordUser" type="password" class="resgistro__input" name="passwordUser" placeholder="***********">
         </div>
         <button type="submit" class="resgistro__button">Registrarse</button>
     </form>
-    <table class="resgistro__table">
+    <!--  <table class="resgistro__table">
         <tr class="resgistro__tr">
             <th class="resgistro__th">N°</th>
             <th class="resgistro__th">Usuario</th>
@@ -81,7 +82,7 @@
                 </div>
             </td>
         </tr>
-        <!-- Agrega más filas aquí si es necesario -->
+        <!-- Agrega más filas aquí si es necesario 
     </table>
-
+    -->
 </section>

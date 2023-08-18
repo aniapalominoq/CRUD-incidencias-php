@@ -1403,6 +1403,89 @@ document.getElementById('logout').addEventListener('click', async () => {
 document.getElementById('newUser').addEventListener("click", () => {
     changeView('./modulos/registro_usuario.php');
 })
+//funcion para enviarregistro deusuario
+contenidoDinamico.addEventListener("submit", async (e) => {
+    e.preventDefault();
+     const nameUser = document.getElementById('nameUser').value;
+    const rolUser = document.getElementById('rolUser').value;
+    const passwordUser=document.getElementById('passwordUser').value;
+
+        if (nameUser === '' || rolUser === ''||passwordUser===''||(nameUser === '' && rolUser === ''&&passwordUser==='')||(nameUser === '' && rolUser === '')||(rolUser === ''&&passwordUser==='')||(nameUser === '' && passwordUser==='')) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                toast: true,
+                position: 'top-right',
+                text: 'Por favor, complete los campos vacios',
+                confirmButtonText: 'Aceptar',// Establecer el texto del botón
+                didOpen: () => {
+                    // Personalizar el botón Aceptar con el color y sin bordes
+                    const button = Swal.getPopup().querySelector('.swal2-confirm');
+                    button.style.backgroundColor = '#F14668';
+                    button.style.border = 'none';
+                    button.style.boxShadow = 'none';
+                    }
+                   }
+            
+            );
+            return;
+    }
+    
+
+        const formDataUser = new FormData(e.target);
+      console.log(formDataUser)
+
+        try {
+            const response = await fetch("/servidor/registro/registrar.php", {
+                method: "POST",
+                body: formDataUser,
+            });
+
+            if (!response.ok) {
+                throw new Error("Error al enviar la solicitud");
+            }
+
+            const dataUser = await response.json();
+
+            if (dataUser.status === "success") {
+                Swal.fire({
+                    icon: 'success',
+                    title: '¡Registro exitoso!',
+                    toast: true,
+                    position: 'top-right',
+                    showConfirmButton: false,
+                    timer: 2000,
+                    timerProgressBar: true,
+                })/* .then(() => {
+                    window.location.replace("/index.php"); // Redireccionar a la página de inicio del usuario
+                }) */;
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: dataUser.message,
+                    toast: true,
+                    position: 'top-right',
+                    showConfirmButton: false,
+                    timer: 2000,
+                    timerProgressBar: true,
+
+                });
+            }
+        } catch (error) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Ha ocurrido un error inesperado',
+                toast: true,
+                position: 'top-right',
+                timer: 2000,
+                timerProgressBar: true,
+
+            });
+        }
+    
+});
 /* ----------------------- vista registro conductor--------------- */
 document.getElementById('newDriver').addEventListener("click", () => {
     changeView('./modulos/registro_conductor.php');

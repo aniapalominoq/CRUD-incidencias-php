@@ -1,15 +1,18 @@
-<?php 
- include("../../clases/Auth.php");
-// Obtener los datos del formularize
-$name = $_POST['name'];
-$rol = $_POST['rol'];
-$password1 =password_hash($_POST['password1'],PASSWORD_DEFAULT);
+<?php
+include("../../clases/Auth.php");
 
-//instanciamos el auth
-$Auth=new Auth();
-if($Auth->registrar($name,$rol,$password1)){
-    header("Location:../../index.php");
+// Obtener los datos del formulario
+$name = $_POST['nameUser'];
+$rol = $_POST['rolUser'];
+$password1 = password_hash($_POST['passwordUser'], PASSWORD_DEFAULT);
 
-}else{
-    echo"No se pudo registrar";
+// Instanciamos el Auth
+$Auth = new Auth();
+$registroMensaje = $Auth->registrar($name, $rol, $password1);
+
+// Verificamos el mensaje de registro
+if (strpos($registroMensaje, "registrado exitosamente") !== false) {
+    echo json_encode(["status" => "success"]);
+} else {
+    echo json_encode(["status" => "error", "message" => $registroMensaje]);
 }
