@@ -42,7 +42,7 @@ class Incidencias extends Conexion
            incidencia.servicio,
            incidencia.bus,
            bus.vid,
-           bus.tamaño,
+           bus.tamano,
            bus.placa,
            conductor.dni,
            conductor.nombre,
@@ -125,7 +125,7 @@ class Incidencias extends Conexion
 
             // Crear el contenido del archivo CSV
             foreach ($datosIncidencias as $incidencia) {
-                echo "{$incidencia['fecha']}\t{$incidencia['hora_inicio']}\t{$incidencia['hora_fin']}\t{$incidencia['lugar']}\t {$incidencia['tipo']}\t{$incidencia['ruta']}\t{$incidencia['nombre_consorcio']}\t{$incidencia['sentido']}\t{$incidencia['categoria']}\t{$incidencia['sub_categoria']}\t{$incidencia['causa']}\t{$incidencia['consecuencia']}\t{$incidencia['descripcion']}\t{$incidencia['servicio']}\t{$incidencia['bus']}\t{$incidencia['vid']}\t{$incidencia['tamaño']}\t{$incidencia['placa']}\t{$incidencia['dni']}\t{$incidencia['nombre']}\t{$incidencia['cacc']}\t{$incidencia['tipo_kilometraje']}\t{$incidencia['kilometraje']}\t{$incidencia['carreras']}\n";
+                echo "{$incidencia['fecha']}\t{$incidencia['hora_inicio']}\t{$incidencia['hora_fin']}\t{$incidencia['lugar']}\t {$incidencia['tipo']}\t{$incidencia['ruta']}\t{$incidencia['nombre_consorcio']}\t{$incidencia['sentido']}\t{$incidencia['categoria']}\t{$incidencia['sub_categoria']}\t{$incidencia['causa']}\t{$incidencia['consecuencia']}\t{$incidencia['descripcion']}\t{$incidencia['servicio']}\t{$incidencia['bus']}\t{$incidencia['vid']}\t{$incidencia['tamano']}\t{$incidencia['placa']}\t{$incidencia['dni']}\t{$incidencia['nombre']}\t{$incidencia['cacc']}\t{$incidencia['tipo_kilometraje']}\t{$incidencia['kilometraje']}\t{$incidencia['carreras']}\n";
             }
         } else {
             // No se encontraron resultados, devolver una respuesta vacía    
@@ -143,30 +143,30 @@ class Incidencias extends Conexion
         // Crea una conexión usando el método estático "conectar" de la clase "Conexion"
         // Consulta SQL para seleccionar los detalles de la incidencia
         $sql = "SELECT incidencia.idincidencia,
-           incidencia.fecha,
-           incidencia.hora_inicio,
-           incidencia.hora_fin,
-           incidencia.lugar,
-           tipo.tipo,
-           ruta.ruta,
-           consorcio.nombre_consorcio,
-           sentido.sentido,
-           categoria.categoria,
-           sub_categoria.sub_categoria,
-           causa.causa,
-           consecuencia.consecuencia,
-           incidencia.descripcion,
-           incidencia.servicio,
-           incidencia.bus,
-           bus.vid,
-           bus.tamaño,
-           bus.placa,
-           conductor.dni,
-           conductor.nombre,
-           conductor.cacc,
-           tipo_kilometraje.tipo_kilometraje,
-           incidencia.kilometraje,
-           incidencia.carreras
+        incidencia.fecha,
+        incidencia.hora_inicio,
+        incidencia.hora_fin,
+        incidencia.lugar,
+        tipo.tipo,
+        ruta.ruta,
+        consorcio.nombre_consorcio,
+        sentido.sentido,
+        categoria.categoria,
+        sub_categoria.sub_categoria,
+        causa.causa,
+        consecuencia.consecuencia,
+        incidencia.descripcion,
+        incidencia.servicio,
+        incidencia.bus,
+        bus.vid,
+        bus.tamano,
+        bus.placa,
+        conductor.dni,
+        conductor.nombre,
+        conductor.cacc,
+        tipo_kilometraje.tipo_kilometraje,
+        incidencia.kilometraje,
+        incidencia.carreras
                 FROM incidencia
                 INNER JOIN tipo ON incidencia.tipo_servicio = tipo.id_tipo
                 INNER JOIN ruta ON incidencia.ruta = ruta.id_ruta

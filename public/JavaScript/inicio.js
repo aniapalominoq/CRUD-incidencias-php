@@ -1546,4 +1546,5 @@ contenidoDinamico.addEventListener('submit', async (e) => {
 /* ----------------------- vista registro Incidencias------------------- */
 document.getElementById('incidencia').addEventListener("click", () => {
     changeView('./modulos/registro_incidencias.php');
+    window.location.reload();
 })
