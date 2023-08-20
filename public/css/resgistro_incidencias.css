@@ -476,8 +476,8 @@ top:75%;
 }
     .addIncidents__progress-bullet::before,.addIncidents__progress-bullet::after{
 
-right: -150px;
-width: 450%;
+right: -100px;
+width: 300%;
 
 } 
 .addIncidents__progress-check{
