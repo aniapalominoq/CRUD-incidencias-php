@@ -134,7 +134,7 @@
                     </div>
                     <div class="addIncidents__form-field">
                         <label for="numero_servicio" class="addIncidents__form-label">Número servicio</label>
-                        <input id="numero_servicio" name="numero_servicio" type="number" class="addIncidents__form-input" placeholder="Número Servicio">
+                        <input id="numero_servicio" name="numero_servicio" type="number" class="addIncidents__form-input" placeholder="Número Servicio" min="1000" max="9999">
                     </div>
                 </div>
                 <div class="addIncidents__form-group">
@@ -195,11 +195,11 @@
                 </div>
                 <div class="addIncidents__form-field">
                     <label for="kilometraje" class="addIncidents__form-label">Kilometraje</label>
-                    <input name="kilometraje" id="kilometraje" type="number" class="addIncidents__form-input" placeholder="km">
+                    <input name="kilometraje" id="kilometraje" type="number" class="addIncidents__form-input" placeholder="0000git add" min="0" step="any">
                 </div>
                 <div class="addIncidents__form-field">
                     <label for="numero_carreras" class="addIncidents__form-label"> Número de Carreras</label>
-                    <input name="numero_carreras" id="numero_carreras" type="number" class="addIncidents__form-input" placeholder="Número de Carreras">
+                    <input name="numero_carreras" id="numero_carreras" type="number" class="addIncidents__form-input" placeholder="Número de Carreras" min="0" step="any">
                 </div>
                 <div class="addIncidents__form-field btns">
                     <div class="addIncidents__form-btn prev-3 prev">Atras</div>

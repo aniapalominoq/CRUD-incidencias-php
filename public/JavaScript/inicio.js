@@ -441,7 +441,7 @@ async function guardarDatosFormulario() {
         // Agregar los datos del formulario al objeto formData.
         for (const field of requiredFields) {
             const valorCampo = document.getElementById(field).value;
-            console.log(valorCampo);
+           
         formData.append(field, valorCampo);
         }
         //  enviar los datos al servidor.

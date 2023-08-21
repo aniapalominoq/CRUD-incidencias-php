@@ -121,7 +121,7 @@ class Incidencias extends Conexion
             header('Content-Disposition: attachment; filename="incidencias.csv"');
 
             // Imprimir las cabeceras en una fila separada por tabulaciones
-            echo "FECHA\tHORA INICIO\tHORA FIN\tLUGAR\tTIPO\tRUTA\tNOMBRE CONSORCIO\tSENTIDO\tCATEGORIA\tSUB CATEGORIA\tCAUSA\tCONSECUENCIA\tDESCRIPCION\tSERVICIO\tBUS\tVID\tDIMENSION\tPLACA\tDNI\tNOMBRE\tCACC\tTIPO KM\tNUM KM\tNUM\tCARRERA\n";
+            echo "FECHA\tHORA INICIO\tHORA FIN\tLUGAR\tTIPO\tRUTA\tNOMBRE CONSORCIO\tSENTIDO\tCATEGORIA\tSUB CATEGORIA\tCAUSA\tCONSECUENCIA\tDESCRIPCION\tSERVICIO\tBUS\tVID\tDIMENSION\tPLACA\tDNI\tNOMBRE\tCACC\tTIPO KM\tNUM KM\tCARRERA\n";
 
             // Crear el contenido del archivo CSV
             foreach ($datosIncidencias as $incidencia) {
@@ -278,7 +278,7 @@ class Incidencias extends Conexion
         $sql = "INSERT INTO incidencia (fecha, hora_inicio, hora_fin, lugar, categoria, subcategoria, causa, consecuencia, descripcion, consorcio, tipo_servicio, ruta, servicio, sentido, bus, conductor, tipo_kilometraje, kilometraje, carreras/* , auditoria */) 
                 VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?/* , ? */)";
         $query = $conexion->prepare($sql);
-        $query->bind_param('ssssiiiisiiiiiisiii', $data['fecha'], $data['hora_inicio'], $data['hora_fin'], $data['lugar'], $data['categoria'], $data['subcategoria'], $data['causa'], $data['consecuencia'], $data['descripcion'], $data['consorcio'], $data['tipo_servicio'], $data['ruta'], $data['servicio'], $data['sentido'], $data['bus'], $data['conductor'], $data['tipo_kilometraje'], $data['kilometraje'], $data['carreras']/*, $data['auditoria'] */);
+        $query->bind_param('ssssiiiisiiiiiisidd', $data['fecha'], $data['hora_inicio'], $data['hora_fin'], $data['lugar'], $data['categoria'], $data['subcategoria'], $data['causa'], $data['consecuencia'], $data['descripcion'], $data['consorcio'], $data['tipo_servicio'], $data['ruta'], $data['servicio'], $data['sentido'], $data['bus'], $data['conductor'], $data['tipo_kilometraje'], $data['kilometraje'], $data['carreras']/*, $data['auditoria'] */);
         $success = $query->execute(); // Ejecutar la consulta y asignar el resultado a la variable $success
 
         if ($success) {
