@@ -616,31 +616,35 @@ document.getElementById('listar').addEventListener('click', function () {
                                 ];
                                 
                             }),
-                            search:true,
+                                search: {
+                                placeholder: 'Buscar por término',
+                                    },
                             pagination: {
                                             limit: 15,
                                             summary: false
-                                        },
+                                },
                             style: {
-                                    table: {
-                                            fontSize: '10px',
-                                            },
-                                th: {
-                                            fontSize: '12px',
-                                            backgroundColor:'#19459D',
-                                            fontWeight: '300',
-                                            color:'#FFFF'
-                                            },
-                                        td: {
-                                                textAlign: 'center', // Alinea el contenido en el centro horizontalmente
-                                                verticalAlign: 'middle' ,// Alinea el contenido en el centro verticalmente
-                                                padding: '0px',
-                                                fontSize: '14px',
-                                                //fontWeight: '100', // Establece el tamaño de fuente deseado para la columna 'Name'
-                                            }
+                                    th: {
+                                        fontSize: '12px',
+                                        backgroundColor:'#19459D',
+                                    fontWeight: '400',
+                                    padding: '10px',
+                                          textAlign: 'center',
+                                        color: '#FFFF',
+                                        fontFamily:"'Segoe UI', sans-serif",
+                                        },
+                                    td: {
+                                        textAlign: 'center', // Alinea el contenido en el centro horizontalmente
+                                        verticalAlign: 'middle' ,// Alinea el contenido en el centro verticalmente
+                                        padding: '1px',
+                                        fontFamily:"'Segoe UI', sans-serif",
+                                        
+                                        }
                                     }
+
                             }).render(document.getElementById("wrapper"));
-                        } catch (error) {
+
+} catch (error) {
                         // Manejar errores en la solicitud fetch
                         console.error(error);
                         }
@@ -884,7 +888,8 @@ async function obtenerIncidenciaParaEditar(id_incidencia) {
                // console.error('Error:', error);
                 throw new Error('No se pudo obtener la incidencia para editar');
             }
-    }
+}
+    
 async function mostrarFormularioEdicion(incidencia) {
     const { value: formValues } = await Swal.fire({
         title: 'Editar incidencia',
@@ -950,8 +955,8 @@ async function mostrarFormularioEdicion(incidencia) {
                                                             </select>
                                                         </div>
                                                         <div class="listContainer__form-field">
-                                                            <label for="listTipo-servicio" class="listContainer__form-label">Tipo de servicio</label>
-                                                            <select name="listTipo-servicio" id="listTipo-servicio" class="listContainer__form-select" required>
+                                                            <label for="listTipo_servicio" class="listContainer__form-label">Tipo de servicio</label>
+                                                            <select name="listTipo_servicio" id="listTipo_servicio" class="listContainer__form-select" required>
                                                             
                                                             </select>
                                                         </div>
@@ -971,7 +976,7 @@ async function mostrarFormularioEdicion(incidencia) {
                                                         </div>
                                                         <div class="listContainer__form-field">
                                                             <label for="listNumero_servicio" class="listContainer__form-label">Número servicio</label>
-                                                            <input id="listNumero_servicio" name="listNumero_servicio" type="number" class="listContainer__form-input" placeholder="Número Servicio" value="${incidencia.servicio}">
+                                                            <input id="listNumero_servicio" name="listNumero_servicio" type="number" class="listContainer__form-input" placeholder="0000" value="${incidencia.servicio}" min="1000" max="9999">
                                                         </div>
                                                     </div>
                                                     <div class="listContainer__form-group">
@@ -1017,11 +1022,11 @@ async function mostrarFormularioEdicion(incidencia) {
                                                         </div>
                                                         <div class="listContainer__form-field">
                                                             <label for="listKilometraje" class="listContainer__form-label">Kilometraje</label>
-                                                            <input name="listKilometraje" id="listKilometraje" type="number" class="listContainer__form-input"  value="${incidencia.kilometraje}" placeholder="km" >
+                                                            <input name="listKilometraje" id="listKilometraje" type="number" class="listContainer__form-input"  value="${incidencia.kilometraje}" placeholder="0.0" min="0" step="any" >
                                                         </div>
                                                         <div class="listContainer__form-field">
                                                             <label for="listNumero_carreras" class="listContainer__form-label"> Número Carreras</label>
-                                                            <input name="listNumero_carreras" id="listNumero_carreras" type="number" class="listContainer__form-input"  value="${incidencia.carreras}" placeholder="Número de Carreras">
+                                                            <input name="listNumero_carreras" id="listNumero_carreras" type="number" class="listContainer__form-input"  value="${incidencia.carreras}" placeholder="0.0" min="0" step="any">
                                                         </div>
                                                     </div>
                                             </div>
@@ -1030,43 +1035,14 @@ async function mostrarFormularioEdicion(incidencia) {
         width: '60%',
         showCloseButton: true,//para activar el(x) en el alert
         confirmButtonText: 'Guardar',
-        preConfirm: () => {
-            // Obtener los valores del formulario
-            return [
-                document.getElementById('listDate').value,
-                document.getElementById('listTime_on').value,
-                document.getElementById('listTime_off').value,
-                document.getElementById('listPlace_incidence').value,
-                document.getElementById('listCategoria').value,
-                document.getElementById('listSubCategoria').value,
-                document.getElementById('listCausa').value,
-                document.getElementById('listConsecuencia').value,
-                document.getElementById('listDescripcion').value,
-                document.getElementById('listConsorcio').value,
-                document.getElementById('listTipo-servicio').value,
-                document.getElementById('listRuta').value,
-                document.getElementById('listNumero_servicio').value,
-                document.getElementById('listSentido').value,
-                document.getElementById('ListVid').value,
-                document.getElementById('listId_bus').value,
-                document.getElementById('listPlaca').value,
-                document.getElementById('listDni').value,
-                document.getElementById('listCod_cacc').value,
-                document.getElementById('listConductor').value,
-                document.getElementById('listTipoKilometraje').value,
-                document.getElementById('listKilometraje').value,
-                document.getElementById('listKilometraje').value,
-                document.getElementById('listNumero_carreras').value,
-            ];
-        },
         didOpen: async () => {
-            console.log('data incidencia',incidencia)
+            console.log('viejos datos',incidencia)
             // Cuando se abre el formulario, llenar el selector
             await cargarSelect('/servidor/incidencia/cargar_categoria.php', 'listCategoria', incidencia.categoria);
             await cargarSelect('/servidor/incidencia/cargar_sentido.php', 'listSentido', incidencia.sentido);
             await cargarSelect('/servidor/incidencia/cargar_tipo_kilometraje.php', 'listTipoKilometraje', incidencia.tipo_kilometraje);
             await cargarSelect('/servidor/incidencia/cargar_consorcio.php', 'listConsorcio', incidencia.consorcio);
-            await cargarSelect('/servidor/incidencia/cargar_tipo_servicio.php', 'listTipo-servicio', incidencia.tipo_servicio);
+            await cargarSelect('/servidor/incidencia/cargar_tipo_servicio.php', 'listTipo_servicio', incidencia.tipo_servicio);
             //elementos del formulario editar
             const selectEditarCategoria = document.getElementById('listCategoria');
             const selectEditarSubCategoria= document.getElementById('listSubCategoria');
@@ -1114,7 +1090,7 @@ async function mostrarFormularioEdicion(incidencia) {
             //----------------cargar ruta--------------
             const valorSelecionado = incidencia.ruta;
             const consorcioId = document.getElementById('listConsorcio').value;
-            const tipoId = document.getElementById('listTipo-servicio').value;
+            const tipoId = document.getElementById('listTipo_servicio').value;
             const rutaElement = document.getElementById('listRuta');
             const response = await fetch(`../../servidor/incidencia/cargar_ruta.php?consorcio_id=${consorcioId}&id_tipo=${tipoId}`);
             const data = await response.json();
@@ -1186,12 +1162,41 @@ async function mostrarFormularioEdicion(incidencia) {
                 }
             });
             //----------------------------------------
+        },
+        preConfirm: () => {
+            // Obtener los valores del formulario
+            return [
+                document.getElementById('listDate').value,
+                document.getElementById('listTime_on').value,
+                document.getElementById('listTime_off').value,
+                document.getElementById('listPlace_incidence').value,
+                document.getElementById('listCategoria').value,
+                document.getElementById('listSubCategoria').value,
+                document.getElementById('listCausa').value,
+                document.getElementById('listConsecuencia').value,
+                document.getElementById('listDescripcion').value,
+                document.getElementById('listConsorcio').value,
+                document.getElementById('listTipo_servicio').value,
+                document.getElementById('listRuta').value,
+                document.getElementById('listNumero_servicio').value,
+                document.getElementById('listSentido').value,
+                document.getElementById('ListVid').value,
+                //document.getElementById('listId_bus').value,
+                //document.getElementById('listPlaca').value,
+               document.getElementById('listDni').value,
+                //document.getElementById('listCod_cacc').value,
+                //document.getElementById('listConductor').value,
+                document.getElementById('listTipoKilometraje').value,
+                document.getElementById('listKilometraje').value,
+                document.getElementById('listNumero_carreras').value,
+            ];
         }
     })
+    console.log('nuevos datos',formValues)
         return formValues;
 }
 async function actualizarIncidencia(id_incidencia, formValues) {
-            const [fecha, hora_inicio, hora_fin, lugar, categoria, subcategoria, causa, consecuencia, descripcion, consorcio, tipo_servicio, ruta, servicio, sentido, bus, conductor, tipo_kilometraje, kilometraje, carreras/* otros campos */] = formValues;
+            const [fecha, hora_inicio, hora_fin, lugar, categoria, subcategoria, causa, consecuencia, descripcion, consorcio, tipo_servicio, ruta, servicio, sentido, bus,conductor, tipo_kilometraje, kilometraje, carreras] = formValues;
 
             const params = new URLSearchParams();
             params.append('id_incidencia', id_incidencia);
@@ -1215,7 +1220,7 @@ async function actualizarIncidencia(id_incidencia, formValues) {
             params.append('kilometraje', kilometraje);
             params.append('carreras', carreras);
 
-            const actualizarResponse = await fetch('actualizar_incidencia.php', {
+            const actualizarResponse = await fetch('../../servidor/incidencia/actualizar.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
@@ -1229,19 +1234,19 @@ async function editarElemento(id_incidencia) {
                     const incidencia = await obtenerIncidenciaParaEditar(id_incidencia);
                     // Mostrar el formulario de edición y manejar la actualización
                     const formValues = await mostrarFormularioEdicion(incidencia);
-                     //console.log('datos  nuevos del editar: ', formValues);
+                    // console.log('datos  nuevos del editar: ', formValues);
                      // Validar y enviar los datos actualizados al servidor
                     if (formValues) {
                         const actualizarResponse = await actualizarIncidencia(id_incidencia, formValues);
-                        //console.log(actualizarResponse); // Aquí puedes hacer lo que necesites con el resultado
+                        ; // Aquí puedes hacer lo que necesites con el resultado
                         // Mostrar mensaje de éxito
                             Swal.fire({
                                         title: 'Incidencia actualizada',
                                         text: 'La incidencia ha sido actualizada exitosamente',
                                         icon: 'success'
-                                            });
-                                            // Volver a renderizar la tabla actualizada
+                                            }).then(() => {
                                         changeView('./modulos/listado_incidencias.php');
+                                    });
                                         }
                                     } catch (error) {
                                         console.error('Error:', error);

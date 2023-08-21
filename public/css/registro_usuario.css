@@ -162,9 +162,7 @@ background-color: var(--blue-300);
  }
 }
 @media screen and (min-width: 768px) and (max-width: 991px) {
-  *{
-font-size: 18px;
-}
+
  .img-body__section{
     display:none;
  }

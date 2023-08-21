@@ -216,17 +216,51 @@ class Incidencias extends Conexion
     public function actualizarIncidencias($data)
     {
         $conexion = Conexion::conectar();
-        $sql = "UPDATE t_invitados SET id_evento = ?,
-                                            nombre_invitado = ?,
-                                            email = ? 
-                    WHERE id_invitado = ?";
+        $sql = "UPDATE incidencia SET idincidencia = ?,
+                                fecha = ?,
+                                hora_inicio= ?,
+                                hora_fin= ?,
+                                lugar= ?,
+                                categoria= ?,
+                                subcategoria= ?,
+                                causa= ?,
+                                consecuencia= ?,
+                                descripcion= ?,
+                                consorcio= ?,
+                                tipo_servicio= ?,
+                                ruta= ?, 
+                                servicio= ?,
+                                sentido= ?,
+                                bus= ?, 
+                                conductor= ?,
+                                tipo_kilometraje= ?,
+                                kilometraje= ?,
+                                carreras= ? 
+                                WHERE idincidencia = ?";
         $query = $conexion->prepare($sql);
         $query->bind_param(
-            'issi',
-            $data['id_evento'],
-            $data['nombre_invitado'],
-            $data['email'],
-            $data['id_invitado']
+            'issssiiiisiiiiiisiddi',
+            $data['idincidencia'],
+            $data['fecha'],
+            $data['hora_inicio'],
+            $data['hora_fin'],
+            $data['lugar'],
+            $data['categoria'],
+            $data['subcategoria'],
+            $data['causa'],
+            $data['consecuencia'],
+            $data['descripcion'],
+            $data['consorcio'],
+            $data['tipo_servicio'],
+            $data['ruta'],
+            $data['servicio'],
+            $data['sentido'],
+            $data['bus'],
+            $data['conductor'],
+            $data['tipo_kilometraje'],
+            $data['kilometraje'],
+            $data['carreras'],
+            $data['idincidencia']
         );
         return $query->execute();
     }
@@ -278,7 +312,29 @@ class Incidencias extends Conexion
         $sql = "INSERT INTO incidencia (fecha, hora_inicio, hora_fin, lugar, categoria, subcategoria, causa, consecuencia, descripcion, consorcio, tipo_servicio, ruta, servicio, sentido, bus, conductor, tipo_kilometraje, kilometraje, carreras/* , auditoria */) 
                 VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?/* , ? */)";
         $query = $conexion->prepare($sql);
-        $query->bind_param('ssssiiiisiiiiiisidd', $data['fecha'], $data['hora_inicio'], $data['hora_fin'], $data['lugar'], $data['categoria'], $data['subcategoria'], $data['causa'], $data['consecuencia'], $data['descripcion'], $data['consorcio'], $data['tipo_servicio'], $data['ruta'], $data['servicio'], $data['sentido'], $data['bus'], $data['conductor'], $data['tipo_kilometraje'], $data['kilometraje'], $data['carreras']/*, $data['auditoria'] */);
+        $query->bind_param(
+            'ssssiiiisiiiiiisidd',
+            $data['fecha'],
+            $data['hora_inicio'],
+            $data['hora_fin'],
+            $data['lugar'],
+            $data['categoria'],
+            $data['subcategoria'],
+            $data['causa'],
+            $data['consecuencia'],
+            $data['descripcion'],
+            $data['consorcio'],
+            $data['tipo_servicio'],
+            $data['ruta'],
+            $data['servicio'],
+            $data['sentido'],
+            $data['bus'],
+            $data['conductor'],
+            $data['tipo_kilometraje'],
+            $data['kilometraje'],
+            $data['carreras']
+            /*, $data['auditoria'] */
+        );
         $success = $query->execute(); // Ejecutar la consulta y asignar el resultado a la variable $success
 
         if ($success) {
