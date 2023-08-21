@@ -1036,7 +1036,7 @@ async function mostrarFormularioEdicion(incidencia) {
         showCloseButton: true,//para activar el(x) en el alert
         confirmButtonText: 'Guardar',
         didOpen: async () => {
-            console.log('viejos datos',incidencia)
+            //console.log('viejos datos',incidencia)
             // Cuando se abre el formulario, llenar el selector
             await cargarSelect('/servidor/incidencia/cargar_categoria.php', 'listCategoria', incidencia.categoria);
             await cargarSelect('/servidor/incidencia/cargar_sentido.php', 'listSentido', incidencia.sentido);
@@ -1192,7 +1192,7 @@ async function mostrarFormularioEdicion(incidencia) {
             ];
         }
     })
-    console.log('nuevos datos',formValues)
+   // console.log('nuevos datos',formValues)
         return formValues;
 }
 async function actualizarIncidencia(id_incidencia, formValues) {
