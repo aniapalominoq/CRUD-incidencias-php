@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS `auditoria` (
   `usuario` int DEFAULT NULL,
   PRIMARY KEY (`idauditoria`),
   KEY `usuarioFK_idx` (`usuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ;
 
 -- Volcando datos para la tabla centro-control.auditoria: ~0 rows (aproximadamente)
 
@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `bus` (
   PRIMARY KEY (`id_bus`,`vid`),
   KEY `id_consorcioFK_idx` (`id_consorcio`),
   KEY `id_tipoFK_idx` (`id_tipo`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ;
 
 -- Volcando datos para la tabla centro-control.bus: ~549 rows (aproximadamente)
 INSERT INTO `bus` (`id_bus`, `vid`, `num_externo`, `placa`, `tamano`, `id_consorcio`, `id_tipo`, `tarjeta_propiedad`, `revision_tecnica`, `certificado_autorizacion`, `fecha_fabricacion`, `soat`) VALUES
@@ -608,7 +608,7 @@ CREATE TABLE IF NOT EXISTS `categoria` (
   `id_categoria` int NOT NULL AUTO_INCREMENT,
   `categoria` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_categoria`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ;
 
 -- Volcando datos para la tabla centro-control.categoria: ~6 rows (aproximadamente)
 INSERT INTO `categoria` (`id_categoria`, `categoria`) VALUES
@@ -625,7 +625,7 @@ CREATE TABLE IF NOT EXISTS `causa` (
   `causa` varchar(50) DEFAULT NULL,
   `sub_categoria` int DEFAULT NULL,
   PRIMARY KEY (`idcausa`)
-) ENGINE=InnoDB AUTO_INCREMENT=173 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 -- Volcando datos para la tabla centro-control.causa: ~115 rows (aproximadamente)
 INSERT INTO `causa` (`idcausa`, `causa`, `sub_categoria`) VALUES
@@ -811,7 +811,7 @@ CREATE TABLE IF NOT EXISTS `conductor` (
   `consorcio` int DEFAULT NULL,
   `tipo` int DEFAULT NULL,
   PRIMARY KEY (`idconductor`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 -- Volcando datos para la tabla centro-control.conductor: ~279 rows (aproximadamente)
 INSERT INTO `conductor` (`idconductor`, `nombre`, `dni`, `cacc`, `consorcio`, `tipo`) VALUES
@@ -1101,7 +1101,7 @@ CREATE TABLE IF NOT EXISTS `consecuencia` (
   `consecuencia` varchar(50) DEFAULT NULL,
   `causa` int DEFAULT NULL,
   PRIMARY KEY (`id_consecuencia`)
-) ENGINE=InnoDB AUTO_INCREMENT=1630 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 -- Volcando datos para la tabla centro-control.consecuencia: ~115 rows (aproximadamente)
 INSERT INTO `consecuencia` (`id_consecuencia`, `consecuencia`, `causa`) VALUES
@@ -2739,9 +2739,9 @@ INSERT INTO `consecuencia` (`id_consecuencia`, `consecuencia`, `causa`) VALUES
 CREATE TABLE IF NOT EXISTS `consorcio` (
   `idconsorcio` int NOT NULL AUTO_INCREMENT,
   `nombre_consorcio` varchar(50) DEFAULT NULL,
-  `abreviatura_consorcio` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `abreviatura_consorcio` varchar(50)  NULL,
   PRIMARY KEY (`idconsorcio`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 -- Volcando datos para la tabla centro-control.consorcio: ~4 rows (aproximadamente)
 INSERT INTO `consorcio` (`idconsorcio`, `nombre_consorcio`, `abreviatura_consorcio`) VALUES
@@ -2761,7 +2761,7 @@ CREATE TABLE IF NOT EXISTS `incidencia` (
   `subcategoria` int DEFAULT NULL,
   `causa` int DEFAULT NULL,
   `consecuencia` int DEFAULT NULL,
-  `descripcion` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `descripcion` varchar(500) NULL,
   `consorcio` int DEFAULT NULL,
   `tipo_servicio` int DEFAULT NULL,
   `ruta` int DEFAULT NULL,
@@ -2774,7 +2774,7 @@ CREATE TABLE IF NOT EXISTS `incidencia` (
   `carreras` decimal(20,1) DEFAULT NULL,
   `auditoria` int DEFAULT NULL,
   PRIMARY KEY (`idincidencia`)
-) ENGINE=InnoDB AUTO_INCREMENT=91 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 -- Volcando datos para la tabla centro-control.incidencia: ~74 rows (aproximadamente)
 INSERT INTO `incidencia` (`idincidencia`, `fecha`, `hora_inicio`, `hora_fin`, `lugar`, `categoria`, `subcategoria`, `causa`, `consecuencia`, `descripcion`, `consorcio`, `tipo_servicio`, `ruta`, `servicio`, `sentido`, `bus`, `conductor`, `tipo_kilometraje`, `kilometraje`, `carreras`, `auditoria`) VALUES
@@ -2860,7 +2860,7 @@ CREATE TABLE IF NOT EXISTS `ruta` (
   `id_tipo` int DEFAULT NULL,
   `id_consorcio` int DEFAULT NULL,
   PRIMARY KEY (`id_ruta`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 -- Volcando datos para la tabla centro-control.ruta: ~154 rows (aproximadamente)
 INSERT INTO `ruta` (`id_ruta`, `abreviatura`, `ruta`, `id_tipo`, `id_consorcio`) VALUES
@@ -3024,7 +3024,7 @@ CREATE TABLE IF NOT EXISTS `sentido` (
   `idsentido` int NOT NULL AUTO_INCREMENT,
   `sentido` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`idsentido`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 -- Volcando datos para la tabla centro-control.sentido: ~7 rows (aproximadamente)
 INSERT INTO `sentido` (`idsentido`, `sentido`) VALUES
@@ -3042,7 +3042,7 @@ CREATE TABLE IF NOT EXISTS `sub_categoria` (
   `sub_categoria` varchar(50) DEFAULT NULL,
   `categoria` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id_subcategoria`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 -- Volcando datos para la tabla centro-control.sub_categoria: ~25 rows (aproximadamente)
 INSERT INTO `sub_categoria` (`id_subcategoria`, `sub_categoria`, `categoria`) VALUES
@@ -3075,10 +3075,10 @@ INSERT INTO `sub_categoria` (`id_subcategoria`, `sub_categoria`, `categoria`) VA
 -- Volcando estructura para tabla centro-control.tipo
 CREATE TABLE IF NOT EXISTS `tipo` (
   `id_tipo` int NOT NULL AUTO_INCREMENT,
-  `tipo` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `tipo` varchar(50) NULL,
   `abreviatura_tipo` varchar(3) DEFAULT NULL,
   PRIMARY KEY (`id_tipo`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 -- Volcando datos para la tabla centro-control.tipo: ~2 rows (aproximadamente)
 INSERT INTO `tipo` (`id_tipo`, `tipo`, `abreviatura_tipo`) VALUES
@@ -3090,7 +3090,7 @@ CREATE TABLE IF NOT EXISTS `tipo_kilometraje` (
   `idtipo_kilometraje` int NOT NULL AUTO_INCREMENT,
   `tipo_kilometraje` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`idtipo_kilometraje`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 -- Volcando datos para la tabla centro-control.tipo_kilometraje: ~6 rows (aproximadamente)
 INSERT INTO `tipo_kilometraje` (`idtipo_kilometraje`, `tipo_kilometraje`) VALUES
@@ -3108,14 +3108,9 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `rol` varchar(50) DEFAULT NULL,
   `contrasena` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 -- Volcando datos para la tabla centro-control.usuarios: ~1 rows (aproximadamente)
 INSERT INTO `usuarios` (`id`, `nombre`, `rol`, `contrasena`) VALUES
 	(1, 'Javier CGC', 'controlador', '$2y$10$TIA1Hei1p7rXoDKVQ32kjuhoK7AIoiazFCSnBJAXpBHVau4fhNSe6');
 
-/*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
-/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
-/*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */;
