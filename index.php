@@ -92,7 +92,7 @@
 
         </div>
     </section>
-    <script src="/public/JavaScript/index.js"></script>
+    <script src="./public/JavaScript/index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.16/dist/sweetalert2.all.min.js"></script>
     <script src="public/JavaScript/sweetalert2.all.min.js"></script>
 </body>

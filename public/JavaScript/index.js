@@ -5,7 +5,7 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
     const formData = new FormData(e.target);
 
     try {
-        const response = await fetch("/servidor/login/logear.php", {
+        const response = await fetch("./servidor/login/logear.php", {
             method: "POST",
             body: formData,
         });
@@ -27,7 +27,7 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
                 timer: 2000,
                  timerProgressBar: true,
             }).then(() => {
-                window.location.replace("/inicio.php"); // Redireccionar a la página de inicio del usuario
+                window.location.replace("./inicio.php"); // Redireccionar a la página de inicio del usuario
             });
         } else {
             Swal.fire({

@@ -259,14 +259,14 @@ async function cargarOpciones(selectElement, url, valueKey, textKey, extraCallba
         console.error('Error al cargar las opciones:', error);
     }
 }
-
+console.log("soy donde debe cargar consorcio",consorcioSelect)
 // Event listener para cargar CACC y nombre del conductor al llenar el campo DNI
 inputDni.addEventListener('input', () => {
     const valueDni = inputDni.value;
     if (valueDni) {
         cargarOpciones(
             inputCacc,
-            `../../servidor/incidencia/cargar_cacc_conductor.php?numero_dni=${valueDni}`,
+            `./servidor/incidencia/cargar_cacc_conductor.php?numero_dni=${valueDni}`,
             '',
             '',
             async (data) => {
@@ -291,7 +291,7 @@ const consorcioTipoListener = () => {
     if (consorcioId && tipoId) {
         cargarOpciones(
             opcionesDniSelect,
-            `../../servidor/incidencia/cargar_dni.php?consorcio_id=${consorcioId}&id_tipo=${tipoId}`,
+            `./servidor/incidencia/cargar_dni.php?consorcio_id=${consorcioId}&id_tipo=${tipoId}`,
             '',
             '',
             async (data) => {
@@ -321,7 +321,7 @@ const consorcioTipoVidListener = () => {
     if (consorcioId && tipoId) {
         cargarOpciones(
             opcionesVidSelect,
-            `../../servidor/incidencia/cargar_vid.php?consorcio_id=${consorcioId}&id_tipo=${tipoId}`,
+            `./servidor/incidencia/cargar_vid.php?consorcio_id=${consorcioId}&id_tipo=${tipoId}`,
             '',
             '',
             async (data) => {
@@ -348,7 +348,7 @@ const consorcioTipoRutaListener = () => {
     if (consorcioId && tipoId) {
         cargarOpciones(
             rutaSelect,
-            `../../servidor/incidencia/cargar_ruta.php?consorcio_id=${consorcioId}&id_tipo=${tipoId}`,
+            `./servidor/incidencia/cargar_ruta.php?consorcio_id=${consorcioId}&id_tipo=${tipoId}`,
             'id_ruta',
             'abreviatura'
         );
@@ -368,7 +368,7 @@ categoriaSelect.addEventListener('change', () => {
     if (categoriaId) {
         cargarOpciones(
             subcategoriaSelect,
-            `../../servidor/incidencia/cargar_subcategoria.php?categoria_id=${categoriaId}`,
+            `./servidor/incidencia/cargar_subcategoria.php?categoria_id=${categoriaId}`,
             'id_subcategoria',
             'sub_categoria'
         );
@@ -382,7 +382,7 @@ subcategoriaSelect.addEventListener('change', () => {
     if (subcategoriaId) {
         cargarOpciones(
             causaSelect,
-            `../../servidor/incidencia/cargar_causa.php?subcategoria_id=${subcategoriaId}`,
+            `./servidor/incidencia/cargar_causa.php?subcategoria_id=${subcategoriaId}`,
             'idcausa',
             'causa'
         );
@@ -395,7 +395,7 @@ causaSelect.addEventListener('change', () => {
     if (causaId) {
         cargarOpciones(
             consecuenciaSelect,
-            `../../servidor/incidencia/cargar_consecuencia.php?causa_id=${causaId}`,
+            `./servidor/incidencia/cargar_consecuencia.php?causa_id=${causaId}`,
             'id_consecuencia',
             'consecuencia'
         );
@@ -410,7 +410,7 @@ inputVid.addEventListener('input', () => {
 });
 async function cargarBusPlaca(numeroVid) {
     try {
-        const response = await fetch(`../../servidor/incidencia/cargar_bus_placa.php?numero_vid=${numeroVid}`);
+        const response = await fetch(`./servidor/incidencia/cargar_bus_placa.php?numero_vid=${numeroVid}`);
         const data = await response.json();
         inputBus.value = '';
         inputPlaca.value = '';
@@ -421,12 +421,12 @@ async function cargarBusPlaca(numeroVid) {
     }
 }
 document.addEventListener('DOMContentLoaded', () => {
-    cargarOpciones(categoriaSelect, '../../servidor/incidencia/cargar_categoria.php', 'id_categoria', 'categoria');
-    cargarOpciones(consorcioSelect, '../../servidor/incidencia/cargar_consorcio.php', 'idconsorcio', 'nombre_consorcio');
-    cargarOpciones(sentidoSelect, '../../servidor/incidencia/cargar_sentido.php', 'idsentido', 'sentido');
+    cargarOpciones(categoriaSelect, './servidor/incidencia/cargar_categoria.php', 'id_categoria', 'categoria');
+    cargarOpciones(consorcioSelect, './servidor/incidencia/cargar_consorcio.php', 'idconsorcio', 'nombre_consorcio');
+    cargarOpciones(sentidoSelect, './servidor/incidencia/cargar_sentido.php', 'idsentido', 'sentido');
     cargarOpciones(
         tipokilometrajeSelect,
-        '../../servidor/incidencia/cargar_tipo_kilometraje.php',
+        './servidor/incidencia/cargar_tipo_kilometraje.php',
         'idtipo_kilometraje',
         'tipo_kilometraje'
     );
@@ -446,7 +446,7 @@ async function guardarDatosFormulario() {
         }
         //  enviar los datos al servidor.
         try {
-        const response = await fetch('../../servidor/incidencia/agregar.php', {
+        const response = await fetch('./servidor/incidencia/agregar.php', {
         method: 'POST',
         body: formData,
         });
@@ -467,7 +467,7 @@ async function guardarDatosFormulario() {
                 }
                 }).then(() => {
                         // Redireccionar a inicio.php después de cerrar el mensaje de éxito
-                        window.location.href = '/inicio.php';
+                        window.location.href = './inicio.php';
                     });
             } else {
                 // Mostrar un mensaje de error si hubo un problema al guardar los datos
@@ -555,7 +555,7 @@ document.getElementById('listar').addEventListener('click', function () {
                         wrapper.innerHTML =null;
                         try {
                         // Realizar la solicitud fetch al archivo PHP
-                            const response = await fetch('../../servidor/incidencia/mostrar.php');
+                            const response = await fetch('./servidor/incidencia/mostrar.php');
                             if (!response.ok) {
                             throw new Error('Error al obtener los datos de incidencias');
                             }
@@ -629,7 +629,7 @@ document.getElementById('listar').addEventListener('click', function () {
                                         backgroundColor:'#19459D',
                                     fontWeight: '400',
                                     padding: '10px',
-                                          textAlign: 'center',
+                                        textAlign: 'center',
                                         color: '#FFFF',
                                         fontFamily:"'Segoe UI', sans-serif",
                                         },
@@ -683,7 +683,7 @@ document.getElementById('listar').addEventListener('click', function () {
 async function visualizarIncidencia(id) {
                     try {
                                 // Realizar la solicitud fetch al archivo PHP para obtener los detalles de la incidencia
-                                const response = await fetch('../../servidor/incidencia/detalle.php', {
+                                const response = await fetch('./servidor/incidencia/detalle.php', {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/x-www-form-urlencoded'
@@ -834,7 +834,7 @@ async function eliminarElemento(id_incidencia) {
                                 });
 
                                 if (result.isConfirmed) {
-                                    const response = await fetch('/servidor/incidencia/eliminar.php', {
+                                    const response = await fetch('./servidor/incidencia/eliminar.php', {
                                         method: 'POST',
                                         headers: {
                                             'Content-Type': 'application/x-www-form-urlencoded'
@@ -874,7 +874,7 @@ async function eliminarElemento(id_incidencia) {
     //obtenerIncidenciaParaEditar, esta funcion retorna el id de la fila
 async function obtenerIncidenciaParaEditar(id_incidencia) {
             try {
-                const response = await fetch('/servidor/incidencia/editar.php', {
+                const response = await fetch('./servidor/incidencia/editar.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
@@ -1038,11 +1038,11 @@ async function mostrarFormularioEdicion(incidencia) {
         didOpen: async () => {
             //console.log('viejos datos',incidencia)
             // Cuando se abre el formulario, llenar el selector
-            await cargarSelect('/servidor/incidencia/cargar_categoria.php', 'listCategoria', incidencia.categoria);
-            await cargarSelect('/servidor/incidencia/cargar_sentido.php', 'listSentido', incidencia.sentido);
-            await cargarSelect('/servidor/incidencia/cargar_tipo_kilometraje.php', 'listTipoKilometraje', incidencia.tipo_kilometraje);
-            await cargarSelect('/servidor/incidencia/cargar_consorcio.php', 'listConsorcio', incidencia.consorcio);
-            await cargarSelect('/servidor/incidencia/cargar_tipo_servicio.php', 'listTipo_servicio', incidencia.tipo_servicio);
+            await cargarSelect('./servidor/incidencia/cargar_categoria.php', 'listCategoria', incidencia.categoria);
+            await cargarSelect('./servidor/incidencia/cargar_sentido.php', 'listSentido', incidencia.sentido);
+            await cargarSelect('./servidor/incidencia/cargar_tipo_kilometraje.php', 'listTipoKilometraje', incidencia.tipo_kilometraje);
+            await cargarSelect('./servidor/incidencia/cargar_consorcio.php', 'listConsorcio', incidencia.consorcio);
+            await cargarSelect('./servidor/incidencia/cargar_tipo_servicio.php', 'listTipo_servicio', incidencia.tipo_servicio);
             //elementos del formulario editar
             const selectEditarCategoria = document.getElementById('listCategoria');
             const selectEditarSubCategoria= document.getElementById('listSubCategoria');
@@ -1056,33 +1056,33 @@ async function mostrarFormularioEdicion(incidencia) {
             //cargar subcategoria
             const categoriaId = selectEditarCategoria.value;
             await cargarSelect(
-                `../../servidor/incidencia/cargar_subcategoria.php?categoria_id=${categoriaId}`,
+                `./servidor/incidencia/cargar_subcategoria.php?categoria_id=${categoriaId}`,
                 'listSubCategoria',
                 incidencia.subcategoria
             );
             //cargar causa
             const subcategoriaId = selectEditarSubCategoria.value;
             await cargarSelect(
-                `../../servidor/incidencia/cargar_causa.php?subcategoria_id=${subcategoriaId}`,
+                `./servidor/incidencia/cargar_causa.php?subcategoria_id=${subcategoriaId}`,
                 'listCausa',
                 incidencia.causa
             );
             //cargar consecuencias 
             const causaId = selectEditarlistCausa.value;
             await cargarSelect(
-                `../../servidor/incidencia/cargar_consecuencia.php?causa_id=${causaId}`,
+                `./servidor/incidencia/cargar_consecuencia.php?causa_id=${causaId}`,
                 'listConsecuencia',
                 incidencia.consecuencia
             );
             //cargar nombre y cacc con el dni
             const dniFila = incidencia.conductor;
-            const responseCaccNombre = await fetch(`../../servidor/incidencia/cargar_cacc_conductor.php?numero_dni=${dniFila}`);
+            const responseCaccNombre = await fetch(`./servidor/incidencia/cargar_cacc_conductor.php?numero_dni=${dniFila}`);
             const dataCaccNombre = await responseCaccNombre.json();
             inputEditarCacc.value = dataCaccNombre[0].cacc;
             inputEditarConductor.value = dataCaccNombre[0].nombre;
             //cargar idBUS y placa con el vid
             const vidFila = incidencia.bus;
-            const responseVidPlaca = await fetch(`../../servidor/incidencia/cargar_bus_placa.php?numero_vid=${vidFila}`);
+            const responseVidPlaca = await fetch(`./servidor/incidencia/cargar_bus_placa.php?numero_vid=${vidFila}`);
             const dataVidPlaca = await responseVidPlaca.json();
             inputEditarIdBus.value = dataVidPlaca[0].num_externo;
             inputEditarPlaca.value = dataVidPlaca[0].placa;
@@ -1092,7 +1092,7 @@ async function mostrarFormularioEdicion(incidencia) {
             const consorcioId = document.getElementById('listConsorcio').value;
             const tipoId = document.getElementById('listTipo_servicio').value;
             const rutaElement = document.getElementById('listRuta');
-            const response = await fetch(`../../servidor/incidencia/cargar_ruta.php?consorcio_id=${consorcioId}&id_tipo=${tipoId}`);
+            const response = await fetch(`./servidor/incidencia/cargar_ruta.php?consorcio_id=${consorcioId}&id_tipo=${tipoId}`);
             const data = await response.json();
             // Limpiamos las opciones existentes (si las hay)
             rutaElement.innerHTML = '';
@@ -1116,7 +1116,7 @@ async function mostrarFormularioEdicion(incidencia) {
 
                 if (categoriaId) {
                     await cargarSelect(
-                                    `../../servidor/incidencia/cargar_subcategoria.php?categoria_id=${categoriaId}`,
+                                    `./servidor/incidencia/cargar_subcategoria.php?categoria_id=${categoriaId}`,
                                     'listSubCategoria',
                                     incidencia.subcategoria
                                 );
@@ -1129,7 +1129,7 @@ async function mostrarFormularioEdicion(incidencia) {
                 selectEditarConsecuencia.innerHTML = '<option value="" class="listIncidents__form-option">Seleccione una consecuencia</option>';
                 if (subcategoriaId) {
                         await cargarSelect(
-                            `../../servidor/incidencia/cargar_causa.php?subcategoria_id=${subcategoriaId}`,
+                            `./servidor/incidencia/cargar_causa.php?subcategoria_id=${subcategoriaId}`,
                             'listCausa',
                             incidencia.causa
                         );
@@ -1141,7 +1141,7 @@ async function mostrarFormularioEdicion(incidencia) {
                 selectEditarConsecuencia.innerHTML = '<option value="" class="listIncidents__form-option">Seleccione una consecuencia</option>';
                 if (causaId) {
                     await cargarSelect(
-                        `../../servidor/incidencia/cargar_consecuencia.php?causa_id=${causaId}`,
+                        `./servidor/incidencia/cargar_consecuencia.php?causa_id=${causaId}`,
                         'listConsecuencia',
                         incidencia.consecuencia
                 );
@@ -1151,7 +1151,7 @@ async function mostrarFormularioEdicion(incidencia) {
             inputEditarDni.addEventListener('input', async() => {
                 const valueDni = inputEditarDni.value;
                 if (valueDni) {
-                    const response = await fetch(`../../servidor/incidencia/cargar_cacc_conductor.php?numero_dni=${valueDni}`);
+                    const response = await fetch(`./servidor/incidencia/cargar_cacc_conductor.php?numero_dni=${valueDni}`);
                     const data = await response.json();
                     // Limpiamos las opciones existentes (si las hay)
                    // rutaElement.innerHTML = '';
@@ -1294,7 +1294,7 @@ contenidoDinamico.addEventListener('submit', async (e) => {
 
 const formDataDownload = new FormData(e.target);
         try {
-            const response = await fetch('/servidor/incidencia/descargar.php', {
+            const response = await fetch('./servidor/incidencia/descargar.php', {
                 method: 'POST',
                 body: formDataDownload,
             });
@@ -1366,7 +1366,7 @@ document.getElementById('logout').addEventListener('click', async () => {
 
   if (result.isConfirmed) {
     try {
-      const response = await fetch('/servidor/login/logout.php');
+      const response = await fetch('./servidor/login/logout.php');
       if (response.ok) {
         const responseData = await response.json();
         Swal.fire({
@@ -1380,7 +1380,7 @@ document.getElementById('logout').addEventListener('click', async () => {
           timerProgressBar: true, // Barra de progreso del Toast
         }).then(() => {
           // Realizar la redirección una vez que se muestre el Toast de éxito
-          window.location.href = '../../index.php';
+          window.location.href = './index.php';
         });
       } else {
         throw new Error('Error al cerrar sesión'); // Lanzar un error genérico
